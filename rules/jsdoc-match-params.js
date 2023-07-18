@@ -17,12 +17,12 @@ module.exports = {
       const commentsBefore = sourceCode.getCommentsBefore(node);
 
       const jsDocComment = commentsBefore.find(comment =>
-        comment.type === 'Block' && comment.value.startsWith('*')
+        comment.type === "Block" && comment.value.startsWith("*")
       );
 
       if (jsDocComment) {
         const parsed = doctrine.parse(jsDocComment.value, { unwrap: true });
-        const jsDocParams = parsed.tags.filter(tag => tag.title === 'param').map(tag => tag.name);
+        const jsDocParams = parsed.tags.filter(tag => tag.title === "param").map(tag => tag.name);
         return jsDocParams;
       }
 
@@ -36,7 +36,7 @@ module.exports = {
         return;
       }
 
-      const funcParams = node.value.params.map(param => param.type === 'Identifier' ? param.name : param.left.name);
+      const funcParams = node.value.params.map(param => param.type === "Identifier" ? param.name : param.left.name);
 
       for (let i = 0; i < jsDocParams.length; i++) {
         if (jsDocParams[i] !== funcParams[i]) {

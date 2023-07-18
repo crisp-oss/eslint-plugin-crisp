@@ -1,14 +1,13 @@
 {
   "name": "eslint-plugin-crisp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Custom EsLint Rules for Crisp",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "author": "Crisp IM SAS",
+  "license": "MIT",
   "dependencies": {
-    "doctrine": "^3.0.0"
+    "doctrine": "3.0.0",
+    "eslint": "8.45.0",
+    "eslint-plugin-jsdoc": "40.3.4"
   }
 }

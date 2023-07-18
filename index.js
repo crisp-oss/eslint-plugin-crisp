@@ -1,4 +1,7 @@
 module.exports = {
+  configs: {
+    recommended: require('./recommended'),
+  },
   rules: {
     "jsdoc-match-params": require("./rules/jsdoc-match-params"),
     "align-one-var": require("./rules/align-one-var"),
@@ -7,10 +10,13 @@ module.exports = {
     "constructor-variables": require("./rules/constructor-variables"),
     "methods-naming": require("./rules/methods-naming"),
     "regex-in-constructor": require("./rules/regex-in-constructor"),
+    "one-space-after-operator": require("./rules/one-space-after-operator"),
     "no-async": require("./rules/no-async"),
-    "no-const": require("./rules/no-const"),
+    "const": require("./rules/const"),
     "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
     "align-requires": require("./rules/align-requires"),
+    "ternary-parenthesis": require("./rules/ternary-parenthesis"),
+    "variable-names": require("./rules/variable-names"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash")
   }
 };

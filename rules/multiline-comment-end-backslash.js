@@ -17,9 +17,9 @@ module.exports = {
 
         comments.forEach(comment => {
           if (
-            comment.type === 'Block' && 
-            !comment.value.trim().endsWith('\\') && 
-            !comment.value.trim().startsWith('*')
+            comment.type === "Block" &&
+            !comment.value.trim().endsWith('\\') &&
+            !comment.value.trim().startsWith("*")
           ) {
             context.report({
               node: comment,

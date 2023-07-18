@@ -26,7 +26,7 @@ module.exports = {
           // Count the empty lines between the end of the previous method and the start of the current one
           let emptyLineCount = 0;
           for (let i = lineOfPreviousMethodEnd; i < lineOfCurrentMethod; i++) {
-            if (lines[i].trim() === '' && !lines[i].includes('*')) {
+            if (lines[i].trim() === "" && !lines[i].includes("*")) {
               emptyLineCount++;
             }
           }
@@ -35,7 +35,7 @@ module.exports = {
           if (emptyLineCount !== 2) {
             context.report({
               node,
-              message: 'Expected exactly two line breaks between class methods.',
+              message: "Expected exactly two line breaks between class methods.",
             });
           }
         }

@@ -1,4 +1,3 @@
-// file: eslint-plugin-crisp/lib/rules/align-one-var.js
 module.exports = {
   meta: {
     type: "layout",
