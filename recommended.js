@@ -26,11 +26,14 @@ module.exports = {
     "crisp/one-space-after-operator": "error",
     "crisp/no-trailing-spaces": "error",
     "crisp/ternary-parenthesis": "error",
-    "crisp/variable-names": "error",
+    "crisp/variable-names": ["error", {
+      "variableExceptions": ["fn"]
+    }],
     "crisp/jsdoc-match-params": ["error", { "exceptions": ["constructor"] }],
 
     "crisp/constructor-variables": ["error", {
-      "filenameExceptions": ["app.js"]
+      "filenameExceptions": ["app.js"],
+      "variableExceptions": ["client"]
     }],
     "jsdoc/require-jsdoc": ["error", {
       "require": {

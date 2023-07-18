@@ -18,6 +18,7 @@ module.exports = {
         comments.forEach(comment => {
           if (
             comment.type === "Block" &&
+            comment.loc.start.line !== comment.loc.end.line &&
             !comment.value.trim().endsWith('\\') &&
             !comment.value.trim().startsWith("*")
           ) {

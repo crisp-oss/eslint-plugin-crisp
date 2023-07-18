@@ -25,6 +25,10 @@ module.exports = {
         return;
       }
 
+      if (tokenAfter.type === "Line" && tokenAfter.value.trim().startsWith("jscs")) {
+        return;
+      }
+
       const lineDifference = tokenAfter.loc.start.line - node.loc.end.line;
 
       if (lineDifference < 2) {

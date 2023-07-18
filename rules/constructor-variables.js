@@ -33,7 +33,7 @@ module.exports = {
 
     return {
       "MethodDefinition[kind='constructor'] > FunctionExpression > BlockStatement > ExpressionStatement > AssignmentExpression": function(node) {
-        if(node.left.type === "MemberExpression" && node.left.object.type === "ThisExpression"){
+        if(node.left.type === "MemberExpression" && node.left.object.type === "ThisExpression") {
           const varName = node.left.property.name;
           if (!varName.startsWith("_") && !isFilenameException && !variableExceptions.includes(varName)) {
             context.report({

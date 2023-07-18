@@ -6,17 +6,30 @@ module.exports = {
       category: "Stylistic Issues",
       recommended: false,
     },
-    schema: [], // no options
+    schema: [{
+      type: "object",
+      properties: {
+        variableExceptions: {
+          type: "array",
+          items: { type: "string" },
+          uniqueItems: true,
+        }
+      },
+      additionalProperties: false,
+    }], // options schema updated
   },
   create(context) {
+    const options = context.options[0] || {};
+    const variableExceptions = options.variableExceptions || [];
+
     function checkDeclaration(node, body) {
       body.body.forEach((statement) => {
         if (statement.type === "VariableDeclaration") {
           statement.declarations.forEach((declaration) => {
-            if (declaration.id.name && !declaration.id.name.startsWith("_")) {
+            if (declaration.id.name && !declaration.id.name.startsWith("_") && !variableExceptions.includes(declaration.id.name)) {
               context.report({
                 node: declaration,
-                message: "Variables defined within a method should start with '_'",
+                message: `Variables defined within a method should start with '_' ({${declaration.id.name}})`,
               });
             }
           });
