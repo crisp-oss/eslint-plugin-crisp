@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     type: "layout",
     docs: {
-      description: "enforce only one space after = and : assignment",
+      description: "enforce at least one space before and exactly one space after = and : assignment",
       category: "Stylistic Issues",
       recommended: false,
     },
@@ -10,59 +10,37 @@ module.exports = {
     schema: [], // no options
   },
   create(context) {
+    const sourceCode = context.getSourceCode();
+
+    const checkSpacing = (node, operatorToken, operatorName) => {
+      if (Math.abs(sourceCode.getTokenBefore(operatorToken).loc.end.column - operatorToken.loc.start.column) < 1 || sourceCode.getTokenAfter(operatorToken).loc.start.column - operatorToken.loc.end.column > 1) {
+        context.report({
+          node: operatorToken,
+          message: `There should be at least one space before and exactly one space after '${operatorName}'`,
+          fix(fixer) {
+            return fixer.replaceTextRange(
+              [sourceCode.getTokenBefore(operatorToken).range[1], sourceCode.getTokenAfter(operatorToken).range[0]],
+              ` ${operatorName} `
+            );
+          }
+        });
+      }
+    }
+
     return {
       AssignmentExpression(node) {
-        const sourceCode = context.getSourceCode();
-        const operator = sourceCode.getTokenBefore(node.right);
-
-        if (sourceCode.getTokenAfter(operator).loc.start.column - operator.loc.end.column > 1) {
-          context.report({
-            node: operator,
-            message: "There should be exactly one space after '=' operator",
-            fix(fixer) {
-              return fixer.replaceTextRange(
-                [operator.range[1], sourceCode.getTokenAfter(operator).range[0]],
-                " "
-              );
-            }
-          });
-        }
+        const operatorToken = sourceCode.getTokenBefore(node.right);
+        checkSpacing(node, operatorToken, '=');
       },
       VariableDeclarator(node) {
         if (node.init) {
-          const sourceCode = context.getSourceCode();
-          const operator = sourceCode.getTokenBefore(node.init);
-
-          if (sourceCode.getTokenAfter(operator).loc.start.column - operator.loc.end.column > 1) {
-            context.report({
-              node: operator,
-              message: "There should be exactly one space after '=' operator",
-              fix(fixer) {
-                return fixer.replaceTextRange(
-                  [operator.range[1], sourceCode.getTokenAfter(operator).range[0]],
-                  " "
-                );
-              }
-            });
-          }
+          const operatorToken = sourceCode.getTokenBefore(node.init);
+          checkSpacing(node, operatorToken, '=');
         }
       },
       Property(node) {
-        const sourceCode = context.getSourceCode();
-        const operator = sourceCode.getTokenBefore(node.value);
-
-        if (sourceCode.getTokenAfter(operator).loc.start.column - operator.loc.end.column > 1) {
-          context.report({
-            node: operator,
-            message: "There should be exactly one space after ':'' operator",
-            fix(fixer) {
-              return fixer.replaceTextRange(
-                [operator.range[1], sourceCode.getTokenAfter(operator).range[0]],
-                " "
-              );
-            }
-          });
-        }
+        const operatorToken = sourceCode.getTokenBefore(node.value);
+        checkSpacing(node, operatorToken, ':');
       },
     };
   },

@@ -13,6 +13,7 @@ module.exports = {
     "semi": ["error", "always"],
     "max-len": ["error", 80],
     "comma-dangle": ["error", "never"],
+    "arrow-parens": ["error", "always"],
     "crisp/align-one-var": ["error"],
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/const": "error",
@@ -29,7 +30,7 @@ module.exports = {
     "crisp/jsdoc-match-params": ["error", { "exceptions": ["constructor"] }],
 
     "crisp/constructor-variables": ["error", {
-      "exceptions": ["client"]
+      "filenameExceptions": ["app.js"]
     }],
     "jsdoc/require-jsdoc": ["error", {
       "require": {
