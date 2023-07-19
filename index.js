@@ -3,7 +3,6 @@ module.exports = {
     recommended: require('./recommended'),
   },
   rules: {
-    "jsdoc-match-params": require("./rules/jsdoc-match-params"),
     "align-one-var": require("./rules/align-one-var"),
     "no-trailing-spaces": require("./rules/no-trailing-spaces"),
     "new-line-after-block": require("./rules/new-line-after-block"),
