@@ -16,7 +16,7 @@ module.exports = {
       MethodDefinition: function(node) {
         const commentsBefore = context.getCommentsBefore(node);
 
-        const jsDocComment = commentsBefore.find(comment => 
+        const jsDocComment = commentsBefore.find(comment =>
           comment.type === "Block" && comment.value.startsWith("*")
         );
 
