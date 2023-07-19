@@ -21,6 +21,28 @@ module.exports = {
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",
+    "jsdoc/sort-tags": [
+      "error",
+
+      {
+        tagSequence: [
+          {
+            tags: [
+              "private",
+              "protected",
+              "public",
+
+              "class",
+
+              "classdesc",
+
+              "param",
+              "return"
+            ]
+          }
+        ]
+      }
+    ],
     "jsdoc/require-jsdoc": [
       "error",
 
@@ -37,6 +59,7 @@ module.exports = {
 
     // Crisp JSDoc rules
     "crisp/jsdoc-enforce-classdesc": "error",
+    "crisp/align-jsdocs-params": "error",
 
   },
 
