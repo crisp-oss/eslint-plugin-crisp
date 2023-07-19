@@ -16,6 +16,7 @@ module.exports = {
     "align-requires": require("./rules/align-requires"),
     "ternary-parenthesis": require("./rules/ternary-parenthesis"),
     "variable-names": require("./rules/variable-names"),
-    "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash")
+    "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
+    "align-jsdocs-params": require("./rules/align-jsdocs-params")
   }
 };

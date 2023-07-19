@@ -24,7 +24,7 @@ module.exports = {
     "no-eval": "error",
     "no-console": "warn",
     "no-debugger": "warn",
-    "no-unused-vars": "warn",
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^request" }],
     "indent": "off",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
@@ -59,6 +59,7 @@ module.exports = {
     "crisp/one-space-after-operator": "error",
     "crisp/no-trailing-spaces": "error",
     "crisp/ternary-parenthesis": "error",
+    "crisp/align-jsdocs-params": "error",
     "crisp/variable-names": ["error", {
       "variableExceptions": ["fn"]
     }],
