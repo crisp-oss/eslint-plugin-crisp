@@ -1,6 +1,7 @@
 module.exports = {
   configs: {
-    recommended: require('./recommended'),
+    recommended: require("./recommended"),
+    "recommended-vue": require("./recommended-vue")
   },
   rules: {
     "align-one-var": require("./rules/align-one-var"),
