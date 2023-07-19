@@ -38,6 +38,8 @@ module.exports = {
     // Crisp JSDoc rules
     "crisp/jsdoc-enforce-classdesc": "error",
 
+  },
+
   settings: {
     jsdoc: {
       tagNamePreference: {
