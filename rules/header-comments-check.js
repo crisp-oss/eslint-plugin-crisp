@@ -49,13 +49,6 @@ module.exports = {
         }
 
         case "VariableDeclaration": {
-          if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("CONSTANTS")) {
-            context.report({
-              node: startNode,
-              message: "Variable group must be preceded by a 'CONSTANTS' comment block",
-            });
-          }
-
           if (startNode.declarations.some(d => d.init && d.init.regex)) {
             if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("INSTANCES")) {
               context.report({
@@ -63,6 +56,11 @@ module.exports = {
                 message: "Regex group must be preceded by a 'INSTANCES' comment block",
               });
             }
+          } else if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("CONSTANTS")) {
+            context.report({
+              node: startNode,
+              message: "Variable group must be preceded by a 'CONSTANTS' comment block",
+            });
           }
 
           break;

@@ -71,9 +71,17 @@ module.exports = {
     "crisp/new-line-after-block": "error",
     "crisp/no-async": "error",
     "crisp/no-trailing-spaces": "error",
+    "crisp/no-var-in-blocks": "error",
     "crisp/one-space-after-operator": "error",
     "crisp/regex-in-constructor": "error",
     "crisp/variable-names": "error",
+    "crisp/no-short-parameters": [
+      "error",
+
+      {
+        exceptions: ["_", "$", "x", "y"]
+      }
+    ],
 
     // Crisp Vue rules
   },
