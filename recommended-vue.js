@@ -86,6 +86,7 @@ module.exports = {
     ],
 
     // Crisp Vue rules
+    "crisp/vue-props-declaration-order": "error"
   },
 
   settings: {

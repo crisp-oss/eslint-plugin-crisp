@@ -27,6 +27,7 @@ module.exports = {
     "align-jsdocs-params": require("./rules/align-jsdocs-params"),
     "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
     "variable-names": require("./rules/variable-names"),
-    "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements")
+    "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
+    "vue-props-declaration-order": require("./rules/vue-props-declaration-order")
   }
 };
