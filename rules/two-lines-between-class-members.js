@@ -1,4 +1,3 @@
-// file: eslint-plugin-crisp/lib/rules/two-lines-between-class-members.js
 module.exports = {
   meta: {
     type: "layout",

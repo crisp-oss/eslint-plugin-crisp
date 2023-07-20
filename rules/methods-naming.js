@@ -1,5 +1,3 @@
-// File: eslint-plugin-custom/private-public-methods.js
-
 module.exports = {
   meta: {
     type: "problem",

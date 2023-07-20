@@ -40,6 +40,7 @@ module.exports = {
 
     // Crisp JSDoc rules
     "crisp/jsdoc-enforce-classdesc": "error",
+    "crisp/align-jsdocs-params": "error",
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",
@@ -59,10 +60,10 @@ module.exports = {
     ],
 
     // Crisp rules
-    "crisp/align-one-var": ["error"],
+    "crisp/align-one-var": "error",
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/const": "error",
-    "crisp/regex-in-constructor": ["error"],
+    "crisp/regex-in-constructor": "error",
     "crisp/align-requires": "error",
     "crisp/two-lines-between-class-members": "error",
     "crisp/no-async": "error",
@@ -71,7 +72,6 @@ module.exports = {
     "crisp/one-space-after-operator": "error",
     "crisp/no-trailing-spaces": "error",
     "crisp/ternary-parenthesis": "error",
-    "crisp/align-jsdocs-params": "error",
     "crisp/variable-names": ["error", {
       "variableExceptions": ["fn"]
     }],
