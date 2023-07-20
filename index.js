@@ -19,6 +19,7 @@ module.exports = {
     "no-var-in-blocks": require("./rules/no-var-in-blocks"),
     "no-space-in-optional-arguments": require("./rules/no-space-in-optional-arguments"),
     "no-useless-template-literals": require("./rules/no-useless-template-literals"),
+    "no-short-parameters": require("./rules/no-short-parameters"),
     "one-space-after-operator": require("./rules/one-space-after-operator"),
     "regex-in-constructor": require("./rules/regex-in-constructor"),
     "ternary-parenthesis": require("./rules/ternary-parenthesis"),

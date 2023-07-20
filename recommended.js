@@ -70,6 +70,9 @@ module.exports = {
     "crisp/no-var-in-blocks": "error",
     "crisp/no-space-in-optional-arguments": "error",
     "crisp/no-useless-template-literals": "error",
+    "crisp/no-short-parameters": ["error", {
+      "exceptions": ["_", "$"]
+    }],
     "crisp/methods-naming": "error",
     "crisp/new-line-after-block": "error",
     "crisp/one-space-after-operator": "error",
