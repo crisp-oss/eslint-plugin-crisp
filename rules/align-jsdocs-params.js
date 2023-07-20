@@ -35,6 +35,13 @@ module.exports = {
 
               if (match) {
                 const newBracePos = match.index + match[0].indexOf('{');
+
+                // Check for multiple types, skip alignment if found
+                const multipleTypes = /\|/.test(match[1]);
+                if (multipleTypes) {
+                  continue;
+                }
+
                 let descStart = match[0].substring(match[0].lastIndexOf('}') + 1).search(/\S/);
 
                 // If description is undefined, skip the description alignment check
