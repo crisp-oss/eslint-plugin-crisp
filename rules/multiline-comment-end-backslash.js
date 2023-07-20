@@ -1,4 +1,3 @@
-// file: eslint-plugin-crisp/lib/rules/multiline-comment-end-backslash.js
 module.exports = {
   meta: {
     type: "layout",

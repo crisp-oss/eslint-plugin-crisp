@@ -1,4 +1,3 @@
-// file: eslint-plugin-crisp/lib/rules/regex-in-constructor.js
 module.exports = {
   meta: {
     type: "suggestion",
@@ -24,5 +23,3 @@ module.exports = {
     };
   },
 };
-
-

@@ -21,6 +21,7 @@ module.exports = {
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",
+    "jsdoc/check-indentation": "error",
     "jsdoc/require-jsdoc": [
       "error",
 
@@ -34,9 +35,47 @@ module.exports = {
         }
       }
     ],
+    "jsdoc/sort-tags": [
+      "error",
+
+      {
+        tagSequence: [
+          {
+            tags: [
+              "private",
+              "protected",
+              "public",
+
+              "class",
+
+              "classdesc",
+
+              "param",
+              "return"
+            ]
+          }
+        ]
+      }
+    ],
 
     // Crisp JSDoc rules
     "crisp/jsdoc-enforce-classdesc": "error",
+    "crisp/align-jsdocs-params": "error",
+
+
+    // Crisp JS rules
+    "crisp/header-check": "error",
+    "crisp/methods-naming": "error",
+    "crisp/multiline-comment-end-backslash": "error",
+    "crisp/new-line-after-block": "error",
+    "crisp/no-async": "error",
+    "crisp/no-trailing-spaces": "error",
+    "crisp/one-space-after-operator": "error",
+    "crisp/regex-in-constructor": "error",
+    "crisp/variable-names": "error",
+
+    // Crisp Vue rules
+  },
 
   settings: {
     jsdoc: {

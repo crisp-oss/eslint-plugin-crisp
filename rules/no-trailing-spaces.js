@@ -1,4 +1,3 @@
-// file: eslint-plugin-crisp/lib/rules/no-trailing-spaces.js
 module.exports = {
   meta: {
     type: "layout",
