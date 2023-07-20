@@ -60,6 +60,7 @@ module.exports = {
 
     // Crisp rules
     "crisp/align-one-var": ["error"],
+    "crisp/no-var-in-blocks": ["error"],
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/const": "error",
     "crisp/regex-in-constructor": ["error"],

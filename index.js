@@ -14,6 +14,7 @@ module.exports = {
     "new-line-after-block": require("./rules/new-line-after-block"),
     "no-async": require("./rules/no-async"),
     "no-trailing-spaces": require("./rules/no-trailing-spaces"),
+    "no-var-in-blocks": require("./rules/no-var-in-blocks"),
     "one-space-after-operator": require("./rules/one-space-after-operator"),
     "regex-in-constructor": require("./rules/regex-in-constructor"),
     "ternary-parenthesis": require("./rules/ternary-parenthesis"),

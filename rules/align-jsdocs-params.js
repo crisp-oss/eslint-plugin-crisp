@@ -22,7 +22,7 @@ module.exports = {
 
             for (const line of lines) {
               lineNum++;
-              const paramMatch = line.match(/@param\s*{(\S*)}\s+(\S+)\s*(.*)/);
+              const paramMatch = line.match(/@param\s*{(\S*)}[\s\t]+(\S+)\s*(.*)/);
               const returnMatch = line.match(/@return\s*{(\S*)}\s*(.*)/);
 
               let match = null;
@@ -35,8 +35,8 @@ module.exports = {
 
               if (match) {
                 const newBracePos = match.index + match[0].indexOf('{');
-                let descStart = match[match.length - 1].search(/\S/);
-                
+                let descStart = match[0].substring(match[0].lastIndexOf('}') + 1).search(/\S/);
+
                 // If description is undefined, skip the description alignment check
                 if (match[match.length - 1] === 'undefined') {
                   descStart = -1;
