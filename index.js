@@ -9,6 +9,7 @@ module.exports = {
     "const": require("./rules/const"),
     "constructor-variables": require("./rules/constructor-variables"),
     "header-check": require("./rules/header-check"),
+    "header-comments-check": require("./rules/header-comments-check"),
     "jsdoc-enforce-classdesc": require("./rules/jsdoc-enforce-classdesc"),
     "methods-naming": require("./rules/methods-naming"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
