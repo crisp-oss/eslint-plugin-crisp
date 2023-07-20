@@ -68,6 +68,7 @@ module.exports = {
     "crisp/two-lines-between-class-members": "error",
     "crisp/no-async": "error",
     "crisp/no-var-in-blocks": "error",
+    "crisp/no-space-in-optional-arguments": "error",
     "crisp/methods-naming": "error",
     "crisp/new-line-after-block": "error",
     "crisp/one-space-after-operator": "error",

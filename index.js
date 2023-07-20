@@ -16,6 +16,7 @@ module.exports = {
     "no-async": require("./rules/no-async"),
     "no-trailing-spaces": require("./rules/no-trailing-spaces"),
     "no-var-in-blocks": require("./rules/no-var-in-blocks"),
+    "no-space-in-optional-arguments": require("./rules/no-space-in-optional-arguments"),
     "one-space-after-operator": require("./rules/one-space-after-operator"),
     "regex-in-constructor": require("./rules/regex-in-constructor"),
     "ternary-parenthesis": require("./rules/ternary-parenthesis"),
