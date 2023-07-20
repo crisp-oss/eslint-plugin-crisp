@@ -65,6 +65,7 @@ module.exports = {
 
     // Crisp JS rules
     "crisp/header-check": "error",
+    "crisp/header-comments-check": "error",
     "crisp/methods-naming": "error",
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/new-line-after-block": "error",
