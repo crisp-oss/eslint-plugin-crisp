@@ -25,6 +25,14 @@ module.exports = {
       return `/**************************************************************************\n * ${section.toUpperCase()}\n ***************************************************************************/`;
     };
 
+    function isUppercaseConstant(declaration) {
+      return (
+        declaration &&
+        declaration.id &&
+        declaration.id.name === declaration.id.name.toUpperCase()
+      );
+    }
+
     // Checks if a variable declaration is an import or require
     function isImportOrRequire(declaration) {
       return (
@@ -72,6 +80,7 @@ module.exports = {
               }
             } else if (
               (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("CONSTANTS")) &&
+              startNode.declarations.some(isUppercaseConstant) &&
               !startNode.declarations.some(isImportOrRequire)
             ) {
               context.report({

@@ -11,6 +11,7 @@ module.exports = {
     "header-check": require("./rules/header-check"),
     "header-comments-check": require("./rules/header-comments-check"),
     "jsdoc-enforce-classdesc": require("./rules/jsdoc-enforce-classdesc"),
+    "jsdoc-check-optional-params": require("./rules/jsdoc-check-optional-params"),
     "methods-naming": require("./rules/methods-naming"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
     "new-line-after-block": require("./rules/new-line-after-block"),
