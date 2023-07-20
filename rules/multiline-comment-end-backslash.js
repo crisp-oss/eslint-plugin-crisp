@@ -4,24 +4,39 @@ module.exports = {
     docs: {
       description: "enforce that multiline comments should end with a backslash, except for JSDoc comments",
       category: "Stylistic Issues",
-      recommended: false,
+      recommended: false
     },
-    fixable: null, // Not auto-fixable
+    fixable: null // Not auto-fixable
   },
+
   create(context) {
     return {
       Program() {
         const sourceCode = context.getSourceCode();
         const comments = sourceCode.getAllComments();
 
-        let lineCommentGroup = [];
+        let groupComments = [];
+
+        const processGroupComments = (group) => {
+          // Process each comment line in the group, except for the last one
+          for (let i = 0; i < group.length - 1; i++) {
+            const groupComment = group[i];
+            // If a comment does not end with a backslash, report it
+            if (!groupComment.value.trim().endsWith("\\")) {
+              context.report({
+                node: groupComment,
+                message: "Multiline comments should end with a backslash '\\', unless they are JSDoc comments.",
+              });
+            }
+          }
+        };
 
         comments.forEach((comment, i) => {
           // Handle Block comments
           if (
             comment.type === "Block" &&
             comment.loc.start.line !== comment.loc.end.line &&
-            !comment.value.trim().endsWith('\\') &&
+            !comment.value.trim().endsWith("\\") &&
             !comment.value.trim().startsWith("*")
           ) {
             context.report({
@@ -31,28 +46,25 @@ module.exports = {
           }
 
           // Handle Line comments
-          if (comment.type === "Line") {
-            lineCommentGroup.push(comment);
-            const nextComment = comments[i + 1];
+          if (comment.type === 'Line') {
+            // If a new comment group starts, process the last group first
+            if (groupComments.length > 0 && !comment.value.startsWith("   ")) {
+              processGroupComments(groupComments);
 
-            if (nextComment && nextComment.loc.start.line - 1 === comment.loc.end.line) {
-              // If the current comment is not the last in the group and does not end with a backslash,
-              // report an error
-              if (!comment.value.trim().endsWith('\\')) {
-                context.report({
-                  node: comment,
-                  message: "This line of a multiline comment should end with a backslash '\\'.",
-                });
-              }
-
-              // This is not the last comment in the group, continue to next iteration
-              return;
+              // Clear the array for the next group of comments
+              groupComments = [];
             }
-          }
 
-          // Reset line comment group
-          lineCommentGroup = [];
+            // Add the comment to the current group
+            groupComments.push(comment);
+          }
         });
+
+        // After all comments have been processed, check if there is a last group left to process
+        if (groupComments.length > 1) {
+          // Process the last group in the same way as before
+          processGroupComments(groupComments);
+        }
       }
     }
   }
