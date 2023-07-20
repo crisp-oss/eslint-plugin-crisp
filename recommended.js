@@ -69,7 +69,6 @@ module.exports = {
     "crisp/no-async": "error",
     "crisp/no-var-in-blocks": "error",
     "crisp/no-space-in-optional-arguments": "error",
-    "crisp/no-useless-template-literals": "error",
     "crisp/no-short-parameters": ["error", {
       "exceptions": ["_", "$"]
     }],
@@ -78,6 +77,7 @@ module.exports = {
     "crisp/one-space-after-operator": "error",
     "crisp/no-trailing-spaces": "error",
     "crisp/ternary-parenthesis": "error",
+    "crisp/align-consecutive-class-assignements": "error",
     "crisp/variable-names": ["error", {
       "variableExceptions": ["fn"]
     }],

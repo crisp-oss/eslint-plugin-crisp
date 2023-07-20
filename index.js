@@ -26,6 +26,7 @@ module.exports = {
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
     "align-jsdocs-params": require("./rules/align-jsdocs-params"),
     "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
-    "variable-names": require("./rules/variable-names")
+    "variable-names": require("./rules/variable-names"),
+    "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements")
   }
 };
