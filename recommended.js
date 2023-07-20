@@ -29,7 +29,7 @@ module.exports = {
     "no-eval": "error",
     "no-console": "warn",
     "no-debugger": "warn",
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^request" }],
+    "no-unused-vars": "warn",
     "indent": "off",
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
@@ -79,12 +79,7 @@ module.exports = {
     "crisp/no-trailing-spaces": "error",
     "crisp/ternary-parenthesis": "error",
     "crisp/align-consecutive-class-assignements": "error",
-    "crisp/variable-names": ["error", {
-      "variableExceptions": ["fn"]
-    }],
-    "crisp/constructor-variables": ["error", {
-      "filenameExceptions": ["app.js"],
-      "variableExceptions": ["client"]
-    }]
+    "crisp/variable-names": "error",
+    "crisp/constructor-variables": "error"
   }
 }
