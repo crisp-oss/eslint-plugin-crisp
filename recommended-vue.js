@@ -18,6 +18,7 @@ module.exports = {
     "no-console": "warn",
     "no-debugger": "warn",
     "no-unused-vars": "warn",
+    "default-param-last": "error",
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",
