@@ -25,6 +25,19 @@ module.exports = {
       return `/**************************************************************************\n * ${section.toUpperCase()}\n ***************************************************************************/`;
     };
 
+    // Checks if a variable declaration is an import or require
+    function isImportOrRequire(declaration) {
+      return (
+        declaration.init &&
+        declaration.init.type === "CallExpression" &&
+        (
+          (declaration.init.callee.name && declaration.init.callee.name === "require") ||
+          (declaration.init.callee.type && declaration.init.callee.type === "Import") ||
+          (declaration.init.callee.object && (declaration.init.callee.object || {}).type === 'MetaProperty' && declaration.init.callee.object.meta.type === 'Identifier' && declaration.init.callee.object.meta.name === 'import')
+        )
+      );
+    }
+
     function checkGroup(nodeType, startNode) {
       // If a variable is not declared at the top level, don't enforce the comment
       if (nodeType === "VariableDeclaration" && startNode.parent.type !== "Program") {
@@ -49,18 +62,23 @@ module.exports = {
         }
 
         case "VariableDeclaration": {
-          if (startNode.declarations.some(d => d.init && d.init.regex)) {
-            if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("INSTANCES")) {
+          if (startNode.kind === "const") {
+            if (startNode.declarations.some(d => d.init && d.init.regex)) {
+              if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("INSTANCES")) {
+                context.report({
+                  node: startNode,
+                  message: "Regex group must be preceded by a 'INSTANCES' comment block",
+                });
+              }
+            } else if (
+              (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("CONSTANTS")) &&
+              !startNode.declarations.some(isImportOrRequire)
+            ) {
               context.report({
                 node: startNode,
-                message: "Regex group must be preceded by a 'INSTANCES' comment block",
+                message: "Variable group must be preceded by a 'CONSTANTS' comment block",
               });
             }
-          } else if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("CONSTANTS")) {
-            context.report({
-              node: startNode,
-              message: "Variable group must be preceded by a 'CONSTANTS' comment block",
-            });
           }
 
           break;
