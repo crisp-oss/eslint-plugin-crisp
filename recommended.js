@@ -37,6 +37,7 @@ module.exports = {
     "max-len": ["error", 80],
     "comma-dangle": ["error", "never"],
     "arrow-parens": ["error", "always"],
+    "default-param-last": "error",
 
     // Crisp JSDoc rules
     "crisp/jsdoc-enforce-classdesc": "error",
