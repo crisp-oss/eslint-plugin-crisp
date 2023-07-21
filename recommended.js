@@ -45,7 +45,9 @@ module.exports = {
       { blankLine: "any", prev: "let", next: "let" },
       { blankLine: "always", prev: "const", next: "*" },
       { blankLine: "any", prev: "const", next: "const" },
-      { blankLine: "always", prev: "block-like", next: "*" }
+      { blankLine: "always", prev: "block-like", next: "*" },
+      { blankLine: "always", prev: "continue", next: "*" },
+      { blankLine: "always", prev: "break", next: "*" }
     ],
 
     // Crisp JSDoc rules
