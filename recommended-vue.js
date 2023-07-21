@@ -18,7 +18,22 @@ module.exports = {
     "no-console": "warn",
     "no-debugger": "warn",
     "no-unused-vars": "warn",
+    "arrow-parens": ["error", "always"],
+    "comma-dangle": ["error", "never"],
+    "curly": ["error", "all"],
+    "computed-property-spacing": ["error", "never"],
     "default-param-last": "error",
+    "default-case-last": "error",
+    "dot-notation": "error",
+    "eqeqeq": "error",
+    "linebreak-style": ["error", "unix"],
+    "no-tabs": "error",
+    "object-curly-spacing": ["error", "always"],
+    "semi": ["error", "always"],
+    "semi-style": ["error", "last"],
+    "semi-spacing": ["error", { "before": false, "after": true }],
+    "space-before-blocks": ["error", "always"],
+    "space-in-parens": ["error", "never"],
     "padding-line-between-statements": [
       "error",
 
@@ -27,12 +42,21 @@ module.exports = {
       { blankLine: "always", prev: "const", next: "*" },
       { blankLine: "any", prev: "const", next: "const" },
       { blankLine: "always", prev: "block-like", next: "*" },
+      { blankLine: "always", prev: "*", next: "block-like" },
+      { blankLine: "any", prev: "case", next: "case" },
       { blankLine: "always", prev: "continue", next: "*" },
       { blankLine: "always", prev: "break", next: "*" }
+    ],
+    "quotes": [
+      "error",
+      "double",
+
+      { "avoidEscape": true, "allowTemplateLiterals": true }
     ],
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",
+    "jsdoc/newline-after-description": "off",
     "jsdoc/check-indentation": "error",
     "jsdoc/require-jsdoc": [
       "error",
@@ -74,7 +98,12 @@ module.exports = {
     "crisp/jsdoc-check-optional-params": "error",
     "crisp/jsdoc-enforce-access": "error",
     "crisp/jsdoc-enforce-classdesc": "error",
-    "crisp/align-jsdocs-params": "error",
+    "crisp/jsdocs-align-params": "error",
+
+    // General Vue rules
+    "vue/multi-word-component-names": "error",
+
+    "vue/attribute-hyphenation": ["error", "always"],
 
 
     // Crisp JS rules
