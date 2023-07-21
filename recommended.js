@@ -52,7 +52,6 @@ module.exports = {
 
     // Crisp JSDoc rules
     "crisp/jsdoc-enforce-classdesc": "error",
-    "crisp/align-jsdocs-params": "error",
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",

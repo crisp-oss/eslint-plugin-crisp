@@ -24,7 +24,7 @@ module.exports = {
     "regex-in-constructor": require("./rules/regex-in-constructor"),
     "ternary-parenthesis": require("./rules/ternary-parenthesis"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
-    "align-jsdocs-params": require("./rules/align-jsdocs-params"),
+    "jsdocs-align-params": require("./rules/jsdocs-align-params"),
     "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
     "variable-names": require("./rules/variable-names"),
     "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
