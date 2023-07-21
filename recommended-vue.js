@@ -106,9 +106,28 @@ module.exports = {
 
     // General Vue rules
     "vue/multi-word-component-names": "error",
-
-    "vue/attribute-hyphenation": ["error", "always"],
-
+    "vue/no-v-html": "off",
+    "vue/attributes-order": [
+      "error",
+      {
+        order: [
+          "OTHER_DIRECTIVES",
+          "CONDITIONALS",
+          "LIST_RENDERING",
+          "RENDER_MODIFIERS",
+          "SLOT",
+          "TWO_WAY_BINDING",
+          "CONTENT",
+          "EVENTS",
+          "GLOBAL",
+          "DEFINITION",
+          "UNIQUE",
+          "OTHER_ATTR"
+          ["ATTR_DYNAMIC", "ATTR_STATIC", "ATTR_SHORTHAND_BOOL"]
+        ],
+        "alphabetical": false
+      }
+    ],
 
     // Crisp JS rules
     "crisp/header-check": "error",
