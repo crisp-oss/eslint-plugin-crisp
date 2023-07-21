@@ -17,7 +17,7 @@ module.exports = {
       return {};
     }
 
-    let lastNodeType = null;
+    let lastNode = null;
     let groupStart = null;
 
     // This function formats the section string into a comment block header
@@ -31,6 +31,32 @@ module.exports = {
         declaration.id &&
         declaration.id.name === declaration.id.name.toUpperCase()
       );
+    }
+
+    function isRegex(node) {
+      // Check if the node is a variable declaration
+      if (node.type !== "VariableDeclaration") {
+        return false;
+      };
+
+      // For each of the declarations in the variable declaration
+      for (const declaration of node.declarations) {
+        // If the initializer is a regex literal, return true
+        if (declaration.init.type === "Literal" && declaration.init.regex != null) {
+          return true;
+        }
+
+        // If the initializer is a new RegExp expression, return true
+        if (
+          declaration.init.type === "NewExpression" &&
+          declaration.init.callee.name === "RegExp"
+        ) {
+          return true;
+        }
+      }
+
+      // If none of the declarations are regexes, return false
+      return false;
     }
 
     // Checks if a variable declaration is an import or require
@@ -71,7 +97,7 @@ module.exports = {
 
         case "VariableDeclaration": {
           if (startNode.kind === "const") {
-            if (startNode.declarations.some(d => d.init && d.init.regex)) {
+            if (isRegex(startNode)) {
               if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("INSTANCES")) {
                 context.report({
                   node: startNode,
@@ -120,21 +146,24 @@ module.exports = {
 
     return {
       ":statement": (node) => {
-        const nodeType = node.type;
-        // If the type of node has changed since last time, check the group starting with the last node
-        if (nodeType !== lastNodeType) {
+        // If the type of node has changed since last time, or if we have a \
+        //   regex declaration and the previous declaration wasn't one
+        if (node.type !== lastNode || isRegex(node) !== isRegex(lastNode)) {
+          // Check the group starting with the last node
           if (groupStart) {
-            checkGroup(lastNodeType, groupStart);
+            checkGroup(lastNode.type, groupStart);
           }
+
           groupStart = node;
         }
-        lastNodeType = nodeType;
+
+        lastNode = node;
       },
 
       "Program:exit": () => {
         // When the program exits, check the group starting with the last node
         if (groupStart) {
-          checkGroup(lastNodeType, groupStart);
+          checkGroup(lastNode.type, groupStart);
         }
       }
     };
