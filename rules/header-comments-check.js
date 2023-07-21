@@ -29,6 +29,7 @@ module.exports = {
       return (
         declaration &&
         declaration.id &&
+        declaration.id.name &&
         declaration.id.name === declaration.id.name.toUpperCase()
       );
     }
