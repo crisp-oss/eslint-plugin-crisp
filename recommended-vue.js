@@ -128,6 +128,15 @@ module.exports = {
         "alphabetical": false
       }
     ],
+    "vue/v-slot-style": [
+      "error",
+
+      {
+        "atComponent": "v-slot",
+        "default": "v-slot",
+        "named": "longform"
+      }
+    ],
 
     // Crisp JS rules
     "crisp/header-check": "error",
