@@ -61,6 +61,7 @@ module.exports = {
 
     // Crisp JSDoc rules
     "crisp/jsdoc-check-optional-params": "error",
+    "crisp/jsdoc-enforce-access": "error",
     "crisp/jsdoc-enforce-classdesc": "error",
     "crisp/align-jsdocs-params": "error",
 
@@ -98,7 +99,8 @@ module.exports = {
 
       preferredTypes: {
         Function: "function",
-        Array: "array"
+        Array: "array",
+        Integer: "number"
       }
     }
   }

@@ -10,6 +10,7 @@ module.exports = {
     "constructor-variables": require("./rules/constructor-variables"),
     "header-check": require("./rules/header-check"),
     "header-comments-check": require("./rules/header-comments-check"),
+    "jsdoc-enforce-access": require("./rules/jsdoc-enforce-access"),
     "jsdoc-enforce-classdesc": require("./rules/jsdoc-enforce-classdesc"),
     "jsdoc-check-optional-params": require("./rules/jsdoc-check-optional-params"),
     "methods-naming": require("./rules/methods-naming"),
