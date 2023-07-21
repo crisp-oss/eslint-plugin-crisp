@@ -7,10 +7,25 @@ module.exports = {
       recommended: false,
     },
     fixable: "whitespace", // or "code" or "whitespace"
-    schema: [], // no options
+    schema: [
+      {
+        type: "object",
+        properties: {
+          checkColon: {
+            type: "boolean"
+          }
+        },
+        additionalProperties: false,
+        default: {
+          checkColon: true
+        }
+      }
+    ]
   },
   create(context) {
     const sourceCode = context.getSourceCode();
+    const config = context.options[0] || {};
+    const checkColon = config.checkColon !== false;
 
     const checkSpacing = (node, operatorToken, operatorName) => {
       if (Math.abs(sourceCode.getTokenBefore(operatorToken).loc.end.column - operatorToken.loc.start.column) < 1 || sourceCode.getTokenAfter(operatorToken).loc.start.column - operatorToken.loc.end.column > 1) {
@@ -38,9 +53,12 @@ module.exports = {
           checkSpacing(node, operatorToken, '=');
         }
       },
+
       Property(node) {
-        const operatorToken = sourceCode.getTokenBefore(node.value);
-        checkSpacing(node, operatorToken, ':');
+        if (checkColon) {
+          const operatorToken = sourceCode.getTokenBefore(node.value);
+          checkSpacing(node, operatorToken, ':');
+        }
       },
     };
   },
