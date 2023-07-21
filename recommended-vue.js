@@ -27,6 +27,7 @@ module.exports = {
     "dot-notation": "error",
     "eqeqeq": "error",
     "linebreak-style": ["error", "unix"],
+    "no-multiple-empty-lines": ["error", { max: 1 }],
     "no-trailing-spaces": "error",
     "no-tabs": "error",
     "object-curly-spacing": ["error", "always"],
