@@ -19,6 +19,17 @@ module.exports = {
     "no-debugger": "warn",
     "no-unused-vars": "warn",
     "default-param-last": "error",
+    "padding-line-between-statements": [
+      "error",
+
+      { blankLine: "always", prev: "let", next: "*" },
+      { blankLine: "any", prev: "let", next: "let" },
+      { blankLine: "always", prev: "const", next: "*" },
+      { blankLine: "any", prev: "const", next: "const" },
+      { blankLine: "always", prev: "block-like", next: "*" },
+      { blankLine: "always", prev: "continue", next: "*" },
+      { blankLine: "always", prev: "break", next: "*" }
+    ],
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",
@@ -71,7 +82,6 @@ module.exports = {
     "crisp/header-comments-check": "error",
     "crisp/methods-naming": "error",
     "crisp/multiline-comment-end-backslash": "error",
-    "crisp/new-line-after-block": "error",
     "crisp/no-async": "error",
     "crisp/no-trailing-spaces": "error",
     "crisp/no-var-in-blocks": "error",

@@ -15,7 +15,6 @@ module.exports = {
     "jsdoc-check-optional-params": require("./rules/jsdoc-check-optional-params"),
     "methods-naming": require("./rules/methods-naming"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
-    "new-line-after-block": require("./rules/new-line-after-block"),
     "no-async": require("./rules/no-async"),
     "no-trailing-spaces": require("./rules/no-trailing-spaces"),
     "no-var-in-blocks": require("./rules/no-var-in-blocks"),

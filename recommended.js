@@ -38,6 +38,15 @@ module.exports = {
     "comma-dangle": ["error", "never"],
     "arrow-parens": ["error", "always"],
     "default-param-last": "error",
+    "padding-line-between-statements": [
+      "error",
+
+      { blankLine: "always", prev: "let", next: "*" },
+      { blankLine: "any", prev: "let", next: "let" },
+      { blankLine: "always", prev: "const", next: "*" },
+      { blankLine: "any", prev: "const", next: "const" },
+      { blankLine: "always", prev: "block-like", next: "*" }
+    ],
 
     // Crisp JSDoc rules
     "crisp/jsdoc-enforce-classdesc": "error",
@@ -74,7 +83,6 @@ module.exports = {
       "exceptions": ["_", "$"]
     }],
     "crisp/methods-naming": "error",
-    "crisp/new-line-after-block": "error",
     "crisp/one-space-after-operator": "error",
     "crisp/no-trailing-spaces": "error",
     "crisp/ternary-parenthesis": "error",
