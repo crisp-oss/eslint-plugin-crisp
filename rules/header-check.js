@@ -22,7 +22,11 @@ module.exports = {
         const fileExtension = path.extname(fileName);
 
         // Base header comment pattern
-        let basePattern = "\n \\* This file is part of .+\\n \\*\\n \\* Copyright \\(c\\) \\d{4} Crisp IM SAS\\n \\* All rights belong to Crisp IM SAS\\n ";
+        // Base header comment patterns
+        let basePatterns = [
+          "\n \\* This file is part of .+\\n \\*\\n \\* Copyright \\(c\\) \\d{4} Crisp IM SAS\\n \\* All rights belong to Crisp IM SAS\\n ",
+          "\n \\* Bundle: .+\\n \\* Project: .+\\n \\* Author: .+\\n \\* Copyright: \\d{4}, Crisp IM SAS\\n "
+        ];
 
         let headerStart, headerEnd;
 
@@ -35,15 +39,16 @@ module.exports = {
           headerEnd = "\\*\/";
         }
 
-        // Construct the final headerFormat RegExp
-        const headerFormat = headerStart && headerEnd ? new RegExp("^" + headerStart + basePattern + headerEnd) : null;
+        if (headerStart && headerEnd) {
+          // Construct the final headerFormat RegExps
+          const headerFormats = basePatterns.map(pattern => headerStart && headerEnd ? new RegExp("^" + headerStart + pattern + headerEnd) : null);
 
-        // Only check the header format if it's a .vue or .js file
-        if (headerFormat && !headerFormat.test(fileContent)) {
-          context.report({
-            node,
-            message: "File must start with the proper header.",
-          });
+          if (headerFormats.some(format => format && format.test(fileContent)) === false) {
+            context.report({
+              node,
+              message: "File must start with the proper header.",
+            });
+          }
         }
       },
     };
