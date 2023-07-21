@@ -75,6 +75,8 @@ module.exports = {
     "crisp/align-one-var": "error",
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/const": "error",
+    "crisp/header-check": "error",
+    "crisp/header-comments-check": "error",
     "crisp/regex-in-constructor": "error",
     "crisp/align-requires": "error",
     "crisp/two-lines-between-class-members": "error",
