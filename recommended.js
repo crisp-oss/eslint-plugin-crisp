@@ -32,9 +32,9 @@ module.exports = {
     "no-unused-vars": "warn",
     "indent": "off",
     "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "double", { "avoidEscape": true, "allowTemplateLiterals": true }],
     "semi": ["error", "always"],
     "max-len": ["error", 80],
+    "no-trailing-spaces": "error",
     "comma-dangle": ["error", "never"],
     "arrow-parens": ["error", "always"],
     "default-param-last": "error",
@@ -46,16 +46,22 @@ module.exports = {
       { blankLine: "always", prev: "const", next: "*" },
       { blankLine: "any", prev: "const", next: "const" },
       { blankLine: "always", prev: "block-like", next: "*" },
+      { blankLine: "always", prev: "*", next: "block-like" },
+      { blankLine: "any", prev: "case", next: "case" },
       { blankLine: "always", prev: "continue", next: "*" },
       { blankLine: "always", prev: "break", next: "*" }
     ],
+    "quotes": [
+      "error",
+      "double",
 
-    // Crisp JSDoc rules
-    "crisp/jsdoc-enforce-classdesc": "error",
+      { "avoidEscape": true, "allowTemplateLiterals": true }
+    ],
 
     // JSDoc rules
     "jsdoc/require-param-description": "off",
     "jsdoc/newline-after-description": "off",
+    "jsdoc/check-indentation": "error",
     "jsdoc/require-jsdoc": [
       "error",
 
@@ -69,6 +75,32 @@ module.exports = {
         }
       }
     ],
+    "jsdoc/sort-tags": [
+      "error",
+
+      {
+        tagSequence: [
+          {
+            tags: [
+              "private",
+              "protected",
+              "public",
+
+              "class",
+
+              "classdesc",
+
+              "param",
+              "return"
+            ]
+          }
+        ]
+      }
+    ],
+
+    // Crisp JSDoc rules
+    "crisp/jsdoc-enforce-classdesc": "error",
+    "crisp/jsdocs-align-params": "error",
 
     // Crisp JS rules
     "crisp/align-one-var": "error",
