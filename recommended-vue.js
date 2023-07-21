@@ -9,7 +9,9 @@ module.exports = {
   ],
 
   extends: [
-    "plugin:jsdoc/recommended"
+    "eslint:recommended",
+    "plugin:jsdoc/recommended",
+    "plugin:vue/vue3-recommended"
   ],
 
   rules: {
