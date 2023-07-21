@@ -16,7 +16,6 @@ module.exports = {
     "methods-naming": require("./rules/methods-naming"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
     "no-async": require("./rules/no-async"),
-    "no-trailing-spaces": require("./rules/no-trailing-spaces"),
     "no-var-in-blocks": require("./rules/no-var-in-blocks"),
     "no-space-in-optional-arguments": require("./rules/no-space-in-optional-arguments"),
     "no-useless-template-literals": require("./rules/no-useless-template-literals"),

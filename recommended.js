@@ -71,7 +71,7 @@ module.exports = {
       }
     ],
 
-    // Crisp rules
+    // Crisp JS rules
     "crisp/align-one-var": "error",
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/const": "error",
@@ -88,7 +88,6 @@ module.exports = {
     }],
     "crisp/methods-naming": "error",
     "crisp/one-space-after-operator": "error",
-    "crisp/no-trailing-spaces": "error",
     "crisp/ternary-parenthesis": "error",
     "crisp/align-consecutive-class-assignements": "error",
     "crisp/variable-names": "error",
