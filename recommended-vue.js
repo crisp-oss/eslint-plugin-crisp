@@ -108,13 +108,6 @@ module.exports = {
     // General Vue rules
     "vue/no-v-html": "off",
     "vue/html-quotes": "off",
-    "vue/component-tags-order": [
-      "error",
-
-      {
-        "order": [ "template", "script", "style" ]
-      }
-    ],
     "vue/attributes-order": [
       "error",
 
@@ -132,6 +125,20 @@ module.exports = {
           ["GLOBAL", "UNIQUE", "OTHER_ATTR"]
         ],
         "alphabetical": false
+      }
+    ],
+    "vue/component-tags-order": [
+      "error",
+
+      {
+        "order": [ "template", "script", "style" ]
+      }
+    ],
+    "vue/no-mutating-props": [
+      "error",
+
+      {
+        "shallowOnly": true
       }
     ],
     "vue/v-slot-style": [
