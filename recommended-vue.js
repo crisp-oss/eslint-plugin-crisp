@@ -105,25 +105,30 @@ module.exports = {
     "crisp/jsdocs-align-params": "error",
 
     // General Vue rules
-    "vue/multi-word-component-names": "error",
     "vue/no-v-html": "off",
+    "vue/html-quotes": "off",
+    "vue/component-tags-order": [
+      "error",
+
+      {
+        "order": [ "template", "script", "style" ]
+      }
+    ],
     "vue/attributes-order": [
       "error",
+
       {
         order: [
-          "OTHER_DIRECTIVES",
-          "CONDITIONALS",
-          "LIST_RENDERING",
           "RENDER_MODIFIERS",
+          "CONDITIONALS",
+          "OTHER_DIRECTIVES",
+          "LIST_RENDERING",
           "SLOT",
           "TWO_WAY_BINDING",
           "CONTENT",
           "EVENTS",
-          "GLOBAL",
           "DEFINITION",
-          "UNIQUE",
-          "OTHER_ATTR"
-          ["ATTR_DYNAMIC", "ATTR_STATIC", "ATTR_SHORTHAND_BOOL"]
+          ["GLOBAL", "UNIQUE", "OTHER_ATTR"]
         ],
         "alphabetical": false
       }
