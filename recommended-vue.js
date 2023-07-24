@@ -11,7 +11,8 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:jsdoc/recommended",
-    "plugin:vue/vue3-recommended"
+    "plugin:vue/vue3-recommended",
+    "plugin:vue-pug/vue3-recommended"
   ],
 
   rules: {
