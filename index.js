@@ -28,6 +28,7 @@ module.exports = {
     "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
     "variable-names": require("./rules/variable-names"),
     "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
+    "vue-html-quotes": require("./rules/vue-html-quotes"),
     "vue-props-declaration-order": require("./rules/vue-props-declaration-order")
   }
 };
