@@ -171,6 +171,7 @@ module.exports = {
     ],
 
     // Crisp Vue rules
+    "crisp/vue-emits-order": "error",
     "crisp/vue-html-quotes": "error",
     "crisp/vue-props-declaration-order": "error"
   },
