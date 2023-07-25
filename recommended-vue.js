@@ -59,6 +59,26 @@ module.exports = {
       { "avoidEscape": true, "allowTemplateLiterals": true }
     ],
 
+    // Crisp JS rules
+    "crisp/empty-line-before-break": "error",
+    "crisp/header-check": "error",
+    "crisp/header-comments-check": "error",
+    "crisp/methods-naming": "error",
+    "crisp/multiline-comment-end-backslash": "error",
+    "crisp/no-async": "error",
+    "crisp/no-var-in-blocks": "error",
+    "crisp/no-useless-template-literals": "error",
+    "crisp/one-space-after-operator": ["error", { "checkColon": false }],
+    "crisp/regex-in-constructor": "error",
+    "crisp/variable-names": "error",
+    "crisp/no-short-parameters": [
+      "error",
+
+      {
+        exceptions: ["_", "$", "x", "y"]
+      }
+    ],
+
     // JSDoc rules
     "jsdoc/require-param-description": "off",
     "jsdoc/newline-after-description": "off",
@@ -148,25 +168,6 @@ module.exports = {
         "atComponent": "v-slot",
         "default": "v-slot",
         "named": "longform"
-      }
-    ],
-
-    // Crisp JS rules
-    "crisp/header-check": "error",
-    "crisp/header-comments-check": "error",
-    "crisp/methods-naming": "error",
-    "crisp/multiline-comment-end-backslash": "error",
-    "crisp/no-async": "error",
-    "crisp/no-var-in-blocks": "error",
-    "crisp/no-useless-template-literals": "error",
-    "crisp/one-space-after-operator": ["error", { "checkColon": false }],
-    "crisp/regex-in-constructor": "error",
-    "crisp/variable-names": "error",
-    "crisp/no-short-parameters": [
-      "error",
-
-      {
-        exceptions: ["_", "$", "x", "y"]
       }
     ],
 
