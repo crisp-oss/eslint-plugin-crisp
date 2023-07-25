@@ -63,7 +63,6 @@ module.exports = {
     // JSDoc rules
     "jsdoc/require-param-description": "off",
     "jsdoc/newline-after-description": "off",
-    "jsdoc/check-indentation": "error",
     "jsdoc/require-jsdoc": [
       "error",
 
@@ -102,6 +101,7 @@ module.exports = {
 
     // Crisp JSDoc rules
     "crisp/jsdoc-align-params": "error",
+    "crisp/jsdoc-check-indentation": "error",
     "crisp/jsdoc-enforce-classdesc": "error",
 
     // Crisp JS rules
