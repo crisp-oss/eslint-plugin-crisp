@@ -133,6 +133,7 @@ module.exports = {
     "vue/no-v-html": "off",
     "vue/prefer-prop-type-boolean-first": "error",
     "vue/prefer-true-attribute-shorthand": "error",
+    "vue/valid-v-slot": "off",
     "vue/attributes-order": [
       "error",
 
