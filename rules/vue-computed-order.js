@@ -17,6 +17,12 @@ module.exports = {
 
         properties.slice(0, -1).forEach((property, index) => {
           const nextProperty = properties[index + 1];
+
+          // Ignore non-property values (e.g. spread expressions)
+          if (property.type !== "Property" || !nextProperty || nextProperty.type !== "Property") {
+            return;
+          }
+
           if (property.key.name > nextProperty.key.name) {
             context.report({
               node: nextProperty,
