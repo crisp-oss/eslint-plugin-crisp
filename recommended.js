@@ -46,6 +46,8 @@ module.exports = {
       { blankLine: "always", prev: "const", next: "*" },
       { blankLine: "any", prev: "const", next: "const" },
       { blankLine: "always", prev: "block-like", next: "*" },
+      { blankLine: "always", prev: "*", next: "break" },
+      { blankLine: "any", prev: "empty", next: "break" },
       { blankLine: "always", prev: "*", next: "block-like" },
       { blankLine: "any", prev: "case", next: "case" },
       { blankLine: "always", prev: "continue", next: "*" },

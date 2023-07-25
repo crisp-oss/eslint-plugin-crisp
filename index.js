@@ -8,7 +8,6 @@ module.exports = {
     "align-requires": require("./rules/align-requires"),
     "const": require("./rules/const"),
     "constructor-variables": require("./rules/constructor-variables"),
-    "empty-line-before-break": require("./rules/empty-line-before-break"),
     "header-check": require("./rules/header-check"),
     "header-comments-check": require("./rules/header-comments-check"),
     "jsdoc-enforce-access": require("./rules/jsdoc-enforce-access"),
