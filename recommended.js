@@ -101,8 +101,8 @@ module.exports = {
     ],
 
     // Crisp JSDoc rules
+    "crisp/jsdoc-align-params": "error",
     "crisp/jsdoc-enforce-classdesc": "error",
-    "crisp/jsdocs-align-params": "error",
 
     // Crisp JS rules
     "crisp/align-one-var": "error",

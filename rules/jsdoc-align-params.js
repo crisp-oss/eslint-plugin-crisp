@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     type: 'layout',
     docs: {
-      description: 'enforce alignment for JSDocs',
+      description: 'enforce alignment for JSDoc',
       category: 'Stylistic Issues',
       recommended: false,
     },

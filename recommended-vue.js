@@ -122,10 +122,10 @@ module.exports = {
     ],
 
     // Crisp JSDoc rules
+    "crisp/jsdoc-align-params": "error",
     "crisp/jsdoc-check-optional-params": "error",
     "crisp/jsdoc-enforce-access": "error",
     "crisp/jsdoc-enforce-classdesc": "error",
-    "crisp/jsdocs-align-params": "error",
 
     // General Vue rules
     "vue/html-quotes": "off",
