@@ -72,6 +72,7 @@ module.exports = {
     "crisp/no-useless-template-literals": "error",
     "crisp/one-space-after-operator": ["error", { "checkColon": false }],
     "crisp/regex-in-constructor": "error",
+    "crisp/ternary-parenthesis": "error",
     "crisp/variable-names": "error",
     "crisp/no-short-parameters": [
       "error",

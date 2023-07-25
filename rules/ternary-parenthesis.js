@@ -7,6 +7,7 @@ module.exports = {
       recommended: false,
     },
     schema: [], // no options
+    fixable: "code",
   },
   create(context) {
     return {
@@ -20,6 +21,13 @@ module.exports = {
             context.report({
               node,
               message: "The condition in ternary expressions with an operator should be wrapped in parentheses",
+              fix(fixer) {
+                const conditionText = sourceCode.getText(node.test);
+                return [
+                  fixer.insertTextBefore(node.test, "("),
+                  fixer.insertTextAfter(node.test, ")"),
+                ];
+              },
             });
           }
         }
