@@ -34,6 +34,7 @@ module.exports = {
     "no-trailing-spaces": "error",
     "no-tabs": "error",
     "object-curly-spacing": ["error", "always"],
+    "prefer-arrow-callback": "error",
     "semi": ["error", "always"],
     "semi-style": ["error", "last"],
     "semi-spacing": ["error", { "before": false, "after": true }],
@@ -127,8 +128,10 @@ module.exports = {
     "crisp/jsdocs-align-params": "error",
 
     // General Vue rules
-    "vue/no-v-html": "off",
     "vue/html-quotes": "off",
+    "vue/no-v-html": "off",
+    "vue/prefer-prop-type-boolean-first": "error",
+    "vue/prefer-true-attribute-shorthand": "error",
     "vue/attributes-order": [
       "error",
 
