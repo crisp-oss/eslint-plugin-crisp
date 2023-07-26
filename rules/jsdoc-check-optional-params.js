@@ -19,33 +19,35 @@ module.exports = {
         return;
       }
 
+      // This rule assumes that function params and JSDoc params match \
+      //   (enforced by jsdoc/require-param)
       const parsed = doctrine.parse(jsDocComment.value, {
         unwrap: true,
         sloppy: true,
         tags: ["param"]
       });
-      let jsdocParams = parsed.tags;
+      const jsdocParams = parsed.tags;
 
-      // Remove "parent" params (i.e. 'payload' for 'payload.context'), \
-      //   otherwise we end up with discrepancies between `jsdocParams` and \
-      //   and `node.params`
-      jsdocParams = jsdocParams.filter((item, index, self) => {
-        // Check if next item exists and its name begins with current item's name followed by a dot
-        return !(
-          self[index + 1] &&
-          self[index + 1].name.startsWith(item.name + '.')
-        );
-      });
+      let i = 0;
 
-      node.params.forEach((param, i) => {
-        // If there's a corresponding JSDoc parameter
-        if (jsdocParams[i]) {
-          checkNode(param, jsdocParams[i], jsdocParams);
-        }
-      });
+      if (jsdocParams.length) {
+        node.params.forEach((param) => {
+          i = checkNode(param, jsdocParams, i);
+        });
+      }
 
-      function checkNode(node, jsdocParam, jsdocParams) {
-        if (node.type === "AssignmentPattern" && jsdocParam.type.type !== "OptionalType") {
+      function checkNode(node, jsdocParams, i) {
+        jsdocParam = jsdocParams[i];
+
+        if (node.type === "ObjectPattern") {
+          i++;
+
+          node.properties.forEach((property) => {
+            i = checkNode(property.value, jsdocParams, i);
+          });
+
+          return i;
+        } else if (node.type === "AssignmentPattern" && jsdocParam.type.type !== "OptionalType") {
           context.report({
             node,
             message: "Optional parameters in JSDoc should be surrounded by brackets"
@@ -55,17 +57,9 @@ module.exports = {
             node,
             message: "Non-optional parameters in JSDoc should not be surrounded by brackets"
           });
-        } else if (node.type === "ObjectPattern") {
-          node.properties.forEach((property) => {
-            const nestedJsdocParam = jsdocParams.find((param) => {
-              const nameSegments = param.name.split('.');
-              return nameSegments[nameSegments.length - 1] === property.key.name;
-            });
-            if (nestedJsdocParam) {
-              checkNode(property.value, nestedJsdocParam, jsdocParams);
-            }
-          });
         }
+
+        return i + 1;
       }
     }
 
