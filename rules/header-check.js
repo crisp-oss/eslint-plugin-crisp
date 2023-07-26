@@ -25,6 +25,7 @@ module.exports = {
         // Base header comment patterns
         let basePatterns = [
           "\n \\* This file is part of .+\\n \\*\\n \\* Copyright \\(c\\) \\d{4} Crisp IM SAS\\n \\* All rights belong to Crisp IM SAS\\n ",
+          "\n \\* This file is part of .+\\n \\*\\n .+ script\\*\\n \\* Copyright: \\d{4}, Crisp IM SAS\\n \\* Author: .+\\n ",
           "\n \\* Bundle: .+\\n \\* Project: .+\\n \\* Author: .+\\n \\* Copyright: \\d{4}, Crisp IM SAS\\n "
         ];
 
