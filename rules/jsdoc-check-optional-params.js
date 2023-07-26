@@ -39,6 +39,15 @@ module.exports = {
       function checkNode(node, jsdocParams, i) {
         jsdocParam = jsdocParams[i];
 
+        if (!jsdocParam) {
+          context.report({
+            node,
+            message: "No matching JSDoc param found (this was probably missed by 'jsdoc/require-param')"
+          });
+
+          return;
+        }
+
         if (node.type === "ObjectPattern") {
           i++;
 
