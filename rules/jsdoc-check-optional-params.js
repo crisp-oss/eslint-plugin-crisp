@@ -19,8 +19,23 @@ module.exports = {
         return;
       }
 
-      const parsed = doctrine.parse(jsDocComment.value, { unwrap: true });
-      const jsdocParams = parsed.tags.filter((tag) => tag.title === "param");
+      const parsed = doctrine.parse(jsDocComment.value, {
+        unwrap: true,
+        sloppy: true,
+        tags: ["param"]
+      });
+      let jsdocParams = parsed.tags;
+
+      // Remove "parent" params (i.e. 'payload' for 'payload.context'), \
+      //   otherwise we end up with discrepancies between `jsdocParams` and \
+      //   and `node.params`
+      jsdocParams = jsdocParams.filter((item, index, self) => {
+        // Check if next item exists and its name begins with current item's name followed by a dot
+        return !(
+          self[index + 1] &&
+          self[index + 1].name.startsWith(item.name + '.')
+        );
+      });
 
       node.params.forEach((param, i) => {
         // If there's a corresponding JSDoc parameter
@@ -30,10 +45,15 @@ module.exports = {
       });
 
       function checkNode(node, jsdocParam, jsdocParams) {
-        if (node.type === "AssignmentPattern" && !/^\[.*\]$/.test(jsdocParam.name)) {
+        if (node.type === "AssignmentPattern" && jsdocParam.type.type !== "OptionalType") {
           context.report({
             node,
             message: "Optional parameters in JSDoc should be surrounded by brackets"
+          });
+        } else if (jsdocParam.type.type === "OptionalType" && node.type !== "AssignmentPattern") {
+          context.report({
+            node,
+            message: "Non-optional parameters in JSDoc should not be surrounded by brackets"
           });
         } else if (node.type === "ObjectPattern") {
           node.properties.forEach((property) => {
