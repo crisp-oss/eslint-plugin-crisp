@@ -66,6 +66,7 @@ module.exports = {
     "crisp/header-check": "error",
     "crisp/header-comments-check": "error",
     "crisp/methods-naming": "error",
+    "crisp/methods-ordering": "error",
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/no-async": "error",
     "crisp/no-var-in-blocks": "error",

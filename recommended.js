@@ -120,6 +120,7 @@ module.exports = {
       "exceptions": ["_", "$"]
     }],
     "crisp/methods-naming": "error",
+    "crisp/methods-ordering": "error",
     "crisp/one-space-after-operator": "error",
     "crisp/ternary-parenthesis": "error",
     "crisp/align-consecutive-class-assignements": "error",

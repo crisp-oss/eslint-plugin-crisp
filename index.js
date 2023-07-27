@@ -16,6 +16,7 @@ module.exports = {
     "jsdoc-enforce-access": require("./rules/jsdoc-enforce-access"),
     "jsdoc-enforce-classdesc": require("./rules/jsdoc-enforce-classdesc"),
     "methods-naming": require("./rules/methods-naming"),
+    "methods-ordering": require("./rules/methods-ordering"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
     "no-async": require("./rules/no-async"),
     "no-var-in-blocks": require("./rules/no-var-in-blocks"),
