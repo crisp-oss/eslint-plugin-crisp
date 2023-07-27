@@ -180,7 +180,9 @@ module.exports = {
     // Crisp Vue rules
     "crisp/vue-computed-order": "error",
     "crisp/vue-emits-order": "error",
+    "crisp/vue-header-check": "error",
     "crisp/vue-html-quotes": "error",
+    "crisp/vue-no-regex-data": "error",
     "crisp/vue-props-declaration-order": "error"
   },
 

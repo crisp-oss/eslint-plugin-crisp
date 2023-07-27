@@ -32,7 +32,9 @@ module.exports = {
     "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
     "vue-computed-order": require("./rules/vue-computed-order"),
     "vue-emits-order": require("./rules/vue-emits-order"),
+    "vue-header-check": require("./rules/vue-header-check"),
     "vue-html-quotes": require("./rules/vue-html-quotes"),
+    "vue-no-regex-data": require("./rules/vue-no-regex-data"),
     "vue-props-declaration-order": require("./rules/vue-props-declaration-order")
   }
 };

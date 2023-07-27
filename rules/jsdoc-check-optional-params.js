@@ -19,33 +19,56 @@ module.exports = {
         return;
       }
 
-      const parsed = doctrine.parse(jsDocComment.value, { unwrap: true });
-      const jsdocParams = parsed.tags.filter((tag) => tag.title === "param");
-
-      node.params.forEach((param, i) => {
-        // If there's a corresponding JSDoc parameter
-        if (jsdocParams[i]) {
-          checkNode(param, jsdocParams[i], jsdocParams);
-        }
+      // This rule assumes that function params and JSDoc params match \
+      //   (enforced by jsdoc/require-param)
+      const parsed = doctrine.parse(jsDocComment.value, {
+        unwrap: true,
+        sloppy: true,
+        tags: ["param"]
       });
+      const jsdocParams = parsed.tags;
 
-      function checkNode(node, jsdocParam, jsdocParams) {
-        if (node.type === "AssignmentPattern" && !/^\[.*\]$/.test(jsdocParam.name)) {
+      let i = 0;
+
+      if (jsdocParams.length) {
+        node.params.forEach((param) => {
+          i = checkNode(param, jsdocParams, i);
+        });
+      }
+
+      function checkNode(node, jsdocParams, i) {
+        jsdocParam = jsdocParams[i];
+
+        if (!jsdocParam) {
+          context.report({
+            node,
+            message: "No matching JSDoc param found (this was probably missed by 'jsdoc/require-param')"
+          });
+
+          return;
+        }
+
+        if (node.type === "ObjectPattern") {
+          i++;
+
+          node.properties.forEach((property) => {
+            i = checkNode(property.value, jsdocParams, i);
+          });
+
+          return i;
+        } else if (node.type === "AssignmentPattern" && jsdocParam.type.type !== "OptionalType") {
           context.report({
             node,
             message: "Optional parameters in JSDoc should be surrounded by brackets"
           });
-        } else if (node.type === "ObjectPattern") {
-          node.properties.forEach((property) => {
-            const nestedJsdocParam = jsdocParams.find((param) => {
-              const nameSegments = param.name.split('.');
-              return nameSegments[nameSegments.length - 1] === property.key.name;
-            });
-            if (nestedJsdocParam) {
-              checkNode(property.value, nestedJsdocParam, jsdocParams);
-            }
+        } else if (jsdocParam.type.type === "OptionalType" && node.type !== "AssignmentPattern") {
+          context.report({
+            node,
+            message: "Non-optional parameters in JSDoc should not be surrounded by brackets"
           });
         }
+
+        return i + 1;
       }
     }
 
