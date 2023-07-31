@@ -132,7 +132,6 @@ module.exports = {
     // General Vue rules
     "vue/html-quotes": "off",
     "vue/no-v-html": "off",
-    "vue/prefer-prop-type-boolean-first": "error",
     "vue/prefer-true-attribute-shorthand": "error",
     "vue/attributes-order": [
       "error",
