@@ -1,3 +1,94 @@
+const PARAM_REGEX = /^\s*\*\s*@param\s*\{\s*(.+?)\s*\}\s*(\S+)/;
+const RETURN_REGEX = /^\s*\*\s*@return\s*\{\s*(.+?)\s*\}\s*(.*)/;
+const SCOPE_REGEX = /^\s*\*\s*@(public|private|protected)/;
+
+function parseJSDoc(jsdoc) {
+  const lines = jsdoc.split('\n');
+  const params = [];
+  let returnLine = null;
+  let description = '';
+  let scope = '';
+
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    // If the line matches any of the regexes, break out of the loop
+    if (line.match(PARAM_REGEX) || line.match(RETURN_REGEX) || line.match(SCOPE_REGEX)) {
+      break;
+    }
+
+    // Append each line to the description, removing leading " * " if present
+    description += line.replace(/^\s*\*/, '').trim() + ' ';
+  }
+
+  description = description.trim();
+
+  for (const line of lines) {
+    const paramMatch = line.match(PARAM_REGEX);
+    if (paramMatch) {
+      const [, type, name] = paramMatch;
+      params.push({ type, name });
+    }
+
+    const returnMatch = line.match(RETURN_REGEX);
+    if (returnMatch) {
+      const [, type, desc] = returnMatch;
+      returnLine = { type, description: desc.trim() };
+    }
+
+    const scopeMatch = line.match(SCOPE_REGEX);
+    if (scopeMatch) {
+      scope = scopeMatch[1];
+    }
+  }
+
+  return { description, scope, params, returnLine };
+}
+
+function formatJSDoc(parsedJSDoc, indentation=0) {
+  let maxTypeLength = 0;
+  let indent = ' '.repeat(indentation);
+
+  // Calculate the maximum type length from params
+  for (const param of parsedJSDoc.params) {
+    if (param.type.length > maxTypeLength) {
+      maxTypeLength = param.type.length;
+    }
+  }
+
+  // Check the return type length if it exists
+  if (parsedJSDoc.returnLine && parsedJSDoc.returnLine && parsedJSDoc.returnLine.type.length > maxTypeLength && parsedJSDoc.returnLine.description) {
+    maxTypeLength = parsedJSDoc.returnLine.type.length;
+  }
+
+  let jsdoc = '/**\n'
+
+  jsdoc += indent + '* ' + parsedJSDoc.description + '\n';
+
+  if (parsedJSDoc.scope) {
+    jsdoc += indent + '* @' + parsedJSDoc.scope + '\n';
+  }
+
+  // Format params with padding based on maximum type length
+  for (const param of parsedJSDoc.params) {
+    const paddingType = ' '.repeat(Math.max(0, maxTypeLength - param.type.length));
+    jsdoc += indent + `* @param  {${param.type}}${paddingType} ${param.name}\n`;
+  }
+
+  // Format return with padding based on maximum type length
+  if (parsedJSDoc.returnLine) {
+    const paddingType = ' '.repeat(Math.max(0, maxTypeLength - parsedJSDoc.returnLine.type.length));
+    let _return = `* @return {${parsedJSDoc.returnLine.type}}${paddingType} ${parsedJSDoc.returnLine.description}`.trimEnd();
+
+    jsdoc += indent + _return + "\n";
+  }
+
+  jsdoc += indent + '*/';
+
+  return jsdoc;
+}
+
+
 module.exports = {
   meta: {
     type: 'layout',
@@ -8,6 +99,7 @@ module.exports = {
     },
     fixable: 'whitespace',
   },
+
   create: function(context) {
     return {
       Program: function(node) {
@@ -17,64 +109,19 @@ module.exports = {
           .filter(comment => comment.type === 'Block' && comment.value.startsWith('*'))
           .forEach(jsdocComment => {
             const lines = jsdocComment.value.split('\n');
-            let bracePos = -1, descPos = -1;
-            let lineNum = jsdocComment.loc.start.line;
+            const jsdocString = `/*${jsdocComment.value}*/`;
+            const parsedJSDoc = parseJSDoc(jsdocString);
+            const indentation = lines.length > 2 ? lines[1].match(/^\s*/)[0].length : 0; // Capture indentation from the first line
+            const formattedJSDoc = formatJSDoc(parsedJSDoc, indentation);
 
-            for (const line of lines) {
-              const paramMatch = line.match(/@param\s*{(\S*)}[\s\t]+(\S+)\s*(.*)/);
-              const returnMatch = line.match(/@return\s*{(\S*)}\s*(.*)/);
-
-              let match = null;
-
-              if (paramMatch) {
-                match = paramMatch;
-              } else if (returnMatch) {
-                match = returnMatch;
-              }
-
-              if (match) {
-                const newBracePos = match.index + match[0].indexOf('{');
-
-                // Check for multiple types, skip alignment if found
-                const multipleTypes = /\|/.test(match[1]);
-                if (multipleTypes) {
-                  continue;
-                }
-
-                let descStart = match[0].substring(match[0].lastIndexOf('}') + 1).search(/\S/);
-
-                // If description is undefined, skip the description alignment check
-                if (match[match.length - 1] === 'undefined') {
-                  descStart = -1;
-                }
-
-                if (descStart !== -1) {
-                  const newDescPos = match.index + match[0].lastIndexOf('}') + 1 + descStart + 1; // +1 for ESLint column index
-
-                  if (descPos === -1) {
-                    descPos = newDescPos;
-                  } else if (descPos !== newDescPos) {
-                    const message = `In JSDoc at line ${lineNum}, the description is misaligned. Found at column ${newDescPos}, but expected column ${descPos}.`;
-
-                    context.report({
-                      message,
-                      loc: { line: lineNum, column: newDescPos },
-                    });
-                  }
-                }
-
-                if (bracePos === -1) {
-                  bracePos = newBracePos;
-                } else if (bracePos !== newBracePos) {
-                  const message = `In JSDoc at line ${lineNum}, the type brace is misaligned. Found at column ${newBracePos + 1}, but expected column ${bracePos + 1}.`;
-
-                  context.report({
-                    message,
-                    loc: { line: lineNum, column: newBracePos + 1 },
-                  });
-                }
-              }
-              lineNum++;
+            if (jsdocString !== formattedJSDoc && parsedJSDoc.description && parsedJSDoc.scope) {
+              context.report({
+                node,
+                message: 'JSDoc alignment issue',
+                fix(fixer) {
+                  return fixer.replaceText(jsdocComment, formattedJSDoc);
+                },
+              });
             }
           });
       },
