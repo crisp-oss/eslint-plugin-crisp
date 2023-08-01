@@ -30,7 +30,34 @@ module.exports = {
     "no-console": "warn",
     "no-debugger": "warn",
     "no-unused-vars": "warn",
-    "indent": "off",
+
+    "indent": ["error", 2, {
+      "SwitchCase": 1,
+      "FunctionDeclaration": {
+        "parameters": "off"
+      },
+      "FunctionExpression": {
+        "parameters": "off"
+      },
+      "CallExpression": {
+        "arguments": "off"
+      },
+      "VariableDeclarator": "first",
+      "outerIIFEBody": 0,
+      "ArrayExpression": "first",
+      "ObjectExpression": "first",
+      "ImportDeclaration": "first",
+      "flatTernaryExpressions": false,
+      "ignoredNodes": [
+        "BinaryExpression",
+        "ConditionalExpression",
+        "IfStatement *",
+        "VariableDeclarator",
+        "VariableDeclarator > CallExpression",
+        "CallExpression > ArrayExpression"
+      ]
+    }],
+
     "linebreak-style": ["error", "unix"],
     "semi": ["error", "always"],
     "max-len": ["error", 80],
@@ -38,6 +65,19 @@ module.exports = {
     "comma-dangle": ["error", "never"],
     "arrow-parens": ["error", "always"],
     "default-param-last": "error",
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "padded-blocks": ["error", "never"],
+    "curly": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-multi-str": "error",
+    "quote-props": ["error", "as-needed"],
+    "space-in-parens": ["error", "never"],
+    "for-direction": "error",
+    "space-before-blocks": "error",
+    "comma-style": ["error", "last"],
+    "eol-last": "error",
+    "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+
     "padding-line-between-statements": [
       "error",
 

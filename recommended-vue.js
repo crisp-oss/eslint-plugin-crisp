@@ -40,6 +40,45 @@ module.exports = {
     "semi-spacing": ["error", { "before": false, "after": true }],
     "space-before-blocks": ["error", "always"],
     "space-in-parens": ["error", "never"],
+
+    "indent": ["error", 2, {
+      "SwitchCase": 1,
+      "FunctionDeclaration": {
+        "parameters": "off"
+      },
+      "FunctionExpression": {
+        "parameters": "off"
+      },
+      "CallExpression": {
+        "arguments": "off"
+      },
+      "VariableDeclarator": "first",
+      "outerIIFEBody": 0,
+      "ArrayExpression": "first",
+      "ObjectExpression": "first",
+      "ImportDeclaration": "first",
+      "flatTernaryExpressions": false,
+      "ignoredNodes": [
+        "BinaryExpression",
+        "ConditionalExpression",
+        "IfStatement *",
+        "VariableDeclarator",
+        "VariableDeclarator > CallExpression",
+        "CallExpression > ArrayExpression"
+      ]
+    }],
+
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
+    "padded-blocks": ["error", "never"],
+    "no-mixed-spaces-and-tabs": "error",
+    "no-multi-str": "error",
+    "quote-props": ["error", "as-needed"],
+    "for-direction": "error",
+    "comma-style": ["error", "last"],
+    "eol-last": "error",
+    "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+
+
     "padding-line-between-statements": [
       "error",
 
