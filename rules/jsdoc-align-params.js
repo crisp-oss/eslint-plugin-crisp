@@ -77,7 +77,7 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
 
   let jsdoc = '/**\n'
 
-  jsdoc += indent + '* ' +parsedJSDoc.description.replace("\n", "\n" + indent + "* ") + "\n";
+  jsdoc += indent + '* ' +parsedJSDoc.description.replace("\n", "\n" + indent + "*   ") + "\n";
 
   if (parsedJSDoc.scope) {
     jsdoc += indent + '* @' + parsedJSDoc.scope + '\n';
