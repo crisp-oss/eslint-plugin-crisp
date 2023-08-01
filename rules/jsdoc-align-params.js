@@ -1,24 +1,38 @@
 const PARAM_REGEX = /^\s*\*\s*@param\s*\{\s*(.+?)\s*\}\s*(\S+)/;
 const RETURN_REGEX = /^\s*\*\s*@return\s*\{\s*(.+?)\s*\}\s*(.*)/;
 const SCOPE_REGEX = /^\s*\*\s*@(public|private|protected)/;
+const CLASS_REGEX = /^\s*\*\s*@class\b/;
+const CLASSDESC_REGEX = /^\s*\*\s*@classdesc\s*(.*)/;
 
 function parseJSDoc(jsdoc) {
   const lines = jsdoc.split('\n');
   const params = [];
   let returnLine = null;
+  let classAnnotation = false;
+  let classDescription = "";
   let description = '';
   let scope = '';
 
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i].trim();
 
-    // If the line matches any of the regexes, break out of the loop
+    if (line.match(CLASS_REGEX)) {
+      classAnnotation = true;
+      continue; // Skip this line and continue with the next
+    }
+
+    if (line.match(CLASSDESC_REGEX)) {
+      classDescription = line.match(CLASSDESC_REGEX)[1];
+      continue; // Skip this line and continue with the next
+    }
+
+    // If the line matches any of the other regexes, break out of the loop
     if (line.match(PARAM_REGEX) || line.match(RETURN_REGEX) || line.match(SCOPE_REGEX)) {
       break;
     }
 
-    // Append each line to the description, removing leading " * " if present
-    description += line.replace(/^\s*\*/, '').trim() + ' ';
+    // Append each line to the description, removing leading " * " if present, and adding a newline character
+    description += line.replace(/^\s*\*/, '').trim() + '\n';
   }
 
   description = description.trim();
@@ -63,7 +77,7 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
 
   let jsdoc = '/**\n'
 
-  jsdoc += indent + '* ' + parsedJSDoc.description + '\n';
+  jsdoc += indent + '* ' +parsedJSDoc.description.replace("\n", "\n" + indent + "* ") + "\n";
 
   if (parsedJSDoc.scope) {
     jsdoc += indent + '* @' + parsedJSDoc.scope + '\n';
