@@ -31,6 +31,12 @@ module.exports = {
     "no-debugger": "warn",
     "no-unused-vars": "warn",
 
+    "no-magic-numbers": ["error", {
+      "ignore": [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "ignoreArrayIndexes": true,
+      "ignoreDefaultValues": true
+    }],
+
     "indent": ["error", 2, {
       "SwitchCase": 1,
       "FunctionDeclaration": {
