@@ -21,7 +21,6 @@ module.exports = {
             let lineNum = jsdocComment.loc.start.line;
 
             for (const line of lines) {
-              lineNum++;
               const paramMatch = line.match(/@param\s*{(\S*)}[\s\t]+(\S+)\s*(.*)/);
               const returnMatch = line.match(/@return\s*{(\S*)}\s*(.*)/);
 
@@ -55,12 +54,11 @@ module.exports = {
                   if (descPos === -1) {
                     descPos = newDescPos;
                   } else if (descPos !== newDescPos) {
+                    const message = `In JSDoc at line ${lineNum}, the description is misaligned. Found at column ${newDescPos}, but expected column ${descPos}.`;
+
                     context.report({
-                      node: jsdocComment,
-                      message: `In JSDoc at line ${lineNum}, the description is misaligned. Found at column ${newDescPos}, but expected column ${descPos}.`,
-                      loc: {
-                        start: { line: lineNum, column: newDescPos },
-                      },
+                      message,
+                      loc: { line: lineNum, column: newDescPos },
                     });
                   }
                 }
@@ -68,15 +66,15 @@ module.exports = {
                 if (bracePos === -1) {
                   bracePos = newBracePos;
                 } else if (bracePos !== newBracePos) {
+                  const message = `In JSDoc at line ${lineNum}, the type brace is misaligned. Found at column ${newBracePos + 1}, but expected column ${bracePos + 1}.`;
+
                   context.report({
-                    node: jsdocComment,
-                    message: `In JSDoc at line ${lineNum}, the type brace is misaligned. Found at column ${newBracePos + 1}, but expected column ${bracePos + 1}.`,
-                    loc: {
-                      start: { line: lineNum, column: newBracePos + 1 },
-                    },
+                    message,
+                    loc: { line: lineNum, column: newBracePos + 1 },
                   });
                 }
               }
+              lineNum++;
             }
           });
       },
