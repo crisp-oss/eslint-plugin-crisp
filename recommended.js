@@ -32,7 +32,7 @@ module.exports = {
     "no-unused-vars": "warn",
 
     "no-magic-numbers": ["error", {
-      "ignore": [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      "ignore": [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 100],
       "ignoreArrayIndexes": true,
       "ignoreDefaultValues": true
     }],
