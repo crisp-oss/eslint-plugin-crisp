@@ -116,7 +116,7 @@ module.exports = {
 
             if (jsdocString !== formattedJSDoc && parsedJSDoc.description && parsedJSDoc.scope) {
               context.report({
-                node,
+                node: jsdocComment,
                 message: 'JSDoc alignment issue',
                 fix(fixer) {
                   return fixer.replaceText(jsdocComment, formattedJSDoc);
