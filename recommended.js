@@ -24,12 +24,6 @@ module.exports = {
     "plugin:jsdoc/recommended"
   ],
 
-  settings: {
-    "jsdoc": {
-      "mode": "typescript"
-    }
-  },
-
   rules: {
     // General JS rules
     "no-eval": "error",
