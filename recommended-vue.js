@@ -15,6 +15,12 @@ module.exports = {
     "plugin:vue-pug/vue3-recommended"
   ],
 
+  settings: {
+    "jsdoc": {
+      "mode": "typescript"
+    }
+  },
+
   rules: {
     // General JS rules
     "no-eval": "error",

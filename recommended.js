@@ -24,6 +24,12 @@ module.exports = {
     "plugin:jsdoc/recommended"
   ],
 
+  settings: {
+    "jsdoc": {
+      "mode": "typescript"
+    }
+  },
+
   rules: {
     // General JS rules
     "no-eval": "error",
@@ -107,6 +113,7 @@ module.exports = {
     ],
 
     // JSDoc rules
+    "jsdoc/no-undefined-types"       : "off",
     "jsdoc/require-param-description": "off",
     "jsdoc/newline-after-description": "off",
     "jsdoc/require-jsdoc": [
