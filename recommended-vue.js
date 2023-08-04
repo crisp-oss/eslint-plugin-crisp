@@ -15,90 +15,122 @@ module.exports = {
     "plugin:vue-pug/vue3-recommended"
   ],
 
+  settings: {
+    jsdoc: {
+      tagNamePreference: {
+        returns: "return"
+      },
+
+      preferredTypes: {
+        Function: "function",
+        Array: "array",
+        Integer: "number"
+      }
+    }
+  },
+
   rules: {
     // General JS rules
-    "no-eval": "error",
-    "no-console": "warn",
-    "no-debugger": "warn",
-    "no-unused-vars": "warn",
     "arrow-parens": ["error", "always"],
     "comma-dangle": ["error", "never"],
-    "curly": ["error", "all"],
+    "comma-style": ["error", "last"],
+    "curly": "error",
     "computed-property-spacing": ["error", "never"],
     "default-param-last": "error",
     "default-case-last": "error",
     "dot-notation": "error",
     "eqeqeq": "error",
+    "eol-last": "error",
+    "for-direction": "error",
     "linebreak-style": ["error", "unix"],
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-eval": "error",
+    "no-multi-str": "error",
     "no-multiple-empty-lines": ["error", { max: 1 }],
-    "no-trailing-spaces": "error",
+    "no-mixed-spaces-and-tabs": "error",
     "no-tabs": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": "warn",
+    "no-unsafe-optional-chaining": "error",
     "object-curly-spacing": ["error", "always"],
+    "padded-blocks": ["error", "never"],
     "prefer-arrow-callback": "error",
+    "quote-props": ["error", "as-needed"],
     "semi": ["error", "always"],
     "semi-style": ["error", "last"],
     "semi-spacing": ["error", { "before": false, "after": true }],
-    "space-before-blocks": ["error", "always"],
+    "space-before-blocks": "error",
     "space-in-parens": ["error", "never"],
 
-    "indent": ["error", 2, {
-      "SwitchCase": 1,
-      "FunctionDeclaration": {
-        "parameters": "off"
-      },
-      "FunctionExpression": {
-        "parameters": "off"
-      },
-      "CallExpression": {
-        "arguments": "off"
-      },
-      "VariableDeclarator": "first",
-      "outerIIFEBody": 0,
-      "ArrayExpression": "first",
-      "ObjectExpression": "first",
-      "ImportDeclaration": "first",
-      "flatTernaryExpressions": false,
-      "ignoredNodes": [
-        "BinaryExpression",
-        "ConditionalExpression",
-        "IfStatement *",
-        "VariableDeclarator",
-        "VariableDeclarator > CallExpression",
-        "CallExpression > ArrayExpression"
-      ]
-    }],
+    "brace-style": [
+      "error",
+      "1tbs",
 
-    "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
-    "padded-blocks": ["error", "never"],
-    "no-mixed-spaces-and-tabs": "error",
-    "no-multi-str": "error",
-    "quote-props": ["error", "as-needed"],
-    "for-direction": "error",
-    "comma-style": ["error", "last"],
-    "eol-last": "error",
-    "object-curly-newline": ["error", { "multiline": true, "consistent": true }],
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "indent": [
+      "error",
+      2,
 
+      {
+        "SwitchCase": 1,
+        "FunctionDeclaration": {
+          "parameters": "off"
+        },
+        "FunctionExpression": {
+          "parameters": "off"
+        },
+        "CallExpression": {
+          "arguments": "off"
+        },
+        "VariableDeclarator": "first",
+        "outerIIFEBody": 0,
+        "ArrayExpression": "first",
+        "ObjectExpression": "first",
+        "ImportDeclaration": "first",
+        "flatTernaryExpressions": false,
+        "ignoredNodes": [
+          "BinaryExpression",
+          "ConditionalExpression",
+          "IfStatement *",
+          "VariableDeclarator",
+          "VariableDeclarator > CallExpression",
+          "CallExpression > ArrayExpression"
+        ]
+      }
+    ],
+    "object-curly-newline": [
+      "error",
 
+      {
+        "multiline": true, "consistent": true
+      }
+    ],
     "padding-line-between-statements": [
       "error",
 
-      { blankLine: "always", prev: "let", next: "*" },
-      { blankLine: "any", prev: "let", next: "let" },
-      { blankLine: "always", prev: "const", next: "*" },
-      { blankLine: "any", prev: "const", next: "const" },
-      { blankLine: "always", prev: "block-like", next: "*" },
-      { blankLine: "always", prev: "*", next: "break" },
-      { blankLine: "any", prev: "empty", next: "break" },
-      { blankLine: "always", prev: "*", next: "block-like" },
-      { blankLine: "any", prev: "case", next: "case" },
-      { blankLine: "always", prev: "continue", next: "*" },
-      { blankLine: "always", prev: "break", next: "*" }
+      { "blankLine": "always", "prev": "let", "next": "*" },
+      { "blankLine": "any", "prev": "let", "next": "let" },
+      { "blankLine": "always", "prev": "const", "next": "*" },
+      { "blankLine": "any", "prev": "const", "next": "const" },
+      { "blankLine": "always", "prev": "block-like", "next": "*" },
+      { "blankLine": "always", "prev": "*", "next": "break" },
+      { "blankLine": "any", "prev": "empty", "next": "break" },
+      { "blankLine": "always", "prev": "*", "next": "block-like" },
+      { "blankLine": "any", "prev": "case", "next": "case" },
+      { "blankLine": "always", "prev": "continue", "next": "*" },
+      { "blankLine": "always", "prev": "break", "next": "*" }
     ],
     "quotes": [
       "error",
       "double",
 
-      { "avoidEscape": true, "allowTemplateLiterals": true }
+      {
+        "avoidEscape": true, "allowTemplateLiterals": true
+      }
     ],
 
     // Crisp JS rules
@@ -110,15 +142,22 @@ module.exports = {
     "crisp/no-async": "error",
     "crisp/no-var-in-blocks": "error",
     "crisp/no-useless-template-literals": "error",
-    "crisp/one-space-after-operator": ["error", { "checkColon": false }],
     "crisp/regex-in-constructor": "error",
     "crisp/ternary-parenthesis": "error",
     "crisp/variable-names": "error",
+
+    "crisp/one-space-after-operator": [
+      "error",
+
+      {
+        "checkColon": false
+      }
+    ],
     "crisp/no-short-parameters": [
       "error",
 
       {
-        exceptions: ["_", "$", "x", "y"]
+        "exceptions": ["_", "$", "x", "y"]
       }
     ],
 
@@ -130,11 +169,11 @@ module.exports = {
 
       {
         require: {
-          FunctionDeclaration: true,
-          MethodDefinition: true,
-          ClassDeclaration: true,
-          ArrowFunctionExpression: false,
-          FunctionExpression: false
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true,
+          "ArrowFunctionExpression": false,
+          "FunctionExpression": false
         }
       }
     ],
@@ -222,19 +261,5 @@ module.exports = {
     "crisp/vue-html-quotes": "error",
     "crisp/vue-no-regex-data": "error",
     "crisp/vue-props-declaration-order": "error"
-  },
-
-  settings: {
-    jsdoc: {
-      tagNamePreference: {
-        returns: "return"
-      },
-
-      preferredTypes: {
-        Function: "function",
-        Array: "array",
-        Integer: "number"
-      }
-    }
   }
 }
