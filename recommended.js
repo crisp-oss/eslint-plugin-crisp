@@ -141,7 +141,7 @@ module.exports = {
     "crisp/align-one-var": "error",
     "crisp/align-requires": "error",
     "crisp/const": "error",
-    "crisp/constructor-variables": "error"
+    "crisp/constructor-variables": "error",
     "crisp/header-check": "error",
     "crisp/header-comments-check": "error",
     "crisp/methods-naming": "error",
