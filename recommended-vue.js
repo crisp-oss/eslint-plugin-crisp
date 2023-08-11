@@ -134,6 +134,7 @@ module.exports = {
     ],
 
     // Crisp JS rules
+    "crisp/enforce-optional": "error",
     "crisp/header-check": "error",
     "crisp/header-comments-check": "error",
     "crisp/methods-naming": "error",
