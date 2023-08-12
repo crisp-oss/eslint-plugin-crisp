@@ -12,7 +12,9 @@ module.exports = {
   create(context) {
     const sourceCode = context.getSourceCode();
     // Search for `foo && foo.` or `foo && foo[`
-    const pattern = /\b(\w\S+)\s&&\s+\1\b[\[\.]/g;
+    // Notice: do not match `foo && foo.bar !==` or `foo && foo[bar] !==`, \
+    //   as the optional version would be unsafe
+    const pattern = /\b(\w\S+)\s&&\s+\1\b[\[\.](?!\w\S+\s\!\=\=)/g;
 
     return {
       Program() {
