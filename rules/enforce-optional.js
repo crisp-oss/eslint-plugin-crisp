@@ -23,7 +23,7 @@ module.exports = {
       // Notice: do not match if the value after the dot is "filter", "find", \
       //   "findIndex", "map", "reduce", "length <", "length === 0", or \
       //   "length == 0", as the version with optional chaining would be unsafe
-      /(.+?)\s\|\|\s(\{\}|\[\])\)(\[|\.(?!some\b|filter\b|find\b|findIndex\b|reduce\b|map\b|length\s*<|length\s*===\s*0|length\s*==\s*0))\w*/g
+      /(.+?)\s\|\|\s(\{\}|\[\])\)(\[|\.(?!some\b|filter\b|find\b|findIndex\b|reduce\breduce\b|map\b|indexOf\b|length\s*<|length\s*===\s*0|length\s*==\s*0))\w*/g
     ];
 
     return {
