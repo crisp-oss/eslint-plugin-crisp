@@ -46,7 +46,16 @@ function parseJSDoc(jsdoc) {
 
     const returnMatch = line.match(RETURN_REGEX);
     if (returnMatch) {
-      const [, type, desc] = returnMatch;
+      let [, type, desc] = returnMatch;
+
+      if (type && type[0] === "{" && desc[0] === "}") {
+        if (desc && desc[0] === "}") {
+          desc = desc.substring(1, desc.length);
+
+          type += " }";
+        }
+      }
+
       returnLine = { type, description: desc.trim() };
     }
 
