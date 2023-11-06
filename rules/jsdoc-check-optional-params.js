@@ -39,10 +39,10 @@ module.exports = {
       function checkNode(node, jsdocParams, i) {
         jsdocParam = jsdocParams[i];
 
-        if (!jsdocParam) {
+        if (!jsdocParam || !jsdocParam.type) {
           context.report({
             node,
-            message: "No matching JSDoc param found (this was probably missed by 'jsdoc/require-param')"
+            message: "No matching JSDoc param found"
           });
 
           return;
