@@ -24,6 +24,7 @@ module.exports = {
       preferredTypes: {
         Function: "function",
         Array: "array",
+        Map: "map",
         Integer: "number"
       }
     }
@@ -42,6 +43,7 @@ module.exports = {
     "eqeqeq": "error",
     "eol-last": "error",
     "for-direction": "error",
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "linebreak-style": ["error", "unix"],
     "no-console": "warn",
     "no-debugger": "warn",
@@ -175,7 +177,12 @@ module.exports = {
           "ClassDeclaration": true,
           "ArrowFunctionExpression": false,
           "FunctionExpression": false
-        }
+        },
+
+        contexts: [
+          "Property[key.name=\"getters\"] > ObjectExpression > Property",
+          "Property[key.name=\"methods\"] > ObjectExpression > Property"
+        ]
       }
     ],
     "jsdoc/sort-tags": [

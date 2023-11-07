@@ -23,8 +23,8 @@ module.exports = {
         for (let i = 0; i < node.declarations.length; i++) {
           const declaration = node.declarations[i];
 
-          // If the current declaration is on the same line as the last one,
-          // skip it
+          // If the current declaration is on the same line as the last one, \
+          //   skip it
           if (lastDeclarationLine === declaration.loc.start.line) {
             continue;
           }
