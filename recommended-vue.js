@@ -88,20 +88,13 @@ module.exports = {
         "CallExpression": {
           "arguments": "off"
         },
-        "VariableDeclarator": "first",
+        "VariableDeclarator": 1,
         "outerIIFEBody": 0,
-        "ArrayExpression": "first",
-        "ObjectExpression": "first",
-        "ImportDeclaration": "first",
+        "ArrayExpression": 1,
+        "ObjectExpression": 1,
+        "ImportDeclaration": 1,
         "flatTernaryExpressions": false,
-        "ignoredNodes": [
-          "BinaryExpression",
-          "ConditionalExpression",
-          "IfStatement *",
-          "VariableDeclarator",
-          "VariableDeclarator > CallExpression",
-          "CallExpression > ArrayExpression"
-        ]
+        "offsetTernaryExpressions": true
       }
     ],
     "object-curly-newline": [
