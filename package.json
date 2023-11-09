@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-crisp",
-  "version": "1.0.57",
+  "version": "1.0.58",
   "description": "Custom EsLint Rules for Crisp",
   "author": "Crisp IM SAS",
   "main": "index.js",
@@ -18,7 +18,7 @@
   },
   "peerDependencies": {
     "eslint": "8.45.0",
-    "eslint-plugin-vue": "9.15.1",
+    "eslint-plugin-vue": "9.18.1",
     "eslint-plugin-vue-pug": "0.6.0"
   },
   "keywords": [

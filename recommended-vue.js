@@ -45,6 +45,7 @@ module.exports = {
     "for-direction": "error",
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
     "linebreak-style": ["error", "unix"],
+    "newline-per-chained-call": "error",
     "no-console": "warn",
     "no-debugger": "warn",
     "no-eval": "error",
@@ -160,11 +161,12 @@ module.exports = {
     // JSDoc rules
     "jsdoc/require-param-description": "off",
     "jsdoc/newline-after-description": "off",
+    "jsdoc/require-description": "error",
     "jsdoc/require-jsdoc": [
       "error",
 
       {
-        require: {
+        "require": {
           "FunctionDeclaration": true,
           "MethodDefinition": true,
           "ClassDeclaration": true,
@@ -172,7 +174,7 @@ module.exports = {
           "FunctionExpression": false
         },
 
-        contexts: [
+        "contexts": [
           "Property[key.name=\"getters\"] > ObjectExpression > Property",
           "Property[key.name=\"methods\"] > ObjectExpression > Property"
         ]
@@ -182,9 +184,9 @@ module.exports = {
       "error",
 
       {
-        tagSequence: [
+        "tagSequence": [
           {
-            tags: [
+            "tags": [
               "private",
               "protected",
               "public",
@@ -209,6 +211,24 @@ module.exports = {
     "crisp/jsdoc-enforce-classdesc": "error",
 
     // General Vue rules
+    "vue/component-api-style": ["error", ["options"]],
+    "vue/component-name-in-template-casing": ["error", "kebab-case"],
+    "vue/component-options-name-casing": ["error", "PascalCase"],
+    "vue/custom-event-name-casing": ["error", "camelCase"],
+    "vue/html-comment-content-spacing": ["error", "always"],
+    "vue/match-component-import-name": ["error"],
+    "vue/new-line-between-multi-line-property": ["error"],
+    "vue/no-bare-strings-in-template": ["error"],
+    "vue/no-multiple-objects-in-class": ["error"],
+    "vue/no-static-inline-styles": ["error"],
+    "vue/no-use-v-else-with-v-for": ["error"],
+    "vue/no-useless-v-bind": ["error"],
+    "vue/padding-line-between-blocks": ["error", "always"],
+    "vue/padding-lines-in-component-definition": ["error"],
+    "vue/require-direct-export": ["error"],
+    "vue/v-for-delimiter-style": ["error", "in"],
+
+    "vue/comma-dangle": "error",
     "vue/html-quotes": "off",
     "vue/no-v-html": "off",
     "vue/prefer-true-attribute-shorthand": "error",
@@ -216,7 +236,7 @@ module.exports = {
       "error",
 
       {
-        order: [
+        "order": [
           "RENDER_MODIFIERS",
           "CONDITIONALS",
           "OTHER_DIRECTIVES",
