@@ -216,22 +216,54 @@ module.exports = {
     "vue/component-options-name-casing": ["error", "PascalCase"],
     "vue/custom-event-name-casing": ["error", "camelCase"],
     "vue/html-comment-content-spacing": ["error", "always"],
-    "vue/match-component-import-name": ["error"],
-    "vue/new-line-between-multi-line-property": ["error"],
-    "vue/no-bare-strings-in-template": ["error"],
-    "vue/no-multiple-objects-in-class": ["error"],
-    "vue/no-static-inline-styles": ["error"],
-    "vue/no-use-v-else-with-v-for": ["error"],
-    "vue/no-useless-v-bind": ["error"],
+    "vue/match-component-import-name": "error",
+    "vue/new-line-between-multi-line-property": "error",
+    "vue/no-bare-strings-in-template": "error",
+    "vue/no-multiple-objects-in-class": "error",
+    "vue/no-static-inline-styles": "error",
+    "vue/no-use-v-else-with-v-for": "error",
+    "vue/no-useless-v-bind": "error",
     "vue/padding-line-between-blocks": ["error", "always"],
-    "vue/padding-lines-in-component-definition": ["error"],
-    "vue/require-direct-export": ["error"],
+    "vue/require-direct-export": "error",
     "vue/v-for-delimiter-style": ["error", "in"],
-
     "vue/comma-dangle": "error",
     "vue/html-quotes": "off",
     "vue/no-v-html": "off",
     "vue/prefer-true-attribute-shorthand": "error",
+    "vue/comma-dangle": "error",
+    "vue/eqeqeq": "error",
+    "vue/key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "vue/no-irregular-whitespace": "error",
+    "vue/padding-lines-in-component-definition": [
+      "error",
+
+      {
+        "groupSingleLineProperties": false
+      }
+    ],
+    "vue/block-lang": [
+      "error",
+
+      {
+        "script": { "allowNoLang": true }
+      }
+    ],
+    "vue/block-order": [
+      "error",
+
+      {
+        "order": ["template", "script", "style"]
+      }
+    ],
+    "vue/block-tag-newline": [
+      "error",
+
+      {
+        "singleline": "always",
+        "multiline": "always",
+        "maxEmptyLines": 0
+      }
+    ],
     "vue/attributes-order": [
       "error",
 
