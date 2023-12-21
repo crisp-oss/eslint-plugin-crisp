@@ -128,6 +128,14 @@ module.exports = {
         "avoidEscape": true, "allowTemplateLiterals": true
       }
     ],
+    "no-restricted-syntax": [
+      "error",
+
+      {
+        "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
+        "message": "Switch cases without blocks are disallowed."
+      },
+    ],
 
     // Crisp JS rules
     "crisp/enforce-optional": "error",
