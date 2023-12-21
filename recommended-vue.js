@@ -238,7 +238,6 @@ module.exports = {
     "vue/html-quotes": "off",
     "vue/no-v-html": "off",
     "vue/prefer-true-attribute-shorthand": "error",
-    "vue/require-name-property": "error",
     "vue/comma-dangle": "error",
     "vue/eqeqeq": "error",
     "vue/key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
