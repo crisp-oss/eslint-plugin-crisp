@@ -286,7 +286,9 @@ module.exports = {
           "CONTENT",
           "EVENTS",
           "DEFINITION",
-          ["GLOBAL", "UNIQUE", "OTHER_ATTR"]
+          "ATTR_DYNAMIC",
+          "ATTR_STATIC",
+          "ATTR_SHORTHAND_BOOL"
         ],
         "alphabetical": false
       }
