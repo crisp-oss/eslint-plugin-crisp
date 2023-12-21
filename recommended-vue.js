@@ -238,6 +238,7 @@ module.exports = {
     "vue/html-quotes": "off",
     "vue/no-v-html": "off",
     "vue/prefer-true-attribute-shorthand": "error",
+    "vue/require-name-property": "error",
     "vue/comma-dangle": "error",
     "vue/eqeqeq": "error",
     "vue/key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
@@ -321,6 +322,7 @@ module.exports = {
     "crisp/vue-header-check": "error",
     "crisp/vue-html-quotes": "error",
     "crisp/vue-no-regex-data": "error",
+    "crisp/vue-props-declaration-multiline": "error",
     "crisp/vue-props-declaration-order": "error"
   }
 }

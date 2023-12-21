@@ -36,6 +36,7 @@ module.exports = {
     "vue-header-check": require("./rules/vue-header-check"),
     "vue-html-quotes": require("./rules/vue-html-quotes"),
     "vue-no-regex-data": require("./rules/vue-no-regex-data"),
-    "vue-props-declaration-order": require("./rules/vue-props-declaration-order")
+    "vue-props-declaration-order": require("./rules/vue-props-declaration-order"),
+    "vue-props-declaration-multiline": require("./rules/vue-props-declaration-multiline")
   }
 };
