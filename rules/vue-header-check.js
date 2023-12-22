@@ -31,7 +31,7 @@ module.exports = {
           // Check each tag individually
           vueTags.forEach((tag, index) => {
             const tagRegExp = new RegExp(`<${tag}`);
-            const headerRegExp = new RegExp(`<!--\\s*\\*{73}\\s*\\n\\s*${headers[index]}\\s*\\n\\s*\\*{73}\\s*-->\\s*\\n\\s*<${tag}`);
+            const headerRegExp = new RegExp(`<!--\\s*\\*{70,73}\\s*\\n\\s*${headers[index]}\\s*\\n\\s*\\*{70,73}\\s*-->\\s*\\n\\s*<${tag}`);
 
             // If the tag exists without the corresponding header, report an error
             if (tagRegExp.test(fileContent) && !headerRegExp.test(fileContent)) {
