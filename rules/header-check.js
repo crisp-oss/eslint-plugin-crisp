@@ -16,12 +16,14 @@ module.exports = {
     return {
       Program(node) {
         const fileName = context.getFilename();
-        const fileContent = fs.readFileSync(path.resolve(fileName), "utf8");
+
+        let fileContent = fs.readFileSync(path.resolve(fileName), "utf8");
+
+        fileContent = fileContent.trim();
 
         // Determine the file extension
         const fileExtension = path.extname(fileName);
 
-        // Base header comment pattern
         // Base header comment patterns
         let basePatterns = [
           "\n \\* This file is part of .+\\n \\*\\n \\* Copyright \\(c\\) \\d{4} Crisp IM SAS\\n \\* All rights belong to Crisp IM SAS\\n ",
