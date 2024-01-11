@@ -14,7 +14,7 @@ The plugin provides two configurations:
 * `crisp/recommended-vue`: JS rules targetting frontend code (Vue.js)
 
 Add the plugin in your ESLint config object, then extend the desired configuration:
-```json
+```javascript
 {
   "plugins": [
     "eslint-plugin-crisp"
