@@ -127,6 +127,37 @@ Each item has emojis denoting:
 - [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) (🟢): Requires one of `@public`, `@private`, or `@protected` for functions
 - [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) (⚪️🟢): Ensures JSDoc for class headers to include a non-empty `@classdesc`
 
+#### General Vue rules
+- [vue/attributes-order](https://eslint.vuejs.org/rules/attributes-order) (🟢): Enforces order of attributes
+- [vue/block-lang](https://eslint.vuejs.org/rules/block-lang) (🟢): Allows `script` blocks to have no `lang` attribute
+- [vue/block-order](https://eslint.vuejs.org/rules/block-order) (🟢): Enforces order of component top-level elements (`template`, then `script`, then `style`)
+- [vue/block-tag-newline](https://eslint.vuejs.org/rules/block-tag-newline) (🟢): Requires one line break after opening and before closing block-level tags
+- [vue/comma-dangle](https://eslint.vuejs.org/rules/comma-dangle) (🟢): Disallows trailing commas in `<template>`
+- [vue/component-api-style](https://eslint.vuejs.org/rules/component-api-style) (🟢): Enforces Options API style
+- [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing) (🟢): Enforces tag names to kebab case
+- [vue/component-options-name-casing](https://eslint.vuejs.org/rules/component-options-name-casing) (🟢): Enforces component names in `components` options to pascal case
+- [vue/custom-event-name-casing](https://eslint.vuejs.org/rules/custom-event-name-casing) (🟢): Enforces custom event names to camel case
+- [vue/eqeqeq](https://eslint.vuejs.org/rules/eqeqeq) (🟢): Requires the use of `===` and `!==` in `<template>`
+- [vue/html-comment-content-spacing](https://eslint.vuejs.org/rules/html-comment-content-spacing) (🟢): Requires one space before and after HTML comment tags
+- [vue/html-quotes](https://eslint.vuejs.org/rules/html-quotes) (🟢): Rule is **disabled** in order to allow backticks in HTML attributes
+- [vue/key-spacing](https://eslint.vuejs.org/rules/key-spacing) (🟢): Enforces consistent spacing in object literal properties in `<template>` (no space between the key and the colon, one space between the colon and the value)
+- [vue/match-component-import-name](https://eslint.vuejs.org/rules/match-component-import-name) (🟢): Requires the registered component name to match the imported component name
+- [vue/new-line-between-multi-line-property](https://eslint.vuejs.org/rules/new-line-between-multi-line-property) (🟢): Requires new lines between multi-line `props`
+- [vue/no-bare-strings-in-template](https://eslint.vuejs.org/rules/no-bare-strings-in-template) (🟢): Disallows the use of bare strings in `<template>`
+- [vue/no-irregular-whitespace](https://eslint.vuejs.org/rules/no-irregular-whitespace) (🟢): Disallows irregular / invalid whitespaces
+- [vue/no-multiple-objects-in-class](https://eslint.vuejs.org/rules/no-multiple-objects-in-class) (🟢): Disallows to pass multiple objects into array to `class` HTML property
+- [vue/no-mutating-props](https://eslint.vuejs.org/rules/no-mutating-props) (🟢): Disallows mutation of component props (except shallow mutation)
+- [vue/no-static-inline-styles](https://eslint.vuejs.org/rules/no-static-inline-styles) (🟢): Disallows static inline style attributes
+- [vue/no-use-v-else-with-v-for](https://eslint.vuejs.org/rules/no-use-v-else-with-v-for) (🟢): Disallows using `v-else-if/v-else` on the same element as `v-for` (works but confusing)
+- [vue/no-useless-v-bind](https://eslint.vuejs.org/rules/no-useless-v-bind) (🟢): Disallows unnecessary `v-bind` directives
+- [vue/no-v-html](https://eslint.vuejs.org/rules/no-v-html) (🟢): Rule is **disabled** in order to allow the use of `v-html`
+- [vue/padding-line-between-blocks](https://eslint.vuejs.org/rules/padding-line-between-blocks) (🟢): Requires padding lines between blocks
+- [vue/padding-lines-in-component-definition](https://eslint.vuejs.org/rules/padding-lines-in-component-definition) (🟢): Requires padding lines in component definition
+- [vue/prefer-true-attribute-shorthand](https://eslint.vuejs.org/rules/prefer-true-attribute-shorthand) (🟢): Requires shorthand form attribute when `v-bind` value is `true`
+- [vue/require-direct-export](https://eslint.vuejs.org/rules/require-direct-export) (🟢): Requires the component to be directly exported
+- [vue/v-for-delimiter-style](https://eslint.vuejs.org/rules/v-for-delimiter-style) (🟢): Enforces the use of `in` delimiter in `v-for` directive
+- [vue/v-slot-style](https://eslint.vuejs.org/rules/v-slot-style) (🟢): Disallows `v-slot` shorthand style
+
 #### Crisp Vue rules
 - [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) (🟢): Ensures computed properties are alphabetically ordered
 - [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) (🟢): Ensures emits properties are alphabetically ordered
