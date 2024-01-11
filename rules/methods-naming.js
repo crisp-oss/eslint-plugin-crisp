@@ -21,16 +21,16 @@ module.exports = {
         if (jsDocComment) {
           const isPrivate = node.key.name.startsWith("__");
           const isProtected = node.key.name.startsWith("_") && !node.key.name.startsWith("__");
-          const isPublic = jsDocComment.value.includes("@public");
+          const isPublicJsDoc = jsDocComment.value.includes("@public");
           const isProtectedJsDoc = jsDocComment.value.includes("@protected");
           const isPrivateJsDoc = jsDocComment.value.includes("@private");
 
-          if (isPrivate && isPublic) {
+          if (isPrivate && isPublicJsDoc) {
             context.report({
               node: node,
               message: "Methods starting with '__' should not be marked with '@public'."
             });
-          } else if (isProtected && isPublic) {
+          } else if (isProtected && isPublicJsDoc) {
             context.report({
               node: node,
               message: "Methods starting with '_' should not be marked with '@public'."
