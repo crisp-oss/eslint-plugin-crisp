@@ -21,6 +21,7 @@ module.exports = {
             context.report({
               node: nextProperty,
               message: "Props should be in alphabetical order.",
+
               fix(fixer) {
                 const sourceCode = context.getSourceCode();
                 const propertyText = sourceCode.getText(property);

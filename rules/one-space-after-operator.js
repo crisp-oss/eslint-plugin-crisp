@@ -32,6 +32,7 @@ module.exports = {
         context.report({
           node: operatorToken,
           message: `There should be at least one space before and exactly one space after '${operatorName}'`,
+
           fix(fixer) {
             return fixer.replaceTextRange(
               [sourceCode.getTokenBefore(operatorToken).range[1], sourceCode.getTokenAfter(operatorToken).range[0]],

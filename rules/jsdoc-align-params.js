@@ -141,6 +141,7 @@ module.exports = {
               context.report({
                 node: jsdocComment,
                 message: 'JSDoc alignment issue',
+
                 fix(fixer) {
                   return fixer.replaceText(jsdocComment, formattedJSDoc);
                 },

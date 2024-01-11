@@ -21,6 +21,7 @@ module.exports = {
             context.report({
               node: nextElement,
               message: "Emits should be in alphabetical order.",
+
               fix(fixer) {
                 const sourceCode = context.getSourceCode();
                 const elementText = sourceCode.getText(element);

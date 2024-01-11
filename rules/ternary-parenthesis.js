@@ -21,6 +21,7 @@ module.exports = {
             context.report({
               node,
               message: "The condition in ternary expressions with an operator should be wrapped in parentheses",
+
               fix(fixer) {
                 const conditionText = sourceCode.getText(node.test);
                 return [

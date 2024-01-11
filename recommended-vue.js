@@ -144,6 +144,7 @@ module.exports = {
     "crisp/methods-naming": "error",
     "crisp/methods-ordering": "error",
     "crisp/multiline-comment-end-backslash": "error",
+    "crisp/newline-after-switch-case": "error",
     "crisp/no-async": "error",
     "crisp/no-var-in-blocks": "error",
     "crisp/no-useless-template-literals": "error",
