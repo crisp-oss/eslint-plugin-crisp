@@ -84,6 +84,14 @@ module.exports = {
     "no-multi-str": "error",
     "no-multiple-empty-lines": ["error", { max: 1 }],
     "no-mixed-spaces-and-tabs": "error",
+    "no-restricted-syntax": [
+      "error",
+
+      {
+        "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
+        "message": "Switch cases without braces are disallowed."
+      }
+    ],
     "no-tabs": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": "warn",
@@ -128,15 +136,6 @@ module.exports = {
     "space-before-blocks": "error",
     "space-in-parens": ["error", "never"],
 
-    "no-restricted-syntax": [
-      "error",
-
-      {
-        "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
-        "message": "Switch cases without blocks are disallowed."
-      }
-    ],
-
     // Crisp JS rules
     "crisp/enforce-optional": "error",
     "crisp/header-check": "error",
@@ -146,19 +145,6 @@ module.exports = {
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/newline-after-switch-case": "error",
     "crisp/no-async": "error",
-    "crisp/no-var-in-blocks": "error",
-    "crisp/no-useless-template-literals": "error",
-    "crisp/regex-in-constructor": "error",
-    "crisp/ternary-parenthesis": "error",
-    "crisp/variable-names": "error",
-
-    "crisp/one-space-after-operator": [
-      "error",
-
-      {
-        "checkColon": false
-      }
-    ],
     "crisp/no-short-parameters": [
       "error",
 
@@ -166,6 +152,18 @@ module.exports = {
         "exceptions": ["_", "$", "x", "y"]
       }
     ],
+    "crisp/no-useless-template-literals": "error",
+    "crisp/no-var-in-blocks": "error",
+    "crisp/one-space-after-operator": [
+      "error",
+
+      {
+        "checkColon": false
+      }
+    ],
+    "crisp/regex-in-constructor": "error",
+    "crisp/ternary-parenthesis": "error",
+    "crisp/variable-names": "error",
 
     // General JSDoc rules
     "jsdoc/require-param-description": "off",

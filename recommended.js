@@ -150,13 +150,6 @@ module.exports = {
     "crisp/newline-after-switch-case": "error",
     "crisp/no-async": "error",
     "crisp/no-var-in-blocks": "error",
-    "crisp/no-space-in-optional-arguments": "error",
-    "crisp/one-space-after-operator": "error",
-    "crisp/regex-in-constructor": "error",
-    "crisp/ternary-parenthesis": "error",
-    "crisp/two-lines-between-class-members": "error",
-    "crisp/variable-names": "error",
-
     "crisp/no-short-parameters": [
       "error",
 
@@ -164,6 +157,12 @@ module.exports = {
         "exceptions": ["_", "$"]
       }
     ],
+    "crisp/no-space-in-optional-arguments": "error",
+    "crisp/one-space-after-operator": "error",
+    "crisp/regex-in-constructor": "error",
+    "crisp/ternary-parenthesis": "error",
+    "crisp/two-lines-between-class-members": "error",
+    "crisp/variable-names": "error",
 
     // JSDoc rules
     "jsdoc/no-undefined-types"       : "off",

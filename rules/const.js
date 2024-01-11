@@ -2,7 +2,7 @@ module.exports = {
   meta: {
     type: 'suggestion',
     docs: {
-      description: 'enforce that consts are uppercase and start with "__"',
+      description: 'enforce that consts are uppercase or start with "__"',
       category: 'Stylistic Issues',
       recommended: false,
     },
