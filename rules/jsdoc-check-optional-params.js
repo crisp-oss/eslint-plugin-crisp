@@ -4,7 +4,7 @@ module.exports = {
   meta: {
     type: "suggestion",
     docs: {
-      description: "Enforce @classdesc in JSDoc class headers",
+      description: "Enforce style for optional parameters",
       category: "Best Practices",
       recommended: true,
     }

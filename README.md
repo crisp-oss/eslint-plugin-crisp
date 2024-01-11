@@ -112,3 +112,10 @@ Each item has emojis denoting:
 - [crisp/ternary-parenthesis](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/ternary-parenthesis.js) (⚪️🟢): Enforces parentheses around conditions with operators in ternary expressions
 - [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) (⚪️): Requires exactly two line breaks between class methods
 - [crisp/variable-names](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/variable-names.js) (⚪️🟢): Requires variables defined within a method to start with `_`
+
+#### Crisp JSDoc rules
+- [crisp/jsdoc-align-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-align-params.js) (⚪️🟢): Enforces various alignments
+- [crisp/jsdoc-check-indentation](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-indentation.js) (⚪️🟢): Enforces consistent indentation
+- [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) (🟢): Requires optional parameters to be surrounded by brackets
+- [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) (🟢): Enforces usage of `@public`, `@private`, or `@protected`
+- [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) (⚪️🟢): Ensures JSDoc for class headers include a non-empty `@classdesc`
