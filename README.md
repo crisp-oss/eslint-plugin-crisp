@@ -119,3 +119,17 @@ Each item has emojis denoting:
 - [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) (🟢): Requires optional parameters to be surrounded by brackets
 - [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) (🟢): Enforces usage of `@public`, `@private`, or `@protected`
 - [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) (⚪️🟢): Ensures JSDoc for class headers include a non-empty `@classdesc`
+
+#### Crisp Vue rules
+- [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) (🟢): Ensures computed properties are alphabetically ordered
+- [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) (🟢): Ensures emits properties are alphabetically ordered
+- [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) (🟢): Ensures `script`, `template` and `style` tags start with corresponding comment block
+- [crisp/vue-html-quotes](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-quotes.js) (🟢): Enforces HTML attributes to be enclosed with double quotes
+- [crisp/vue-no-regex-data](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-regex-data.js) (🟢): Disallows regular expressions to be declared in Vue data object
+- [crisp/vue-props-declaration-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-multiline.js) (🟢): Enforces props declarations to be multiline
+- [crisp/vue-props-declaration-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-order.js) (🟢): Ensures props declarations are alphabetically ordered
+
+
+## License
+
+eslint-plugin-crisp is released under the MIT License. See the bundled LICENSE file for details.
