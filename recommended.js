@@ -29,6 +29,14 @@ module.exports = {
   rules: {
     // General JS rules
     "arrow-parens": ["error", "always"],
+    "brace-style": [
+      "error",
+      "1tbs",
+
+      {
+        "allowSingleLine": true
+      }
+    ],
     "comma-dangle": ["error", "never"],
     "comma-style": ["error", "last"],
     "curly": "error",
@@ -38,33 +46,6 @@ module.exports = {
     "eqeqeq": "error",
     "eol-last": "error",
     "for-direction": "error",
-    "linebreak-style": ["error", "unix"],
-    "max-len": ["error", 80],
-    "no-console": "warn",
-    "no-debugger": "warn",
-    "no-eval": "error",
-    "no-multi-str": "error",
-    "no-mixed-spaces-and-tabs": "error",
-    "no-tabs": "error",
-    "no-trailing-spaces": "error",
-    "no-unused-vars": "warn",
-    "no-unsafe-optional-chaining": "error",
-    "object-curly-spacing": ["error", "always"],
-    "padded-blocks": ["error", "never"],
-    "quote-props": ["error", "as-needed"],
-    "semi": ["error", "always"],
-    "semi-style": ["error", "last"],
-    "space-before-blocks": "error",
-    "space-in-parens": ["error", "never"],
-
-    "brace-style": [
-      "error",
-      "1tbs",
-
-      {
-        "allowSingleLine": true
-      }
-    ],
     "indent": [
       "error",
       2,
@@ -96,6 +77,11 @@ module.exports = {
         ]
       }
     ],
+    "linebreak-style": ["error", "unix"],
+    "max-len": ["error", 80],
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-eval": "error",
     "no-magic-numbers": [
       "error",
 
@@ -105,6 +91,12 @@ module.exports = {
         "ignoreDefaultValues": true
       }
     ],
+    "no-multi-str": "error",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-tabs": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": "warn",
+    "no-unsafe-optional-chaining": "error",
     "object-curly-newline": [
       "error",
 
@@ -112,6 +104,8 @@ module.exports = {
         "multiline": true, "consistent": true
       }
     ],
+    "object-curly-spacing": ["error", "always"],
+    "padded-blocks": ["error", "never"],
     "padding-line-between-statements": [
       "error",
 
@@ -135,6 +129,11 @@ module.exports = {
         "avoidEscape": true, "allowTemplateLiterals": true
       }
     ],
+    "quote-props": ["error", "as-needed"],
+    "semi": ["error", "always"],
+    "semi-style": ["error", "last"],
+    "space-before-blocks": "error",
+    "space-in-parens": ["error", "never"],
 
     // Crisp JS rules
     "crisp/align-consecutive-class-assignements": "error",

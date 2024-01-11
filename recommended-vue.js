@@ -33,6 +33,14 @@ module.exports = {
   rules: {
     // General JS rules
     "arrow-parens": ["error", "always"],
+    "brace-style": [
+      "error",
+      "1tbs",
+
+      {
+        "allowSingleLine": true
+      }
+    ],
     "comma-dangle": ["error", "never"],
     "comma-style": ["error", "last"],
     "curly": "error",
@@ -43,37 +51,6 @@ module.exports = {
     "eqeqeq": "error",
     "eol-last": "error",
     "for-direction": "error",
-    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
-    "linebreak-style": ["error", "unix"],
-    "newline-per-chained-call": "error",
-    "no-console": "warn",
-    "no-debugger": "warn",
-    "no-eval": "error",
-    "no-multi-str": "error",
-    "no-multiple-empty-lines": ["error", { max: 1 }],
-    "no-mixed-spaces-and-tabs": "error",
-    "no-tabs": "error",
-    "no-trailing-spaces": "error",
-    "no-unused-vars": "warn",
-    "no-unsafe-optional-chaining": "error",
-    "object-curly-spacing": ["error", "always"],
-    "padded-blocks": ["error", "never"],
-    "prefer-arrow-callback": "error",
-    "quote-props": ["error", "as-needed"],
-    "semi": ["error", "always"],
-    "semi-style": ["error", "last"],
-    "semi-spacing": ["error", { "before": false, "after": true }],
-    "space-before-blocks": "error",
-    "space-in-parens": ["error", "never"],
-
-    "brace-style": [
-      "error",
-      "1tbs",
-
-      {
-        "allowSingleLine": true
-      }
-    ],
     "indent": [
       "error",
       2,
@@ -98,6 +75,19 @@ module.exports = {
         "offsetTernaryExpressions": true
       }
     ],
+    "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "linebreak-style": ["error", "unix"],
+    "newline-per-chained-call": "error",
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-eval": "error",
+    "no-multi-str": "error",
+    "no-multiple-empty-lines": ["error", { max: 1 }],
+    "no-mixed-spaces-and-tabs": "error",
+    "no-tabs": "error",
+    "no-trailing-spaces": "error",
+    "no-unused-vars": "warn",
+    "no-unsafe-optional-chaining": "error",
     "object-curly-newline": [
       "error",
 
@@ -105,6 +95,8 @@ module.exports = {
         "multiline": true, "consistent": true
       }
     ],
+    "object-curly-spacing": ["error", "always"],
+    "padded-blocks": ["error", "never"],
     "padding-line-between-statements": [
       "error",
 
@@ -120,6 +112,7 @@ module.exports = {
       { "blankLine": "always", "prev": "continue", "next": "*" },
       { "blankLine": "always", "prev": "break", "next": "*" }
     ],
+    "prefer-arrow-callback": "error",
     "quotes": [
       "error",
       "double",
@@ -128,13 +121,20 @@ module.exports = {
         "avoidEscape": true, "allowTemplateLiterals": true
       }
     ],
+    "quote-props": ["error", "as-needed"],
+    "semi": ["error", "always"],
+    "semi-style": ["error", "last"],
+    "semi-spacing": ["error", { "before": false, "after": true }],
+    "space-before-blocks": "error",
+    "space-in-parens": ["error", "never"],
+
     "no-restricted-syntax": [
       "error",
 
       {
         "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
         "message": "Switch cases without blocks are disallowed."
-      },
+      }
     ],
 
     // Crisp JS rules
@@ -167,7 +167,7 @@ module.exports = {
       }
     ],
 
-    // JSDoc rules
+    // General JSDoc rules
     "jsdoc/require-param-description": "off",
     "jsdoc/newline-after-description": "off",
     "jsdoc/require-description": "error",
