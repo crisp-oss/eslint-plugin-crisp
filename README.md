@@ -113,12 +113,19 @@ Each item has emojis denoting:
 - [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) (⚪️): Requires exactly two line breaks between class methods
 - [crisp/variable-names](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/variable-names.js) (⚪️🟢): Requires variables defined within a method to start with `_`
 
+#### General JSDoc rules
+- [jsdoc/no-undefined-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) (⚪️): Rule is **disabled** to allow some undefined types
+- [jsdoc/require-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-description.md) (🟢): Requires all functions to have a description in their JSDoc
+- [jsdoc/require-param-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) (⚪️🟢): Rule is **disabled** as we don't write any description for `@param` tags
+- [jsdoc/require-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) (⚪️🟢): Enforces JSDoc comments on functions and classes
+- [jsdoc/sort-tags](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md) (⚪️🟢): Enforces specific order for tags
+
 #### Crisp JSDoc rules
 - [crisp/jsdoc-align-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-align-params.js) (⚪️🟢): Enforces various alignments
 - [crisp/jsdoc-check-indentation](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-indentation.js) (⚪️🟢): Enforces consistent indentation
 - [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) (🟢): Requires optional parameters to be surrounded by brackets
-- [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) (🟢): Enforces usage of `@public`, `@private`, or `@protected`
-- [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) (⚪️🟢): Ensures JSDoc for class headers include a non-empty `@classdesc`
+- [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) (🟢): Requires one of `@public`, `@private`, or `@protected` for functions
+- [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) (⚪️🟢): Ensures JSDoc for class headers to include a non-empty `@classdesc`
 
 #### Crisp Vue rules
 - [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) (🟢): Ensures computed properties are alphabetically ordered

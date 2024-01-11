@@ -166,9 +166,8 @@ module.exports = {
     "crisp/variable-names": "error",
 
     // General JSDoc rules
-    "jsdoc/require-param-description": "off",
-    "jsdoc/newline-after-description": "off",
     "jsdoc/require-description": "error",
+    "jsdoc/require-param-description": "off",
     "jsdoc/require-jsdoc": [
       "error",
 
@@ -218,34 +217,25 @@ module.exports = {
     "crisp/jsdoc-enforce-classdesc": "error",
 
     // General Vue rules
-    "vue/component-api-style": ["error", ["options"]],
-    "vue/component-name-in-template-casing": ["error", "kebab-case"],
-    "vue/component-options-name-casing": ["error", "PascalCase"],
-    "vue/custom-event-name-casing": ["error", "camelCase"],
-    "vue/html-comment-content-spacing": ["error", "always"],
-    "vue/match-component-import-name": "error",
-    "vue/new-line-between-multi-line-property": "error",
-    "vue/no-bare-strings-in-template": "error",
-    "vue/no-multiple-objects-in-class": "error",
-    "vue/no-static-inline-styles": "error",
-    "vue/no-use-v-else-with-v-for": "error",
-    "vue/no-useless-v-bind": "error",
-    "vue/padding-line-between-blocks": ["error", "always"],
-    "vue/require-direct-export": "error",
-    "vue/v-for-delimiter-style": ["error", "in"],
-    "vue/comma-dangle": "error",
-    "vue/html-quotes": "off",
-    "vue/no-v-html": "off",
-    "vue/prefer-true-attribute-shorthand": "error",
-    "vue/comma-dangle": "error",
-    "vue/eqeqeq": "error",
-    "vue/key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
-    "vue/no-irregular-whitespace": "error",
-    "vue/padding-lines-in-component-definition": [
+    "vue/attributes-order": [
       "error",
 
       {
-        "groupSingleLineProperties": false
+        "order": [
+          "RENDER_MODIFIERS",
+          "CONDITIONALS",
+          "OTHER_DIRECTIVES",
+          "LIST_RENDERING",
+          "SLOT",
+          "TWO_WAY_BINDING",
+          "CONTENT",
+          "EVENTS",
+          "DEFINITION",
+          "ATTR_DYNAMIC",
+          "ATTR_STATIC",
+          "ATTR_SHORTHAND_BOOL"
+        ],
+        "alphabetical": false
       }
     ],
     "vue/block-lang": [
@@ -271,27 +261,10 @@ module.exports = {
         "maxEmptyLines": 0
       }
     ],
-    "vue/attributes-order": [
-      "error",
-
-      {
-        "order": [
-          "RENDER_MODIFIERS",
-          "CONDITIONALS",
-          "OTHER_DIRECTIVES",
-          "LIST_RENDERING",
-          "SLOT",
-          "TWO_WAY_BINDING",
-          "CONTENT",
-          "EVENTS",
-          "DEFINITION",
-          "ATTR_DYNAMIC",
-          "ATTR_STATIC",
-          "ATTR_SHORTHAND_BOOL"
-        ],
-        "alphabetical": false
-      }
-    ],
+    "vue/comma-dangle": "error",
+    "vue/component-api-style": ["error", ["options"]],
+    "vue/component-name-in-template-casing": ["error", "kebab-case"],
+    "vue/component-options-name-casing": ["error", "PascalCase"],
     "vue/component-tags-order": [
       "error",
 
@@ -299,6 +272,23 @@ module.exports = {
         "order": [ "template", "script", "style" ]
       }
     ],
+    "vue/custom-event-name-casing": ["error", "camelCase"],
+    "vue/eqeqeq": "error",
+    "vue/html-comment-content-spacing": ["error", "always"],
+    "vue/html-quotes": "off",
+    "vue/key-spacing": [
+      "error",
+
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "vue/match-component-import-name": "error",
+    "vue/new-line-between-multi-line-property": "error",
+    "vue/no-bare-strings-in-template": "error",
+    "vue/no-irregular-whitespace": "error",
+    "vue/no-multiple-objects-in-class": "error",
     "vue/no-mutating-props": [
       "error",
 
@@ -306,6 +296,21 @@ module.exports = {
         "shallowOnly": true
       }
     ],
+    "vue/no-static-inline-styles": "error",
+    "vue/no-use-v-else-with-v-for": "error",
+    "vue/no-useless-v-bind": "error",
+    "vue/no-v-html": "off",
+    "vue/padding-line-between-blocks": ["error", "always"],
+    "vue/padding-lines-in-component-definition": [
+      "error",
+
+      {
+        "groupSingleLineProperties": false
+      }
+    ],
+    "vue/prefer-true-attribute-shorthand": "error",
+    "vue/require-direct-export": "error",
+    "vue/v-for-delimiter-style": ["error", "in"],
     "vue/v-slot-style": [
       "error",
 

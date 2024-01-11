@@ -164,10 +164,8 @@ module.exports = {
     "crisp/two-lines-between-class-members": "error",
     "crisp/variable-names": "error",
 
-    // JSDoc rules
-    "jsdoc/no-undefined-types"       : "off",
-    "jsdoc/require-param-description": "off",
-    "jsdoc/newline-after-description": "off",
+    // General JSDoc rules
+    "jsdoc/no-undefined-types": "off",
     "jsdoc/require-jsdoc": [
       "error",
 
@@ -181,6 +179,7 @@ module.exports = {
         }
       }
     ],
+    "jsdoc/require-param-description": "off",
     "jsdoc/sort-tags": [
       "error",
 
