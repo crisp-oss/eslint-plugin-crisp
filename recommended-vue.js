@@ -140,6 +140,7 @@ module.exports = {
     "crisp/enforce-optional": "error",
     "crisp/header-check": "error",
     "crisp/header-comments-check": "error",
+    "crisp/import-group-comment": "error",
     "crisp/methods-naming": "error",
     "crisp/methods-ordering": "error",
     "crisp/multiline-comment-end-backslash": "error",
