@@ -6,10 +6,20 @@ module.exports = {
       category: "Best Practices",
       recommended: false,
     },
+    schema: [
+      {
+        type: "object",
+        additionalProperties: {
+          type: "string",
+        },
+      },
+    ],
     fixable: null,  // This rule is not auto-fixable
   },
 
   create(context) {
+    const customGroups = context.options[0] || {};  // Get custom groups from options
+
     let currentGroupComment = null;
 
     // Extract the directory name from the file path
@@ -19,6 +29,13 @@ module.exports = {
     }
 
     function extractGroupFromPath(path, filePath) {
+      // Check custom regexes first
+      for (const regexStr in customGroups) {
+        if (new RegExp(regexStr).test(path)) {
+          return customGroups[regexStr];
+        }
+      }
+
       // Relative path import?
       if (path.startsWith("./")) {
         return getDirectoryName(filePath);
