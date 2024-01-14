@@ -38,7 +38,7 @@ Each item has emojis denoting:
 ### Configurations
 
 | Name | Description | 🟠 | 🟢 |
-| :- | :- | :- |
+| :- | :- | :- | :- |
 | [eslint:recommended](https://github.com/eslint/eslint) | Core ESLint rules |  | 🟢 |
 | [plugin:jsdoc/recommended](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules | 🟠 | 🟢 |
 | [plugin:vue/vue3-recommended](https://github.com/vuejs/eslint-plugin-vue) | Vue.js 3 linting rules |  | 🟢 |
