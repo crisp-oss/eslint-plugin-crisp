@@ -45,7 +45,6 @@ This is the list of plugins and rules used by ESLint Plugin Crisp, and what they
 | [plugin:jsdoc/recommended](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules | 🟠🟢 |
 | [plugin:vue/vue3-recommended](https://github.com/vuejs/eslint-plugin-vue) | Vue.js 3 linting rules | 🟢 |
 | [plugin:vue-pug/vue3-recommended](https://github.com/gajus/eslint-plugin-jsdoc) | Pug templates support for Vue.js linting rules | 🟢 |
-|  |  |  |
 
 ### Plugins
 
@@ -129,7 +128,6 @@ This is the list of plugins and rules used by ESLint Plugin Crisp, and what they
 | [crisp/ternary-parenthesis](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/ternary-parenthesis.js) | Enforces parentheses around conditions with operators in ternary expressions | 🟠🟢 |
 | [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) | Requires exactly two line breaks between class methods | 🟠 |
 | [crisp/variable-names](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/variable-names.js) | Requires variables defined within a method to start with `_` | 🟠🟢 |
-|  |  | 🟠🟢 |
 
 #### General JSDoc rules
 
@@ -140,7 +138,6 @@ This is the list of plugins and rules used by ESLint Plugin Crisp, and what they
 | [jsdoc/require-param-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) | Rule is **disabled** as we don't write any description for `@param` tags | 🟠🟢 |
 | [jsdoc/require-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) | Enforces JSDoc comments on functions and classes | 🟠🟢 |
 | [jsdoc/sort-tags](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md) | Enforces specific order for tags | 🟠🟢 |
-|  |  | 🟠🟢 |
 
 #### Crisp JSDoc rules
 
@@ -151,7 +148,6 @@ This is the list of plugins and rules used by ESLint Plugin Crisp, and what they
 | [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) | Requires optional parameters to be surrounded by brackets | 🟢 |
 | [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions | 🟢 |
 | [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠🟢 |
-|  |  | 🟠🟢 |
 
 #### General Vue rules
 
