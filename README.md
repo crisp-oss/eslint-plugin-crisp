@@ -111,6 +111,7 @@ Each item has emojis denoting:
 | [crisp/header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-check.js) | Enforces files to start with Crisp header | 🟠 | 🟢 |
 | [crisp/header-comments-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-comments-check.js) | Enforces different comment blocks before different groups (imports, constants, instances and exports) | 🟠 | 🟢 |
 | [crisp/import-group-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-comment.js) | Ensures `import` statements are preceded by a comment stating their type |  | 🟢 |
+| [crisp/import-group-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-order.js) | Ensures `import` statements are correctly ordered |  | 🟢 |
 | [crisp/methods-naming](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-naming.js) | Ensures methods are named according to their access (`public`, `private`, `protected`) | 🟠 | 🟢 |
 | [crisp/methods-ordering](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-ordering.js) | Ensures methods order according to their access: `public` then `protected` then `private` | 🟠 | 🟢 |
 | [crisp/multiline-comment-end-backslash](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/multiline-comment-end-backslash.js) | Enforces multiline comments to end with a backslash | 🟠 | 🟢 |

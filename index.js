@@ -12,6 +12,7 @@ module.exports = {
     "header-check": require("./rules/header-check"),
     "header-comments-check": require("./rules/header-comments-check"),
     "import-group-comment": require("./rules/import-group-comment"),
+    "import-group-order": require("./rules/import-group-order"),
     "jsdoc-align-params": require("./rules/jsdoc-align-params"),
     "jsdoc-check-indentation": require("./rules/jsdoc-check-indentation"),
     "jsdoc-check-optional-params": require("./rules/jsdoc-check-optional-params"),
