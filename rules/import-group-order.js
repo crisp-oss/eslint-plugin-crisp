@@ -19,12 +19,11 @@ module.exports = {
       "PROJECT: HELPERS",
       "PROJECT: PLATFORMS",
       "PROJECT: LIBRARIES",
-      // Add any other known groups here
+      // Add any other groups here
     ];
 
-    let lastKnownGroupIndex = -1;
+    let lastGroupIndex = -1;
     const existingGroups = new Set();
-    const sourceCode = context.getSourceCode();
 
     function findGroupIndex(comment) {
       const group = comment.value.trim().toUpperCase();
@@ -32,6 +31,7 @@ module.exports = {
     }
 
     function getRelativePositionMessage(currentGroupIndex, groupName) {
+      // Search for the nearest group that is present in the file
       for (let i = currentGroupIndex - 1; i >= 0; i--) {
         if (existingGroups.has(groupOrder[i])) {
           return `should be after '${groupOrder[i]}' group`;
@@ -45,56 +45,15 @@ module.exports = {
       return "is out of order";
     }
 
-    function hasKnownGroupAfter(node) {
-      let followingNode = node;
-      while (followingNode = sourceCode.getTokenAfter(followingNode, { includeComments: true })) {
-        if (followingNode.type === 'Line') {
-          if (isGroupComment(followingNode)) {
-            const groupIndex = findGroupIndex(followingNode);
-
-            if (groupIndex !== -1) {
-              return true;
-            }
-          }
-        }
-
-        if (followingNode.type === 'ImportDeclaration') {
-          const commentsBefore = sourceCode.getCommentsBefore(followingNode);
-          for (let i = commentsBefore.length - 1; i >= 0; i--) {
-            const comment = commentsBefore[i];
-            if (isGroupComment(comment)) {
-              const groupIndex = findGroupIndex(comment);
-              if (groupIndex !== -1) {
-                return true;
-              }
-              break;
-            }
-          }
-        }
-      }
-      return false;
-    }
-
     function checkGroupOrder(node, currentGroupIndex, groupName) {
-      if (currentGroupIndex === -1) { // Unknown group
-        if (hasKnownGroupAfter(node)) {
-          context.report({
-            node,
-            message: `Unknown import group '${groupName}' should be after all known groups.`,
-          });
-        }
-      } else if (currentGroupIndex < lastKnownGroupIndex) {
+      if (currentGroupIndex < lastGroupIndex) {
         const positionMessage = getRelativePositionMessage(currentGroupIndex, groupName);
         context.report({
           node,
           message: `Import group '${groupName}' ${positionMessage}.`,
         });
       }
-
-      if (currentGroupIndex !== -1) {
-        lastKnownGroupIndex = Math.max(lastKnownGroupIndex, currentGroupIndex);
-      }
-
+      lastGroupIndex = Math.max(lastGroupIndex, currentGroupIndex);
       existingGroups.add(groupName);
     }
 
@@ -110,16 +69,14 @@ module.exports = {
 
     function updateAndCheckGroup(node) {
       const comments = context.getSourceCode().getCommentsBefore(node);
-
       for (let i = comments.length - 1; i >= 0; i--) {
         const comment = comments[i];
-
         if (isGroupComment(comment)) {
           const groupName = comment.value.trim().toUpperCase();
           const groupIndex = findGroupIndex(comment);
-
-          checkGroupOrder(node, groupIndex, groupName);
-
+          if (groupIndex !== -1) {
+            checkGroupOrder(node, groupIndex, groupName);
+          }
           break;
         }
       }
