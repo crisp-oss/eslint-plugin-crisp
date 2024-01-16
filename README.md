@@ -83,6 +83,7 @@ Each item has emojis denoting:
 | [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Enforces `switch` `case`'s content to be enclosed in braces |  | 🟢 |
 | [no-tabs](https://eslint.org/docs/latest/rules/no-tabs) | Disallows tabs | 🟠 | 🟢 |
 | [no-trailing-spaces](https://eslint.org/docs/latest/rules/no-trailing-spaces) | Disallows trailing whitespace at the end of lines | 🟠 | 🟢 |
+| [no-undef](https://eslint.org/docs/latest/rules/no-undef) | Disallows use of undeclared variables | 🟠 | 🟢 |
 | [no-unused-vars](https://eslint.org/docs/latest/rules/no-unused-vars) | Disallows unused variables | 🟠 | 🟢 |
 | [no-unsafe-optional-chaining](https://eslint.org/docs/latest/rules/no-unsafe-optional-chaining) | Disallows use of optional chaining in contexts where the `undefined` value is not allowed | 🟠 | 🟢 |
 | [object-curly-newline](https://eslint.org/docs/latest/rules/object-curly-newline) | Requires line breaks after opening and before closing braces | 🟠 | 🟢 |

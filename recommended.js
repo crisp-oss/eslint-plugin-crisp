@@ -95,6 +95,7 @@ module.exports = {
     "no-mixed-spaces-and-tabs": "error",
     "no-tabs": "error",
     "no-trailing-spaces": "error",
+    "no-undef": "error",
     "no-unused-vars": "warn",
     "no-unsafe-optional-chaining": "error",
     "object-curly-newline": [
