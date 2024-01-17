@@ -281,6 +281,12 @@ module.exports = {
       }
     ],
     "vue/match-component-import-name": "error",
+    "vue/max-len": ["error", {
+      "code": 80,
+      "template": 999,
+      "ignorePattern": "^import|\`(.+?)\`|\/\\*\\* \@type",
+      "ignoreStrings": true
+    }],
     "vue/new-line-between-multi-line-property": "error",
     "vue/no-bare-strings-in-template": "error",
     "vue/no-irregular-whitespace": "error",

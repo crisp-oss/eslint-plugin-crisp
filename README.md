@@ -166,6 +166,7 @@ Each item has emojis denoting:
 | [vue/html-quotes](https://eslint.vuejs.org/rules/html-quotes) | Rule is **disabled** in order to allow backticks in HTML attributes |  | 🟢 |
 | [vue/key-spacing](https://eslint.vuejs.org/rules/key-spacing) | Enforces consistent spacing in object literal properties in `<template>` (no space between the key and the colon, one space between the colon and the value) |  | 🟢 |
 | [vue/match-component-import-name](https://eslint.vuejs.org/rules/match-component-import-name) | Requires the registered component name to match the imported component name |  | 🟢 |
+| [vue/max-len](https://eslint.vuejs.org/rules/max-len) | Enforces a maximum line length of 80 characters (only for `<script>`) |  | 🟢 |
 | [vue/new-line-between-multi-line-property](https://eslint.vuejs.org/rules/new-line-between-multi-line-property) | Requires new lines between multi-line `props` |  | 🟢 |
 | [vue/no-bare-strings-in-template](https://eslint.vuejs.org/rules/no-bare-strings-in-template) | Disallows the use of bare strings in `<template>` |  | 🟢 |
 | [vue/no-irregular-whitespace](https://eslint.vuejs.org/rules/no-irregular-whitespace) | Disallows irregular / invalid whitespaces |  | 🟢 |
