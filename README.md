@@ -70,6 +70,7 @@ Each item has emojis denoting:
 | [indent](https://eslint.org/docs/latest/rules/indent) | Enforces 2-space indentation, and specific indentation levels for some nodes | 🟠 | 🟢 |
 | [for-direction](https://eslint.org/docs/latest/rules/for-direction) | Prevents for-loops to have stop condition that can never be reached | 🟠 | 🟢 |
 | [key-spacing](https://eslint.org/docs/latest/rules/key-spacing) | Enforces consistent spacing in object literal properties (no space between the key and the colon, one space between the colon and the value) |  | 🟢 |
+| [keyword-spacing](https://eslint.org/docs/latest/rules/keyword-spacing) | Enforces consistent spacing before and after keywords | 🟠 | 🟢 |
 | [linebreak-style](https://eslint.org/docs/latest/rules/linebreak-style) | Enforces Unix-style line endings | 🟠 | 🟢 |
 | [max-len](https://eslint.org/docs/latest/rules/max-len) | Enforces a maximum line length of 80 characters | 🟠 |
 | [newline-per-chained-call](https://eslint.org/docs/latest/rules/newline-per-chained-call) | Requires a newline after each call in a method chain |  | 🟢 |

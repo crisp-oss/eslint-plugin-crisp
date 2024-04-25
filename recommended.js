@@ -77,6 +77,7 @@ module.exports = {
         ]
       }
     ],
+    "keyword-spacing": "error",
     "linebreak-style": ["error", "unix"],
     "max-len": ["error", 80],
     "no-console": "warn",

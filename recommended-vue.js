@@ -76,6 +76,7 @@ module.exports = {
       }
     ],
     "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
+    "keyword-spacing": "error",
     "linebreak-style": ["error", "unix"],
     "newline-per-chained-call": "error",
     "no-console": "warn",
