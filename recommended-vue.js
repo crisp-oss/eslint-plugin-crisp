@@ -137,6 +137,7 @@ module.exports = {
     "semi-spacing": ["error", { "before": false, "after": true }],
     "space-before-blocks": "error",
     "space-in-parens": ["error", "never"],
+    "space-infix-ops": "error",
 
     // Crisp JS rules
     "crisp/enforce-optional": "error",
