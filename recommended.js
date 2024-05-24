@@ -136,6 +136,7 @@ module.exports = {
     "semi-style": ["error", "last"],
     "space-before-blocks": "error",
     "space-in-parens": ["error", "never"],
+    "space-infix-ops": "error",
 
     // Crisp JS rules
     "crisp/align-consecutive-class-assignements": "error",

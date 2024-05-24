@@ -99,6 +99,7 @@ Each item has emojis denoting:
 | [semi-spacing](https://eslint.org/docs/latest/rules/semi-spacing) | Disallows space before semicolons, enforces spaces after |  | 🟢 |
 | [space-before-blocks](https://eslint.org/docs/latest/rules/space-before-blocks) | Enforces consistent spacing before blocks | 🟠 | 🟢 |
 | [space-in-parens](https://eslint.org/docs/latest/rules/space-in-parens) | Enforces zero spaces inside of parentheses | 🟠 | 🟢 |
+| [space-infix-ops](https://eslint.org/docs/latest/rules/space-infix-ops) | Enforces spaces around infix operators |  | 🟢 |
 
 #### Crisp JS rules
 
