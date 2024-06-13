@@ -59,6 +59,7 @@ Each item has emojis denoting:
 | [arrow-parens](https://eslint.org/docs/latest/rules/arrow-parens) | Requires parentheses around arrow function arguments | 🟠 | 🟢 |
 | [brace-style](https://eslint.org/docs/latest/rules/brace-style) | Enforces one true brace style for blocks | 🟠 | 🟢 |
 | [comma-dangle](https://eslint.org/docs/latest/rules/comma-dangle) | Disallows trailing commas | 🟠 | 🟢 |
+| [comma-spacing](https://eslint.org/docs/latest/rules/comma-spacing) | Enforces consistent spacing before and after commas |  | 🟢 |
 | [comma-style](https://eslint.org/docs/latest/rules/comma-style) | Requires a comma after and on the same line | 🟠 | 🟢 |
 | [curly](https://eslint.org/docs/latest/rules/curly) | Ensures block statements are always wrapped in curly braces | 🟠 | 🟢 |
 | [computed-property-spacing](https://eslint.org/docs/latest/rules/computed-property-spacing) | Disallows spaces inside computed property brackets |  | 🟢 |

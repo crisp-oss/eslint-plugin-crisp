@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-crisp",
-  "version": "1.0.80",
+  "version": "1.0.81",
   "description": "Custom ESLint Rules for Crisp",
   "author": "Crisp IM SAS",
   "main": "index.js",
