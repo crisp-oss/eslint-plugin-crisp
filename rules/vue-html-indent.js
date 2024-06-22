@@ -45,6 +45,20 @@ module.exports = {
           return;
         }
 
+        // Odd number of spaces?
+        if (node.loc.start.column % 2 !== 0) {
+          report(
+            node,
+            "element",
+
+            `${node.loc.start.column - 1} or ${node.loc.start.column + 1}`,
+            node.loc.start.column
+          );
+
+          // Abort here as the whole element is not indented correctly
+          return;
+        }
+
         // Skip singleline element (no indentation to check)
         if (node.loc.start.line === node.loc.end.line) {
           return;
