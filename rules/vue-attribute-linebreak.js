@@ -35,15 +35,11 @@ module.exports = {
         // Enforce line-break before first attribute
         if (node.loc.start.line === firstAttribute.loc.start.line) {
           report(firstAttribute, "above");
-
-          return;
         }
 
         // Enforce line-break after last attribute
         if (node.loc.end.line === lastAttribute.loc.start.line) {
           report(firstAttribute, "below");
-
-          return;
         }
       }
     })
