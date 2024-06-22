@@ -106,6 +106,7 @@ Each item has emojis denoting:
 
 | Name | Description | 🟠 | 🟢 |
 | :- | :- | :- | :- |
+| [crisp/align-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-comments.js) | Enforces alignment of comments compared to the previous line (the `indent` rule doesn't check this case) | 🟢 |
 | [crisp/align-consecutive-class-assignements](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-consecutive-class-assignements.js) | Enforces alignment of consecutive assignment statements in a class constructor | 🟠 |
 | [crisp/align-one-var](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-one-var.js) | Enforces alignment of variables in 'one-var' statements | 🟠 |
 | [crisp/align-requires](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-requires.js) | Enforces alignment of require statements | 🟠 |

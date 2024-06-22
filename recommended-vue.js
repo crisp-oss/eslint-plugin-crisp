@@ -141,6 +141,7 @@ module.exports = {
     "space-infix-ops": "error",
 
     // Crisp JS rules
+    "crisp/align-comments": "error",
     "crisp/enforce-optional": "error",
     "crisp/header-check": "error",
     "crisp/header-comments-check": "error",

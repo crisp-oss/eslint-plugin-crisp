@@ -4,6 +4,8 @@ module.exports = {
     "recommended-vue": require("./recommended-vue")
   },
   rules: {
+    "align-comments": require("./rules/align-comments"),
+    "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
     "align-one-var": require("./rules/align-one-var"),
     "align-requires": require("./rules/align-requires"),
     "const": require("./rules/const"),
@@ -30,10 +32,8 @@ module.exports = {
     "one-space-after-operator": require("./rules/one-space-after-operator"),
     "regex-in-constructor": require("./rules/regex-in-constructor"),
     "ternary-parenthesis": require("./rules/ternary-parenthesis"),
-    "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
     "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
     "variable-names": require("./rules/variable-names"),
-    "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
     "vue-computed-order": require("./rules/vue-computed-order"),
     "vue-emits-order": require("./rules/vue-emits-order"),
     "vue-header-check": require("./rules/vue-header-check"),
