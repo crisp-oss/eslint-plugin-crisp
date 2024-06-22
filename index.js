@@ -34,6 +34,7 @@ module.exports = {
     "ternary-parenthesis": require("./rules/ternary-parenthesis"),
     "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
     "variable-names": require("./rules/variable-names"),
+    "vue-attribute-linebreak": require("./rules/vue-attribute-linebreak"),
     "vue-computed-order": require("./rules/vue-computed-order"),
     "vue-emits-order": require("./rules/vue-emits-order"),
     "vue-header-check": require("./rules/vue-header-check"),
