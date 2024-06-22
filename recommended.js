@@ -138,6 +138,7 @@ module.exports = {
     "space-in-parens": ["error", "never"],
 
     // Crisp JS rules
+    "crisp/align-comments": "error",
     "crisp/align-consecutive-class-assignements": "error",
     "crisp/align-one-var": "error",
     "crisp/align-requires": "error",
