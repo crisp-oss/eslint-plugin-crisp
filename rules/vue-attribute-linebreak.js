@@ -10,9 +10,9 @@ module.exports = {
   },
 
   create(context) {
-    function report(firstAttribute, location) {
+    function report(attribute, location) {
       context.report({
-        node: firstAttribute,
+        node: attribute,
         message: `Expected a linebreak ${location} this attribute.`
       })
     }
@@ -39,7 +39,7 @@ module.exports = {
 
         // Enforce line-break after last attribute
         if (node.loc.end.line === lastAttribute.loc.start.line) {
-          report(firstAttribute, "below");
+          report(lastAttribute, "below");
         }
       }
     })
