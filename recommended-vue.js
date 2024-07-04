@@ -342,6 +342,7 @@ module.exports = {
     "crisp/vue-html-quotes": "error",
     "crisp/vue-no-regex-data": "error",
     "crisp/vue-props-declaration-multiline": "error",
-    "crisp/vue-props-declaration-order": "error"
+    "crisp/vue-props-declaration-order": "error",
+    "crisp/vue-ref-case": "error"
   }
 }

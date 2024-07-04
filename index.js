@@ -41,7 +41,8 @@ module.exports = {
     "vue-html-indent": require("./rules/vue-html-indent"),
     "vue-html-quotes": require("./rules/vue-html-quotes"),
     "vue-no-regex-data": require("./rules/vue-no-regex-data"),
+    "vue-props-declaration-multiline": require("./rules/vue-props-declaration-multiline"),
     "vue-props-declaration-order": require("./rules/vue-props-declaration-order"),
-    "vue-props-declaration-multiline": require("./rules/vue-props-declaration-multiline")
+    "vue-ref-case": require("./rules/vue-ref-case")
   }
 };

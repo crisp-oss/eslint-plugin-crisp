@@ -200,6 +200,7 @@ Each item has emojis denoting:
 | [crisp/vue-no-regex-data](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-regex-data.js) | Disallows regular expressions to be declared in Vue data object |  | 🟢 |
 | [crisp/vue-props-declaration-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-multiline.js) | Enforces props declarations to be multiline |  | 🟢 |
 | [crisp/vue-props-declaration-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-order.js) | Ensures props declarations are alphabetically ordered |  | 🟢 |
+| [crisp/vue-ref-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-ref-case.js) | Enforces `ref` attributes to snake case |  | 🟢 |
 
 ## License
 
