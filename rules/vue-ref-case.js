@@ -12,18 +12,21 @@ module.exports = {
   create(context) {
     return context.parserServices.defineTemplateBodyVisitor({
       "VAttribute[directive=false][key.name='ref']"(node) {
-        const refValue = node.value && node.value.value;
+        // Check if the ref attribute is not bound to an expression
+        if (node.value && node.value.type === 'VLiteral') {
+          const refValue = node.value.value;
 
-        if (refValue && !/^[a-z]+(_[a-z]+)*$/.test(refValue)) {
-          context.report({
-            node,
-            message: "Ref attribute \"{{refValue}}\" should be snake-cased.",
-            data: {
-              refValue,
-            },
-          });
+          if (refValue && !/^[a-z]+(_[a-z]+)*$/.test(refValue)) {
+            context.report({
+              node,
+              message: "Ref attribute \"{{refValue}}\" should be snake-cased.",
+              data: {
+                refValue,
+              },
+            });
+          }
         }
       }
-    })
+    });
   }
 };
