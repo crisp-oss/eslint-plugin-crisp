@@ -334,6 +334,7 @@ module.exports = {
     ],
 
     // Crisp Vue rules
+    "crisp/vue-attribute-comma": "error",
     "crisp/vue-attribute-linebreak": "error",
     "crisp/vue-computed-order": "error",
     "crisp/vue-emits-order": "error",

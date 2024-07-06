@@ -191,6 +191,7 @@ Each item has emojis denoting:
 
 | Name | Description | 🟠 | 🟢 |
 | :- | :- | :- | :- |
+| [crisp/vue-attribute-comma](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-comma.js) | Disallows trailing comma after attribute |  | 🟢 |
 | [crisp/vue-attribute-linebreak](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-linebreak.js) | Enforces linebreak before first attribute and after last attribute |  | 🟢 |
 | [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) | Ensures computed properties are alphabetically ordered |  | 🟢 |
 | [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) | Ensures emits properties are alphabetically ordered |  | 🟢 |
