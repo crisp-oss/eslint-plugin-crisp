@@ -20,6 +20,7 @@ module.exports = {
     "jsdoc-check-optional-params": require("./rules/jsdoc-check-optional-params"),
     "jsdoc-enforce-access": require("./rules/jsdoc-enforce-access"),
     "jsdoc-enforce-classdesc": require("./rules/jsdoc-enforce-classdesc"),
+    "jsdoc-require-description-uppercase": require("./rules/jsdoc-require-description-uppercase"),
     "methods-naming": require("./rules/methods-naming"),
     "methods-ordering": require("./rules/methods-ordering"),
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),

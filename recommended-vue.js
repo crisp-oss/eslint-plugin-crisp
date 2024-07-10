@@ -222,6 +222,7 @@ module.exports = {
     "crisp/jsdoc-check-optional-params": "error",
     "crisp/jsdoc-enforce-access": "error",
     "crisp/jsdoc-enforce-classdesc": "error",
+    "crisp/jsdoc-require-description-uppercase": "error",
 
     // General Vue rules
     "vue/attributes-order": [

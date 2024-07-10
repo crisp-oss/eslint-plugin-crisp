@@ -151,6 +151,7 @@ Each item has emojis denoting:
 | [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) | Requires optional parameters to be surrounded by brackets |  | 🟢 |
 | [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions |  | 🟢 |
 | [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠 | 🟢 |
+| [crisp/jsdoc-require-description-uppercase](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-require-description-uppercase.js) | Requires descriptions to start with an uppercase character | 🟠 | 🟢 |
 
 #### General Vue rules
 
