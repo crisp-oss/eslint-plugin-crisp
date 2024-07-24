@@ -273,7 +273,16 @@ module.exports = {
     "vue/component-api-style": ["error", ["options"]],
     "vue/component-name-in-template-casing": ["error", "kebab-case"],
     "vue/component-options-name-casing": ["error", "PascalCase"],
-    "vue/custom-event-name-casing": ["error", "camelCase"],
+    "vue/custom-event-name-casing": [
+      "error",
+      "camelCase",
+
+      {
+        "ignores": [
+          "/^[a-z]+(?:-[a-z]+)*(?::[a-z]+(?:-[a-z]+)*)*$/i"
+        ]
+      }
+    ],
     "vue/eqeqeq": "error",
     "vue/html-comment-content-spacing": ["error", "always"],
     "vue/html-quotes": "off",
