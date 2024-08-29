@@ -152,6 +152,7 @@ module.exports = {
     "crisp/multiline-comment-end-backslash": "error",
     "crisp/newline-after-switch-case": "error",
     "crisp/no-async": "error",
+    "crisp/no-extra-line-within-function": "error",
     "crisp/no-var-in-blocks": "error",
     "crisp/no-short-parameters": [
       "error",

@@ -26,6 +26,7 @@ module.exports = {
     "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
     "newline-after-switch-case": require("./rules/newline-after-switch-case"),
     "no-async": require("./rules/no-async"),
+    "no-extra-line-within-function": require("./rules/no-extra-line-within-function"),
     "no-var-in-blocks": require("./rules/no-var-in-blocks"),
     "no-space-in-optional-arguments": require("./rules/no-space-in-optional-arguments"),
     "no-useless-template-literals": require("./rules/no-useless-template-literals"),
