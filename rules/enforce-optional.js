@@ -15,8 +15,10 @@ module.exports = {
     const patterns = [
       // Search for `foo && foo.` or `foo && foo[`
       // Notice: do not match `foo && foo.bar !==` or `foo && foo[bar] !==`, \
-      //   as the version with optional chaining would be unsafe
-      /\b(\w\S+)\s&&\s+\1\b[\[\.](?!\w\S+\s\!\=\=)/g,
+      //   as the version with optional chaining would be unsafe. As well, do \
+      //   not match `foo && foo.bar(` or `foo && foo[bar](`, as methods \
+      //   cannot be called on undefined
+      /\b(\w\S+)\s&&\s+\1\b[\[\.](?!(?:\w\S+\s\!\=\=|\w*\())/g,
 
       // Search for patterns like `foo || {}).bar`, `foo || {})[`, \
       //   `foo || []).bar` or `foo || [])[`
