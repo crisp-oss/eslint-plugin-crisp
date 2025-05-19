@@ -1,17 +1,21 @@
-const PARAM_REGEX = /^\s*\*\s*@param\s*\{\s*(.+?)\s*\}\s*(\S+)/;
-const RETURN_REGEX = /^\s*\*\s*@return\s*\{\s*(.+?)\s*\}\s*(.*)/;
 const SCOPE_REGEX = /^\s*\*\s*@(public|private|protected)/;
+const GENERATOR_REGEX = /^\s*\*\s*@generator/;
 const CLASS_REGEX = /^\s*\*\s*@class\b/;
 const CLASSDESC_REGEX = /^\s*\*\s*@classdesc\s*(.*)/;
+const PARAM_REGEX = /^\s*\*\s*@param\s*\{\s*(.+?)\s*\}\s*(\S+)/;
+const RETURN_REGEX = /^\s*\*\s*@return\s*\{\s*(.+?)\s*\}\s*(.*)/;
+const YIELD_REGEX = /^\s*\*\s*@yields\s*\{\s*(.+?)\s*\}\s*(.*)/;
 
 function parseJSDoc(jsdoc) {
   const lines = jsdoc.split('\n');
   const params = [];
   let returnLine = null;
+  let yieldLine = null;
   let classAnnotation = false;
   let classDescription = "";
   let description = '';
   let scope = '';
+  let generator = false;
 
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i].trim();
@@ -27,7 +31,12 @@ function parseJSDoc(jsdoc) {
     }
 
     // If the line matches any of the other regexes, break out of the loop
-    if (line.match(PARAM_REGEX) || line.match(RETURN_REGEX) || line.match(SCOPE_REGEX)) {
+    if (
+      line.match(SCOPE_REGEX) ||
+      line.match(PARAM_REGEX) ||
+      line.match(RETURN_REGEX) ||
+      line.match(YIELD_REGEX)
+    ) {
       break;
     }
 
@@ -59,13 +68,33 @@ function parseJSDoc(jsdoc) {
       returnLine = { type, description: desc.trim() };
     }
 
+    const yieldMatch = line.match(YIELD_REGEX);
+    if (yieldMatch) {
+      let [, type, desc] = yieldMatch;
+
+      if (type && type[0] === "{" && desc[0] === "}") {
+        if (desc && desc[0] === "}") {
+          desc = desc.substring(1, desc.length);
+
+          type += " }";
+        }
+      }
+
+      yieldLine = { type, description: desc.trim() };
+    }
+
     const scopeMatch = line.match(SCOPE_REGEX);
     if (scopeMatch) {
       scope = scopeMatch[1];
     }
+
+    const generatorMatch = line.match(GENERATOR_REGEX);
+    if (generatorMatch) {
+      generator = true;
+    }
   }
 
-  return { description, scope, params, returnLine };
+  return { description, scope, params, returnLine, yieldLine, generator };
 }
 
 function formatJSDoc(parsedJSDoc, indentation=0) {
@@ -79,9 +108,11 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
     }
   }
 
-  // Check the return type length if it exists
+  // Check the return/yield type length if it exists
   if (parsedJSDoc.returnLine && parsedJSDoc.returnLine && parsedJSDoc.returnLine.type.length > maxTypeLength && parsedJSDoc.returnLine.description) {
     maxTypeLength = parsedJSDoc.returnLine.type.length;
+  } else if (parsedJSDoc.yieldLine && parsedJSDoc.yieldLine && parsedJSDoc.yieldLine.type.length > maxTypeLength && parsedJSDoc.yieldLine.description) {
+    maxTypeLength = parsedJSDoc.yieldLine.type.length;
   }
 
   let jsdoc = '/**\n'
@@ -90,6 +121,10 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
 
   if (parsedJSDoc.scope) {
     jsdoc += indent + '* @' + parsedJSDoc.scope + '\n';
+  }
+
+  if (parsedJSDoc.generator) {
+    jsdoc += indent + '* @generator\n';
   }
 
   // Format params with padding based on maximum type length
@@ -104,6 +139,14 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
     let _return = `* @return {${parsedJSDoc.returnLine.type}}${paddingType} ${parsedJSDoc.returnLine.description}`.trimEnd();
 
     jsdoc += indent + _return + "\n";
+  }
+
+  // Format yield with padding based on maximum type length
+  if (parsedJSDoc.yieldLine) {
+    const paddingType = ' '.repeat(Math.max(0, maxTypeLength - parsedJSDoc.yieldLine.type.length));
+    let _yield = `* @yields {${parsedJSDoc.yieldLine.type}}${paddingType} ${parsedJSDoc.yieldLine.description}`.trimEnd();
+
+    jsdoc += indent + _yield + "\n";
   }
 
   jsdoc += indent + '*/';
