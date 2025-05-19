@@ -196,11 +196,13 @@ module.exports = {
               "public",
 
               "class",
-
               "classdesc",
 
+              "generator",
+
               "param",
-              "return"
+              "return",
+              "yields"
             ]
           }
         ]
