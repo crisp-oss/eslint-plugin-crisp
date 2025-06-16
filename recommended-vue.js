@@ -2,12 +2,14 @@ import globals from "globals";
 import pluginJS from "@eslint/js";
 // import pluginJSdoc from "eslint-plugin-jsdoc";
 import pluginVue from "eslint-plugin-vue";
+import pluginVuePug from "eslint-plugin-vue-pug";
 
 export default function configRecommendedVue(plugin) {
   return [
     pluginJS.configs.recommended,
     // pluginJSdoc.configs["flat/recommended"],
-    pluginVue.configs["flat/vue3-recommended"],
+    pluginVue.configs["flat/recommended"],
+    pluginVuePug.configs["flat/recommended"],
 
     {
       languageOptions: {
@@ -22,11 +24,6 @@ export default function configRecommendedVue(plugin) {
         "crisp": plugin
       },
 
-      // TODO: drop extends
-      extends: [
-        "plugin:vue/vue3-recommended",
-        "plugin:vue-pug/vue3-recommended"
-      ],
 
       settings: {
         jsdoc: {
