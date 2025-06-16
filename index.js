@@ -1,11 +1,16 @@
+import fs from "fs";
+
 import configRecommended from "./recommended.js";
 import configRecommendedVue from "./recommended-vue.js";
 
-import { name, version } from "./package.json";
+const projectPackage = JSON.parse(
+  fs.readFileSync(new URL("./package.json", import.meta.url), "utf8")
+);
+
 const plugin = {
   meta: {
-    name: name,
-    version: version,
+    name: projectPackage.name,
+    version: projectPackage.version,
     namespace: "crisp"
   },
 
