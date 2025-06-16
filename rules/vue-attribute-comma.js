@@ -1,3 +1,5 @@
+import utils from "eslint-plugin-vue/lib/utils/index.js";
+
 export default {
   meta: {
     type: "problem",
@@ -11,7 +13,7 @@ export default {
   },
 
   create(context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    return utils.defineTemplateBodyVisitor(context, {
       'VAttribute'(node) {
         const sourceCode = context.getSourceCode();
         const attributeText = sourceCode.getText(node);

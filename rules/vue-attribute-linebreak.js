@@ -1,3 +1,5 @@
+import utils from "eslint-plugin-vue/lib/utils/index.js";
+
 export default {
   meta: {
     type: "layout",
@@ -17,7 +19,7 @@ export default {
       })
     }
 
-    return context.parserServices.defineTemplateBodyVisitor({
+    return utils.defineTemplateBodyVisitor(context, {
       VStartTag(node) {
         // Skip 'template' tags
         if (node.parent.name === "template") {

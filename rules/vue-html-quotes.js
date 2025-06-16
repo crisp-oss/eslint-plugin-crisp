@@ -1,3 +1,5 @@
+import utils from "eslint-plugin-vue/lib/utils/index.js";
+
 export default {
   meta: {
     type: "layout",
@@ -31,46 +33,44 @@ export default {
     const quoteChar = double ? '"' : "'"
     const quoteName = double ? "double quotes" : "single quotes"
 
-    return context.parserServices.defineTemplateBodyVisitor(
-      {
-        "VAttribute[value!=null]"(node) {
-          const text = sourceCode.getText(node.value)
-          const firstChar = text[0]
+    return utils.defineTemplateBodyVisitor(context, {
+      "VAttribute[value!=null]"(node) {
+        const text = sourceCode.getText(node.value)
+        const firstChar = text[0]
 
-          if (firstChar !== quoteChar) {
-            const contentText = text.slice(1, -1);
+        if (firstChar !== quoteChar) {
+          const contentText = text.slice(1, -1);
 
-            const quoted = firstChar === "'" || firstChar === '"';
+          const quoted = firstChar === "'" || firstChar === '"';
 
-            if (avoidEscape && quoted) {
-              if (contentText.includes(quoteChar)) {
+          if (avoidEscape && quoted) {
+            if (contentText.includes(quoteChar)) {
 
-                return
-              }
+              return
             }
-
-            // Attribute value is an object or an array
-            if (firstChar === "[" || firstChar === "{") {
-              // Matching quote in the object
-              if (contentText.includes(quoteChar)) {
-                return
-              }
-
-              // No quotes in the object or array
-              if (!contentText.includes("'") && !contentText.includes('"')) {
-                return
-              }
-            }
-
-            context.report({
-              node: node.value,
-              loc: node.value.loc,
-              messageId: "expected",
-              data: { kind: quoteName }
-            })
           }
+
+          // Attribute value is an object or an array
+          if (firstChar === "[" || firstChar === "{") {
+            // Matching quote in the object
+            if (contentText.includes(quoteChar)) {
+              return
+            }
+
+            // No quotes in the object or array
+            if (!contentText.includes("'") && !contentText.includes('"')) {
+              return
+            }
+          }
+
+          context.report({
+            node: node.value,
+            loc: node.value.loc,
+            messageId: "expected",
+            data: { kind: quoteName }
+          })
         }
       }
-    )
+    })
   }
 }

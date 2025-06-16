@@ -12,7 +12,8 @@ export default {
   create: function(context) {
     return {
       MethodDefinition: function(node) {
-        const commentsBefore = context.getCommentsBefore(node);
+        const sourceCode = context.getSourceCode();
+        const commentsBefore = sourceCode.getCommentsBefore(node);
 
         const jsDocComment = commentsBefore.find(comment =>
           comment.type === "Block" && comment.value.startsWith("*")

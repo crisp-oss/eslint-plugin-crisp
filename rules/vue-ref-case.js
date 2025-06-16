@@ -1,3 +1,5 @@
+import utils from "eslint-plugin-vue/lib/utils/index.js";
+
 export default {
   meta: {
     type: "layout",
@@ -10,7 +12,7 @@ export default {
   },
 
   create(context) {
-    return context.parserServices.defineTemplateBodyVisitor({
+    return utils.defineTemplateBodyVisitor(context, {
       "VAttribute[directive=false][key.name='ref']"(node) {
         // Check if the ref attribute is not bound to an expression
         if (node.value && node.value.type === 'VLiteral') {
