@@ -48,7 +48,7 @@ export default {
 
         if (
           node.consequent.length === 0 ||
-          currentCodePath.currentSegments.some((segment) => {
+          currentCodePath.currentSegments?.some((segment) => {
             return segment.reachable;
           })
         ) {

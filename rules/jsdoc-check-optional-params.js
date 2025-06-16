@@ -37,7 +37,7 @@ export default {
       }
 
       function checkNode(node, jsdocParams, i) {
-        jsdocParam = jsdocParams[i];
+        let jsdocParam = jsdocParams[i];
 
         if (!jsdocParam || !jsdocParam.type) {
           context.report({
