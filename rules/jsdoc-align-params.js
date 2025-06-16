@@ -155,7 +155,7 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
 }
 
 
-module.exports = {
+export default {
   meta: {
     type: 'layout',
     docs: {

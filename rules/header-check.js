@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-module.exports = {
+export default {
   meta: {
     type: "suggestion",
     docs: {

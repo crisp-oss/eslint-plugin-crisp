@@ -1,6 +1,6 @@
 const doctrine = require("doctrine");
 
-module.exports = {
+export default {
   create(context) {
     let methodOrder = []; // Keep track of method order
 

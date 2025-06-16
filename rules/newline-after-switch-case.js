@@ -16,7 +16,7 @@ function getTokensWithNewlineBetween(sourceCode, startNode, endNode) {
   return null;
 }
 
-module.exports = {
+export default {
   meta: {
     fixable: "whitespace",
     schema: []  // no options

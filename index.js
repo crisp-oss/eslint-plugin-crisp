@@ -1,8 +1,16 @@
-module.exports = {
-  configs: {
-    recommended: require("./recommended"),
-    "recommended-vue": require("./recommended-vue")
+import configRecommended from "./recommended.js";
+import configRecommendedVue from "./recommended-vue.js";
+
+import { name, version } from "./package.json";
+const plugin = {
+  meta: {
+    name: name,
+    version: version,
+    namespace: "crisp"
   },
+
+  configs: {},
+
   rules: {
     "align-comments": require("./rules/align-comments"),
     "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
@@ -50,3 +58,11 @@ module.exports = {
     "vue-ref-case": require("./rules/vue-ref-case")
   }
 };
+
+// Assign configs here so we can reference `plugin`
+Object.assign(plugin.configs, {
+  recommended: configRecommended(plugin),
+  "recommended-vue": configRecommendedVue(plugin)
+});
+
+export default plugin;

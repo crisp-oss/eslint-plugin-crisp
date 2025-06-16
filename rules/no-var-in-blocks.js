@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   create: function (context) {
     return {
       'FunctionDeclaration VariableDeclaration[kind="var"], FunctionExpression VariableDeclaration[kind="var"], ArrowFunctionExpression VariableDeclaration[kind="var"], MethodDefinition VariableDeclaration[kind="var"], ClassDeclaration VariableDeclaration[kind="var"]': function (node) {

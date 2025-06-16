@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   meta: {
     type: "problem",
     docs: {
@@ -29,10 +29,10 @@ module.exports = {
 
     function handleAssignmentExpression(node) {
       // Ensure we're only dealing with assignments directly in constructors
-      if (!node.parent || node.parent.type !== 'ExpressionStatement' || 
-          !node.parent.parent || node.parent.parent.type !== 'BlockStatement' || 
-          !node.parent.parent.parent || node.parent.parent.parent.type !== 'FunctionExpression' || 
-          !node.parent.parent.parent.parent || node.parent.parent.parent.parent.type !== 'MethodDefinition' || 
+      if (!node.parent || node.parent.type !== 'ExpressionStatement' ||
+          !node.parent.parent || node.parent.parent.type !== 'BlockStatement' ||
+          !node.parent.parent.parent || node.parent.parent.parent.type !== 'FunctionExpression' ||
+          !node.parent.parent.parent.parent || node.parent.parent.parent.parent.type !== 'MethodDefinition' ||
           node.parent.parent.parent.parent.kind !== 'constructor') {
         return;
       }

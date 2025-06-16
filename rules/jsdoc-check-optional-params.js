@@ -1,6 +1,6 @@
 const doctrine = require("doctrine");
 
-module.exports = {
+export default {
   meta: {
     type: "suggestion",
     docs: {

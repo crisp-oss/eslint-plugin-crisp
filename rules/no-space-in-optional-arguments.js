@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   create: function(context) {
     return {
       'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression, MethodDefinition': function(node) {
