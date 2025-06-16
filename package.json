@@ -1,9 +1,10 @@
 {
   "name": "eslint-plugin-crisp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Custom ESLint Rules for Crisp",
   "author": "Crisp IM SAS",
   "main": "index.js",
+  "type": "module",
   "homepage": "https://github.com/crisp-oss/eslint-plugin-crisp",
   "repository": {
     "type": "git",
@@ -19,7 +20,8 @@
   "peerDependencies": {
     "eslint": "9.29.0",
     "eslint-plugin-vue": "10.2.0",
-    "eslint-plugin-vue-pug": "1.0.0-alpha.3"
+    "eslint-plugin-vue-pug": "1.0.0-alpha.3",
+    "globals": "15.15.0"
   },
   "keywords": [
     "eslint",
