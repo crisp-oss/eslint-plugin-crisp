@@ -85,6 +85,7 @@ Each item has emojis denoting:
 | [no-console](https://eslint.org/docs/latest/rules/no-console) | Disallows the use of `console` | 🟠 | 🟢 |
 | [no-debugger](https://eslint.org/docs/latest/rules/no-debugger) | Disallows the use of `debugger` | 🟠 | 🟢 |
 | [no-eval](https://eslint.org/docs/latest/rules/no-eval) | Disallows the use of `eval` | 🟠 | 🟢 |
+| [no-implicit-coercion](https://eslint.org/docs/latest/rules/no-implicit-coercion) | Disallows short notations for type conversion |  | 🟢 |
 | [no-magic-numbers](https://eslint.org/docs/latest/rules/no-magic-numbers) | Disallows magic numbers (except the ones in the context of array indexes and in default value assignments) | 🟠 |
 | [no-multi-str](https://eslint.org/docs/latest/rules/no-multi-str) | Disallows multiline strings | 🟠 | 🟢 |
 | [no-multiple-empty-lines](https://eslint.org/docs/latest/rules/no-multiple-empty-lines) | Allows a maximum of 1 consecutive empty lines |  | 🟢 |
@@ -181,6 +182,7 @@ Each item has emojis denoting:
 | [vue/max-len](https://eslint.vuejs.org/rules/max-len) | Enforces a maximum line length of 80 characters (only for `<script>`) |  | 🟢 |
 | [vue/new-line-between-multi-line-property](https://eslint.vuejs.org/rules/new-line-between-multi-line-property) | Requires new lines between multi-line `props` |  | 🟢 |
 | [vue/no-bare-strings-in-template](https://eslint.vuejs.org/rules/no-bare-strings-in-template) | Disallows the use of bare strings in `<template>` |  | 🟢 |
+| [vue/no-implicit-coercion](https://eslint.vuejs.org/rules/no-implicit-coercion) | Disallows short notations for type conversion |  | 🟢 |
 | [vue/no-irregular-whitespace](https://eslint.vuejs.org/rules/no-irregular-whitespace) | Disallows irregular / invalid whitespaces |  | 🟢 |
 | [vue/no-multiple-objects-in-class](https://eslint.vuejs.org/rules/no-multiple-objects-in-class) | Disallows to pass multiple objects into array to `class` HTML property |  | 🟢 |
 | [vue/no-mutating-props](https://eslint.vuejs.org/rules/no-mutating-props) | Disallows mutation of component props (except shallow mutation) |  | 🟢 |
@@ -192,6 +194,7 @@ Each item has emojis denoting:
 | [vue/padding-lines-in-component-definition](https://eslint.vuejs.org/rules/padding-lines-in-component-definition) | Requires padding lines in component definition |  | 🟢 |
 | [vue/prefer-true-attribute-shorthand](https://eslint.vuejs.org/rules/prefer-true-attribute-shorthand) | Requires shorthand form attribute when `v-bind` value is `true` |  | 🟢 |
 | [vue/require-direct-export](https://eslint.vuejs.org/rules/require-direct-export) | Requires the component to be directly exported |  | 🟢 |
+| [vue/slot-name-casing](https://eslint.vuejs.org/rules/slot-name-casing) | Enforces slot names to kebab case |  | 🟢 |
 | [vue/v-for-delimiter-style](https://eslint.vuejs.org/rules/v-for-delimiter-style) | Enforces the use of `in` delimiter in `v-for` directive |  | 🟢 |
 | [vue/v-slot-style](https://eslint.vuejs.org/rules/v-slot-style) | Disallows `v-slot` shorthand style |  | 🟢 |
 

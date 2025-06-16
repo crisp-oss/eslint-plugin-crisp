@@ -99,6 +99,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "no-console": "warn",
         "no-debugger": "warn",
         "no-eval": "error",
+        "no-implicit-coercion": "error",
         "no-multi-str": "error",
         "no-multiple-empty-lines": ["error", { max: 1 }],
         "no-mixed-spaces-and-tabs": "error",
@@ -326,6 +327,7 @@ export default function configRecommendedVue(pluginCrisp) {
         ],
         "vue/new-line-between-multi-line-property": "error",
         "vue/no-bare-strings-in-template": "error",
+        "vue/no-implicit-coercion": "error",
         "vue/no-irregular-whitespace": "error",
         "vue/no-multiple-objects-in-class": "error",
         "vue/no-mutating-props": [
@@ -349,6 +351,7 @@ export default function configRecommendedVue(pluginCrisp) {
         ],
         "vue/prefer-true-attribute-shorthand": "error",
         "vue/require-direct-export": "error",
+        "vue/slot-name-casing": ["error", "kebab-case"],
         "vue/v-for-delimiter-style": ["error", "in"],
         "vue/v-slot-style": [
           "error",
