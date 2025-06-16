@@ -1,18 +1,25 @@
 import globals from "globals";
 import pluginJS from "@eslint/js";
-import pluginJSdoc from "eslint-plugin-jsdoc";
+import pluginJSDoc from "eslint-plugin-jsdoc";
 import pluginVue from "eslint-plugin-vue";
 import pluginVuePug from "eslint-plugin-vue-pug";
 
-export default function configRecommendedVue(plugin) {
+export default function configRecommendedVue(pluginCrisp) {
   return [
     pluginJS.configs.recommended,
-    pluginJSdoc.configs["flat/recommended"],
+    pluginJSDoc.configs["flat/recommended"],
     pluginVue.configs["flat/recommended"],
     pluginVuePug.configs["flat/recommended"],
 
     {
+      files: [
+        "*.js", "**/*.js",
+        "*.vue", "**/*.vue"
+      ],
+
       languageOptions: {
+        ecmaVersion: 11,
+
         globals: {
           ...globals.browser,
           ...globals.node
@@ -20,8 +27,8 @@ export default function configRecommendedVue(plugin) {
       },
 
       plugins: {
-        "jsdoc": pluginJSdoc,
-        "crisp": plugin
+        "jsdoc": pluginJSDoc,
+        "crisp": pluginCrisp
       },
 
       settings: {

@@ -1,12 +1,18 @@
 import globals from "globals";
-import pluginJSdoc from "eslint-plugin-jsdoc";
+import pluginJSDoc from "eslint-plugin-jsdoc";
 
-export default function configRecommended(plugin) {
+export default function configRecommended(pluginCrisp) {
   return [
-    pluginJSdoc.configs["flat/recommended"],
+    pluginJSDoc.configs["flat/recommended"],
 
     {
+      files: [
+        "*.js", "**/*.js"
+      ],
+
       languageOptions: {
+        ecmaVersion: 11,
+
         globals: {
           ...globals.browser,
           ...globals.node
@@ -14,8 +20,8 @@ export default function configRecommended(plugin) {
       },
 
       plugins: {
-        "jsdoc": pluginJSdoc,
-        "crisp": plugin
+        "jsdoc": pluginJSDoc,
+        "crisp": pluginCrisp
       },
 
       settings: {

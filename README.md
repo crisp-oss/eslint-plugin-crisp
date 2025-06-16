@@ -10,21 +10,28 @@ A set of custom [ESLint](https://eslint.org/) configurations and rules for Crisp
 ## Usage
 
 The plugin provides two configurations:
-* `crisp/recommended`: JS rules targetting backend code (Node.js)
-* `crisp/recommended-vue`: JS rules targetting frontend code (Vue.js)
+* `recommended`: JS rules targetting backend code (Node.js)
+* `recommended-vue`: JS rules targetting frontend code (Vue.js)
+import crisp from "eslint-plugin-crisp";
+
+/**************************************************************************
+ * CONFIGURATION
+ ***************************************************************************/
 
 Add the plugin in your ESLint config object, then extend the desired configuration:
 ```javascript
-{
-  "plugins": [
-    "eslint-plugin-crisp"
-  ],
+import crisp from "eslint-plugin-crisp";
 
-  "extends": [
-    "plugin:crisp/recommended"
-    // OR "plugin:crisp/recommended-vue"
-  ]
-}
+export default defineConfig([
+  crisp.configs["recommended"],
+  // OR crisp.configs["recommended-vue"]
+
+  {
+    rules: {
+      // Rules override
+    }
+  }
+]);
 ```
 
 ## Documentation
@@ -32,17 +39,17 @@ Add the plugin in your ESLint config object, then extend the desired configurati
 This is the list of plugins and rules used by ESLint Plugin Crisp, and what they do.
 
 Each item has emojis denoting:
-* 🟠: enabled in `plugin:crisp/recommended`
-* 🟢: enabled in `plugin:crisp/recommended-vue`
+* 🟠: enabled in `recommended`
+* 🟢: enabled in `recommended-vue`
 
 ### Configurations
 
 | Name | Description | 🟠 | 🟢 |
 | :- | :- | :- | :- |
-| [eslint:recommended](https://github.com/eslint/eslint) | Core ESLint rules |  | 🟢 |
-| [plugin:jsdoc/recommended](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules | 🟠 | 🟢 |
-| [plugin:vue/vue3-recommended](https://github.com/vuejs/eslint-plugin-vue) | Vue.js 3 linting rules |  | 🟢 |
-| [plugin:vue-pug/vue3-recommended](https://github.com/gajus/eslint-plugin-jsdoc) | Pug templates support for Vue.js linting rules |  | 🟢 |
+| [@eslint/js:recommended](https://github.com/eslint/eslint/tree/main/packages/js) | Core ESLint rules |  | 🟢 |
+| [eslint-plugin-jsdoc:recommended](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules | 🟠 | 🟢 |
+| [eslint-plugin-vue:recommended](https://github.com/vuejs/eslint-plugin-vue) | Vue.js 3 linting rules |  | 🟢 |
+| [eslint-plugin-vue-pug:recommended](https://github.com/gajus/eslint-plugin-jsdoc) | Pug templates support for Vue.js linting rules |  | 🟢 |
 
 ### Plugins
 
