@@ -1,4 +1,4 @@
-const doctrine = require("doctrine");
+import doctrine from "doctrine";
 
 export default {
   meta: {

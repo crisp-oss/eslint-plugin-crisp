@@ -1,8 +1,8 @@
 // Based on https://github.com/gajus/eslint-plugin-jsdoc/blob/main/src/rules/requireDescriptionCompleteSentence.js
 // Removed handling of sentences, punctuation, abbreviations. We just need to check that the description starts with an uppercase character.
 
-const { default: iterateJsdoc } = require("eslint-plugin-jsdoc/dist/iterateJsdoc");
-const escapeStringRegexp = require("escape-string-regexp");
+import iterateJsdoc from "eslint-plugin-jsdoc/iterateJsdoc.js";
+import escapeStringRegexp from "escape-string-regexp";
 
 const otherDescriptiveTags = new Set([
   // 'copyright' and 'see' might be good addition, but as the former may be
@@ -131,7 +131,7 @@ const validateDescription = (
   });
 };
 
-export default iterateJsdoc(({
+export default iterateJsdoc.default(({
   sourceCode,
   context,
   jsdoc,

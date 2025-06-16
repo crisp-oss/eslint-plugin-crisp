@@ -1,6 +1,6 @@
 // Based on https://github.com/gajus/eslint-plugin-jsdoc/blob/main/src/rules/checkIndentation.js
 
-const { default: iterateJsdoc } = require("eslint-plugin-jsdoc/dist/iterateJsdoc");
+import iterateJsdoc from "eslint-plugin-jsdoc/iterateJsdoc.js";
 
 /**
  * @param {string} str
@@ -43,7 +43,7 @@ const maskLineContinuations = (str) => {
   });
 }
 
-export default iterateJsdoc(({
+export default iterateJsdoc.default(({
   sourceCode,
   jsdocNode,
   report,

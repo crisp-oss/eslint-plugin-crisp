@@ -3,6 +3,51 @@ import fs from "fs";
 import configRecommended from "./recommended.js";
 import configRecommendedVue from "./recommended-vue.js";
 
+import ruleAlignComments from "./rules/align-comments.js";
+import ruleAlignConsecutiveClassAssignements from "./rules/align-consecutive-class-assignements.js";
+import ruleAlignOneVar from "./rules/align-one-var.js";
+import ruleAlignRequires from "./rules/align-requires.js";
+import ruleConst from "./rules/const.js";
+import ruleConstructorVariables from "./rules/constructor-variables.js";
+import ruleEnforceOptional from "./rules/enforce-optional.js";
+import ruleHeaderCheck from "./rules/header-check.js";
+import ruleHeaderCommentsCheck from "./rules/header-comments-check.js";
+import ruleImportGroupComment from "./rules/import-group-comment.js";
+import ruleImportGroupOrder from "./rules/import-group-order.js";
+import ruleJsdocAlignParams from "./rules/jsdoc-align-params.js";
+import ruleJsdocCheckIndentation from "./rules/jsdoc-check-indentation.js";
+import ruleJsdocCheckOptionalParams from "./rules/jsdoc-check-optional-params.js";
+import ruleJsdocEnforceAccess from "./rules/jsdoc-enforce-access.js";
+import ruleJsdocEnforceClassdesc from "./rules/jsdoc-enforce-classdesc.js";
+import ruleJsdocRequireDescriptionUppercase from "./rules/jsdoc-require-description-uppercase.js";
+import ruleMethodsNaming from "./rules/methods-naming.js";
+import ruleMethodsOrdering from "./rules/methods-ordering.js";
+import ruleMultilineCommentEndBackslash from "./rules/multiline-comment-end-backslash.js";
+import ruleNewlineAfterSwitchCase from "./rules/newline-after-switch-case.js";
+import ruleNoAsync from "./rules/no-async.js";
+import ruleNoExtraLineWithinFunction from "./rules/no-extra-line-within-function.js";
+import ruleNoSpaceInOptionalArguments from "./rules/no-space-in-optional-arguments.js";
+import ruleNoUselessTemplateLiterals from "./rules/no-useless-template-literals.js";
+import ruleNoVarInBlocks from "./rules/no-var-in-blocks.js";
+import ruleNoShortParameters from "./rules/no-short-parameters.js";
+import ruleOneSpaceAfterOperator from "./rules/one-space-after-operator.js";
+import ruleRegexInConstructor from "./rules/regex-in-constructor.js";
+import ruleTernaryParenthesis from "./rules/ternary-parenthesis.js";
+import ruleTwoLinesBetweenClassMembers from "./rules/two-lines-between-class-members.js";
+import ruleVariableNames from "./rules/variable-names.js";
+import ruleVueAttributeComma from "./rules/vue-attribute-comma.js";
+import ruleVueAttributeLinebreak from "./rules/vue-attribute-linebreak.js";
+import ruleVueComputedOrder from "./rules/vue-computed-order.js";
+import ruleVueEmitsOrder from "./rules/vue-emits-order.js";
+import ruleVueHeaderCheck from "./rules/vue-header-check.js";
+import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
+import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
+import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
+import ruleVuePropsDeclarationLineBreak from "./rules/vue-props-declaration-line-break.js";
+import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-multiline.js";
+import ruleVuePropsDeclarationOrder from "./rules/vue-props-declaration-order.js";
+import ruleVueRefCase from "./rules/vue-ref-case.js";
+
 const projectPackage = JSON.parse(
   fs.readFileSync(new URL("./package.json", import.meta.url), "utf8")
 );
@@ -17,50 +62,50 @@ const plugin = {
   configs: {},
 
   rules: {
-    "align-comments": require("./rules/align-comments"),
-    "align-consecutive-class-assignements": require("./rules/align-consecutive-class-assignements"),
-    "align-one-var": require("./rules/align-one-var"),
-    "align-requires": require("./rules/align-requires"),
-    "const": require("./rules/const"),
-    "constructor-variables": require("./rules/constructor-variables"),
-    "enforce-optional": require("./rules/enforce-optional"),
-    "header-check": require("./rules/header-check"),
-    "header-comments-check": require("./rules/header-comments-check"),
-    "import-group-comment": require("./rules/import-group-comment"),
-    "import-group-order": require("./rules/import-group-order"),
-    "jsdoc-align-params": require("./rules/jsdoc-align-params"),
-    "jsdoc-check-indentation": require("./rules/jsdoc-check-indentation"),
-    "jsdoc-check-optional-params": require("./rules/jsdoc-check-optional-params"),
-    "jsdoc-enforce-access": require("./rules/jsdoc-enforce-access"),
-    "jsdoc-enforce-classdesc": require("./rules/jsdoc-enforce-classdesc"),
-    "jsdoc-require-description-uppercase": require("./rules/jsdoc-require-description-uppercase"),
-    "methods-naming": require("./rules/methods-naming"),
-    "methods-ordering": require("./rules/methods-ordering"),
-    "multiline-comment-end-backslash": require("./rules/multiline-comment-end-backslash"),
-    "newline-after-switch-case": require("./rules/newline-after-switch-case"),
-    "no-async": require("./rules/no-async"),
-    "no-extra-line-within-function": require("./rules/no-extra-line-within-function"),
-    "no-var-in-blocks": require("./rules/no-var-in-blocks"),
-    "no-space-in-optional-arguments": require("./rules/no-space-in-optional-arguments"),
-    "no-useless-template-literals": require("./rules/no-useless-template-literals"),
-    "no-short-parameters": require("./rules/no-short-parameters"),
-    "one-space-after-operator": require("./rules/one-space-after-operator"),
-    "regex-in-constructor": require("./rules/regex-in-constructor"),
-    "ternary-parenthesis": require("./rules/ternary-parenthesis"),
-    "two-lines-between-class-members": require("./rules/two-lines-between-class-members"),
-    "variable-names": require("./rules/variable-names"),
-    "vue-attribute-comma": require("./rules/vue-attribute-comma"),
-    "vue-attribute-linebreak": require("./rules/vue-attribute-linebreak"),
-    "vue-computed-order": require("./rules/vue-computed-order"),
-    "vue-emits-order": require("./rules/vue-emits-order"),
-    "vue-header-check": require("./rules/vue-header-check"),
-    "vue-html-indent": require("./rules/vue-html-indent"),
-    "vue-html-quotes": require("./rules/vue-html-quotes"),
-    "vue-no-regex-data": require("./rules/vue-no-regex-data"),
-    "vue-props-declaration-line-break": require("./rules/vue-props-declaration-line-break"),
-    "vue-props-declaration-multiline": require("./rules/vue-props-declaration-multiline"),
-    "vue-props-declaration-order": require("./rules/vue-props-declaration-order"),
-    "vue-ref-case": require("./rules/vue-ref-case")
+    "align-comments": ruleAlignComments,
+    "align-consecutive-class-assignements": ruleAlignConsecutiveClassAssignements,
+    "align-one-var": ruleAlignOneVar,
+    "align-requires": ruleAlignRequires,
+    "const": ruleConst,
+    "constructor-variables": ruleConstructorVariables,
+    "enforce-optional": ruleEnforceOptional,
+    "header-check": ruleHeaderCheck,
+    "header-comments-check": ruleHeaderCommentsCheck,
+    "import-group-comment": ruleImportGroupComment,
+    "import-group-order": ruleImportGroupOrder,
+    "jsdoc-align-params": ruleJsdocAlignParams,
+    "jsdoc-check-indentation": ruleJsdocCheckIndentation,
+    "jsdoc-check-optional-params": ruleJsdocCheckOptionalParams,
+    "jsdoc-enforce-access": ruleJsdocEnforceAccess,
+    "jsdoc-enforce-classdesc": ruleJsdocEnforceClassdesc,
+    "jsdoc-require-description-uppercase": ruleJsdocRequireDescriptionUppercase,
+    "methods-naming": ruleMethodsNaming,
+    "methods-ordering": ruleMethodsOrdering,
+    "multiline-comment-end-backslash": ruleMultilineCommentEndBackslash,
+    "newline-after-switch-case": ruleNewlineAfterSwitchCase,
+    "no-async": ruleNoAsync,
+    "no-extra-line-within-function": ruleNoExtraLineWithinFunction,
+    "no-space-in-optional-arguments": ruleNoSpaceInOptionalArguments,
+    "no-var-in-blocks": ruleNoVarInBlocks,
+    "no-useless-template-literals": ruleNoUselessTemplateLiterals,
+    "no-short-parameters": ruleNoShortParameters,
+    "one-space-after-operator": ruleOneSpaceAfterOperator,
+    "regex-in-constructor": ruleRegexInConstructor,
+    "ternary-parenthesis": ruleTernaryParenthesis,
+    "two-lines-between-class-members": ruleTwoLinesBetweenClassMembers,
+    "variable-names": ruleVariableNames,
+    "vue-attribute-comma": ruleVueAttributeComma,
+    "vue-attribute-linebreak": ruleVueAttributeLinebreak,
+    "vue-computed-order": ruleVueComputedOrder,
+    "vue-emits-order": ruleVueEmitsOrder,
+    "vue-header-check": ruleVueHeaderCheck,
+    "vue-html-indent": ruleVueHtmlIndent,
+    "vue-html-quotes": ruleVueHtmlQuotes,
+    "vue-no-regex-data": ruleVueNoRegexData,
+    "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,
+    "vue-props-declaration-multiline": ruleVuePropsDeclarationMultiline,
+    "vue-props-declaration-order": ruleVuePropsDeclarationOrder,
+    "vue-ref-case": ruleVueRefCase
   }
 };
 
