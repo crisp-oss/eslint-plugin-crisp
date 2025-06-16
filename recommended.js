@@ -1,9 +1,9 @@
 import globals from "globals";
-// import pluginJSdoc from "eslint-plugin-jsdoc";
+import pluginJSdoc from "eslint-plugin-jsdoc";
 
 export default function configRecommended(plugin) {
   return [
-    // pluginJSdoc.configs["flat/recommended"],
+    pluginJSdoc.configs["flat/recommended"],
 
     {
       languageOptions: {
@@ -14,7 +14,7 @@ export default function configRecommended(plugin) {
       },
 
       plugins: {
-        // "jsdoc": pluginJSdoc,
+        "jsdoc": pluginJSdoc,
         "crisp": plugin
       },
 

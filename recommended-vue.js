@@ -1,13 +1,13 @@
 import globals from "globals";
 import pluginJS from "@eslint/js";
-// import pluginJSdoc from "eslint-plugin-jsdoc";
+import pluginJSdoc from "eslint-plugin-jsdoc";
 import pluginVue from "eslint-plugin-vue";
 import pluginVuePug from "eslint-plugin-vue-pug";
 
 export default function configRecommendedVue(plugin) {
   return [
     pluginJS.configs.recommended,
-    // pluginJSdoc.configs["flat/recommended"],
+    pluginJSdoc.configs["flat/recommended"],
     pluginVue.configs["flat/recommended"],
     pluginVuePug.configs["flat/recommended"],
 
@@ -20,10 +20,9 @@ export default function configRecommendedVue(plugin) {
       },
 
       plugins: {
-        // "jsdoc": pluginJSdoc,
+        "jsdoc": pluginJSdoc,
         "crisp": plugin
       },
-
 
       settings: {
         jsdoc: {
