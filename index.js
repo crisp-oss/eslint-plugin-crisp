@@ -1,5 +1,3 @@
-import fs from "fs";
-
 import configRecommended from "./recommended.js";
 import configRecommendedVue from "./recommended-vue.js";
 
@@ -48,9 +46,7 @@ import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-mult
 import ruleVuePropsDeclarationOrder from "./rules/vue-props-declaration-order.js";
 import ruleVueRefCase from "./rules/vue-ref-case.js";
 
-const projectPackage = JSON.parse(
-  fs.readFileSync(new URL("./package.json", import.meta.url), "utf8")
-);
+import projectPackage from "./package.json" assert { type: "json" };
 
 const plugin = {
   meta: {
