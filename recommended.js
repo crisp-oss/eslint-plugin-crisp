@@ -11,7 +11,7 @@ export default function configRecommended(pluginCrisp) {
       ],
 
       languageOptions: {
-        ecmaVersion: 11,
+        ecmaVersion: 2020,
 
         globals: {
           ...globals.browser,
