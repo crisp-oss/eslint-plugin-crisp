@@ -196,6 +196,7 @@ export default function configRecommended(pluginCrisp) {
           }
         ],
         "jsdoc/require-param-description": "off",
+        "jsdoc/require-property-description": "off",
         "jsdoc/sort-tags": [
           "error",
 

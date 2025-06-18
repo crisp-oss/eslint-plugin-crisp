@@ -147,6 +147,7 @@ Each item has emojis denoting:
 | [jsdoc/no-undefined-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) | Rule is **disabled** to allow some undefined types | 🟠 |
 | [jsdoc/require-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-description.md) | Requires all functions to have a description in their JSDoc |  | 🟢 |
 | [jsdoc/require-param-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) | Rule is **disabled** as we don't write any description for `@param` tags | 🟠 | 🟢 |
+| [jsdoc/require-property-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) | Rule is **disabled** as we don't write any description for `@property` tags | 🟠 | 🟢 |
 | [jsdoc/require-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) | Enforces JSDoc comments on functions and classes | 🟠 | 🟢 |
 | [jsdoc/sort-tags](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md) | Enforces specific order for tags | 🟠 | 🟢 |
 
