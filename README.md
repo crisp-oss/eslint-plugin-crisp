@@ -1,4 +1,3 @@
-
 # ESLint Plugin Crisp
 
 [![Build and Release](https://github.com/crisp-oss/eslint-plugin-crisp/workflows/Build%20and%20Release/badge.svg)](https://github.com/crisp-oss/eslint-plugin-crisp/actions?query=workflow%3A%22Build+and+Release%22) [![NPM](https://img.shields.io/npm/v/eslint-plugin-crisp.svg)](https://www.npmjs.com/package/eslint-plugin-crisp) [![Downloads](https://img.shields.io/npm/dt/eslint-plugin-crisp.svg)](https://www.npmjs.com/package/eslint-plugin-crisp)
@@ -12,11 +11,6 @@ A set of custom [ESLint](https://eslint.org/) configurations and rules for Crisp
 The plugin provides two configurations:
 * `recommended`: JS rules targetting backend code (Node.js)
 * `recommended-vue`: JS rules targetting frontend code (Vue.js)
-import crisp from "eslint-plugin-crisp";
-
-/**************************************************************************
- * CONFIGURATION
- ***************************************************************************/
 
 Add the plugin in your ESLint config object, then extend the desired configuration:
 ```javascript
