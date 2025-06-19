@@ -9,12 +9,25 @@ export default {
       category: "Best Practices",
       recommended: false,
     },
+    schema: [
+      {
+        type: "object",
+        properties: {
+          patterns: {
+            type: "array",
+            items: { type: "string" },
+          }
+        },
+        additionalProperties: false,
+      },
+    ],
     fixable: null,  // This rule is not auto-fixable
   },
 
   create(context) {
     return {
       Program(node) {
+        const options = context.options[0] || {};
         const fileName = context.getFilename();
 
         let fileContent = fs.readFileSync(path.resolve(fileName), "utf8");
@@ -25,7 +38,7 @@ export default {
         const fileExtension = path.extname(fileName);
 
         // Base header comment patterns
-        let basePatterns = [
+        let basePatterns = options.patterns || [
           "\n \\* This file is part of .+\\n \\*\\n \\* Copyright \\(c\\) \\d{4} Crisp IM SAS\\n \\* All rights belong to Crisp IM SAS\\n ",
           "\n \\* This file is part of .+\\n \\* .+ script\\n \\*\\n \\* Copyright \\d{4}, Crisp IM SAS\\n \\* Author: .+\\n ",
           "\n \\* Bundle: .+\\n \\* Project: .+\\n \\* Author: .+\\n \\* Copyright: \\d{4}, Crisp IM SAS\\n "
