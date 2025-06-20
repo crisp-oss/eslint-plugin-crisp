@@ -27,8 +27,8 @@ export default function configRecommendedVue(pluginCrisp) {
       },
 
       plugins: {
-        "jsdoc": pluginJSDoc,
-        "crisp": pluginCrisp
+        jsdoc: pluginJSDoc,
+        crisp: pluginCrisp
       },
 
       settings: {

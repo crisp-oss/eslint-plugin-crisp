@@ -20,8 +20,8 @@ export default function configRecommended(pluginCrisp) {
       },
 
       plugins: {
-        "jsdoc": pluginJSDoc,
-        "crisp": pluginCrisp
+        jsdoc: pluginJSDoc,
+        crisp: pluginCrisp
       },
 
       settings: {
