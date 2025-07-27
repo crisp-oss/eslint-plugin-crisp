@@ -376,7 +376,8 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-props-declaration-line-break": "error",
         "crisp/vue-props-declaration-multiline": "error",
         "crisp/vue-props-declaration-order": "error",
-        "crisp/vue-ref-case": "error"
+        "crisp/vue-ref-case": "error",
+        "crisp/no-snake-case": "error"
       }
     }
   ];

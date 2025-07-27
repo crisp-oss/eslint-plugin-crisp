@@ -28,6 +28,7 @@ import ruleNoSpaceInOptionalArguments from "./rules/no-space-in-optional-argumen
 import ruleNoUselessTemplateLiterals from "./rules/no-useless-template-literals.js";
 import ruleNoVarInBlocks from "./rules/no-var-in-blocks.js";
 import ruleNoShortParameters from "./rules/no-short-parameters.js";
+import ruleNoSnakeCase from "./rules/no-snake-case.js";
 import ruleOneSpaceAfterOperator from "./rules/one-space-after-operator.js";
 import ruleRegexInConstructor from "./rules/regex-in-constructor.js";
 import ruleTernaryParenthesis from "./rules/ternary-parenthesis.js";
@@ -85,6 +86,7 @@ const plugin = {
     "no-var-in-blocks": ruleNoVarInBlocks,
     "no-useless-template-literals": ruleNoUselessTemplateLiterals,
     "no-short-parameters": ruleNoShortParameters,
+    "no-snake-case": ruleNoSnakeCase,
     "one-space-after-operator": ruleOneSpaceAfterOperator,
     "regex-in-constructor": ruleRegexInConstructor,
     "ternary-parenthesis": ruleTernaryParenthesis,
