@@ -19,7 +19,7 @@ export default {
           comment.type === "Block" && comment.value.startsWith("*")
         );
 
-        if (jsDocComment) {
+        if (jsDocComment && node.key?.name) {
           const isPrivate = node.key.name.startsWith("__");
           const isProtected = node.key.name.startsWith("_") && !node.key.name.startsWith("__");
           const isPublicJsDoc = jsDocComment.value.includes("@public");
