@@ -177,6 +177,7 @@ export default function configRecommendedVue(pluginCrisp) {
             "exceptions": ["_", "$", "x", "y"]
           }
         ],
+        "crisp/no-snake-case": "error",
         "crisp/no-useless-template-literals": "error",
         "crisp/no-var-in-blocks": "error",
         "crisp/one-space-after-operator": [
@@ -376,8 +377,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-props-declaration-line-break": "error",
         "crisp/vue-props-declaration-multiline": "error",
         "crisp/vue-props-declaration-order": "error",
-        "crisp/vue-ref-case": "error",
-        "crisp/no-snake-case": "error"
+        "crisp/vue-ref-case": "error"
       }
     }
   ];

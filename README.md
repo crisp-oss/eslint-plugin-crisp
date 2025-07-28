@@ -126,6 +126,7 @@ Each item has emojis denoting:
 | [crisp/no-async](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-async.js) | Disallows the use of `async/syntax`, in favor of `Promise` | 🟠 | 🟢 |
 | [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallow parameter names shorter than 3 characters | 🟠 | 🟢 |
 | [crisp/no-space-in-optional-arguments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-space-in-optional-arguments.js) | Disallows space before or after `=` in optional parameters | 🟠 |
+| [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 |
 | [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 |
 | [crisp/one-space-after-operator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/one-space-after-operator.js) | Enforces at least one space before and one space after `=` and `:` operators | 🟠 | 🟢 |
