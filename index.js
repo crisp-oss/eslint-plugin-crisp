@@ -47,7 +47,9 @@ import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-mult
 import ruleVuePropsDeclarationOrder from "./rules/vue-props-declaration-order.js";
 import ruleVueRefCase from "./rules/vue-ref-case.js";
 
-import projectPackage from "./package.json" assert { type: "json" };
+import fs from "fs";
+
+const projectPackage = JSON.parse(fs.readFileSync("./package.json", "utf8"));
 
 const plugin = {
   meta: {
