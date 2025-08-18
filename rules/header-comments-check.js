@@ -12,8 +12,8 @@ export default {
   create(context) {
     const filename = context.getFilename();
 
-    // Only apply this rule to .js files
-    if (!filename.endsWith(".js")) {
+    // Only apply this rule to .js and .ts files
+    if (!filename.endsWith(".js") && !filename.endsWith(".ts")) {
       return {};
     }
 
