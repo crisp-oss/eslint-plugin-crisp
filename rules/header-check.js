@@ -50,7 +50,7 @@ export default {
         if (fileExtension === ".vue") {
           headerStart = "<!--";
           headerEnd = "-->";
-        } else if (fileExtension === ".js") {
+        } else if (fileExtension === ".js" || fileExtension === ".ts") {
           headerStart = "\/\\*";
           headerEnd = "\\*\/";
         }
