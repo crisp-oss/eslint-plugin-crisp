@@ -12,12 +12,14 @@ export default {
   create(context) {
     function isRegex(node) {
       if (
+        node &&
         node.type === "NewExpression" &&
         node.callee.name === "RegExp"
       ) {
         // Check for RegExp constructor
         return true;
       } else if (
+        node &&
         node.type === "Literal" &&
         node.regex
       ) {
