@@ -319,7 +319,7 @@ export default function configRecommendedVue(pluginCrisp) {
           "error",
 
           {
-            "code": 80,
+            "code": 100,
             "template": 999,
             "ignorePattern": "^import|\`(.+?)\`|\/\\*\\* \@type|\@return \\{|\\*{20,}",
             "ignoreStrings": true,
