@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-crisp",
-  "version": "1.1.16",
+  "version": "1.2.0",
   "description": "Custom ESLint Rules for Crisp",
   "author": "Crisp IM SAS",
   "main": "index.js",
@@ -21,7 +21,8 @@
     "eslint": "9.29.0",
     "eslint-plugin-vue": "10.2.0",
     "eslint-plugin-vue-pug": "1.0.0-alpha.3",
-    "globals": "15.15.0"
+    "globals": "15.15.0",
+    "typescript-eslint": "8.41.0"
   },
   "keywords": [
     "eslint",

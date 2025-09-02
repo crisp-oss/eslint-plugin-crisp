@@ -1,5 +1,6 @@
 import configRecommended from "./recommended.js";
 import configRecommendedVue from "./recommended-vue.js";
+import configRecommendedTS from "./recommended-ts.js";
 
 import ruleAlignComments from "./rules/align-comments.js";
 import ruleAlignConsecutiveClassAssignements from "./rules/align-consecutive-class-assignements.js";
@@ -112,7 +113,8 @@ const plugin = {
 // Assign configs here so we can reference `plugin`
 Object.assign(plugin.configs, {
   recommended: configRecommended(plugin),
-  "recommended-vue": configRecommendedVue(plugin)
+  "recommended-vue": configRecommendedVue(plugin),
+  "recommended-ts": configRecommendedTS(plugin)
 });
 
 export default plugin;
