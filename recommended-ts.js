@@ -180,8 +180,11 @@ export default function configRecommendedTS(pluginCrisp) {
 
         // General JSDoc rules
         "jsdoc/require-description": "error",
+        "jsdoc/require-param": "off",
         "jsdoc/require-param-description": "off",
         "jsdoc/require-property-description": "off",
+        "jsdoc/require-returns": "off",
+        "jsdoc/require-yields": "off",
         "jsdoc/require-jsdoc": [
           "error",
 
