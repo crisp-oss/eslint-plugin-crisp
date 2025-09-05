@@ -8,9 +8,10 @@ A set of custom [ESLint](https://eslint.org/) configurations and rules for Crisp
 
 ## Usage
 
-The plugin provides two configurations:
+The plugin provides three configurations:
 * `recommended`: JS rules targetting backend code (Node.js)
 * `recommended-vue`: JS rules targetting frontend code (Vue.js)
+* `recommended-ts`: TS rules targetting frontend and backend code (Node.js, Vue.js)
 
 Add the plugin in your ESLint config object, then extend the desired configuration:
 ```javascript
