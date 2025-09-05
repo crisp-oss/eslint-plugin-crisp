@@ -42,7 +42,7 @@ export default {
       }
 
       // Alias path import?
-      if (path.startsWith("@/")) {
+      if (path.startsWith("@/") || path.startsWith("#/")) {
         const parts = path.split("/");
 
         if (parts.length === 2) {
