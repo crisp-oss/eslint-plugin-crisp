@@ -60,6 +60,10 @@ export default {
         return group;
       }
 
+      if (group === "SRC") {
+        group = "MAIN";
+      }
+
       return `PROJECT: ${group}`;
     }
 
