@@ -373,6 +373,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-header-check": "error",
         "crisp/vue-html-indent": "error",
         "crisp/vue-html-quotes": "error",
+        "crisp/vue-vue-name-prop": "error",
         "crisp/vue-no-regex-data": "error",
         "crisp/vue-props-declaration-line-break": "error",
         "crisp/vue-props-declaration-multiline": "error",

@@ -42,6 +42,7 @@ import ruleVueEmitsOrder from "./rules/vue-emits-order.js";
 import ruleVueHeaderCheck from "./rules/vue-header-check.js";
 import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
 import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
+import ruleVueNameProp from "./rules/vue-name-prop.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
 import ruleVuePropsDeclarationLineBreak from "./rules/vue-props-declaration-line-break.js";
 import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-multiline.js";
@@ -102,11 +103,13 @@ const plugin = {
     "vue-header-check": ruleVueHeaderCheck,
     "vue-html-indent": ruleVueHtmlIndent,
     "vue-html-quotes": ruleVueHtmlQuotes,
+    "vue-name-prop": ruleVueNameProp,
     "vue-no-regex-data": ruleVueNoRegexData,
     "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,
     "vue-props-declaration-multiline": ruleVuePropsDeclarationMultiline,
     "vue-props-declaration-order": ruleVuePropsDeclarationOrder,
-    "vue-ref-case": ruleVueRefCase
+    "vue-ref-case": ruleVueRefCase,
+    "vue-form-name-prop": ruleVueFormNameProp
   }
 };
 
