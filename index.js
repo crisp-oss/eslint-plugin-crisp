@@ -108,8 +108,7 @@ const plugin = {
     "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,
     "vue-props-declaration-multiline": ruleVuePropsDeclarationMultiline,
     "vue-props-declaration-order": ruleVuePropsDeclarationOrder,
-    "vue-ref-case": ruleVueRefCase,
-    "vue-form-name-prop": ruleVueFormNameProp
+    "vue-ref-case": ruleVueRefCase
   }
 };
 
