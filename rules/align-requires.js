@@ -17,7 +17,7 @@ export default {
         let lastColumn = null;
 
         for (const declaration of declarations) {
-          if (declaration.init && declaration.init.callee && declaration.init.callee.name === 'require') {
+          if (declaration.init && declaration.init.callee && declaration.init.callee.name === "require") {
             if (lastColumn === null) {
               lastColumn = declaration.loc.start.column;
             } else if (declaration.loc.start.column !== lastColumn) {

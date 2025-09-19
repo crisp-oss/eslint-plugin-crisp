@@ -8,10 +8,10 @@ import iterateJsdoc from "eslint-plugin-jsdoc/iterateJsdoc.js";
  * @returns {string}
  */
 const maskExcludedContent = (str, excludeTags) => {
-  const regContent = new RegExp(`([ \\t]+\\*)[ \\t]@(?:${excludeTags.join('|')})(?=[ \\n])([\\w|\\W]*?\\n)(?=[ \\t]*\\*(?:[ \\t]*@\\w+\\s|\\/))`, 'gu');
+  const regContent = new RegExp(`([ \\t]+\\*)[ \\t]@(?:${excludeTags.join("|")})(?=[ \\n])([\\w|\\W]*?\\n)(?=[ \\t]*\\*(?:[ \\t]*@\\w+\\s|\\/))`, "gu");
 
   return str.replace(regContent, (_match, margin, code) => {
-    return (margin + '\n').repeat(code.match(/\n/gu).length);
+    return (margin + "\n").repeat(code.match(/\n/gu).length);
   });
 };
 
@@ -23,7 +23,7 @@ const maskCodeBlocks = (str) => {
   const regContent = /([ \t]+\*)[ \t]```[^\n]*?([\w|\W]*?\n)(?=[ \t]*\*(?:[ \t]*(?:```|@\w+\s)|\/))/gu;
 
   return str.replace(regContent, (_match, margin, code) => {
-    return (margin + '\n').repeat(code.match(/\n/gu).length);
+    return (margin + "\n").repeat(code.match(/\n/gu).length);
   });
 };
 
@@ -52,7 +52,7 @@ export default iterateJsdoc.default(({
   const options = context.options[0] || {};
   const /** @type {{excludeTags: string[]}} */ {
     excludeTags = [
-      'example',
+      "example",
     ],
   } = options;
 
@@ -64,7 +64,7 @@ export default iterateJsdoc.default(({
 
   if (reg.test(text)) {
     const lineBreaks = text.slice(0, reg.lastIndex).match(/\n/gu) || [];
-    report('There must be no indentation.', null, {
+    report("There must be no indentation.", null, {
       line: lineBreaks.length,
     });
   }
@@ -72,8 +72,8 @@ export default iterateJsdoc.default(({
   iterateAllJsdocs: true,
   meta: {
     docs: {
-      description: 'Reports invalid padding inside JSDoc blocks.',
-      url: 'https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-indentation.md#repos-sticky-header',
+      description: "Reports invalid padding inside JSDoc blocks.",
+      url: "https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-indentation.md#repos-sticky-header",
     },
     schema: [
       {
@@ -81,15 +81,15 @@ export default iterateJsdoc.default(({
         properties: {
           excludeTags: {
             items: {
-              pattern: '^\\S+$',
-              type: 'string',
+              pattern: "^\\S+$",
+              type: "string",
             },
-            type: 'array',
+            type: "array",
           },
         },
-        type: 'object',
+        type: "object",
       },
     ],
-    type: 'layout',
+    type: "layout",
   },
 });

@@ -46,19 +46,19 @@ export default {
     return {
       AssignmentExpression(node) {
         const operatorToken = sourceCode.getTokenBefore(node.right);
-        checkSpacing(node, operatorToken, '=');
+        checkSpacing(node, operatorToken, "=");
       },
       VariableDeclarator(node) {
         if (node.init) {
           const operatorToken = sourceCode.getTokenBefore(node.init);
-          checkSpacing(node, operatorToken, '=');
+          checkSpacing(node, operatorToken, "=");
         }
       },
 
       Property(node) {
         if (checkColon) {
           const operatorToken = sourceCode.getTokenBefore(node.value);
-          checkSpacing(node, operatorToken, ':');
+          checkSpacing(node, operatorToken, ":");
         }
       },
     };

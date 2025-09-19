@@ -1,18 +1,18 @@
 export default {
   meta: {
-    type: 'suggestion',
+    type: "suggestion",
     docs: {
-      description: 'disallow short parameter names',
-      category: 'Stylistic Issues',
+      description: "disallow short parameter names",
+      category: "Stylistic Issues",
     },
     schema: [
       {
-        type: 'object',
+        type: "object",
         properties: {
           exceptions: {
-            type: 'array',
+            type: "array",
             items: {
-              type: 'string',
+              type: "string",
             },
           },
         },
@@ -26,10 +26,10 @@ export default {
     const exceptions = options.exceptions || [];
 
     return {
-      'FunctionDeclaration, FunctionExpression, ArrowFunctionExpression, MethodDefinition': function (node) {
+      "FunctionDeclaration, FunctionExpression, ArrowFunctionExpression, MethodDefinition": function (node) {
         if (node.params) {
           node.params.forEach((param) => {
-            if (param.type === 'Identifier' && !exceptions.includes(param.name) && param.name.length < 2) {
+            if (param.type === "Identifier" && !exceptions.includes(param.name) && param.name.length < 2) {
               context.report({
                 node: param,
                 message: `Parameter name '${param.name}' is too short.`,

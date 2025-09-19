@@ -19,9 +19,9 @@ export default {
     function isSnakeCase(name, isConstant = false) {
       // Remove allowed prefixes (_ or __)
       let cleanName = name;
-      if (name.startsWith('__')) {
+      if (name.startsWith("__")) {
         cleanName = name.slice(2);
-      } else if (name.startsWith('_')) {
+      } else if (name.startsWith("_")) {
         cleanName = name.slice(1);
       }
 
@@ -31,7 +31,7 @@ export default {
       }
 
       // Check if the remaining name contains underscores (indicating snake_case)
-      return cleanName.includes('_');
+      return cleanName.includes("_");
     }
 
     /**
@@ -53,9 +53,9 @@ export default {
         node.declarations.forEach((declaration) => {
           if (declaration.id && declaration.id.name) {
             const name = declaration.id.name;
-            const isConstant = node.kind === 'const';
+            const isConstant = node.kind === "const";
             if (isSnakeCase(name, isConstant)) {
-              reportSnakeCase(declaration, name, 'Variable');
+              reportSnakeCase(declaration, name, "Variable");
             }
           }
         });
@@ -66,16 +66,16 @@ export default {
         if (node.id && node.id.name) {
           const name = node.id.name;
           if (isSnakeCase(name)) {
-            reportSnakeCase(node, name, 'Function');
+            reportSnakeCase(node, name, "Function");
           }
         }
 
         // Check function parameters
         node.params.forEach((param) => {
-          if (param.type === 'Identifier' && param.name) {
+          if (param.type === "Identifier" && param.name) {
             const name = param.name;
             if (isSnakeCase(name)) {
-              reportSnakeCase(param, name, 'Parameter');
+              reportSnakeCase(param, name, "Parameter");
             }
           }
         });
@@ -86,17 +86,17 @@ export default {
         if (node.key && node.key.name) {
           const name = node.key.name;
           if (isSnakeCase(name)) {
-            reportSnakeCase(node, name, 'Method');
+            reportSnakeCase(node, name, "Method");
           }
         }
 
         // Check method parameters
         if (node.value && node.value.params) {
           node.value.params.forEach((param) => {
-            if (param.type === 'Identifier' && param.name) {
+            if (param.type === "Identifier" && param.name) {
               const name = param.name;
               if (isSnakeCase(name)) {
-                reportSnakeCase(param, name, 'Parameter');
+                reportSnakeCase(param, name, "Parameter");
               }
             }
           });
@@ -107,10 +107,10 @@ export default {
       FunctionExpression(node) {
         // Check function parameters
         node.params.forEach((param) => {
-          if (param.type === 'Identifier' && param.name) {
+          if (param.type === "Identifier" && param.name) {
             const name = param.name;
             if (isSnakeCase(name)) {
-              reportSnakeCase(param, name, 'Parameter');
+              reportSnakeCase(param, name, "Parameter");
             }
           }
         });
@@ -120,10 +120,10 @@ export default {
       ArrowFunctionExpression(node) {
         // Check function parameters
         node.params.forEach((param) => {
-          if (param.type === 'Identifier' && param.name) {
+          if (param.type === "Identifier" && param.name) {
             const name = param.name;
             if (isSnakeCase(name)) {
-              reportSnakeCase(param, name, 'Parameter');
+              reportSnakeCase(param, name, "Parameter");
             }
           }
         });
@@ -132,21 +132,21 @@ export default {
       // Check object method properties
       Property(node) {
         // Check if it's a method property
-        if (node.method || (node.value && (node.value.type === 'FunctionExpression' || node.value.type === 'ArrowFunctionExpression'))) {
+        if (node.method || (node.value && (node.value.type === "FunctionExpression" || node.value.type === "ArrowFunctionExpression"))) {
           if (node.key && node.key.name) {
             const name = node.key.name;
             if (isSnakeCase(name)) {
-              reportSnakeCase(node, name, 'Method');
+              reportSnakeCase(node, name, "Method");
             }
           }
 
           // Check method parameters
           if (node.value && node.value.params) {
             node.value.params.forEach((param) => {
-              if (param.type === 'Identifier' && param.name) {
+              if (param.type === "Identifier" && param.name) {
                 const name = param.name;
                 if (isSnakeCase(name)) {
-                  reportSnakeCase(param, name, 'Parameter');
+                  reportSnakeCase(param, name, "Parameter");
                 }
               }
             });

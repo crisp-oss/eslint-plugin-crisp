@@ -13,7 +13,7 @@ export default {
 
     function checkFunctionBody(node) {
       const bodyNode = node.body;
-      if (bodyNode.type !== 'BlockStatement') return;
+      if (bodyNode.type !== "BlockStatement") return;
 
       const lines = sourceCode.lines;
 
@@ -26,7 +26,7 @@ export default {
         // Count the empty lines between the end of the previous node and the start of the current one
         let emptyLineCount = 0;
         for (let j = lineOfPreviousNodeEnd; j < lineOfCurrentNode - 1; j++) {
-          if (lines[j].trim() === '') {
+          if (lines[j].trim() === "") {
             emptyLineCount++;
           }
         }
@@ -41,7 +41,7 @@ export default {
                 sourceCode.getIndexFromLoc({ line: lineOfPreviousNodeEnd, column: 0 }),
                 sourceCode.getIndexFromLoc({ line: lineOfCurrentNode, column: 0 })
               ];
-              return fixer.replaceTextRange(range, '\n\n');
+              return fixer.replaceTextRange(range, "\n\n");
             }
           });
         }
@@ -52,7 +52,7 @@ export default {
       FunctionDeclaration: checkFunctionBody,
       FunctionExpression: checkFunctionBody,
       ArrowFunctionExpression(node) {
-        if (node.body.type === 'BlockStatement') {
+        if (node.body.type === "BlockStatement") {
           checkFunctionBody(node);
         }
       },

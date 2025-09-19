@@ -17,7 +17,7 @@ export default {
 
     function reportMisalignedAssignments(assignments, maxColumn) {
       assignments.forEach(node => {
-        let alignmentColumn = sourceCode.getText(node).indexOf('=') + node.loc.start.column;
+        let alignmentColumn = sourceCode.getText(node).indexOf("=") + node.loc.start.column;
         if (alignmentColumn < maxColumn) {
           context.report({
             node: node,
@@ -29,11 +29,11 @@ export default {
 
     function handleAssignmentExpression(node) {
       // Ensure we're only dealing with assignments directly in constructors
-      if (!node.parent || node.parent.type !== 'ExpressionStatement' ||
-          !node.parent.parent || node.parent.parent.type !== 'BlockStatement' ||
-          !node.parent.parent.parent || node.parent.parent.parent.type !== 'FunctionExpression' ||
-          !node.parent.parent.parent.parent || node.parent.parent.parent.parent.type !== 'MethodDefinition' ||
-          node.parent.parent.parent.parent.kind !== 'constructor') {
+      if (!node.parent || node.parent.type !== "ExpressionStatement" ||
+          !node.parent.parent || node.parent.parent.type !== "BlockStatement" ||
+          !node.parent.parent.parent || node.parent.parent.parent.type !== "FunctionExpression" ||
+          !node.parent.parent.parent.parent || node.parent.parent.parent.parent.type !== "MethodDefinition" ||
+          node.parent.parent.parent.parent.kind !== "constructor") {
         return;
       }
 
@@ -51,14 +51,14 @@ export default {
       }
 
       currentBlock.push(node);
-      let currentAssignmentColumn = sourceCode.getText(node).indexOf('=') + node.loc.start.column;
+      let currentAssignmentColumn = sourceCode.getText(node).indexOf("=") + node.loc.start.column;
       maxColumn = Math.max(maxColumn, currentAssignmentColumn);
     }
 
 
     return {
       AssignmentExpression: handleAssignmentExpression,
-      'MethodDefinition:exit': function () {
+      "MethodDefinition:exit": function () {
         if (currentBlock.length > 1) {
           reportMisalignedAssignments(currentBlock, maxColumn);
         }
@@ -66,7 +66,7 @@ export default {
         currentBlock = [];
         maxColumn = 0;
       },
-      'Program:exit': function () {
+      "Program:exit": function () {
         if (currentBlock.length > 1) {
           reportMisalignedAssignments(currentBlock, maxColumn);
         }

@@ -24,7 +24,7 @@ export default {
 
     // Extract the directory name from the file path
     function getDirectoryName(filePath) {
-      const pathParts = filePath.split('/');
+      const pathParts = filePath.split("/");
       return pathParts[pathParts.length - 2].toUpperCase(); // Directory name
     }
 

@@ -41,7 +41,7 @@ export default {
         if (firstChar !== quoteChar) {
           const contentText = text.slice(1, -1);
 
-          const quoted = firstChar === "'" || firstChar === '"';
+          const quoted = firstChar === "'" || firstChar === "\"";
 
           if (avoidEscape && quoted) {
             if (contentText.includes(quoteChar)) {
@@ -58,7 +58,7 @@ export default {
             }
 
             // No quotes in the object or array
-            if (!contentText.includes("'") && !contentText.includes('"')) {
+            if (!contentText.includes("'") && !contentText.includes("\"")) {
               return
             }
           }

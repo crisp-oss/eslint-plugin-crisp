@@ -68,7 +68,7 @@ export default {
         (
           (declaration.init.callee.name && declaration.init.callee.name === "require") ||
           (declaration.init.callee.type && declaration.init.callee.type === "Import") ||
-          (declaration.init.callee.object && (declaration.init.callee.object || {}).type === 'MetaProperty' && declaration.init.callee.object.meta.type === 'Identifier' && declaration.init.callee.object.meta.name === 'import')
+          (declaration.init.callee.object && (declaration.init.callee.object || {}).type === "MetaProperty" && declaration.init.callee.object.meta.type === "Identifier" && declaration.init.callee.object.meta.name === "import")
         )
       );
     }

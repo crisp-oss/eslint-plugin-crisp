@@ -7,14 +7,14 @@ const RETURN_REGEX = /^\s*\*\s*@return\s*\{\s*(.+?)\s*\}\s*(.*)/;
 const YIELD_REGEX = /^\s*\*\s*@yields\s*\{\s*(.+?)\s*\}\s*(.*)/;
 
 function parseJSDoc(jsdoc) {
-  const lines = jsdoc.split('\n');
+  const lines = jsdoc.split("\n");
   const params = [];
   let returnLine = null;
   let yieldLine = null;
   let classAnnotation = false;
   let classDescription = "";
-  let description = '';
-  let scope = '';
+  let description = "";
+  let scope = "";
   let generator = false;
 
   for (let i = 1; i < lines.length; i++) {
@@ -41,7 +41,7 @@ function parseJSDoc(jsdoc) {
     }
 
     // Append each line to the description, removing leading " * " if present, and adding a newline character
-    description += line.replace(/^\s*\*/, '').trim() + '\n';
+    description += line.replace(/^\s*\*/, "").trim() + "\n";
   }
 
   description = description.trim();
@@ -99,7 +99,7 @@ function parseJSDoc(jsdoc) {
 
 function formatJSDoc(parsedJSDoc, indentation=0) {
   let maxTypeLength = 0;
-  let indent = ' '.repeat(indentation);
+  let indent = " ".repeat(indentation);
 
   // Calculate the maximum type length from params
   for (const param of parsedJSDoc.params) {
@@ -115,27 +115,27 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
     maxTypeLength = parsedJSDoc.yieldLine.type.length;
   }
 
-  let jsdoc = '/**\n'
+  let jsdoc = "/**\n"
 
-  jsdoc += indent + '* ' +parsedJSDoc.description.replace("\n", "\n" + indent + "*   ") + "\n";
+  jsdoc += indent + "* " + parsedJSDoc.description.replace("\n", "\n" + indent + "*   ") + "\n";
 
   if (parsedJSDoc.scope) {
-    jsdoc += indent + '* @' + parsedJSDoc.scope + '\n';
+    jsdoc += indent + "* @" + parsedJSDoc.scope + "\n";
   }
 
   if (parsedJSDoc.generator) {
-    jsdoc += indent + '* @generator\n';
+    jsdoc += indent + "* @generator\n";
   }
 
   // Format params with padding based on maximum type length
   for (const param of parsedJSDoc.params) {
-    const paddingType = ' '.repeat(Math.max(0, maxTypeLength - param.type.length));
+    const paddingType = " ".repeat(Math.max(0, maxTypeLength - param.type.length));
     jsdoc += indent + `* @param  {${param.type}}${paddingType} ${param.name}\n`;
   }
 
   // Format return with padding based on maximum type length
   if (parsedJSDoc.returnLine) {
-    const paddingType = ' '.repeat(Math.max(0, maxTypeLength - parsedJSDoc.returnLine.type.length));
+    const paddingType = " ".repeat(Math.max(0, maxTypeLength - parsedJSDoc.returnLine.type.length));
     let _return = `* @return {${parsedJSDoc.returnLine.type}}${paddingType} ${parsedJSDoc.returnLine.description}`.trimEnd();
 
     jsdoc += indent + _return + "\n";
@@ -143,13 +143,13 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
 
   // Format yield with padding based on maximum type length
   if (parsedJSDoc.yieldLine) {
-    const paddingType = ' '.repeat(Math.max(0, maxTypeLength - parsedJSDoc.yieldLine.type.length));
+    const paddingType = " ".repeat(Math.max(0, maxTypeLength - parsedJSDoc.yieldLine.type.length));
     let _yield = `* @yields {${parsedJSDoc.yieldLine.type}}${paddingType} ${parsedJSDoc.yieldLine.description}`.trimEnd();
 
     jsdoc += indent + _yield + "\n";
   }
 
-  jsdoc += indent + '*/';
+  jsdoc += indent + "*/";
 
   return jsdoc;
 }
@@ -157,13 +157,13 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
 
 export default {
   meta: {
-    type: 'layout',
+    type: "layout",
     docs: {
-      description: 'enforce alignment for JSDoc',
-      category: 'Stylistic Issues',
+      description: "enforce alignment for JSDoc",
+      category: "Stylistic Issues",
       recommended: false,
     },
-    fixable: 'whitespace',
+    fixable: "whitespace",
   },
 
   create: function(context) {
@@ -172,9 +172,9 @@ export default {
         const comments = context.getSourceCode().getAllComments(node);
 
         comments
-          .filter(comment => comment.type === 'Block' && comment.value.startsWith('*'))
+          .filter(comment => comment.type === "Block" && comment.value.startsWith("*"))
           .forEach(jsdocComment => {
-            const lines = jsdocComment.value.split('\n');
+            const lines = jsdocComment.value.split("\n");
             const jsdocString = `/*${jsdocComment.value}*/`;
             const parsedJSDoc = parseJSDoc(jsdocString);
             const indentation = lines.length > 2 ? lines[1].match(/^\s*/)[0].length : 0; // Capture indentation from the first line
@@ -183,7 +183,7 @@ export default {
             if (jsdocString !== formattedJSDoc && parsedJSDoc.description && parsedJSDoc.scope) {
               context.report({
                 node: jsdocComment,
-                message: 'JSDoc alignment issue',
+                message: "JSDoc alignment issue",
 
                 fix(fixer) {
                   return fixer.replaceText(jsdocComment, formattedJSDoc);

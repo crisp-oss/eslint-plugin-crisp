@@ -1,9 +1,9 @@
 export default {
   meta: {
-    type: 'suggestion',
+    type: "suggestion",
     docs: {
-      description: 'enforce that consts are uppercase or start with "__"',
-      category: 'Stylistic Issues',
+      description: "enforce that consts are uppercase or start with \"__\"",
+      category: "Stylistic Issues",
       recommended: false,
     },
     schema: [], // no options
@@ -11,12 +11,12 @@ export default {
   create(context) {
     return {
       VariableDeclaration(node) {
-        if (node.kind === 'const') {
+        if (node.kind === "const") {
           node.declarations.forEach((declaration) => {
-            if (declaration.id && declaration.id.name && (!declaration.id.name.startsWith('__') || declaration.id.name.toUpperCase() !== declaration.id.name)) {
+            if (declaration.id && declaration.id.name && (!declaration.id.name.startsWith("__") || declaration.id.name.toUpperCase() !== declaration.id.name)) {
               context.report({
                 node: declaration,
-                message: 'Consts should be uppercase and start with "__"',
+                message: "Consts should be uppercase and start with \"__\"",
               });
             }
           });

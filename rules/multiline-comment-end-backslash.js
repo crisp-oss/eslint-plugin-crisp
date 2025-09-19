@@ -46,7 +46,7 @@ export default {
           }
 
           // Handle Line comments
-          if (comment.type === 'Line') {
+          if (comment.type === "Line") {
             // If a new comment group starts, process the last group first
             if (groupComments.length > 0 && !comment.value.startsWith("   ")) {
               processGroupComments(groupComments);

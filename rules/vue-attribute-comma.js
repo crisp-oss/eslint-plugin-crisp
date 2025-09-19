@@ -14,16 +14,16 @@ export default {
 
   create(context) {
     return utils.defineTemplateBodyVisitor(context, {
-      'VAttribute'(node) {
+      "VAttribute"(node) {
         const sourceCode = context.getSourceCode();
         const attributeText = sourceCode.getText(node);
         const attributeEndIndex = node.range[1];
         const nextChar = sourceCode.getText().slice(attributeEndIndex, attributeEndIndex + 1);
 
-        if (nextChar === ',') {
+        if (nextChar === ",") {
           context.report({
             node,
-            message: 'Comma after attribute value is not allowed.',
+            message: "Comma after attribute value is not allowed.",
             fix(fixer) {
               return fixer.removeRange([attributeEndIndex, attributeEndIndex + 1]);
             },
