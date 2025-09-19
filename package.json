@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-crisp",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "Custom ESLint Rules for Crisp",
   "author": "Crisp IM SAS",
   "main": "index.js",
@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "doctrine": "3.0.0",
+    "lodash-es": "4.17.21",
     "eslint-plugin-jsdoc": "50.8.0"
   },
   "peerDependencies": {

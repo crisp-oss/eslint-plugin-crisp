@@ -1,4 +1,5 @@
 import utils from "eslint-plugin-vue/lib/utils/index.js";
+import { snakeCase } from "lodash-es";
 
 export default {
   meta: {
@@ -43,15 +44,10 @@ export default {
                   },
 
                   fix(fixer) {
-                    // Convert to snake_case
-                    const fixedName = nameValue
-                      .toLowerCase()
-                      .replace(/[\s-]+/g, "_")
-                      .replace(/[^a-z0-9_]/g, "_")
-                      .replace(/_+/g, "_")
-                      .replace(/^_|_$/g, "");
-
-                    return fixer.replaceText(nameAttribute.value, `"${fixedName}"`);
+                    return fixer.replaceText(
+                      nameAttribute.value,
+                      `"${snakeCase(nameValue).toLowerCase()}"`
+                    );
                   },
                 });
               }
