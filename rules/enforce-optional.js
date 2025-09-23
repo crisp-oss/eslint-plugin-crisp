@@ -44,7 +44,8 @@ export default {
 
             if (
               index === 1 &&
-                /Object\.(keys|values|entries)\(/.test(match[1])
+                (/Object\.(keys|values|entries)\(/.test(match[1]) ||
+                /Array\.(from)\(/.test(match[1]))
             ) {
               // Ignore `Object.keys(foo || {})` (and others) as it cannot be \
               //   safely transformed to optional chaining
