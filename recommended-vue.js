@@ -49,6 +49,7 @@ export default function configRecommendedVue(pluginCrisp) {
       rules: {
         // General JS rules
         "arrow-parens": ["error", "always"],
+        "arrow-body-style": ["error", "always"],
         "brace-style": [
           "error",
           "1tbs",

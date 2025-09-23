@@ -32,6 +32,7 @@ export default function configRecommendedTS(pluginCrisp) {
 
         // General JS rules
         "arrow-parens": ["error", "always"],
+        "arrow-body-style": ["error", "always"],
         "brace-style": [
           "error",
           "1tbs",

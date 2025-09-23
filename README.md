@@ -61,6 +61,7 @@ Each item has emojis denoting:
 | Name | Description | 🟠 | 🟢 | 🟣 |
 | :- | :- | :- | :- | :- |
 | [arrow-parens](https://eslint.org/docs/latest/rules/arrow-parens) | Requires parentheses around arrow function arguments | 🟠 | 🟢 | 🟣 |
+| [arrow-body-style](https://eslint.org/docs/latest/rules/arrow-body-style) | Requires braces around arrow function bodies |  | 🟢 | 🟣 |
 | [brace-style](https://eslint.org/docs/latest/rules/brace-style) | Enforces one true brace style for blocks | 🟠 | 🟢 | 🟣 |
 | [comma-dangle](https://eslint.org/docs/latest/rules/comma-dangle) | Disallows trailing commas | 🟠 | 🟢 | 🟣 |
 | [comma-spacing](https://eslint.org/docs/latest/rules/comma-spacing) | Enforces consistent spacing before and after commas |  | 🟢 | 🟣 |
