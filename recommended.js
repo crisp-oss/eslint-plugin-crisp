@@ -40,6 +40,7 @@ export default function configRecommended(pluginCrisp) {
 
       rules: {
         // General JS rules
+        "array-callback-return": ["error", { checkForEach: true }],
         "arrow-parens": ["error", "always"],
         "brace-style": [
           "error",

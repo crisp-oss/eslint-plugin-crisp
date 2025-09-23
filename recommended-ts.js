@@ -31,8 +31,9 @@ export default function configRecommendedTS(pluginCrisp) {
         "@typescript-eslint/no-unused-vars": "warn",
 
         // General JS rules
-        "arrow-parens": ["error", "always"],
+        "array-callback-return": ["error", { checkForEach: true }],
         "arrow-body-style": ["error", "always"],
+        "arrow-parens": ["error", "always"],
         "brace-style": [
           "error",
           "1tbs",
