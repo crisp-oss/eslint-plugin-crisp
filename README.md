@@ -100,7 +100,7 @@ Each item has emojis denoting:
 | [padded-blocks](https://eslint.org/docs/latest/rules/padded-blocks) | Disallows empty lines at the beginning and ending of blocks | 🟠 | 🟢 | 🟣 |
 | [padding-line-between-statements](https://eslint.org/docs/latest/rules/padding-line-between-statements) | Requires padding lines between various statements | 🟠 | 🟢 | 🟣 |
 | [prefer-arrow-callback](https://eslint.org/docs/latest/rules/prefer-arrow-callback) | Requires using arrow functions for callbacks |  | 🟢 | 🟣 |
-| [prefer-object-spread](https://eslint.org/docs/latest/rules/prefer-object-spread) | Requires using object spread syntax instead of `Object.assign` on object literal |  | 🟢 |  |
+| [prefer-object-spread](https://eslint.org/docs/latest/rules/prefer-object-spread) | Requires using object spread syntax instead of `Object.assign` on object literal | 🟠 | 🟢 | 🟣 |
 | [quotes](https://eslint.org/docs/latest/rules/quotes) | Enforces the consistent use of double quotes (while allowing single quotes in order to avoid escape, and backticks for template literals) | 🟠 | 🟢 | 🟣 |
 | [quote-props](https://eslint.org/docs/latest/rules/quote-props) | Disallows quotes around object literal property names that are not strictly required | 🟠 | 🟢 | 🟣 |
 | [semi](https://eslint.org/docs/latest/rules/semi) | Requires semicolons at the end of statements | 🟠 | 🟢 | 🟣 |

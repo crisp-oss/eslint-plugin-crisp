@@ -136,6 +136,7 @@ export default function configRecommended(pluginCrisp) {
           { "blankLine": "always", "prev": "continue", "next": "*" },
           { "blankLine": "always", "prev": "break", "next": "*" }
         ],
+        "prefer-object-spread": "error",
         "quotes": [
           "error",
           "double",

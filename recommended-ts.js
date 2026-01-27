@@ -132,6 +132,7 @@ export default function configRecommendedTS(pluginCrisp) {
           { "blankLine": "always", "prev": "break", "next": "*" }
         ],
         "prefer-arrow-callback": "error",
+        "prefer-object-spread": "error",
         "quotes": [
           "error",
           "double",
