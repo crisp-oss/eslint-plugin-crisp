@@ -1,4 +1,4 @@
-import utils from "eslint-plugin-vue/lib/utils/index.js";
+import utils from "eslint-plugin-vue/dist/utils/index.js";
 import { snakeCase } from "lodash-es";
 
 export default {
@@ -17,7 +17,7 @@ export default {
   },
 
   create(context) {
-    return utils.defineTemplateBodyVisitor(context, {
+    return utils.default.defineTemplateBodyVisitor(context, {
       "VElement"(node) {
         if (node.name && node.name.startsWith("field-")) {
           const nameAttribute = node.startTag.attributes.find((attribute) => {

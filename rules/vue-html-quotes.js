@@ -1,4 +1,4 @@
-import utils from "eslint-plugin-vue/lib/utils/index.js";
+import utils from "eslint-plugin-vue/dist/utils/index.js";
 
 export default {
   meta: {
@@ -33,7 +33,7 @@ export default {
     const quoteChar = double ? '"' : "'"
     const quoteName = double ? "double quotes" : "single quotes"
 
-    return utils.defineTemplateBodyVisitor(context, {
+    return utils.default.defineTemplateBodyVisitor(context, {
       "VAttribute[value!=null]"(node) {
         const text = sourceCode.getText(node.value)
         const firstChar = text[0]
