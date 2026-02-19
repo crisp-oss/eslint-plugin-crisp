@@ -197,6 +197,7 @@ export default function configRecommendedVue(pluginCrisp) {
         // General JSDoc rules
         "jsdoc/require-description": "error",
         "jsdoc/require-param-description": "off",
+        "jsdoc/require-returns": "off",
         "jsdoc/require-property-description": "off",
         "jsdoc/require-jsdoc": [
           "error",
