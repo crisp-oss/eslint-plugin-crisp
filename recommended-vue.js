@@ -294,7 +294,7 @@ export default function configRecommendedVue(pluginCrisp) {
           }
         ],
         "vue/comma-dangle": "error",
-        "vue/component-api-style": ["error", ["options"]],
+        "vue/component-api-style": ["error", ["options", "composition"]],
         "vue/component-name-in-template-casing": ["error", "kebab-case"],
         "vue/component-options-name-casing": ["error", "PascalCase"],
         "vue/custom-event-name-casing": [
