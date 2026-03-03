@@ -15,10 +15,12 @@ export default {
       "PROJECT: COMPONENTS",
       "PROJECT: POPUPS",
       "PROJECT: MIXINS",
+      "PROJECT: COMPOSABLES",
       "PROJECT: FACTORIES",
       "PROJECT: HELPERS",
       "PROJECT: PLATFORMS",
       "PROJECT: LIBRARIES",
+      "TYPES",
       // Add any other groups here
     ];
 
@@ -62,7 +64,8 @@ export default {
         comment.type === "Line" &&
         (
           comment.value.trim().startsWith("PROJECT:") ||
-          comment.value.trim().startsWith("NPM")
+          comment.value.trim().startsWith("NPM") ||
+          comment.value.trim().startsWith("TYPES")
         )
       );
     }
