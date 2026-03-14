@@ -20,6 +20,12 @@ export default {
     let lastNode = null;
     let groupStart = null;
 
+    // Cache all block comments once at start (sorted by position for fast lookup)
+    const sourceCode = context.sourceCode || context.getSourceCode();
+    const allBlockComments = sourceCode.getAllComments()
+      .filter(c => c.type === "Block")
+      .sort((a, b) => a.range[0] - b.range[0]);
+
     // This function formats the section string into a comment block header
     const COMMENT_HEADER_FORMAT = (section) => {
       return `/**************************************************************************\n * ${section.toUpperCase()}\n ***************************************************************************/`;
@@ -79,9 +85,17 @@ export default {
         return;
       }
 
-      // Find the nearest Block Comment before the startNode
-      const tokens = context.getSourceCode().getTokensBefore(startNode, {includeComments: true});
-      const comment = tokens.reverse().find(token => token.type === "Block");
+      // Find the nearest Block Comment before the startNode (using cached comments)
+      const nodeStart = startNode.range[0];
+      let comment = null;
+
+      for (let i = allBlockComments.length - 1; i >= 0; i--) {
+        if (allBlockComments[i].range[1] < nodeStart) {
+          comment = allBlockComments[i];
+
+          break;
+        }
+      }
 
       // Different types of nodes require different comment blocks
       switch (nodeType) {
