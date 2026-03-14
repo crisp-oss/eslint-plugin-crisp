@@ -1,3 +1,6 @@
+// Pre-compiled regex for access modifier check
+const ACCESS_MODIFIER_PATTERN = /@(public|protected|private)/;
+
 export default {
   meta: {
     type: "problem",
@@ -9,14 +12,16 @@ export default {
   },
 
   create: function(context) {
-    function checkNodeForJSDoc(node, context) {
-      const comments = context.getSourceCode().getCommentsBefore(node);
+    const sourceCode = context.sourceCode || context.getSourceCode();
+
+    function checkNodeForJSDoc(node) {
+      const comments = sourceCode.getCommentsBefore(node);
 
       if (comments.length > 0) {
         const lastComment = comments[comments.length - 1];
 
         if (lastComment.type === "Block" && lastComment.value.startsWith("*")) {
-          if (!/@(public|protected|private)/.test(lastComment.value)) {
+          if (!ACCESS_MODIFIER_PATTERN.test(lastComment.value)) {
             context.report({
               node,
               message: "JSDoc comment should contain @public, @protected or @private",
@@ -33,20 +38,20 @@ export default {
       Property(node) {
         if (node.value.type === "FunctionExpression" ||
         node.value.type === "ArrowFunctionExpression") {
-          checkNodeForJSDoc(node, context);
+          checkNodeForJSDoc(node);
         }
       },
 
       MethodDefinition(node) {
-        checkNodeForJSDoc(node, context);
+        checkNodeForJSDoc(node);
       },
 
       FunctionDeclaration(node) {
-        checkNodeForJSDoc(node, context);
+        checkNodeForJSDoc(node);
       },
 
       FunctionExpression(node) {
-        checkNodeForJSDoc(node, context);
+        checkNodeForJSDoc(node);
       },
     };
   }

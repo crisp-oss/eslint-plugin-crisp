@@ -23,7 +23,7 @@ export default {
     ]
   },
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode || context.getSourceCode();
     const config = context.options[0] || {};
     const checkColon = config.checkColon !== false;
 

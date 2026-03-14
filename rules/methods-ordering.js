@@ -1,15 +1,19 @@
 import doctrine from "doctrine";
 
+// Pre-compiled regex for section comment matching
+const SECTION_COMMENT_PATTERN = /--> (.*) <--/;
+
 export default {
   create(context) {
     let methodOrder = []; // Keep track of method order
+    const sourceCode = context.sourceCode || context.getSourceCode();
 
     return {
       MethodDefinition(node) {
-        const commentsBefore = context.getSourceCode().getCommentsBefore(node);
+        const commentsBefore = sourceCode.getCommentsBefore(node);
 
         // Check if there is a comment matching `--> {VALUE} <--` before the node
-        const nodeComment = commentsBefore.find(comment => comment.type === "Line" && /--> (.*) <--/.test(comment.value));
+        const nodeComment = commentsBefore.find(comment => comment.type === "Line" && SECTION_COMMENT_PATTERN.test(comment.value));
 
         // Reset methodOrder if a matching comment was found
         if (nodeComment) {

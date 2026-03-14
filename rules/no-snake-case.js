@@ -1,3 +1,6 @@
+// Pre-compiled regex for constant naming check
+const UPPER_SNAKE_CASE_PATTERN = /^[A-Z][A-Z0-9_]*$/;
+
 export default {
   meta: {
     type: "suggestion",
@@ -26,7 +29,7 @@ export default {
       }
 
       // Allow UPPER_SNAKE_CASE for constants
-      if (isConstant && cleanName === cleanName.toUpperCase() && /^[A-Z][A-Z0-9_]*$/.test(cleanName)) {
+      if (isConstant && cleanName === cleanName.toUpperCase() && UPPER_SNAKE_CASE_PATTERN.test(cleanName)) {
         return false;
       }
 

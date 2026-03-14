@@ -1,5 +1,8 @@
 import utils from "eslint-plugin-vue/dist/utils/index.js";
 
+// Pre-compiled regex for snake_case ref validation
+const SNAKE_CASE_REF_PATTERN = /^[a-z]+(_[a-z]+)*$/;
+
 export default {
   meta: {
     type: "layout",
@@ -18,7 +21,7 @@ export default {
         if (node.value && node.value.type === "VLiteral") {
           const refValue = node.value.value;
 
-          if (refValue && !/^[a-z]+(_[a-z]+)*$/.test(refValue)) {
+          if (refValue && !SNAKE_CASE_REF_PATTERN.test(refValue)) {
             context.report({
               node,
               message: "Ref attribute \"{{refValue}}\" should be snake-cased.",
