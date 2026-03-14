@@ -175,7 +175,7 @@ Each item has emojis denoting:
 | [vue/block-order](https://eslint.vuejs.org/rules/block-order) | Enforces order of component top-level elements (`template`, then `script`, then `style`) |  | 🟢 |
 | [vue/block-tag-newline](https://eslint.vuejs.org/rules/block-tag-newline) | Requires one line break after opening and before closing block-level tags |  | 🟢 |
 | [vue/comma-dangle](https://eslint.vuejs.org/rules/comma-dangle) | Disallows trailing commas in `<template>` |  | 🟢 |
-| [vue/component-api-style](https://eslint.vuejs.org/rules/component-api-style) | Enforces Options API style |  | 🟢 |
+| [vue/component-api-style](https://eslint.vuejs.org/rules/component-api-style) | Allows both Options API and Composition API |  | 🟢 |
 | [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing) | Enforces tag names to kebab case |  | 🟢 |
 | [vue/component-options-name-casing](https://eslint.vuejs.org/rules/component-options-name-casing) | Enforces component names in `components` options to pascal case |  | 🟢 |
 | [vue/custom-event-name-casing](https://eslint.vuejs.org/rules/custom-event-name-casing) | Enforces custom event names to camel case |  | 🟢 |

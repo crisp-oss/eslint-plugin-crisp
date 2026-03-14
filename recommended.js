@@ -94,7 +94,7 @@ export default function configRecommended(pluginCrisp) {
         "linebreak-style": ["error", "unix"],
         "max-len": ["error", {
           "code": 80,
-          "ignorePattern": "^\\*\\* \\@import"
+          "ignorePattern": "^\\/\\*\\* \@import"
         }],
         "no-console": "warn",
         "no-debugger": "warn",
