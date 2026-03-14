@@ -1,4 +1,3 @@
-import fs from "fs";
 import path from "path";
 
 export default {
@@ -29,10 +28,9 @@ export default {
       Program(node) {
         const options = context.options[0] || {};
         const fileName = context.getFilename();
+        const sourceCode = context.sourceCode || context.getSourceCode();
 
-        let fileContent = fs.readFileSync(path.resolve(fileName), "utf8");
-
-        fileContent = fileContent.trim();
+        let fileContent = sourceCode.getText().trim();
 
         // Determine the file extension
         const fileExtension = path.extname(fileName);
