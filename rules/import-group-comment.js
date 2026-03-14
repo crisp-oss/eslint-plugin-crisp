@@ -20,6 +20,11 @@ export default {
   create(context) {
     const customGroups = context.options[0] || {};  // Get custom groups from options
 
+    // Pre-compile custom regexes once instead of on every import
+    const compiledCustomGroups = Object.entries(customGroups).map(
+      ([regexStr, group]) => [new RegExp(regexStr), group]
+    );
+
     let currentGroupComment = null;
 
     // Extract the directory name from the file path
@@ -29,10 +34,10 @@ export default {
     }
 
     function extractGroupFromPath(path, filePath) {
-      // Check custom regexes first
-      for (const regexStr in customGroups) {
-        if (new RegExp(regexStr).test(path)) {
-          return customGroups[regexStr];
+      // Check custom regexes first (using pre-compiled patterns)
+      for (const [regex, group] of compiledCustomGroups) {
+        if (regex.test(path)) {
+          return group;
         }
       }
 

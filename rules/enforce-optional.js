@@ -1,3 +1,7 @@
+// Pre-compiled patterns for exclusion checks (avoid creating regex in loop)
+const OBJECT_METHODS_PATTERN = /Object\.(keys|values|entries)\(/;
+const ARRAY_METHODS_PATTERN = /Array\.(from)\(/;
+
 export default {
   meta: {
     type: "problem",
@@ -10,7 +14,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode || context.getSourceCode();
 
     const patterns = [
       // Search for `foo && foo.` or `foo && foo[`
@@ -44,8 +48,8 @@ export default {
 
             if (
               index === 1 &&
-                (/Object\.(keys|values|entries)\(/.test(match[1]) ||
-                /Array\.(from)\(/.test(match[1]))
+                (OBJECT_METHODS_PATTERN.test(match[1]) ||
+                ARRAY_METHODS_PATTERN.test(match[1]))
             ) {
               // Ignore `Object.keys(foo || {})` (and others) as it cannot be \
               //   safely transformed to optional chaining
