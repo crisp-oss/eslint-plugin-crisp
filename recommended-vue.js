@@ -325,7 +325,7 @@ export default function configRecommendedVue(pluginCrisp) {
           {
             "code": 100,
             "template": 999,
-            "ignorePattern": "^import|\`(.+?)\`|\/\\*\\* \@type|\@return \\{|\\*{20,}",
+            "ignorePattern": "^import|^\\/\\*\\* \@import|\`(.+?)\`|\/\\*\\* \@type|\@return \\{|\\*{20,}",
             "ignoreStrings": true,
             "ignoreUrls": true,
             "ignoreRegExpLiterals": true
