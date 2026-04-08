@@ -1,3 +1,60 @@
+const COMMENT_HEADER_FORMAT = (section) => {
+  return `/**************************************************************************\n * ${section.toUpperCase()}\n ***************************************************************************/`;
+};
+
+function isTypeComment(comment) {
+  if (comment.type !== "Block" || !comment.value.startsWith("*")) {
+    return false;
+  }
+
+  const content = comment.value;
+
+  return content.includes("@import") || content.includes("@typedef");
+}
+
+function isUppercaseConstant(declaration) {
+  return (
+    declaration &&
+    declaration.id &&
+    declaration.id.name &&
+    declaration.id.name === declaration.id.name.toUpperCase()
+  );
+}
+
+function isRegex(node) {
+  if (node.type !== "VariableDeclaration") {
+    return false;
+  }
+
+  for (const declaration of node.declarations) {
+    if (declaration.init.type === "Literal" && declaration.init.regex != null) {
+      return true;
+    }
+
+    if (
+      declaration.init.type === "NewExpression" &&
+      declaration.init.callee.name === "RegExp"
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+// Checks if a variable declaration is an import or require
+function isImportOrRequire(declaration) {
+  return (
+    declaration.init &&
+    declaration.init.type === "CallExpression" &&
+    (
+      (declaration.init.callee.name && declaration.init.callee.name === "require") ||
+      (declaration.init.callee.type && declaration.init.callee.type === "Import") ||
+      (declaration.init.callee.object && (declaration.init.callee.object || {}).type === "MetaProperty" && declaration.init.callee.object.meta.type === "Identifier" && declaration.init.callee.object.meta.name === "import")
+    )
+  );
+}
+
 export default {
   meta: {
     type: "suggestion",
@@ -6,13 +63,12 @@ export default {
       category: "Best Practices",
       recommended: false,
     },
-    fixable: null,  // This rule is not auto-fixable
+    fixable: null,
   },
 
   create(context) {
     const filename = context.getFilename();
 
-    // Only apply this rule to .js and .ts files
     if (!filename.endsWith(".js") && !filename.endsWith(".ts")) {
       return {};
     }
@@ -20,63 +76,37 @@ export default {
     let lastNode = null;
     let groupStart = null;
 
-    // Cache all block comments once at start (sorted by position for fast lookup)
     const sourceCode = context.sourceCode || context.getSourceCode();
     const allBlockComments = sourceCode.getAllComments()
       .filter(c => c.type === "Block")
       .sort((a, b) => a.range[0] - b.range[0]);
 
-    // This function formats the section string into a comment block header
-    const COMMENT_HEADER_FORMAT = (section) => {
-      return `/**************************************************************************\n * ${section.toUpperCase()}\n ***************************************************************************/`;
-    };
+    const typeComments = allBlockComments.filter(c => isTypeComment(c));
 
-    function isUppercaseConstant(declaration) {
-      return (
-        declaration &&
-        declaration.id &&
-        declaration.id.name &&
-        declaration.id.name === declaration.id.name.toUpperCase()
-      );
-    }
+    function checkTypeCommentsGroup() {
+      if (typeComments.length === 0) {
+        return;
+      }
 
-    function isRegex(node) {
-      // Check if the node is a variable declaration
-      if (node.type !== "VariableDeclaration") {
-        return false;
-      };
+      const firstTypeComment = typeComments[0];
+      const typeCommentStart = firstTypeComment.range[0];
 
-      // For each of the declarations in the variable declaration
-      for (const declaration of node.declarations) {
-        // If the initializer is a regex literal, return true
-        if (declaration.init.type === "Literal" && declaration.init.regex != null) {
-          return true;
-        }
+      let comment = null;
 
-        // If the initializer is a new RegExp expression, return true
-        if (
-          declaration.init.type === "NewExpression" &&
-          declaration.init.callee.name === "RegExp"
-        ) {
-          return true;
+      for (let i = allBlockComments.length - 1; i >= 0; i--) {
+        if (allBlockComments[i].range[1] < typeCommentStart) {
+          comment = allBlockComments[i];
+
+          break;
         }
       }
 
-      // If none of the declarations are regexes, return false
-      return false;
-    }
-
-    // Checks if a variable declaration is an import or require
-    function isImportOrRequire(declaration) {
-      return (
-        declaration.init &&
-        declaration.init.type === "CallExpression" &&
-        (
-          (declaration.init.callee.name && declaration.init.callee.name === "require") ||
-          (declaration.init.callee.type && declaration.init.callee.type === "Import") ||
-          (declaration.init.callee.object && (declaration.init.callee.object || {}).type === "MetaProperty" && declaration.init.callee.object.meta.type === "Identifier" && declaration.init.callee.object.meta.name === "import")
-        )
-      );
+      if (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("TYPES")) {
+        context.report({
+          loc: firstTypeComment.loc,
+          message: "Type comments group must be preceded by a 'TYPES' comment block",
+        });
+      }
     }
 
     function checkGroup(nodeType, startNode) {
@@ -180,6 +210,9 @@ export default {
         if (groupStart) {
           checkGroup(lastNode.type, groupStart);
         }
+
+        // Check type comments group
+        checkTypeCommentsGroup();
       }
     };
   }
