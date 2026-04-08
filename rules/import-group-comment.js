@@ -131,7 +131,7 @@ export default {
       // Get comment for current group
       updateCurrentGroupComment(node);
 
-      if (!currentGroupComment || !currentGroupComment.value.toUpperCase().includes(expectedComment.toUpperCase())) {
+      if (!currentGroupComment || !currentGroupComment.value.includes(expectedComment)) {
         context.report({
           node,
           message: `Import "${importPath}" should be in the "${expectedComment}" group.`,
