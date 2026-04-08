@@ -42,6 +42,7 @@ import ruleVueEmitsOrder from "./rules/vue-emits-order.js";
 import ruleVueHeaderCheck from "./rules/vue-header-check.js";
 import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
 import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
+import ruleVueMethodsSeparator from "./rules/vue-methods-separator.js";
 import ruleVueNameProp from "./rules/vue-name-prop.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
 import ruleVuePropsDeclarationLineBreak from "./rules/vue-props-declaration-line-break.js";
@@ -103,6 +104,7 @@ const plugin = {
     "vue-header-check": ruleVueHeaderCheck,
     "vue-html-indent": ruleVueHtmlIndent,
     "vue-html-quotes": ruleVueHtmlQuotes,
+    "vue-methods-separator": ruleVueMethodsSeparator,
     "vue-name-prop": ruleVueNameProp,
     "vue-no-regex-data": ruleVueNoRegexData,
     "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,
