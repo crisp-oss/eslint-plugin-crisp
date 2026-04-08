@@ -12,6 +12,7 @@ export default {
 
   create(context) {
     const SEPARATOR_PATTERN = /^--> (ACTIONS|HELPERS|EVENT LISTENERS) <--$/;
+    const SEPARATOR_LIKE_PATTERN = /^--> .+ <--$/;
 
     return {
       'ExportDefaultDeclaration Property[key.name="methods"]'(node) {
@@ -35,11 +36,29 @@ export default {
           context.report({
             node,
             message:
-              "Methods block must contain at least one separator comment " +
-              "('// --> ACTIONS <--', '// --> HELPERS <--', " +
-              "or '// --> EVENT LISTENERS <--')"
+              "Methods block must contain at least one separator comment: " +
+              "'// --> ACTIONS <--', '// --> HELPERS <--', " +
+              "or '// --> EVENT LISTENERS <--'."
           });
         }
+
+        comments.forEach((comment) => {
+          if (comment.type === "Line") {
+            const trimmed = comment.value.trim();
+
+            if (
+              SEPARATOR_LIKE_PATTERN.test(trimmed) &&
+              !SEPARATOR_PATTERN.test(trimmed)
+            ) {
+              context.report({
+                node: comment,
+                message:
+                  "Invalid separator comment. Must be '// --> ACTIONS <--', " +
+                  "'// --> HELPERS <--', or '// --> EVENT LISTENERS <--'."
+              });
+            }
+          }
+        });
       }
     };
   }
