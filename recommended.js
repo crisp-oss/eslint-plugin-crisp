@@ -156,6 +156,7 @@ export default function configRecommended(pluginCrisp) {
 
         // Crisp JS rules
         "crisp/align-comments": "error",
+        "crisp/consecutive-line-comments": "error",
         "crisp/align-consecutive-class-assignements": "error",
         "crisp/align-one-var": "error",
         "crisp/align-requires": "error",

@@ -162,6 +162,7 @@ export default function configRecommendedVue(pluginCrisp) {
 
         // Crisp JS rules
         "crisp/align-comments": "error",
+        "crisp/consecutive-line-comments": "error",
         "crisp/enforce-optional": "error",
         "crisp/header-check": "error",
         "crisp/header-comments-check": "error",
