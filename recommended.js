@@ -232,7 +232,8 @@ export default function configRecommended(pluginCrisp) {
         "crisp/jsdoc-align-params": "error",
         "crisp/jsdoc-check-indentation": "error",
         "crisp/jsdoc-enforce-classdesc": "error",
-        "crisp/jsdoc-require-description-uppercase": "error"
+        "crisp/jsdoc-require-description-uppercase": "error",
+        "crisp/jsdoc-description-length": "error"
       }
     }
   ];

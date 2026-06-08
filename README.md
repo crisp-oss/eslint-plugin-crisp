@@ -146,12 +146,18 @@ Each item has emojis denoting:
 | Name | Description | 🟠 | 🟢 | 🟣 |
 | :- | :- | :- | :- | :- |
 | [jsdoc/no-undefined-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) | Rule is **disabled** to allow some undefined types | 🟠 |
+| [jsdoc/no-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-types.md) | Disallows types in JSDoc tags, relying on the TypeScript signature instead |  |  | 🟣 |
 | [jsdoc/require-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-description.md) | Requires all functions to have a description in their JSDoc |  | 🟢 | 🟣 |
 | [jsdoc/require-param](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
+| [jsdoc/require-param-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-type.md) | Rule is **disabled** as types come from the TypeScript signature |  |  | 🟣 |
 | [jsdoc/require-param-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) | Rule is **disabled** as we don't write any description for `@param` tags | 🟠 | 🟢 | 🟣 |
-| [jsdoc/require-property-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) | Rule is **disabled** as we don't write any description for `@property` tags | 🟠 | 🟢 | 🟣 |
-| [jsdoc/require-param](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
-| [jsdoc/require-param](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
+| [jsdoc/check-param-names](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-param-names.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
+| [jsdoc/require-property-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-property-description.md) | Rule is **disabled** as we don't write any description for `@property` tags | 🟠 | 🟢 | 🟣 |
+| [jsdoc/require-returns](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
+| [jsdoc/require-returns-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns-type.md) | Rule is **disabled** as types come from the TypeScript signature |  |  | 🟣 |
+| [jsdoc/require-returns-check](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns-check.md) | Rule is **disabled** as we don't write `@returns` tags |  |  | 🟣 |
+| [jsdoc/require-yields](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
+| [jsdoc/require-yields-check](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-check.md) | Rule is **disabled** as we don't write `@yields` tags |  |  | 🟣 |
 | [jsdoc/require-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) | Enforces JSDoc comments on functions and classes | 🟠 | 🟢 | 🟣 |
 | [jsdoc/sort-tags](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md) | Enforces specific order for tags | 🟠 | 🟢 | 🟣 |
 
@@ -165,6 +171,8 @@ Each item has emojis denoting:
 | [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions |  | 🟢 |
 | [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠 | 🟢 |
 | [crisp/jsdoc-require-description-uppercase](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-require-description-uppercase.js) | Requires descriptions to start with an uppercase character | 🟠 | 🟢 |
+| [crisp/jsdoc-description-length](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-length.js) | Enforces a maximum length for JSDoc descriptions | 🟠 | 🟢 | 🟣 |
+| [crisp/jsdoc-no-param-return](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-no-param-return.js) | Forbids `@param` and `@return` tags in JSDoc, relying on the TypeScript signature instead |  |  | 🟣 |
 
 #### General Vue rules
 

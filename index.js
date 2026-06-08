@@ -18,6 +18,7 @@ import ruleJsdocCheckIndentation from "./rules/jsdoc-check-indentation.js";
 import ruleJsdocCheckOptionalParams from "./rules/jsdoc-check-optional-params.js";
 import ruleJsdocEnforceAccess from "./rules/jsdoc-enforce-access.js";
 import ruleJsdocEnforceClassdesc from "./rules/jsdoc-enforce-classdesc.js";
+import ruleJsdocNoParamReturn from "./rules/jsdoc-no-param-return.js";
 import ruleJsdocRequireDescriptionUppercase from "./rules/jsdoc-require-description-uppercase.js";
 import ruleJsdocDescriptionLength from "./rules/jsdoc-description-length.js";
 import ruleMethodsNaming from "./rules/methods-naming.js";
@@ -81,6 +82,7 @@ const plugin = {
     "jsdoc-check-optional-params": ruleJsdocCheckOptionalParams,
     "jsdoc-enforce-access": ruleJsdocEnforceAccess,
     "jsdoc-enforce-classdesc": ruleJsdocEnforceClassdesc,
+    "jsdoc-no-param-return": ruleJsdocNoParamReturn,
     "jsdoc-require-description-uppercase": ruleJsdocRequireDescriptionUppercase,
     "jsdoc-description-length": ruleJsdocDescriptionLength,
     "methods-naming": ruleMethodsNaming,

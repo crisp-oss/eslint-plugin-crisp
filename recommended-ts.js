@@ -183,14 +183,21 @@ export default function configRecommendedTS(pluginCrisp) {
 
         // Crisp JSDoc rules
         "crisp/jsdoc-description-length": "error",
+        "crisp/jsdoc-no-param-return": "error",
 
         // General JSDoc rules
+        "jsdoc/no-types": "error",
         "jsdoc/require-description": "error",
         "jsdoc/require-param": "off",
+        "jsdoc/require-param-type": "off",
         "jsdoc/require-param-description": "off",
+        "jsdoc/check-param-names": "off",
         "jsdoc/require-property-description": "off",
         "jsdoc/require-returns": "off",
+        "jsdoc/require-returns-type": "off",
+        "jsdoc/require-returns-check": "off",
         "jsdoc/require-yields": "off",
+        "jsdoc/require-yields-check": "off",
         "jsdoc/require-jsdoc": [
           "error",
 

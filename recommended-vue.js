@@ -247,6 +247,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/jsdoc-enforce-access": "error",
         "crisp/jsdoc-enforce-classdesc": "error",
         "crisp/jsdoc-require-description-uppercase": "error",
+        "crisp/jsdoc-description-length": "error",
 
         // General Vue rules
         "vue/attributes-order": [
