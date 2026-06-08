@@ -181,6 +181,9 @@ export default function configRecommendedTS(pluginCrisp) {
         "crisp/regex-in-constructor": "error",
         "crisp/ternary-parenthesis": "error",
 
+        // Crisp JSDoc rules
+        "crisp/jsdoc-description-length": "error",
+
         // General JSDoc rules
         "jsdoc/require-description": "error",
         "jsdoc/require-param": "off",

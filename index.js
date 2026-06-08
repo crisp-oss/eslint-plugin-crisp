@@ -19,6 +19,7 @@ import ruleJsdocCheckOptionalParams from "./rules/jsdoc-check-optional-params.js
 import ruleJsdocEnforceAccess from "./rules/jsdoc-enforce-access.js";
 import ruleJsdocEnforceClassdesc from "./rules/jsdoc-enforce-classdesc.js";
 import ruleJsdocRequireDescriptionUppercase from "./rules/jsdoc-require-description-uppercase.js";
+import ruleJsdocDescriptionLength from "./rules/jsdoc-description-length.js";
 import ruleMethodsNaming from "./rules/methods-naming.js";
 import ruleMethodsOrdering from "./rules/methods-ordering.js";
 import ruleMultilineCommentEndBackslash from "./rules/multiline-comment-end-backslash.js";
@@ -81,6 +82,7 @@ const plugin = {
     "jsdoc-enforce-access": ruleJsdocEnforceAccess,
     "jsdoc-enforce-classdesc": ruleJsdocEnforceClassdesc,
     "jsdoc-require-description-uppercase": ruleJsdocRequireDescriptionUppercase,
+    "jsdoc-description-length": ruleJsdocDescriptionLength,
     "methods-naming": ruleMethodsNaming,
     "methods-ordering": ruleMethodsOrdering,
     "multiline-comment-end-backslash": ruleMultilineCommentEndBackslash,
