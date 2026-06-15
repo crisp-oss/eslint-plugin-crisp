@@ -11,7 +11,7 @@ export default {
   },
 
   create(context) {
-    const COMMENT_PATTERN = /^--> (STATE|DATA|ROUTE PARAMS|COMPONENTS) <--$/;
+    const COMMENT_PATTERN = /^--> (STATE|DATA|ROUTE PARAMS|ROUTE QUERY|COMPONENTS) <--$/;
     const COMMENT_LIKE_PATTERN = /^--> .+ <--$/;
 
     return {
@@ -31,7 +31,7 @@ export default {
             message:
               "data() return object must start with a comment: " +
               "'// --> STATE <--', '// --> DATA <--', " +
-              "'// --> ROUTE PARAMS <--', or '// --> COMPONENTS <--'."
+              "'// --> ROUTE PARAMS <--', '// --> ROUTE QUERY <--', or '// --> COMPONENTS <--'."
           });
 
           return;
@@ -48,7 +48,7 @@ export default {
             message:
               "data() return object must start with a comment: " +
               "'// --> STATE <--', '// --> DATA <--', " +
-              "'// --> ROUTE PARAMS <--', or '// --> COMPONENTS <--'."
+              "'// --> ROUTE PARAMS <--', '// --> ROUTE QUERY <--', or '// --> COMPONENTS <--'."
           });
         }
 
@@ -65,7 +65,7 @@ export default {
                 message:
                   "Invalid comment. Must be '// --> STATE <--', " +
                   "'// --> DATA <--', '// --> ROUTE PARAMS <--', " +
-                  "or '// --> COMPONENTS <--'."
+                  "'// --> ROUTE QUERY <--', or '// --> COMPONENTS <--'."
               });
             }
           }
