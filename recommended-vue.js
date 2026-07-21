@@ -111,6 +111,11 @@ export default function configRecommendedVue(pluginCrisp) {
           {
             "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
             "message": "Switch cases without braces are disallowed."
+          },
+
+          {
+            "selector": "Property[key.name='watch'] > ObjectExpression > Property[value.type='FunctionExpression']",
+            "message": "Watchers must use the object form with a `handler` function."
           }
         ],
         "no-tabs": "error",

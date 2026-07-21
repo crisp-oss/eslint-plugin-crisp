@@ -90,6 +90,7 @@ Each item has emojis denoting:
 | [no-multiple-empty-lines](https://eslint.org/docs/latest/rules/no-multiple-empty-lines) | Allows a maximum of 1 consecutive empty lines |  | 🟢 | 🟣 |
 | [no-mixed-spaces-and-tabs](https://eslint.org/docs/latest/rules/no-mixed-spaces-and-tabs) | Disallows mixed spaces and tabs for indentation | 🟠 | 🟢 | 🟣 |
 | [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Enforces `switch` `case`'s content to be enclosed in braces |  | 🟢 | 🟣 |
+| [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Enforces `watch` watchers to use the object form with a `handler` function |  | 🟢 |  |
 | [no-tabs](https://eslint.org/docs/latest/rules/no-tabs) | Disallows tabs | 🟠 | 🟢 | 🟣 |
 | [no-trailing-spaces](https://eslint.org/docs/latest/rules/no-trailing-spaces) | Disallows trailing whitespace at the end of lines | 🟠 | 🟢 | 🟣 |
 | [no-undef](https://eslint.org/docs/latest/rules/no-undef) | Disallows use of undeclared variables | 🟠 | 🟢 | 🟣 |
