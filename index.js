@@ -17,6 +17,7 @@ import ruleImportGroupOrder from "./rules/import-group-order.js";
 import ruleJsdocAlignParams from "./rules/jsdoc-align-params.js";
 import ruleJsdocCheckIndentation from "./rules/jsdoc-check-indentation.js";
 import ruleJsdocCheckOptionalParams from "./rules/jsdoc-check-optional-params.js";
+import ruleJsdocDescriptionMultiline from "./rules/jsdoc-description-multiline.js";
 import ruleJsdocEnforceAccess from "./rules/jsdoc-enforce-access.js";
 import ruleJsdocEnforceClassdesc from "./rules/jsdoc-enforce-classdesc.js";
 import ruleJsdocNoParamReturn from "./rules/jsdoc-no-param-return.js";
@@ -83,6 +84,7 @@ const plugin = {
     "jsdoc-align-params": ruleJsdocAlignParams,
     "jsdoc-check-indentation": ruleJsdocCheckIndentation,
     "jsdoc-check-optional-params": ruleJsdocCheckOptionalParams,
+    "jsdoc-description-multiline": ruleJsdocDescriptionMultiline,
     "jsdoc-enforce-access": ruleJsdocEnforceAccess,
     "jsdoc-enforce-classdesc": ruleJsdocEnforceClassdesc,
     "jsdoc-no-param-return": ruleJsdocNoParamReturn,
