@@ -160,6 +160,7 @@ export default function configRecommended(pluginCrisp) {
         "crisp/align-consecutive-class-assignements": "error",
         "crisp/align-one-var": "error",
         "crisp/align-requires": "error",
+        "crisp/arrow-block-newline": "error",
         "crisp/const": "error",
         "crisp/constructor-variables": "error",
         "crisp/enforce-optional": "error",

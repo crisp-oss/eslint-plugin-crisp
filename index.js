@@ -6,6 +6,7 @@ import ruleAlignComments from "./rules/align-comments.js";
 import ruleAlignConsecutiveClassAssignements from "./rules/align-consecutive-class-assignements.js";
 import ruleAlignOneVar from "./rules/align-one-var.js";
 import ruleAlignRequires from "./rules/align-requires.js";
+import ruleArrowBlockNewline from "./rules/arrow-block-newline.js";
 import ruleConsecutiveLineComments from "./rules/consecutive-line-comments.js";
 import ruleConst from "./rules/const.js";
 import ruleConstructorVariables from "./rules/constructor-variables.js";
@@ -44,6 +45,7 @@ import ruleVueAttributeComma from "./rules/vue-attribute-comma.js";
 import ruleVueAttributeLinebreak from "./rules/vue-attribute-linebreak.js";
 import ruleVueComputedOrder from "./rules/vue-computed-order.js";
 import ruleVueDataComment from "./rules/vue-data-comment.js";
+import ruleVueDefineComponent from "./rules/vue-define-component.js";
 import ruleVueEmitsOrder from "./rules/vue-emits-order.js";
 import ruleVueHeaderCheck from "./rules/vue-header-check.js";
 import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
@@ -74,6 +76,7 @@ const plugin = {
     "align-consecutive-class-assignements": ruleAlignConsecutiveClassAssignements,
     "align-one-var": ruleAlignOneVar,
     "align-requires": ruleAlignRequires,
+    "arrow-block-newline": ruleArrowBlockNewline,
     "consecutive-line-comments": ruleConsecutiveLineComments,
     "const": ruleConst,
     "constructor-variables": ruleConstructorVariables,
@@ -112,6 +115,7 @@ const plugin = {
     "vue-attribute-linebreak": ruleVueAttributeLinebreak,
     "vue-computed-order": ruleVueComputedOrder,
     "vue-data-comment": ruleVueDataComment,
+    "vue-define-component": ruleVueDefineComponent,
     "vue-emits-order": ruleVueEmitsOrder,
     "vue-header-check": ruleVueHeaderCheck,
     "vue-html-indent": ruleVueHtmlIndent,

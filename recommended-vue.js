@@ -167,6 +167,7 @@ export default function configRecommendedVue(pluginCrisp) {
 
         // Crisp JS rules
         "crisp/align-comments": "error",
+        "crisp/arrow-block-newline": "error",
         "crisp/consecutive-line-comments": "error",
         "crisp/const": "error",
         "crisp/enforce-optional": "error",
@@ -383,6 +384,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-attribute-linebreak": "error",
         "crisp/vue-computed-order": "error",
         "crisp/vue-data-comment": "error",
+        "crisp/vue-define-component": "error",
         "crisp/vue-emits-order": "error",
         "crisp/vue-header-check": "error",
         "crisp/vue-html-indent": "error",

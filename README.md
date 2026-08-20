@@ -120,6 +120,7 @@ Each item has emojis denoting:
 | [crisp/align-consecutive-class-assignements](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-consecutive-class-assignements.js) | Enforces alignment of consecutive assignment statements in a class constructor | 🟠 |
 | [crisp/align-one-var](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-one-var.js) | Enforces alignment of variables in 'one-var' statements | 🟠 |
 | [crisp/align-requires](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-requires.js) | Enforces alignment of require statements | 🟠 |
+| [crisp/arrow-block-newline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/arrow-block-newline.js) | Requires a newline after `{` in arrow function blocks | 🟠 | 🟢 | 🟣 |
 | [crisp/const](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/const.js) | Enforces that `const` variables start with `__` or are all uppercase | 🟠 |
 | [crisp/constructor-variables](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/constructor-variables.js) | Ensures all class properties in the constructor start with `_` | 🟠 |
 | [crisp/enforce-optional](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/enforce-optional.js) | Enforces use of optional chaining | 🟠 | 🟢 | 🟣 |
@@ -220,6 +221,7 @@ Each item has emojis denoting:
 | [crisp/vue-attribute-comma](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-comma.js) | Disallows trailing comma after attribute |  | 🟢 |
 | [crisp/vue-attribute-linebreak](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-linebreak.js) | Enforces linebreak before first attribute and after last attribute |  | 🟢 |
 | [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) | Ensures computed properties are alphabetically ordered |  | 🟢 |
+| [crisp/vue-define-component](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-define-component.js) | Enforces mixins and components to use the `defineComponent` wrapper |  | 🟢 |
 | [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) | Ensures emits properties are alphabetically ordered |  | 🟢 |
 | [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) | Ensures `script`, `template` and `style` tags start with corresponding comment block |  | 🟢 |
 | [crisp/vue-html-indent](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-indent.js) | Enforces consistent indentation in `template` (supports for Pug) |  | 🟢 |
