@@ -29,6 +29,7 @@ import ruleMultilineCommentEndBackslash from "./rules/multiline-comment-end-back
 import ruleNewlineAfterSwitchCase from "./rules/newline-after-switch-case.js";
 import ruleNoAsync from "./rules/no-async.js";
 import ruleNoExtraLineWithinFunction from "./rules/no-extra-line-within-function.js";
+import ruleNoInlineFunctionInTernary from "./rules/no-inline-function-in-ternary.js";
 import ruleNoSpaceInOptionalArguments from "./rules/no-space-in-optional-arguments.js";
 import ruleNoUselessTemplateLiterals from "./rules/no-useless-template-literals.js";
 import ruleNoVarInBlocks from "./rules/no-var-in-blocks.js";
@@ -96,6 +97,7 @@ const plugin = {
     "newline-after-switch-case": ruleNewlineAfterSwitchCase,
     "no-async": ruleNoAsync,
     "no-extra-line-within-function": ruleNoExtraLineWithinFunction,
+    "no-inline-function-in-ternary": ruleNoInlineFunctionInTernary,
     "no-space-in-optional-arguments": ruleNoSpaceInOptionalArguments,
     "no-var-in-blocks": ruleNoVarInBlocks,
     "no-useless-template-literals": ruleNoUselessTemplateLiterals,

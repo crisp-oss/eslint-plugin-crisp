@@ -171,6 +171,7 @@ export default function configRecommended(pluginCrisp) {
         "crisp/newline-after-switch-case": "error",
         "crisp/no-async": "error",
         "crisp/no-extra-line-within-function": "error",
+        "crisp/no-inline-function-in-ternary": "error",
         "crisp/no-var-in-blocks": "error",
         "crisp/no-short-parameters": [
           "error",
