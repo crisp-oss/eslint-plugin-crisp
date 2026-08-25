@@ -50,7 +50,7 @@ export default {
   meta: {
     type: "suggestion",
     docs: {
-      description: "Enforce import statements to be grouped and preceded by a comment",
+      description: "Enforce import statements to be grouped and preceded by a comment with no blank line",
       category: "Best Practices",
       recommended: false,
     },
@@ -62,10 +62,11 @@ export default {
         },
       },
     ],
-    fixable: null,  // This rule is not auto-fixable
+    fixable: "whitespace",
   },
 
   create(context) {
+    const sourceCode = context.sourceCode || context.getSourceCode();
     const customGroups = context.options[0] || {};  // Get custom groups from options
 
     // Pre-compile custom regexes once instead of on every import
@@ -102,22 +103,61 @@ export default {
       return "NPM";
     }
 
-    function updateCurrentGroupComment(node) {
-      const comments = context.getSourceCode().getCommentsBefore(node);
+    function findGroupComment(node) {
+      const comments = sourceCode.getCommentsBefore(node);
 
-      if (comments.length > 0) {
-        for (let i = comments.length - 1; i >= 0; i--) {
-          if (isIgnoreComment(comments[i])) {
-            continue;
-          }
+      for (let i = comments.length - 1; i >= 0; i--) {
+        if (isIgnoreComment(comments[i])) {
+          continue;
+        }
 
-          if (isGroupComment(comments[i])) {
-            currentGroupComment = comments[i];
-
-            break;
-          }
+        if (isGroupComment(comments[i])) {
+          return comments[i];
         }
       }
+
+      return null;
+    }
+
+    function hasBlankLineBetween(fromNode, toNode) {
+      const startLine = fromNode.loc.end.line;
+      const endLine = toNode.loc.start.line;
+
+      for (let i = startLine; i < endLine - 1; i++) {
+        if (sourceCode.lines[i].trim() === "") {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    function checkBlankLineAfterGroupComment(target, groupComment, message) {
+      if (!hasBlankLineBetween(groupComment, target)) {
+        return;
+      }
+
+      context.report({
+        loc: target.loc,
+        message,
+
+        fix(fixer) {
+          const textBetween = sourceCode.text.slice(
+            groupComment.range[1],
+            target.range[0]
+          );
+          const collapsed = textBetween.replace(/(\n[ \t]*)+\n/g, "\n");
+
+          if (collapsed === textBetween) {
+            return null;
+          }
+
+          return fixer.replaceTextRange(
+            [groupComment.range[1], target.range[0]],
+            collapsed
+          );
+        }
+      });
     }
 
     function checkImportGroup(node) {
@@ -128,8 +168,17 @@ export default {
       const expectedGroup = extractGroupFromPath(importPath, filePath);
       const expectedComment = generateExpectedComment(expectedGroup);
 
-      // Get comment for current group
-      updateCurrentGroupComment(node);
+      const groupComment = findGroupComment(node);
+
+      if (groupComment) {
+        currentGroupComment = groupComment;
+
+        checkBlankLineAfterGroupComment(
+          node,
+          groupComment,
+          "Import group comment must be immediately followed by an import (no blank line)."
+        );
+      }
 
       if (!currentGroupComment || !currentGroupComment.value.includes(expectedComment)) {
         context.report({
@@ -139,7 +188,6 @@ export default {
       }
     }
 
-    const sourceCode = context.sourceCode || context.getSourceCode();
     const allComments = sourceCode.getAllComments();
     const typeComments = allComments.filter(c => isTypeComment(c));
 
@@ -173,7 +221,15 @@ export default {
           loc: firstTypeComment.loc,
           message: "Type comments group must be preceded by a '// TYPES' comment",
         });
+
+        return;
       }
+
+      checkBlankLineAfterGroupComment(
+        firstTypeComment,
+        comment,
+        "Type group comment must be immediately followed by a type comment (no blank line)."
+      );
     }
 
     return {
