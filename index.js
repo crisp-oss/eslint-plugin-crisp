@@ -52,6 +52,7 @@ import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
 import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
 import ruleVueMethodsSeparator from "./rules/vue-methods-separator.js";
 import ruleVueNameProp from "./rules/vue-name-prop.js";
+import ruleVueNoNameOption from "./rules/vue-no-name-option.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
 import ruleVuePropsDeclarationLineBreak from "./rules/vue-props-declaration-line-break.js";
 import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-multiline.js";
@@ -122,6 +123,7 @@ const plugin = {
     "vue-html-quotes": ruleVueHtmlQuotes,
     "vue-methods-separator": ruleVueMethodsSeparator,
     "vue-name-prop": ruleVueNameProp,
+    "vue-no-name-option": ruleVueNoNameOption,
     "vue-no-regex-data": ruleVueNoRegexData,
     "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,
     "vue-props-declaration-multiline": ruleVuePropsDeclarationMultiline,

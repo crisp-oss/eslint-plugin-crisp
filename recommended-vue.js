@@ -391,6 +391,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-html-quotes": "error",
         "crisp/vue-methods-separator": "error",
         "crisp/vue-name-prop": "error",
+        "crisp/vue-no-name-option": "error",
         "crisp/vue-no-regex-data": "error",
         "crisp/vue-props-declaration-line-break": "error",
         "crisp/vue-props-declaration-multiline": "error",

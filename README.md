@@ -226,6 +226,7 @@ Each item has emojis denoting:
 | [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) | Ensures `script`, `template` and `style` tags start with corresponding comment block |  | 🟢 |
 | [crisp/vue-html-indent](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-indent.js) | Enforces consistent indentation in `template` (supports for Pug) |  | 🟢 |
 | [crisp/vue-html-quotes](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-quotes.js) | Enforces HTML attributes to be enclosed with double quotes |  | 🟢 |
+| [crisp/vue-no-name-option](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-name-option.js) | Disallows explicit component names in Vue single-file components |  | 🟢 |
 | [crisp/vue-no-regex-data](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-regex-data.js) | Disallows regular expressions to be declared in Vue data object |  | 🟢 |
 | [crisp/vue-props-declaration-line-break](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-line-break.js) | Enforces line break between type and default function in prop definition |  | 🟢 |
 | [crisp/vue-props-declaration-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-multiline.js) | Enforces props declarations to be multiline |  | 🟢 |
