@@ -1,11 +1,11 @@
 // Pre-compiled regex for access modifier check
-const ACCESS_MODIFIER_PATTERN = /@(public|protected|private)/;
+const ACCESS_MODIFIER_PATTERN = /@(public|protected|private|internal)/;
 
 export default {
   meta: {
     type: "problem",
     docs: {
-      description: "Enforce usage of @public, @private, or @protected in JSDoc",
+      description: "Enforce usage of an access modifier in JSDoc",
       category: "Possible Errors",
       recommended: true,
     },
@@ -24,7 +24,7 @@ export default {
           if (!ACCESS_MODIFIER_PATTERN.test(lastComment.value)) {
             context.report({
               node,
-              message: "JSDoc comment should contain @public, @protected or @private",
+              message: "JSDoc comment should contain @public, @protected, @private or @internal",
             });
           }
         }
