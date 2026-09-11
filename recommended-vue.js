@@ -236,6 +236,7 @@ export default function configRecommendedVue(pluginCrisp) {
                   "private",
                   "protected",
                   "public",
+                  "internal",
 
                   "class",
 

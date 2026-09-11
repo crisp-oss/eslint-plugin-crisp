@@ -216,6 +216,7 @@ export default function configRecommended(pluginCrisp) {
                   "private",
                   "protected",
                   "public",
+                  "internal",
 
                   "class",
                   "classdesc",

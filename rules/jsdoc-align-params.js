@@ -1,4 +1,5 @@
 const SCOPE_REGEX = /^\s*\*\s*@(public|private|protected)/;
+const INTERNAL_REGEX = /^\s*\*\s*@internal/;
 const GENERATOR_REGEX = /^\s*\*\s*@generator/;
 const CLASS_REGEX = /^\s*\*\s*@class\b/;
 const CLASSDESC_REGEX = /^\s*\*\s*@classdesc\s*(.*)/;
@@ -15,6 +16,7 @@ function parseJSDoc(jsdoc) {
   let classDescription = "";
   let description = "";
   let scope = "";
+  let internal = false;
   let generator = false;
 
   for (let i = 1; i < lines.length; i++) {
@@ -33,6 +35,7 @@ function parseJSDoc(jsdoc) {
     // If the line matches any of the other regexes, break out of the loop
     if (
       line.match(SCOPE_REGEX) ||
+      line.match(INTERNAL_REGEX) ||
       line.match(PARAM_REGEX) ||
       line.match(RETURN_REGEX) ||
       line.match(YIELD_REGEX)
@@ -88,13 +91,19 @@ function parseJSDoc(jsdoc) {
       scope = scopeMatch[1];
     }
 
+    if (line.match(INTERNAL_REGEX)) {
+      internal = true;
+    }
+
     const generatorMatch = line.match(GENERATOR_REGEX);
     if (generatorMatch) {
       generator = true;
     }
   }
 
-  return { description, scope, params, returnLine, yieldLine, generator };
+  return {
+    description, scope, internal, params, returnLine, yieldLine, generator
+  };
 }
 
 function formatJSDoc(parsedJSDoc, indentation=0) {
@@ -121,6 +130,10 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
 
   if (parsedJSDoc.scope) {
     jsdoc += indent + "* @" + parsedJSDoc.scope + "\n";
+  }
+
+  if (parsedJSDoc.internal) {
+    jsdoc += indent + "* @internal\n";
   }
 
   if (parsedJSDoc.generator) {
