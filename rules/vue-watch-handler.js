@@ -1,7 +1,6 @@
 const VALID_SIGNATURES = [
   [],
   ["value"],
-  ["newValue"],
   ["newValue", "oldValue"]
 ];
 
@@ -47,8 +46,7 @@ export default {
       invalidHandler: "Watcher `handler` must be a function.",
       invalidSignature:
         "Watcher `handler` must use one of these signatures: " +
-        "`handler()`, `handler(value)`, `handler(newValue)`, or " +
-        "`handler(newValue, oldValue)`."
+        "`handler()`, `handler(value)`, or `handler(newValue, oldValue)`."
     }
   },
 
