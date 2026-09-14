@@ -220,12 +220,14 @@ Each item has emojis denoting:
 | :- | :- | :- | :- | :- |
 | [crisp/vue-attribute-comma](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-comma.js) | Disallows trailing comma after attribute |  | 🟢 |
 | [crisp/vue-attribute-linebreak](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-linebreak.js) | Enforces linebreak before first attribute and after last attribute |  | 🟢 |
+| [crisp/vue-class-attribute-last](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-class-attribute-last.js) | Enforces `class` to be the last attribute holding a value, and `:class` to be the last bound attribute |  | 🟢 |
 | [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) | Ensures computed properties are alphabetically ordered |  | 🟢 |
 | [crisp/vue-define-component](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-define-component.js) | Enforces mixins and components to use the `defineComponent` wrapper |  | 🟢 |
 | [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) | Ensures emits properties are alphabetically ordered |  | 🟢 |
 | [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) | Ensures `script`, `template` and `style` tags start with corresponding comment block |  | 🟢 |
 | [crisp/vue-html-indent](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-indent.js) | Enforces consistent indentation in `template` (supports for Pug) |  | 🟢 |
 | [crisp/vue-html-quotes](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-quotes.js) | Enforces HTML attributes to be enclosed with double quotes |  | 🟢 |
+| [crisp/vue-no-mixed-class](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class.js) | Disallows using both `class` and `:class` on the same element |  | 🟢 |
 | [crisp/vue-no-name-option](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-name-option.js) | Disallows explicit component names in Vue single-file components |  | 🟢 |
 | [crisp/vue-no-regex-data](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-regex-data.js) | Disallows regular expressions to be declared in Vue data object |  | 🟢 |
 | [crisp/vue-props-declaration-line-break](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-line-break.js) | Enforces line break between type and default function in prop definition |  | 🟢 |

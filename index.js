@@ -43,6 +43,7 @@ import ruleTwoLinesBetweenClassMembers from "./rules/two-lines-between-class-mem
 import ruleVariableNames from "./rules/variable-names.js";
 import ruleVueAttributeComma from "./rules/vue-attribute-comma.js";
 import ruleVueAttributeLinebreak from "./rules/vue-attribute-linebreak.js";
+import ruleVueClassAttributeLast from "./rules/vue-class-attribute-last.js";
 import ruleVueComputedOrder from "./rules/vue-computed-order.js";
 import ruleVueDataComment from "./rules/vue-data-comment.js";
 import ruleVueDefineComponent from "./rules/vue-define-component.js";
@@ -52,6 +53,7 @@ import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
 import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
 import ruleVueMethodsSeparator from "./rules/vue-methods-separator.js";
 import ruleVueNameProp from "./rules/vue-name-prop.js";
+import ruleVueNoMixedClass from "./rules/vue-no-mixed-class.js";
 import ruleVueNoNameOption from "./rules/vue-no-name-option.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
 import ruleVuePropsDeclarationLineBreak from "./rules/vue-props-declaration-line-break.js";
@@ -115,6 +117,7 @@ const plugin = {
     "variable-names": ruleVariableNames,
     "vue-attribute-comma": ruleVueAttributeComma,
     "vue-attribute-linebreak": ruleVueAttributeLinebreak,
+    "vue-class-attribute-last": ruleVueClassAttributeLast,
     "vue-computed-order": ruleVueComputedOrder,
     "vue-data-comment": ruleVueDataComment,
     "vue-define-component": ruleVueDefineComponent,
@@ -124,6 +127,7 @@ const plugin = {
     "vue-html-quotes": ruleVueHtmlQuotes,
     "vue-methods-separator": ruleVueMethodsSeparator,
     "vue-name-prop": ruleVueNameProp,
+    "vue-no-mixed-class": ruleVueNoMixedClass,
     "vue-no-name-option": ruleVueNoNameOption,
     "vue-no-regex-data": ruleVueNoRegexData,
     "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,

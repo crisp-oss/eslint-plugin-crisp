@@ -378,6 +378,7 @@ export default function configRecommendedVue(pluginCrisp) {
         // Crisp Vue rules
         "crisp/vue-attribute-comma": "error",
         "crisp/vue-attribute-linebreak": "error",
+        "crisp/vue-class-attribute-last": "error",
         "crisp/vue-computed-order": "error",
         "crisp/vue-data-comment": "error",
         "crisp/vue-define-component": "error",
@@ -387,6 +388,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-html-quotes": "error",
         "crisp/vue-methods-separator": "error",
         "crisp/vue-name-prop": "error",
+        "crisp/vue-no-mixed-class": "error",
         "crisp/vue-no-name-option": "error",
         "crisp/vue-no-regex-data": "error",
         "crisp/vue-props-declaration-line-break": "error",
