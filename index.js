@@ -44,6 +44,7 @@ import ruleVariableNames from "./rules/variable-names.js";
 import ruleVueAttributeComma from "./rules/vue-attribute-comma.js";
 import ruleVueAttributeLinebreak from "./rules/vue-attribute-linebreak.js";
 import ruleVueClassAttributeLast from "./rules/vue-class-attribute-last.js";
+import ruleVueClassShorthandMaxLen from "./rules/vue-class-shorthand-max-len.js";
 import ruleVueComputedOrder from "./rules/vue-computed-order.js";
 import ruleVueDataComment from "./rules/vue-data-comment.js";
 import ruleVueDefineComponent from "./rules/vue-define-component.js";
@@ -53,6 +54,7 @@ import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
 import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
 import ruleVueMethodsSeparator from "./rules/vue-methods-separator.js";
 import ruleVueNameProp from "./rules/vue-name-prop.js";
+import ruleVueNoComponentClassShorthand from "./rules/vue-no-component-class-shorthand.js";
 import ruleVueNoMixedClass from "./rules/vue-no-mixed-class.js";
 import ruleVueNoNameOption from "./rules/vue-no-name-option.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
@@ -118,6 +120,7 @@ const plugin = {
     "vue-attribute-comma": ruleVueAttributeComma,
     "vue-attribute-linebreak": ruleVueAttributeLinebreak,
     "vue-class-attribute-last": ruleVueClassAttributeLast,
+    "vue-class-shorthand-max-len": ruleVueClassShorthandMaxLen,
     "vue-computed-order": ruleVueComputedOrder,
     "vue-data-comment": ruleVueDataComment,
     "vue-define-component": ruleVueDefineComponent,
@@ -127,6 +130,7 @@ const plugin = {
     "vue-html-quotes": ruleVueHtmlQuotes,
     "vue-methods-separator": ruleVueMethodsSeparator,
     "vue-name-prop": ruleVueNameProp,
+    "vue-no-component-class-shorthand": ruleVueNoComponentClassShorthand,
     "vue-no-mixed-class": ruleVueNoMixedClass,
     "vue-no-name-option": ruleVueNoNameOption,
     "vue-no-regex-data": ruleVueNoRegexData,
