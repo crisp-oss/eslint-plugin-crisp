@@ -111,11 +111,6 @@ export default function configRecommendedVue(pluginCrisp) {
           {
             "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
             "message": "Switch cases without braces are disallowed."
-          },
-
-          {
-            "selector": "Property[key.name='watch'] > ObjectExpression > Property[value.type='FunctionExpression']",
-            "message": "Watchers must use the object form with a `handler` function."
           }
         ],
         "no-tabs": "error",
@@ -397,7 +392,8 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-props-declaration-line-break": "error",
         "crisp/vue-props-declaration-multiline": "error",
         "crisp/vue-props-declaration-order": "error",
-        "crisp/vue-ref-case": "error"
+        "crisp/vue-ref-case": "error",
+        "crisp/vue-watch-handler": "error"
       }
     }
   ];
