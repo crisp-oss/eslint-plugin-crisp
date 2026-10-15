@@ -93,7 +93,7 @@ export default function configRecommended(pluginCrisp) {
         "keyword-spacing": "error",
         "linebreak-style": ["error", "unix"],
         "max-len": ["error", {
-          "code": 80,
+          "code": 100,
           "ignorePattern": "^\\/\\*\\* \@import"
         }],
         "no-console": "warn",
