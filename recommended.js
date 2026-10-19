@@ -221,7 +221,7 @@ export default function configRecommended(pluginCrisp) {
 
                   "class",
                   "classdesc",
-                  "extends",
+                  "augments",
                   "template",
 
                   "generator",
