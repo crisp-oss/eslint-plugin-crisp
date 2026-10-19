@@ -86,7 +86,10 @@ export default function configRecommendedTS(pluginCrisp) {
         ],
         "keyword-spacing": "error",
         "linebreak-style": ["error", "unix"],
-        "max-len": ["error", 100],
+        "max-len": ["error", {
+          "code": 100,
+          "ignorePattern": "^\\s*(?:\\/\\*\\*|\\*) @(?:import|typedef|property)"
+        }],
         "newline-per-chained-call": "error",
         "no-console": "warn",
         "no-debugger": "warn",
