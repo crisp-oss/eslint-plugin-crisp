@@ -210,6 +210,7 @@ export default function configRecommended(pluginCrisp) {
           "error",
 
           {
+            reportTagGroupSpacing: false,
             tagSequence: [
               {
                 tags: [
