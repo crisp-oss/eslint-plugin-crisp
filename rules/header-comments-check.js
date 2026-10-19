@@ -21,20 +21,66 @@ function isUppercaseConstant(declaration) {
   );
 }
 
+function isRegexExpression(node) {
+  if (!node) {
+    return false;
+  }
+
+  if (
+    (node.type === "Literal" && node.regex != null) ||
+    node.type === "RegExpLiteral"
+  ) {
+    return true;
+  }
+
+  if (
+    node.type === "NewExpression" &&
+    node.callee.type === "Identifier" &&
+    node.callee.name === "RegExp"
+  ) {
+    return true;
+  }
+
+  if (node.type === "ArrayExpression") {
+    return node.elements.some(isRegexExpression);
+  }
+
+  if (node.type === "ObjectExpression") {
+    return node.properties.some((property) => {
+      if (property.type === "Property") {
+        return isRegexExpression(property.value);
+      }
+
+      if (property.type === "SpreadElement") {
+        return isRegexExpression(property.argument);
+      }
+
+      return false;
+    });
+  }
+
+  if (node.type === "SpreadElement") {
+    return isRegexExpression(node.argument);
+  }
+
+  if (
+    node.type === "TSAsExpression" ||
+    node.type === "TSTypeAssertion" ||
+    node.type === "TSNonNullExpression"
+  ) {
+    return isRegexExpression(node.expression);
+  }
+
+  return false;
+}
+
 function isRegex(node) {
-  if (node.type !== "VariableDeclaration") {
+  if (!node || node.type !== "VariableDeclaration") {
     return false;
   }
 
   for (const declaration of node.declarations) {
-    if (declaration.init.type === "Literal" && declaration.init.regex != null) {
-      return true;
-    }
-
-    if (
-      declaration.init.type === "NewExpression" &&
-      declaration.init.callee.name === "RegExp"
-    ) {
+    if (isRegexExpression(declaration.init)) {
       return true;
     }
   }
