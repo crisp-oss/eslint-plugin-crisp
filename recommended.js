@@ -220,6 +220,8 @@ export default function configRecommended(pluginCrisp) {
 
                   "class",
                   "classdesc",
+                  "extends",
+                  "template",
 
                   "generator",
 
