@@ -79,7 +79,7 @@ Each item has emojis denoting:
 | [key-spacing](https://eslint.org/docs/latest/rules/key-spacing) | Enforces consistent spacing in object literal properties (no space between the key and the colon, one space between the colon and the value) |  | 🟢 | 🟣 |
 | [keyword-spacing](https://eslint.org/docs/latest/rules/keyword-spacing) | Enforces consistent spacing before and after keywords | 🟠 | 🟢 | 🟣 |
 | [linebreak-style](https://eslint.org/docs/latest/rules/linebreak-style) | Enforces Unix-style line endings | 🟠 | 🟢 | 🟣 |
-| [max-len](https://eslint.org/docs/latest/rules/max-len) | Enforces a maximum line length of 80 / 100 characters | 🟠 | 🟢 | 🟣 |
+| [max-len](https://eslint.org/docs/latest/rules/max-len) | Enforces a maximum line length of 80 / 100 characters (`@import`, `@typedef` and `@property` lines are ignored) | 🟠 | 🟢 | 🟣 |
 | [newline-per-chained-call](https://eslint.org/docs/latest/rules/newline-per-chained-call) | Requires a newline after each call in a method chain |  | 🟢 | 🟣 |
 | [no-console](https://eslint.org/docs/latest/rules/no-console) | Disallows the use of `console` | 🟠 | 🟢 | 🟣 |
 | [no-debugger](https://eslint.org/docs/latest/rules/no-debugger) | Disallows the use of `debugger` | 🟠 | 🟢 | 🟣 |
