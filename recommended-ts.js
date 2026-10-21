@@ -4,7 +4,7 @@ import pluginTS from "typescript-eslint";
 
 export default function configRecommendedTS(pluginCrisp) {
   return [
-    pluginTS.configs.recommendedTypeChecked,
+    ...pluginTS.configs.recommendedTypeChecked,
     pluginJSDoc.configs["flat/recommended"],
 
     {

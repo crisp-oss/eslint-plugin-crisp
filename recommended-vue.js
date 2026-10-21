@@ -8,8 +8,8 @@ export default function configRecommendedVue(pluginCrisp) {
   return [
     pluginJS.configs.recommended,
     pluginJSDoc.configs["flat/recommended"],
-    pluginVue.configs["flat/recommended"],
-    pluginVuePug.configs["flat/recommended"],
+    ...pluginVue.configs["flat/recommended"],
+    ...pluginVuePug.configs["flat/recommended"],
 
     {
       files: [
