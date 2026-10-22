@@ -133,7 +133,7 @@ Each item has emojis denoting:
 | [crisp/multiline-comment-end-backslash](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/multiline-comment-end-backslash.js) | Enforces multiline comments to end with a backslash | 🟠 | 🟢 | 🟣 |
 | [crisp/newline-after-switch-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/newline-after-switch-case.js) | Requires newline between switch cases | 🟠 | 🟢 | 🟣 |
 | [crisp/no-async](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-async.js) | Disallows the use of `async/syntax`, in favor of `Promise` | 🟠 | 🟢 |
-| [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallow parameter names shorter than 3 characters | 🟠 | 🟢 | 🟣 |
+| [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
 | [crisp/no-space-in-optional-arguments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-space-in-optional-arguments.js) | Disallows space before or after `=` in optional parameters | 🟠 |
 | [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
