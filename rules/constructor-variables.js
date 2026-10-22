@@ -25,7 +25,7 @@ export default {
 
   create(context) {
     const options = context.options[0] || {};
-    const filename = context.getFilename();
+    const filename = context.filename || context.getFilename();
     const filenameExceptions = options.filenameExceptions || [];
     const variableExceptions = options.variableExceptions || [];
 
@@ -34,7 +34,22 @@ export default {
     return {
       "MethodDefinition[kind='constructor'] > FunctionExpression > BlockStatement > ExpressionStatement > AssignmentExpression": function(node) {
         if(node.left.type === "MemberExpression" && node.left.object.type === "ThisExpression") {
-          const varName = node.left.property.name;
+          let varName = null;
+
+          if (!node.left.computed && node.left.property.type === "Identifier") {
+            varName = node.left.property.name;
+          } else if (
+            node.left.computed &&
+            node.left.property.type === "Literal" &&
+            typeof node.left.property.value === "string"
+          ) {
+            varName = node.left.property.value;
+          }
+
+          if (!varName) {
+            return;
+          }
+
           if (!varName.startsWith("_") && !isFilenameException && !variableExceptions.includes(varName)) {
             context.report({
               node,

@@ -2,7 +2,7 @@ export default {
   meta: {
     type: "suggestion",
     docs: {
-      description: "disallow short parameter names",
+      description: "disallow one-character parameter names",
       category: "Stylistic Issues",
     },
     schema: [

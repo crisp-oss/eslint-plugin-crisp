@@ -125,20 +125,22 @@ Each item has emojis denoting:
 | [crisp/constructor-variables](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/constructor-variables.js) | Ensures all class properties in the constructor start with `_` | 🟠 |
 | [crisp/enforce-optional](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/enforce-optional.js) | Enforces use of optional chaining | 🟠 | 🟢 | 🟣 |
 | [crisp/header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-check.js) | Enforces files to start with Crisp header | 🟠 | 🟢 | 🟣 |
-| [crisp/header-comments-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-comments-check.js) | Enforces different comment blocks before different groups (imports, constants, instances and exports) | 🟠 | 🟢 | 🟣 |
+| [crisp/header-comments-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-comments-check.js) | Enforces different comment blocks before different groups (imports, constants and instances) | 🟠 | 🟢 | 🟣 |
 | [crisp/import-group-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-comment.js) | Ensures `import` statements are preceded by a comment stating their type |  | 🟢 | 🟣 |
 | [crisp/import-group-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-order.js) | Ensures `import` statements are correctly ordered |  | 🟢 | 🟣 |
+| [crisp/logger-arguments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/logger-arguments.js) | Requires static logger messages and reference-only interpolation arguments | 🟠 | 🟢 | 🟣 |
 | [crisp/methods-naming](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-naming.js) | Ensures methods are named according to their access (`public`, `private`, `protected`) | 🟠 | 🟢 | 🟣 |
 | [crisp/methods-ordering](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-ordering.js) | Ensures methods order according to their access: `public` then `protected` then `private` | 🟠 | 🟢 | 🟣 |
 | [crisp/multiline-comment-end-backslash](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/multiline-comment-end-backslash.js) | Enforces multiline comments to end with a backslash | 🟠 | 🟢 | 🟣 |
 | [crisp/newline-after-switch-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/newline-after-switch-case.js) | Requires newline between switch cases | 🟠 | 🟢 | 🟣 |
 | [crisp/no-async](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-async.js) | Disallows the use of `async/syntax`, in favor of `Promise` | 🟠 | 🟢 |
-| [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallow parameter names shorter than 3 characters | 🟠 | 🟢 | 🟣 |
+| [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
 | [crisp/no-space-in-optional-arguments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-space-in-optional-arguments.js) | Disallows space before or after `=` in optional parameters | 🟠 |
 | [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
 | [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 |
 | [crisp/one-space-after-operator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/one-space-after-operator.js) | Enforces at least one space before and one space after `=` and `:` operators | 🟠 | 🟢 | 🟣 |
+| [crisp/vue-pinia-action-single-parameter](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-pinia-action-single-parameter.js) | Requires Pinia actions to accept at most one payload argument |  | 🟢 |  |
 | [crisp/regex-in-constructor](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/regex-in-constructor.js) | Ensures regular expressions are defined in the class constructor | 🟠 | 🟢 | 🟣 |
 | [crisp/ternary-parenthesis](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/ternary-parenthesis.js) | Enforces parentheses around conditions with operators in ternary expressions | 🟠 | 🟢 | 🟣 |
 | [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) | Requires exactly two line breaks between class methods | 🟠 |

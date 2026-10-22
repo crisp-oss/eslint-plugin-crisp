@@ -1,5 +1,5 @@
 // Pre-compiled regex for access modifier check
-const ACCESS_MODIFIER_PATTERN = /@(public|protected|private|internal)/;
+const ACCESS_MODIFIER_PATTERN = /@(public|protected|private|internal)(?=\s|\*|$)/;
 
 export default {
   meta: {
@@ -16,18 +16,24 @@ export default {
 
     function checkNodeForJSDoc(node) {
       const comments = sourceCode.getCommentsBefore(node);
+      let jsdocComment = null;
 
-      if (comments.length > 0) {
-        const lastComment = comments[comments.length - 1];
+      for (let i = comments.length - 1; i >= 0; i--) {
+        if (
+          comments[i].type === "Block" &&
+          comments[i].value.startsWith("*")
+        ) {
+          jsdocComment = comments[i];
 
-        if (lastComment.type === "Block" && lastComment.value.startsWith("*")) {
-          if (!ACCESS_MODIFIER_PATTERN.test(lastComment.value)) {
-            context.report({
-              node,
-              message: "JSDoc comment should contain @public, @protected, @private or @internal",
-            });
-          }
+          break;
         }
+      }
+
+      if (jsdocComment && !ACCESS_MODIFIER_PATTERN.test(jsdocComment.value)) {
+        context.report({
+          node,
+          message: "JSDoc comment should contain @public, @protected, @private or @internal",
+        });
       }
     }
 

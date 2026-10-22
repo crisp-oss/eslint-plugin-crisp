@@ -29,9 +29,14 @@ function isIgnoreComment(comment) {
 }
 
 function getDirectoryName(filePath) {
-  const pathParts = filePath.split("/");
+  if (!filePath || filePath.startsWith("<")) {
+    return "MAIN";
+  }
 
-  return pathParts[pathParts.length - 2].toUpperCase();
+  const pathParts = filePath.replace(/\\/g, "/").split("/").filter(Boolean);
+  const directoryName = pathParts.at(-2);
+
+  return directoryName ? directoryName.toUpperCase() : "MAIN";
 }
 
 function generateExpectedComment(group) {
@@ -70,8 +75,12 @@ export default {
     const customGroups = context.options[0] || {};  // Get custom groups from options
 
     // Pre-compile custom regexes once instead of on every import
-    const compiledCustomGroups = Object.entries(customGroups).map(([regexStr, group]) => {
-      return [new RegExp(regexStr), group];
+    const compiledCustomGroups = Object.entries(customGroups).flatMap(([regexStr, group]) => {
+      try {
+        return [[new RegExp(regexStr), group]];
+      } catch {
+        return [];
+      }
     });
 
     let currentGroupComment = null;

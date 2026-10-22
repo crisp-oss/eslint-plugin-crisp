@@ -55,9 +55,15 @@ export default {
 
         if (headerStart && headerEnd) {
           // Construct the final headerFormat RegExps
-          const headerFormats = basePatterns.map(pattern => headerStart && headerEnd ? new RegExp("^" + headerStart + pattern + headerEnd) : null);
+          const headerFormats = basePatterns.flatMap(pattern => {
+            try {
+              return [new RegExp("^" + headerStart + pattern + headerEnd)];
+            } catch {
+              return [];
+            }
+          });
 
-          if (headerFormats.some(format => format && format.test(fileContent)) === false) {
+          if (headerFormats.some(format => format.test(fileContent)) === false) {
             context.report({
               node,
               message: "File must start with the proper header.",

@@ -27,20 +27,66 @@ function isUppercaseConstant(declaration) {
   );
 }
 
+function isRegexExpression(node) {
+  if (!node) {
+    return false;
+  }
+
+  if (
+    (node.type === "Literal" && node.regex != null) ||
+    node.type === "RegExpLiteral"
+  ) {
+    return true;
+  }
+
+  if (
+    node.type === "NewExpression" &&
+    node.callee.type === "Identifier" &&
+    node.callee.name === "RegExp"
+  ) {
+    return true;
+  }
+
+  if (node.type === "ArrayExpression") {
+    return node.elements.some(isRegexExpression);
+  }
+
+  if (node.type === "ObjectExpression") {
+    return node.properties.some((property) => {
+      if (property.type === "Property") {
+        return isRegexExpression(property.value);
+      }
+
+      if (property.type === "SpreadElement") {
+        return isRegexExpression(property.argument);
+      }
+
+      return false;
+    });
+  }
+
+  if (node.type === "SpreadElement") {
+    return isRegexExpression(node.argument);
+  }
+
+  if (
+    node.type === "TSAsExpression" ||
+    node.type === "TSTypeAssertion" ||
+    node.type === "TSNonNullExpression"
+  ) {
+    return isRegexExpression(node.expression);
+  }
+
+  return false;
+}
+
 function isRegex(node) {
-  if (node.type !== "VariableDeclaration") {
+  if (!node || node.type !== "VariableDeclaration") {
     return false;
   }
 
   for (const declaration of node.declarations) {
-    if (declaration.init.type === "Literal" && declaration.init.regex != null) {
-      return true;
-    }
-
-    if (
-      declaration.init.type === "NewExpression" &&
-      declaration.init.callee.name === "RegExp"
-    ) {
+    if (isRegexExpression(declaration.init)) {
       return true;
     }
   }
@@ -73,7 +119,7 @@ export default {
   },
 
   create(context) {
-    const filename = context.getFilename();
+    const filename = context.filename || context.getFilename();
 
     if (!filename.endsWith(".js") && !filename.endsWith(".ts")) {
       return {};
@@ -181,17 +227,6 @@ export default {
           break;
         }
 
-        case "ExportDefaultDeclaration": {
-          // Only enforce the 'EXPORTS' comment block if it's the last statement in the file
-          if (startNode !== context.getSourceCode().ast.body.slice(-1)[0] && (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("EXPORTS"))) {
-            context.report({
-              node: startNode,
-              message: "Export group must be preceded by a 'EXPORTS' comment block",
-            });
-          }
-
-          break;
-        }
       }
     }
 
@@ -221,9 +256,17 @@ export default {
 
     return {
       ":statement": (node) => {
+        if (node.parent.type !== "Program") {
+          return;
+        }
+
         // If the type of node has changed since last time, or if we have a \
         //   regex declaration and the previous declaration wasn't one
-        if (node.type !== lastNode || isRegex(node) !== isRegex(lastNode)) {
+        if (
+          !lastNode ||
+          node.type !== lastNode.type ||
+          isRegex(node) !== isRegex(lastNode)
+        ) {
           // Check the group starting with the last node
           if (groupStart) {
             checkGroup(lastNode.type, groupStart);
