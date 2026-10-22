@@ -190,6 +190,7 @@ export default function configRecommended(pluginCrisp) {
 
         // General JSDoc rules
         "jsdoc/no-undefined-types": "off",
+        "jsdoc/reject-function-type": "off",
         "jsdoc/require-returns": "off",
         "jsdoc/require-jsdoc": [
           "error",
