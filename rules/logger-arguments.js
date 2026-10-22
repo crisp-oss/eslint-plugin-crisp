@@ -94,6 +94,14 @@ function isReference(node) {
   );
 }
 
+// Checks an empty object or array literal (eg. `{}` or `[]`)
+function isEmptyLiteral(node) {
+  return (
+    (node.type === "ObjectExpression" && node.properties.length === 0) ||
+    (node.type === "ArrayExpression" && node.elements.length === 0)
+  );
+}
+
 // Checks a fallback expression like `value || "none"` or `value ?? other`
 function isFallback(node) {
   node = unwrapTransparentExpression(node);
@@ -111,6 +119,7 @@ function isFallback(node) {
 
     return (
       operand.type === "Literal" ||
+      isEmptyLiteral(operand) ||
       isReference(operand) ||
       isFallback(operand)
     );
@@ -151,6 +160,61 @@ function isReferenceObject(node) {
   });
 }
 
+// Checks a node is a `logger.levels.<level>` member expression
+function isLevelsReference(node) {
+  node = unwrapTransparentExpression(node);
+
+  return (
+    Boolean(node) &&
+    node.type === "MemberExpression" &&
+    node.object.type === "MemberExpression" &&
+    getPropertyName(node.object) === "levels" &&
+    node.object.object.type === "MemberExpression" &&
+    getPropertyName(node.object.object) === "logger"
+  );
+}
+
+// Checks a condition tests a logger level (eg. `logger.levels.error === true && x`)
+function isLevelCheck(node) {
+  node = unwrapTransparentExpression(node);
+
+  if (!node) {
+    return false;
+  }
+
+  if (node.type === "LogicalExpression" && node.operator === "&&") {
+    return isLevelCheck(node.left) || isLevelCheck(node.right);
+  }
+
+  if (
+    node.type === "BinaryExpression" &&
+    (node.operator === "===" || node.operator === "==")
+  ) {
+    return isLevelsReference(node.left) || isLevelsReference(node.right);
+  }
+
+  return isLevelsReference(node);
+}
+
+// Checks a node is inside the consequent of a logger level guard
+function isGuarded(ancestors, node) {
+  const chain = [...ancestors, node];
+
+  for (let index = chain.length - 2; index >= 0; index--) {
+    const ancestor = chain[index];
+
+    if (
+      ancestor.type === "IfStatement" &&
+      chain[index + 1] === ancestor.consequent &&
+      isLevelCheck(ancestor.test)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export default {
   meta: {
     type: "suggestion",
@@ -174,6 +238,11 @@ export default {
     return {
       CallExpression(node) {
         if (!isLoggerCall(node)) {
+          return;
+        }
+
+        // Guarded by a log level check: computed values are allowed
+        if (isGuarded(sourceCode.getAncestors(node), node)) {
           return;
         }
 

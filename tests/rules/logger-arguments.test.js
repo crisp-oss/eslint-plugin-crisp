@@ -19,6 +19,12 @@ ruleTester.run("logger-arguments", rule, {
     "App.logger.debug(\"Loaded value: %s\", this.value ?? \"none\");",
     "App.logger.debug(\"Loaded value: %s\", first || second || \"none\");",
     "App.logger.debug(\"Loaded value: %s\", { user: userId || \"none\" });",
+    "if (App.logger.levels.error === true) { App.logger.error(\"Purge failed: %s\", buckets.join(\", \"), error); }",
+    "if (App.logger.levels.warn === true) { App.logger.warn(fn_log_format()); }",
+    "if (App.logger.levels.error === true && other) { if (x) { App.logger.error(\"Slow: %s\", a + b); } }",
+    "if (this._app.logger.levels.debug) { this._app.logger.debug(\"Count: %s\", list.length + 1); }",
+    "App.logger.error(\"Failed\", { params: (request.params || {}) });",
+    "App.logger.error(\"Failed: %s\", list || []);",
     "App.logger.warn(\"Shutting down\", { bufferedCount });",
     "App.logger.warn(\"Shutting down\", { count: this.count, ...meta });",
     "App.logger.warn(\"Shutting down\", { nested: { bufferedCount } }, logMeta);",
@@ -117,6 +123,22 @@ ruleTester.run("logger-arguments", rule, {
     },
     {
       code: "App.logger.debug(\"Loaded value: %s\", { value: 3 });",
+      errors: [
+        {
+          messageId: "reference"
+        }
+      ]
+    },
+    {
+      code: "if (App.logger.levels.error === true) {} else { App.logger.error(\"Purge: %s\", buckets.join(\", \")); }",
+      errors: [
+        {
+          messageId: "reference"
+        }
+      ]
+    },
+    {
+      code: "if (enabled) { App.logger.error(\"Purge: %s\", buckets.join(\", \")); }",
       errors: [
         {
           messageId: "reference"
