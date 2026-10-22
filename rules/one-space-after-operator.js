@@ -6,7 +6,7 @@ export default {
       category: "Stylistic Issues",
       recommended: false,
     },
-    fixable: "whitespace", // or "code" or "whitespace"
+    fixable: "code",
     schema: [
       {
         type: "object",
@@ -27,7 +27,7 @@ export default {
     const config = context.options[0] || {};
     const checkColon = config.checkColon !== false;
 
-    const checkSpacing = (operatorToken) => {
+    const checkSpacing = (operatorToken, valueNode, indentationNode) => {
       if (!operatorToken) {
         return;
       }
@@ -46,6 +46,10 @@ export default {
       );
       const hasSpaceBefore = /[ \t]$/.test(beforeText);
       const hasOneSpaceAfter = afterText === " ";
+      const hasLineBreakAfter = (
+        /^[\s]*$/.test(afterText) &&
+        /[\r\n]/.test(afterText)
+      );
 
       if (!hasSpaceBefore || !hasOneSpaceAfter) {
         context.report({
@@ -62,11 +66,37 @@ export default {
               ));
             }
 
-            if (!hasOneSpaceAfter && /^[ \t]*$/.test(afterText)) {
-              fixes.push(fixer.replaceTextRange(
-                [operatorToken.range[1], tokenAfter.range[0]],
-                " "
-              ));
+            if (!hasOneSpaceAfter) {
+              if (/^[ \t]*$/.test(afterText)) {
+                fixes.push(fixer.replaceTextRange(
+                  [operatorToken.range[1], tokenAfter.range[0]],
+                  " "
+                ));
+              } else if (hasLineBreakAfter && valueNode) {
+                const firstValueToken = sourceCode.getTokenAfter(operatorToken);
+
+                if (firstValueToken.value === "(") {
+                  fixes.push(fixer.replaceTextRange(
+                    [operatorToken.range[1], tokenAfter.range[0]],
+                    " "
+                  ));
+                } else {
+                  const indentation = " ".repeat(
+                    indentationNode.loc.start.column
+                  );
+
+                  fixes.push(
+                    fixer.replaceTextRange(
+                      [operatorToken.range[1], tokenAfter.range[0]],
+                      ` (${afterText}`
+                    ),
+                    fixer.insertTextAfter(
+                      valueNode,
+                      `\n${indentation})`
+                    )
+                  );
+                }
+              }
             }
 
             return fixes.length ? fixes : null;
@@ -83,7 +113,7 @@ export default {
           token => token.value === node.operator
         );
 
-        checkSpacing(operatorToken);
+        checkSpacing(operatorToken, node.right, node);
       },
       VariableDeclarator(node) {
         if (node.init) {
@@ -93,7 +123,7 @@ export default {
             token => token.value === "="
           );
 
-          checkSpacing(operatorToken);
+          checkSpacing(operatorToken, node.init, node.parent);
         }
       },
 

@@ -69,6 +69,54 @@ ruleTester.run("one-space-after-operator", rule, {
       ]
     },
     {
+      code: `let value =
+  first ||
+  second;`,
+      output: `let value = (
+  first ||
+  second
+);`,
+      errors: [
+        {
+          message: "There should be at least one space before and exactly one space after '='"
+        }
+      ]
+    },
+    {
+      code: `function update() {
+  value +=
+    first *
+    second;
+}`,
+      output: `function update() {
+  value += (
+    first *
+    second
+  );
+}`,
+      errors: [
+        {
+          message: "There should be at least one space before and exactly one space after '+='"
+        }
+      ]
+    },
+    {
+      code: `let value =
+  (
+    first ||
+    second
+  );`,
+      output: `let value = (
+    first ||
+    second
+  );`,
+      errors: [
+        {
+          message: "There should be at least one space before and exactly one space after '='"
+        }
+      ]
+    },
+    {
       code: "const object = { key:  value };",
       output: "const object = { key : value };",
       errors: [
