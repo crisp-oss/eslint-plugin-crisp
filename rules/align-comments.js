@@ -52,9 +52,12 @@ export default {
 
             fix(fixer) {
               const indent = " ".repeat(nodeIndent);
-              const commentText = sourceCode.getText(comment);
-              const fixedComment = `\n${indent}${commentText.trim()}`;
-              return fixer.replaceTextRange([comment.range[0], comment.range[1]], fixedComment);
+              const lineStart = sourceCode.getIndexFromLoc({
+                line: comment.loc.start.line,
+                column: 0
+              });
+
+              return fixer.replaceTextRange([lineStart, comment.range[0]], indent);
             },
           });
         }

@@ -5,8 +5,7 @@ export default {
       description: "disallow regex in Vue data object",
       category: "Possible Errors",
       recommended: true,
-    },
-    fixable: "code",
+    }
   },
 
   create(context) {

@@ -113,7 +113,7 @@ export default {
   },
 
   create(context) {
-    const filename = context.getFilename();
+    const filename = context.filename || context.getFilename();
 
     if (!filename.endsWith(".js") && !filename.endsWith(".ts")) {
       return {};
@@ -223,7 +223,10 @@ export default {
 
         case "ExportDefaultDeclaration": {
           // Only enforce the 'EXPORTS' comment block if it's the last statement in the file
-          if (startNode !== context.getSourceCode().ast.body.slice(-1)[0] && (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("EXPORTS"))) {
+          if (
+            startNode === sourceCode.ast.body.slice(-1)[0] &&
+            (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("EXPORTS"))
+          ) {
             context.report({
               node: startNode,
               message: "Export group must be preceded by a 'EXPORTS' comment block",
@@ -237,9 +240,17 @@ export default {
 
     return {
       ":statement": (node) => {
+        if (node.parent.type !== "Program") {
+          return;
+        }
+
         // If the type of node has changed since last time, or if we have a \
         //   regex declaration and the previous declaration wasn't one
-        if (node.type !== lastNode || isRegex(node) !== isRegex(lastNode)) {
+        if (
+          !lastNode ||
+          node.type !== lastNode.type ||
+          isRegex(node) !== isRegex(lastNode)
+        ) {
           // Check the group starting with the last node
           if (groupStart) {
             checkGroup(lastNode.type, groupStart);

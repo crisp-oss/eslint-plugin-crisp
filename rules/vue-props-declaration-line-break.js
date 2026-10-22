@@ -28,9 +28,14 @@ export default {
             fix(fixer) {
               const typeToken = sourceCode.getLastToken(typeProperty);
               const defaultToken = sourceCode.getFirstToken(defaultProperty);
-              const textBetween = sourceCode.text.slice(typeToken.range[1], defaultToken.range[0]);
-              const newTextBetween = textBetween.replace(/,?\s*/, ",\n\n");
-              return fixer.replaceTextRange([typeToken.range[1], defaultToken.range[0]], newTextBetween);
+              const typeLine = sourceCode.lines[typeProperty.loc.start.line - 1];
+              const leadingText = typeLine.slice(0, typeProperty.loc.start.column);
+              const indent = leadingText.trim() === "" ? leadingText : "";
+
+              return fixer.replaceTextRange(
+                [typeToken.range[1], defaultToken.range[0]],
+                `,\n\n${indent}`
+              );
             }
           });
         }

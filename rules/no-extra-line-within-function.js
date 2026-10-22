@@ -37,11 +37,14 @@ export default {
             node: currentNode,
             message: "Expected at most one line break between declarations within a function.",
             fix(fixer) {
-              const range = [
-                sourceCode.getIndexFromLoc({ line: lineOfPreviousNodeEnd, column: 0 }),
-                sourceCode.getIndexFromLoc({ line: lineOfCurrentNode, column: 0 })
-              ];
-              return fixer.replaceTextRange(range, "\n\n");
+              const range = [previousNode.range[1], currentNode.range[0]];
+              const textBetween = sourceCode.text.slice(...range);
+              const fixedText = textBetween.replace(
+                /\n(?:[ \t]*\n){2,}/g,
+                "\n\n"
+              );
+
+              return fixer.replaceTextRange(range, fixedText);
             }
           });
         }

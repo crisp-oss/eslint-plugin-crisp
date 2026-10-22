@@ -15,13 +15,14 @@ export default {
   create(context) {
     return {
       Program(node) {
-        const fileName = context.getFilename();
-        const fileContent = fs.readFileSync(path.resolve(fileName), "utf8");
+        const fileName = context.physicalFilename || context.filename || context.getFilename();
 
         // Determine the file extension
         const fileExtension = path.extname(fileName);
 
         if (fileExtension === ".vue") {
+          const fileContent = fs.readFileSync(path.resolve(fileName), "utf8");
+
           // Define the headers
           const headers = ["TEMPLATE", "SCRIPT", "STYLE"];
 
@@ -31,7 +32,7 @@ export default {
           // Check each tag individually
           vueTags.forEach((tag, index) => {
             const tagRegExp = new RegExp(`<${tag}`);
-            const headerRegExp = new RegExp(`\\n\\n<!--\\s*\\*{70,73}\\s*\\n\\s{5}${headers[index]}\\s*\\n\\s*\\*{70,73}\\s*-->\\s*\\n\\n<${tag}`);
+            const headerRegExp = new RegExp(`(?:^|\\n\\n)<!--\\s*\\*{70,73}\\s*\\n\\s{5}${headers[index]}\\s*\\n\\s*\\*{70,73}\\s*-->\\s*\\n\\n<${tag}`);
 
             // If the tag exists without the corresponding header, report an error
             if (tagRegExp.test(fileContent) && !headerRegExp.test(fileContent)) {
