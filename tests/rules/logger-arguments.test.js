@@ -15,6 +15,9 @@ ruleTester.run("logger-arguments", rule, {
   value
 );`,
     "App.logger.info(\"This intentionally long logger message may exceed the usual source line length when necessary.\");",
+    "App.logger.warn(\"Shutting down\", { bufferedCount });",
+    "App.logger.warn(\"Shutting down\", { count: this.count, ...meta });",
+    "App.logger.warn(\"Shutting down\", { nested: { bufferedCount } }, logMeta);",
     "App.logger.child({ namespace: \"worker\" });",
     "console.info(`Unrelated logger calls are ignored: ${value}`);"
   ],
@@ -93,7 +96,15 @@ ruleTester.run("logger-arguments", rule, {
       ]
     },
     {
-      code: "App.logger.debug(\"Loaded value: %s\", { value });",
+      code: "App.logger.debug(\"Loaded value: %s\", { value: value.trim() });",
+      errors: [
+        {
+          messageId: "reference"
+        }
+      ]
+    },
+    {
+      code: "App.logger.debug(\"Loaded value: %s\", { value: 3 });",
       errors: [
         {
           messageId: "reference"

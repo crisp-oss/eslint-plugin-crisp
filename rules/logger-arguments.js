@@ -94,6 +94,31 @@ function isReference(node) {
   );
 }
 
+// Checks an inline object only contains references (no computed values)
+function isReferenceObject(node) {
+  node = unwrapTransparentExpression(node);
+
+  if (!node || node.type !== "ObjectExpression") {
+    return false;
+  }
+
+  return node.properties.every((property) => {
+    if (property.type === "SpreadElement") {
+      return isReference(property.argument);
+    }
+
+    if (property.type !== "Property" || property.kind !== "init") {
+      return false;
+    }
+
+    if (property.computed && !isReference(property.key)) {
+      return false;
+    }
+
+    return isReference(property.value) || isReferenceObject(property.value);
+  });
+}
+
 export default {
   meta: {
     type: "suggestion",
@@ -107,7 +132,7 @@ export default {
       message:
         "Logger messages must be single-line, double-quoted string literals.",
       reference:
-        "Logger interpolation arguments must be references, not computed expressions."
+        "Logger interpolation arguments must be references or inline objects of references, not computed expressions."
     }
   },
 
@@ -136,7 +161,7 @@ export default {
         }
 
         for (const value of values) {
-          if (!isReference(value)) {
+          if (!isReference(value) && !isReferenceObject(value)) {
             context.report({
               node: value,
               messageId: "reference"
