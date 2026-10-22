@@ -31,7 +31,6 @@ export default function configRecommended(pluginCrisp) {
           },
 
           preferredTypes: {
-            Function: "function",
             Array: "array",
             Integer: "number"
           }
