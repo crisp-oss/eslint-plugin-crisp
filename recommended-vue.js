@@ -38,6 +38,7 @@ export default function configRecommendedVue(pluginCrisp) {
           },
 
           preferredTypes: {
+            Function: "function",
             Array: "array",
             Map: "map",
             Integer: "number"
