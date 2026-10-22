@@ -94,6 +94,38 @@ function isReference(node) {
   );
 }
 
+// Checks a fallback expression like `value || "none"` or `value ?? other`
+function isFallback(node) {
+  node = unwrapTransparentExpression(node);
+
+  if (
+    !node ||
+    node.type !== "LogicalExpression" ||
+    (node.operator !== "||" && node.operator !== "??")
+  ) {
+    return false;
+  }
+
+  const isOperandValid = (operand) => {
+    operand = unwrapTransparentExpression(operand);
+
+    return (
+      operand.type === "Literal" ||
+      isReference(operand) ||
+      isFallback(operand)
+    );
+  };
+
+  return isReference(node.left) || isFallback(node.left)
+    ? isOperandValid(node.right)
+    : false;
+}
+
+// Checks a logger argument value is a reference, a fallback or an object of those
+function isAllowedValue(node) {
+  return isReference(node) || isFallback(node) || isReferenceObject(node);
+}
+
 // Checks an inline object only contains references (no computed values)
 function isReferenceObject(node) {
   node = unwrapTransparentExpression(node);
@@ -115,7 +147,7 @@ function isReferenceObject(node) {
       return false;
     }
 
-    return isReference(property.value) || isReferenceObject(property.value);
+    return isAllowedValue(property.value);
   });
 }
 
@@ -132,7 +164,7 @@ export default {
       message:
         "Logger messages must be single-line, double-quoted string literals.",
       reference:
-        "Logger interpolation arguments must be references or inline objects of references, not computed expressions."
+        "Logger interpolation arguments must be references, fallbacks (`||`, `??`) or inline objects of those, not computed expressions."
     }
   },
 
@@ -161,7 +193,7 @@ export default {
         }
 
         for (const value of values) {
-          if (!isReference(value) && !isReferenceObject(value)) {
+          if (!isAllowedValue(value)) {
             context.report({
               node: value,
               messageId: "reference"

@@ -15,6 +15,10 @@ ruleTester.run("logger-arguments", rule, {
   value
 );`,
     "App.logger.info(\"This intentionally long logger message may exceed the usual source line length when necessary.\");",
+    "App.logger.debug(\"Loaded value: %s\", value || \"default\");",
+    "App.logger.debug(\"Loaded value: %s\", this.value ?? \"none\");",
+    "App.logger.debug(\"Loaded value: %s\", first || second || \"none\");",
+    "App.logger.debug(\"Loaded value: %s\", { user: userId || \"none\" });",
     "App.logger.warn(\"Shutting down\", { bufferedCount });",
     "App.logger.warn(\"Shutting down\", { count: this.count, ...meta });",
     "App.logger.warn(\"Shutting down\", { nested: { bufferedCount } }, logMeta);",
@@ -80,7 +84,15 @@ ruleTester.run("logger-arguments", rule, {
       ]
     },
     {
-      code: "App.logger.debug(\"Loaded value: %s\", value || \"default\");",
+      code: "App.logger.debug(\"Loaded value: %s\", value || compute());",
+      errors: [
+        {
+          messageId: "reference"
+        }
+      ]
+    },
+    {
+      code: "App.logger.debug(\"Loaded value: %s\", value && \"default\");",
       errors: [
         {
           messageId: "reference"
@@ -120,7 +132,7 @@ ruleTester.run("logger-arguments", rule, {
       ]
     },
     {
-      code: "App.logger.debug(\"Values: %s / %s\", values.join(\", \"), fallback || \"none\");",
+      code: "App.logger.debug(\"Values: %s / %s\", values.join(\", \"), fallback || compute());",
       errors: [
         {
           messageId: "reference"
