@@ -139,6 +139,7 @@ Each item has emojis denoting:
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
 | [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 |
 | [crisp/one-space-after-operator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/one-space-after-operator.js) | Enforces at least one space before and one space after `=` and `:` operators | 🟠 | 🟢 | 🟣 |
+| [crisp/vue-pinia-action-single-parameter](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-pinia-action-single-parameter.js) | Requires Pinia actions to accept at most one payload argument |  | 🟢 |  |
 | [crisp/regex-in-constructor](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/regex-in-constructor.js) | Ensures regular expressions are defined in the class constructor | 🟠 | 🟢 | 🟣 |
 | [crisp/ternary-parenthesis](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/ternary-parenthesis.js) | Enforces parentheses around conditions with operators in ternary expressions | 🟠 | 🟢 | 🟣 |
 | [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) | Requires exactly two line breaks between class methods | 🟠 |

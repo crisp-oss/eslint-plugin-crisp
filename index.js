@@ -58,6 +58,7 @@ import ruleVueNoComponentClassShorthand from "./rules/vue-no-component-class-sho
 import ruleVueNoMixedClass from "./rules/vue-no-mixed-class.js";
 import ruleVueNoNameOption from "./rules/vue-no-name-option.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
+import ruleVuePiniaActionSingleParameter from "./rules/vue-pinia-action-single-parameter.js";
 import ruleVuePropsDeclarationLineBreak from "./rules/vue-props-declaration-line-break.js";
 import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-multiline.js";
 import ruleVuePropsDeclarationOrder from "./rules/vue-props-declaration-order.js";
@@ -134,6 +135,7 @@ const plugin = {
     "vue-no-mixed-class": ruleVueNoMixedClass,
     "vue-no-name-option": ruleVueNoNameOption,
     "vue-no-regex-data": ruleVueNoRegexData,
+    "vue-pinia-action-single-parameter": ruleVuePiniaActionSingleParameter,
     "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,
     "vue-props-declaration-multiline": ruleVuePropsDeclarationMultiline,
     "vue-props-declaration-order": ruleVuePropsDeclarationOrder,

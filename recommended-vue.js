@@ -393,6 +393,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-no-mixed-class": "error",
         "crisp/vue-no-name-option": "error",
         "crisp/vue-no-regex-data": "error",
+        "crisp/vue-pinia-action-single-parameter": "error",
         "crisp/vue-props-declaration-line-break": "error",
         "crisp/vue-props-declaration-multiline": "error",
         "crisp/vue-props-declaration-order": "error",
