@@ -198,6 +198,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/variable-names": "error",
 
         // General JSDoc rules
+        "jsdoc/reject-any-type": "off",
         "jsdoc/reject-function-type": "off",
         "jsdoc/require-description": "error",
         "jsdoc/require-param-description": "off",
