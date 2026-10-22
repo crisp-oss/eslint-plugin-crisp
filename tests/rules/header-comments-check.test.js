@@ -12,17 +12,17 @@ ruleTester.run("header-comments-check", rule, {
   valid: [
     {
       filename: "/project/src/example.js",
-      code: `${header("IMPORTS")}\nimport value from "package";`
+      code: `${header("IMPORTS")}\n\nimport value from "package";`
     },
     {
       filename: "/project/src/example.ts",
-      code: `${header("CONSTANTS")}\nconst MAX_RETRIES = 3;\n\n${header("INSTANCES")}\nconst pattern = /value/;`
+      code: `${header("CONSTANTS")}\n\nconst MAX_RETRIES = 3;\n\n${header("INSTANCES")}\n\nconst pattern = /value/;`
     },
     {
       filename: "/project/src/example.js",
       code:
-        `${header("TYPES")}\n/** @typedef {string} Identifier */\n\n` +
-        `${header("EXPORTS")}\nexport default {};`
+        `${header("TYPES")}\n\n/** @typedef {string} Identifier */\n\n` +
+        `${header("EXPORTS")}\n\nexport default {};`
     },
     {
       filename: "/project/src/example.js",
@@ -30,12 +30,12 @@ ruleTester.run("header-comments-check", rule, {
     },
     {
       filename: "/project/src/example.js",
-      code: `${header("MIXIN TO MANAGE HANDOFF")}\nexport default {};`
+      code: `${header("MIXIN TO MANAGE HANDOFF")}\n\nexport default {};`
     },
     {
       filename: "/project/src/example.js",
       code:
-        `${header("IMPORTS")}\nimport first from "first";\n` +
+        `${header("IMPORTS")}\n\nimport first from "first";\n` +
         "import second from \"second\";"
     },
     {
@@ -82,6 +82,26 @@ ruleTester.run("header-comments-check", rule, {
       errors: [
         {
           message: "Type comments group must be preceded by a 'TYPES' comment block"
+        }
+      ]
+    },
+    {
+      filename: "/project/src/example.js",
+      code: `${header("CONSTANTS")}\nconst MAX_RETRIES = 3;`,
+      output: `${header("CONSTANTS")}\n\nconst MAX_RETRIES = 3;`,
+      errors: [
+        {
+          message: "Header comment block must be followed by a blank line"
+        }
+      ]
+    },
+    {
+      filename: "/project/src/example.js",
+      code: `${header("IMPORTS")}\n// NPM\nimport value from "package";`,
+      output: `${header("IMPORTS")}\n\n// NPM\nimport value from "package";`,
+      errors: [
+        {
+          message: "Header comment block must be followed by a blank line"
         }
       ]
     }
