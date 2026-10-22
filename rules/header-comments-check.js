@@ -221,20 +221,6 @@ export default {
           break;
         }
 
-        case "ExportDefaultDeclaration": {
-          // Only enforce the 'EXPORTS' comment block if it's the last statement in the file
-          if (
-            startNode === sourceCode.ast.body.slice(-1)[0] &&
-            (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("EXPORTS"))
-          ) {
-            context.report({
-              node: startNode,
-              message: "Export group must be preceded by a 'EXPORTS' comment block",
-            });
-          }
-
-          break;
-        }
       }
     }
 

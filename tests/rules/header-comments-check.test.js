@@ -26,6 +26,14 @@ ruleTester.run("header-comments-check", rule, {
     },
     {
       filename: "/project/src/example.js",
+      code: "export default {};"
+    },
+    {
+      filename: "/project/src/example.js",
+      code: `${header("MIXIN TO MANAGE HANDOFF")}\nexport default {};`
+    },
+    {
+      filename: "/project/src/example.js",
       code:
         `${header("IMPORTS")}\nimport first from "first";\n` +
         "import second from \"second\";"
@@ -74,15 +82,6 @@ ruleTester.run("header-comments-check", rule, {
       errors: [
         {
           message: "Type comments group must be preceded by a 'TYPES' comment block"
-        }
-      ]
-    },
-    {
-      filename: "/project/src/example.js",
-      code: "export default {};",
-      errors: [
-        {
-          message: "Export group must be preceded by a 'EXPORTS' comment block"
         }
       ]
     }
