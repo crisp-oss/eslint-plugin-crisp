@@ -9,6 +9,7 @@ ruleTester.run("jsdoc-enforce-access", rule, {
     "class Example {\n  /** @protected */\n  method() {}\n}",
     "const object = {\n  /** @private */\n  method: () => {}\n};",
     "/** @internal */\nconst internal = function() {};",
+    "/** @public */\n// Additional context.\nfunction documented() {}",
     "function undocumented() {}"
   ],
 
@@ -39,6 +40,22 @@ ruleTester.run("jsdoc-enforce-access", rule, {
     },
     {
       code: "const expression = /** A function expression. */ function() {};",
+      errors: [
+        {
+          message: "JSDoc comment should contain @public, @protected, @private or @internal"
+        }
+      ]
+    },
+    {
+      code: "/** @publicity */\nfunction example() {}",
+      errors: [
+        {
+          message: "JSDoc comment should contain @public, @protected, @private or @internal"
+        }
+      ]
+    },
+    {
+      code: "/** A function. */\n// Additional context.\nfunction example() {}",
       errors: [
         {
           message: "JSDoc comment should contain @public, @protected, @private or @internal"

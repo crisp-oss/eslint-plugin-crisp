@@ -60,6 +60,22 @@ ruleTester.run("no-snake-case", rule, {
           message: "Method 'do_work' should not use snake_case. Use camelCase instead."
         }
       ]
+    },
+    {
+      code: "class Worker { run(input_value) {} }",
+      errors: [
+        {
+          message: "Parameter 'input_value' should not use snake_case. Use camelCase instead."
+        }
+      ]
+    },
+    {
+      code: "const worker = { run(input_value) {} };",
+      errors: [
+        {
+          message: "Parameter 'input_value' should not use snake_case. Use camelCase instead."
+        }
+      ]
     }
   ]
 });

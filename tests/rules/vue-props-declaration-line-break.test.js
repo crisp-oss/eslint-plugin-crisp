@@ -38,6 +38,31 @@ ruleTester.run("vue-props-declaration-line-break", rule, {
             "function in prop definition."
         }
       ]
+    },
+    {
+      code: `export default {
+  props: {
+    items: {
+      type: Array, default: function() { return []; }
+    }
+  }
+};`,
+      output: `export default {
+  props: {
+    items: {
+      type: Array,
+
+      default: function() { return []; }
+    }
+  }
+};`,
+      errors: [
+        {
+          message:
+            "There should be a line break between 'type' and 'default' " +
+            "function in prop definition."
+        }
+      ]
     }
   ]
 });

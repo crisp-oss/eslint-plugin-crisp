@@ -1,9 +1,9 @@
 import rule from "../../rules/align-comments.js";
-import createRuleTester, { withoutFixes } from "../rule-tester.js";
+import createRuleTester from "../rule-tester.js";
 
 const ruleTester = createRuleTester();
 
-ruleTester.run("align-comments", withoutFixes(rule), {
+ruleTester.run("align-comments", rule, {
   valid: [
     "// A top-level value\nconst value = 1;",
     "function example() {\n  // Return the value\n  return true;\n}",
@@ -14,6 +14,7 @@ ruleTester.run("align-comments", withoutFixes(rule), {
   invalid: [
     {
       code: "function example() {\n// Misaligned\n  return true;\n}",
+      output: "function example() {\n  // Misaligned\n  return true;\n}",
       errors: [
         {
           message: "Comment should be aligned with the next line."

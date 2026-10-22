@@ -25,6 +25,13 @@ ruleTester.run("import-group-comment", rule, {
     {
       filename: "/project/src/Component.vue",
       code: "// TYPES\n/** @typedef {string} Identifier */"
+    },
+    {
+      code: "// PROJECT: MAIN\nimport value from \"./value.js\";"
+    },
+    {
+      code: "// NPM\nimport value from \"package\";",
+      options: [{ "[": "INVALID" }]
     }
   ],
 

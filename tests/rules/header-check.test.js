@@ -50,6 +50,20 @@ ruleTester.run("header-check", rule, {
           message: "File must start with the proper header."
         }
       ]
+    },
+    {
+      code: "const VALUE = 1;",
+      filename: "/project/example.js",
+      options: [
+        {
+          patterns: ["["]
+        }
+      ],
+      errors: [
+        {
+          message: "File must start with the proper header."
+        }
+      ]
     }
   ]
 });

@@ -1,11 +1,10 @@
 import rule from "../../rules/no-extra-line-within-function.js";
-import createRuleTester, { withoutFixes } from "../rule-tester.js";
+import createRuleTester from "../rule-tester.js";
 
 const ruleTester = createRuleTester();
 const message = "Expected at most one line break between declarations within a function.";
-const reportOnlyRule = withoutFixes(rule);
 
-ruleTester.run("no-extra-line-within-function", reportOnlyRule, {
+ruleTester.run("no-extra-line-within-function", rule, {
   valid: [
     {
       code: `function run() {
@@ -36,6 +35,11 @@ ruleTester.run("no-extra-line-within-function", reportOnlyRule, {
 
   const second = 2;
 }`,
+      output: `function run() {
+  const first = 1;
+
+  const second = 2;
+}`,
       errors: [
         {
           message
@@ -46,6 +50,11 @@ ruleTester.run("no-extra-line-within-function", reportOnlyRule, {
       code: `const run = function() {
   first();
 
+
+  second();
+};`,
+      output: `const run = function() {
+  first();
 
   second();
 };`,
@@ -60,6 +69,11 @@ ruleTester.run("no-extra-line-within-function", reportOnlyRule, {
   first();
 
 
+
+  second();
+};`,
+      output: `const run = () => {
+  first();
 
   second();
 };`,

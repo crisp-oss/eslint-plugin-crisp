@@ -23,13 +23,24 @@ ruleTester.run("constructor-variables", rule, {
         }
       ]
     },
-    "class Example {\n  method() {\n    this.value = 1;\n  }\n}"
+    "class Example {\n  method() {\n    this.value = 1;\n  }\n}",
+    "class Example {\n  constructor() {\n    this[\"_value\"] = 1;\n  }\n}",
+    "class Example {\n  constructor() {\n    this[propertyName] = 1;\n  }\n}"
   ],
 
   invalid: [
     {
       code: "class Example {\n  constructor() {\n    this.value = 1;\n  }\n}",
       filename: "/project/example.js",
+      errors: [
+        {
+          message:
+            "Class properties in the constructor should start with '_', except for specified exceptions"
+        }
+      ]
+    },
+    {
+      code: "class Example {\n  constructor() {\n    this[\"value\"] = 1;\n  }\n}",
       errors: [
         {
           message:

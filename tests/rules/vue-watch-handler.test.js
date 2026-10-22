@@ -30,6 +30,9 @@ ruleTester.run("vue-watch-handler", rule, {
     },
     {
       code: "const options = { observe: { value(value) {} } };"
+    },
+    {
+      code: "const options = { watch: { value(value) {} } };"
     }
   ],
 
@@ -63,6 +66,22 @@ ruleTester.run("vue-watch-handler", rule, {
       errors: [
         {
           messageId: "invalidSignature"
+        }
+      ]
+    },
+    {
+      code: "export default defineComponent({ watch: { value(value) {} } });",
+      errors: [
+        {
+          messageId: "objectForm"
+        }
+      ]
+    },
+    {
+      code: "export default { \"watch\": { value(value) {} } };",
+      errors: [
+        {
+          messageId: "objectForm"
         }
       ]
     }

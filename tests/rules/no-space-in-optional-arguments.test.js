@@ -3,28 +3,7 @@ import createRuleTester from "../rule-tester.js";
 
 const ruleTester = createRuleTester();
 
-const ruleWithTokenOffsetCompatibility = {
-  ...rule,
-
-  create(context) {
-    for (const token of context.sourceCode.tokensAndComments) {
-      Object.defineProperties(token, {
-        start: {
-          value: token.range[0],
-          configurable: true
-        },
-        end: {
-          value: token.range[1],
-          configurable: true
-        }
-      });
-    }
-
-    return rule.create(context);
-  }
-};
-
-ruleTester.run("no-space-in-optional-arguments", ruleWithTokenOffsetCompatibility, {
+ruleTester.run("no-space-in-optional-arguments", rule, {
   valid: [
     "function greet(name=\"World\") {}",
     "const greet = (name=\"World\") => name;",

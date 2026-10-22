@@ -1,9 +1,9 @@
 import rule from "../../rules/vue-no-regex-data.js";
-import createRuleTester, { withoutFixes } from "../rule-tester.js";
+import createRuleTester from "../rule-tester.js";
 
 const ruleTester = createRuleTester();
 
-ruleTester.run("vue-no-regex-data", withoutFixes(rule), {
+ruleTester.run("vue-no-regex-data", rule, {
   valid: [
     {
       code: "const pattern = /ok/; export default { data() { return { pattern }; } };"

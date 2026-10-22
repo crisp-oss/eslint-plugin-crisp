@@ -20,7 +20,15 @@ ruleTester.run("header-comments-check", rule, {
     },
     {
       filename: "/project/src/example.js",
-      code: `${header("TYPES")}\n/** @typedef {string} Identifier */\n\nexport default {};`
+      code:
+        `${header("TYPES")}\n/** @typedef {string} Identifier */\n\n` +
+        `${header("EXPORTS")}\nexport default {};`
+    },
+    {
+      filename: "/project/src/example.js",
+      code:
+        `${header("IMPORTS")}\nimport first from "first";\n` +
+        "import second from \"second\";"
     },
     {
       filename: "/project/src/example.vue",
@@ -66,6 +74,15 @@ ruleTester.run("header-comments-check", rule, {
       errors: [
         {
           message: "Type comments group must be preceded by a 'TYPES' comment block"
+        }
+      ]
+    },
+    {
+      filename: "/project/src/example.js",
+      code: "export default {};",
+      errors: [
+        {
+          message: "Export group must be preceded by a 'EXPORTS' comment block"
         }
       ]
     }
