@@ -1,6 +1,6 @@
 import iterateJsdoc from "eslint-plugin-jsdoc/iterateJsdoc.js";
 
-export default iterateJsdoc.default(({
+export default iterateJsdoc(({
   context,
   indent,
   jsdocNode,

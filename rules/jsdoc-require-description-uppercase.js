@@ -131,7 +131,7 @@ const validateDescription = (
   });
 };
 
-export default iterateJsdoc.default(({
+export default iterateJsdoc(({
   sourceCode,
   context,
   jsdoc,
