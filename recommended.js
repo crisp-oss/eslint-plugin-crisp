@@ -166,6 +166,7 @@ export default function configRecommended(pluginCrisp) {
         "crisp/enforce-optional": "error",
         "crisp/header-check": "error",
         "crisp/header-comments-check": "error",
+        "crisp/logger-arguments": "error",
         "crisp/methods-naming": "error",
         "crisp/methods-ordering": "error",
         "crisp/multiline-comment-end-backslash": "error",

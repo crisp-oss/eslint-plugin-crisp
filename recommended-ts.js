@@ -161,6 +161,7 @@ export default function configRecommendedTS(pluginCrisp) {
         "crisp/header-comments-check": "error",
         "crisp/import-group-comment": "error",
         "crisp/import-group-order": "error",
+        "crisp/logger-arguments": "error",
         "crisp/methods-naming": "error",
         "crisp/methods-ordering": "error",
         "crisp/multiline-comment-end-backslash": "error",
