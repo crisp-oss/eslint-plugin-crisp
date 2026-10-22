@@ -57,6 +57,7 @@ import ruleVueMethodsSeparator from "./rules/vue-methods-separator.js";
 import ruleVueNameProp from "./rules/vue-name-prop.js";
 import ruleVueNoComponentClassShorthand from "./rules/vue-no-component-class-shorthand.js";
 import ruleVueNoMixedClass from "./rules/vue-no-mixed-class.js";
+import ruleVueNoMixedClassShorthand from "./rules/vue-no-mixed-class-shorthand.js";
 import ruleVueNoNameOption from "./rules/vue-no-name-option.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
 import ruleVuePiniaActionSingleParameter from "./rules/vue-pinia-action-single-parameter.js";
@@ -135,6 +136,7 @@ const plugin = {
     "vue-name-prop": ruleVueNameProp,
     "vue-no-component-class-shorthand": ruleVueNoComponentClassShorthand,
     "vue-no-mixed-class": ruleVueNoMixedClass,
+    "vue-no-mixed-class-shorthand": ruleVueNoMixedClassShorthand,
     "vue-no-name-option": ruleVueNoNameOption,
     "vue-no-regex-data": ruleVueNoRegexData,
     "vue-pinia-action-single-parameter": ruleVuePiniaActionSingleParameter,
