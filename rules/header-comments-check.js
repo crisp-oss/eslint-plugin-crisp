@@ -2,6 +2,12 @@ const COMMENT_HEADER_FORMAT = (section) => {
   return `/**************************************************************************\n * ${section.toUpperCase()}\n ***************************************************************************/`;
 };
 
+const HEADER_COMMENT_REGEX = /^\*+\n \* [A-Z][A-Z0-9 _:-]*\n \*+$/;
+
+function isHeaderComment(comment) {
+  return comment.type === "Block" && HEADER_COMMENT_REGEX.test(comment.value);
+}
+
 function isTypeComment(comment) {
   if (comment.type !== "Block" || !comment.value.startsWith("*")) {
     return false;
@@ -109,7 +115,7 @@ export default {
       category: "Best Practices",
       recommended: false,
     },
-    fixable: null,
+    fixable: "whitespace",
   },
 
   create(context) {
@@ -224,6 +230,30 @@ export default {
       }
     }
 
+    // Checks that a header comment block is followed by a blank line
+    function checkBlankLineAfterHeaders() {
+      for (const comment of allBlockComments) {
+        if (!isHeaderComment(comment)) {
+          continue;
+        }
+
+        const next = sourceCode.getTokenAfter(comment, { includeComments: true });
+
+        if (!next || next.loc.start.line - comment.loc.end.line >= 2) {
+          continue;
+        }
+
+        const isOnNextLine = next.loc.start.line - comment.loc.end.line === 1;
+
+        context.report({
+          loc: comment.loc,
+          message: "Header comment block must be followed by a blank line",
+
+          fix: isOnNextLine ? (fixer) => fixer.insertTextAfter(comment, "\n") : null,
+        });
+      }
+    }
+
     return {
       ":statement": (node) => {
         if (node.parent.type !== "Program") {
@@ -256,6 +286,9 @@ export default {
 
         // Check type comments group
         checkTypeCommentsGroup();
+
+        // Check blank line after header comments
+        checkBlankLineAfterHeaders();
       }
     };
   }
