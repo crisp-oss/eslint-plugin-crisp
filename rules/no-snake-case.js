@@ -92,18 +92,6 @@ export default {
             reportSnakeCase(node, name, "Method");
           }
         }
-
-        // Check method parameters
-        if (node.value && node.value.params) {
-          node.value.params.forEach((param) => {
-            if (param.type === "Identifier" && param.name) {
-              const name = param.name;
-              if (isSnakeCase(name)) {
-                reportSnakeCase(param, name, "Parameter");
-              }
-            }
-          });
-        }
       },
 
       // Check function expressions
@@ -141,18 +129,6 @@ export default {
             if (isSnakeCase(name)) {
               reportSnakeCase(node, name, "Method");
             }
-          }
-
-          // Check method parameters
-          if (node.value && node.value.params) {
-            node.value.params.forEach((param) => {
-              if (param.type === "Identifier" && param.name) {
-                const name = param.name;
-                if (isSnakeCase(name)) {
-                  reportSnakeCase(param, name, "Parameter");
-                }
-              }
-            });
           }
         }
       }
