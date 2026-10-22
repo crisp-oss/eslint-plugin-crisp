@@ -7,6 +7,9 @@ ruleTester.run("one-space-after-operator", rule, {
   valid: [
     "let value = 1; value = 2;",
     "let value = 1; value += 2;",
+    `let helpdeskLayout = /** @type {import("vue").ComputedRef<HelpdeskLayoutContext>} */ (
+  inject("helpdeskLayout")
+);`,
     "const object = { key : value };",
     "const object = { method() {} };",
     {
@@ -50,6 +53,15 @@ ruleTester.run("one-space-after-operator", rule, {
     {
       code: "const value =1;",
       output: "const value = 1;",
+      errors: [
+        {
+          message: "There should be at least one space before and exactly one space after '='"
+        }
+      ]
+    },
+    {
+      code: "const value =/** @type {number} */ (input);",
+      output: "const value = /** @type {number} */ (input);",
       errors: [
         {
           message: "There should be at least one space before and exactly one space after '='"

@@ -33,7 +33,9 @@ export default {
       }
 
       const tokenBefore = sourceCode.getTokenBefore(operatorToken);
-      const tokenAfter = sourceCode.getTokenAfter(operatorToken);
+      const tokenAfter = sourceCode.getTokenAfter(operatorToken, {
+        includeComments: true
+      });
       const beforeText = sourceCode.text.slice(
         tokenBefore.range[1],
         operatorToken.range[0]
