@@ -9,7 +9,7 @@ export default {
     fixable: "whitespace",
   },
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     function checkFunctionBody(node) {
       const bodyNode = node.body;

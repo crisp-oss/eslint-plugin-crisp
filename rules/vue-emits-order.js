@@ -23,7 +23,7 @@ export default {
               message: "Emits should be in alphabetical order.",
 
               fix(fixer) {
-                const sourceCode = context.getSourceCode();
+                const sourceCode = context.sourceCode;
                 const elementText = sourceCode.getText(element);
                 const nextElementText = sourceCode.getText(nextElement);
 

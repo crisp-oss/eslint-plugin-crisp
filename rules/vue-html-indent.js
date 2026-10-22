@@ -12,7 +12,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode()
+    const sourceCode = context.sourceCode
     const template = (
       sourceCode.parserServices.getTemplateBodyTokenStore &&
       sourceCode.parserServices.getTemplateBodyTokenStore()

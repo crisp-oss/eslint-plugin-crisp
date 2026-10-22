@@ -15,7 +15,7 @@ export default {
   create(context) {
     return utils.default.defineTemplateBodyVisitor(context, {
       "VAttribute"(node) {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
         const attributeText = sourceCode.getText(node);
         const attributeEndIndex = node.range[1];
         const nextChar = sourceCode.getText().slice(attributeEndIndex, attributeEndIndex + 1);

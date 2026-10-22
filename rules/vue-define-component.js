@@ -11,7 +11,7 @@ export default {
   },
 
   create(context) {
-    const fileName = (context.filename || context.getFilename()).replace(/\\/g, "/");
+    const fileName = context.filename.replace(/\\/g, "/");
 
     if (fileName.endsWith("/index.js") || !isVueComponentOrMixin(fileName)) {
       return {};
@@ -68,7 +68,7 @@ function buildFixes(fixer, context, exportNode) {
     return null;
   }
 
-  const sourceCode = context.sourceCode || context.getSourceCode();
+  const sourceCode = context.sourceCode;
   const importFix = buildDefineComponentImportFix(fixer, sourceCode);
 
   if (importFix === false) {

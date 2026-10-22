@@ -182,7 +182,7 @@ export default {
   create: function(context) {
     return {
       Program: function(node) {
-        const comments = context.getSourceCode().getAllComments(node);
+        const comments = context.sourceCode.getAllComments(node);
 
         comments
           .filter(comment => comment.type === "Block" && comment.value.startsWith("*"))

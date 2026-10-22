@@ -11,7 +11,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     function checkPropDefinition(propNode) {
       const typeProperty = propNode.properties.find(p => p.key.name === "type");

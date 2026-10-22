@@ -38,7 +38,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode;
     const maxLength = context.options[0]?.max ?? DEFAULT_MAX_LENGTH;
 
     return utils.default.defineTemplateBodyVisitor(context, {

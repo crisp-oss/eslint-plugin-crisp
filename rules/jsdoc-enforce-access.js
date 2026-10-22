@@ -12,7 +12,7 @@ export default {
   },
 
   create: function(context) {
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     function checkNodeForJSDoc(node) {
       const comments = sourceCode.getCommentsBefore(node);

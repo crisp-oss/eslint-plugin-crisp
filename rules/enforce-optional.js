@@ -14,7 +14,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     const patterns = [
       // Search for `foo && foo.` or `foo && foo[`

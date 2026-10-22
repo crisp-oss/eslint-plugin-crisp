@@ -71,7 +71,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
     const customGroups = context.options[0] || {};  // Get custom groups from options
 
     // Pre-compile custom regexes once instead of on every import
@@ -171,7 +171,7 @@ export default {
 
     function checkImportGroup(node) {
       const importPath = node.source.value;
-      const filePath = context.getFilename();
+      const filePath = context.filename;
 
       // Get group from import path
       const expectedGroup = extractGroupFromPath(importPath, filePath);
@@ -201,7 +201,7 @@ export default {
     const typeComments = allComments.filter(c => isTypeComment(c));
 
     function checkTypeCommentsGroup() {
-      const filename = context.getFilename();
+      const filename = context.filename;
 
       // Only check for // TYPES in .vue files (block header is checked by header-comments-check rule for .js/.ts)
       if (!filename.endsWith(".vue")) {

@@ -25,7 +25,7 @@ export default {
 
   create(context) {
     const options = context.options[0] || {};
-    const filename = context.filename || context.getFilename();
+    const filename = context.filename;
     const filenameExceptions = options.filenameExceptions || [];
     const variableExceptions = options.variableExceptions || [];
 

@@ -113,7 +113,7 @@ export default {
   },
 
   create(context) {
-    const filename = context.filename || context.getFilename();
+    const filename = context.filename;
 
     if (!filename.endsWith(".js") && !filename.endsWith(".ts")) {
       return {};
@@ -122,7 +122,7 @@ export default {
     let lastNode = null;
     let groupStart = null;
 
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
     const allBlockComments = sourceCode.getAllComments()
       .filter(c => c.type === "Block")
       .sort((a, b) => a.range[0] - b.range[0]);

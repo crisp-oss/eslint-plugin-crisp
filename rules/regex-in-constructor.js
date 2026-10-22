@@ -11,7 +11,7 @@ export default {
   create(context) {
     return {
       'MethodDefinition[kind!="constructor"] > FunctionExpression > BlockStatement': function(node) {
-        const regexes = context.getSourceCode().getTokens(node).filter(token => token.type === "RegularExpression");
+        const regexes = context.sourceCode.getTokens(node).filter(token => token.type === "RegularExpression");
 
         if (regexes.length > 0) {
           context.report({

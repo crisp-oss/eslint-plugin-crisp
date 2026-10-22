@@ -8,7 +8,7 @@ export default {
     },
   },
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     return {
       VariableDeclaration(node) {

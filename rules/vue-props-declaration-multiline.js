@@ -25,7 +25,7 @@ export default {
                 message: "Props should be declared in multiple lines.",
 
                 fix(fixer) {
-                  const sourceCode = context.getSourceCode();
+                  const sourceCode = context.sourceCode;
                   const propText = sourceCode.getText(propDefinition);
 
                   // Construct the multi-line version of the prop

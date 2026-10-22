@@ -27,8 +27,8 @@ export default {
     return {
       Program(node) {
         const options = context.options[0] || {};
-        const fileName = context.getFilename();
-        const sourceCode = context.sourceCode || context.getSourceCode();
+        const fileName = context.filename;
+        const sourceCode = context.sourceCode;
 
         let fileContent = sourceCode.getText().trim();
 

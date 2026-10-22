@@ -13,7 +13,7 @@ export default {
     return {
       ConditionalExpression(node) {
         if (node.test.type === "BinaryExpression" || node.test.type === "LogicalExpression") {
-          const sourceCode = context.getSourceCode();
+          const sourceCode = context.sourceCode;
           const beforeOperatorToken = sourceCode.getTokenBefore(node.test);
           const afterOperatorToken = sourceCode.getTokenAfter(node.test);
 

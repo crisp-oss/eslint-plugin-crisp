@@ -23,7 +23,7 @@ export default {
               message: "Props should be in alphabetical order.",
 
               fix(fixer) {
-                const sourceCode = context.getSourceCode();
+                const sourceCode = context.sourceCode;
                 const propertyText = sourceCode.getText(property);
                 const nextPropertyText = sourceCode.getText(nextProperty);
 

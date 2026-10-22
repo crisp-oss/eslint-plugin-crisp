@@ -50,7 +50,7 @@ export default {
   create(context) {
     const options = context.options[0] || {};
     const exceptions = options.exceptions || [];
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     const isTopLevelCallArgument = (identifier) => {
       let scope = sourceCode.getScope(identifier);

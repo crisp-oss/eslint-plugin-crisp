@@ -12,7 +12,7 @@ export default {
   create(context) {
     return {
       Program() {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
         const comments = sourceCode.getAllComments();
 
         let groupComments = [];

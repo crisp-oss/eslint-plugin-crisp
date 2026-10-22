@@ -15,7 +15,7 @@ export default {
   create(context) {
     return {
       Program(node) {
-        const fileName = context.physicalFilename || context.filename || context.getFilename();
+        const fileName = context.physicalFilename || context.filename;
 
         // Determine the file extension
         const fileExtension = path.extname(fileName);

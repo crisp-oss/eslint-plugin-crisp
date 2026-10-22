@@ -4,7 +4,7 @@ export default {
       "FunctionDeclaration, FunctionExpression, ArrowFunctionExpression, MethodDefinition": function(node) {
         (node.params || []).forEach(param => {
           if (param.type === "AssignmentPattern") {
-            const sourceCode = context.sourceCode || context.getSourceCode();
+            const sourceCode = context.sourceCode;
             const operatorToken = sourceCode.getFirstTokenBetween(param.left, param.right, token => token.value === "=");
 
             if (

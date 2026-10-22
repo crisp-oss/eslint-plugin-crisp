@@ -23,7 +23,7 @@ export default {
   create(context) {
     const options = context.options[0] || {};
     const maxLines = options.maxLines || 2;
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     function checkComment(comment) {
       if (comment.type !== "Block" || !comment.value.startsWith("*")) {

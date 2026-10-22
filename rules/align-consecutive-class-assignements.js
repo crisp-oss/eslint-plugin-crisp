@@ -11,7 +11,7 @@ export default {
   },
 
   create: function (context) {
-    let sourceCode = context.getSourceCode();
+    let sourceCode = context.sourceCode;
     let currentBlock = [];
     let maxColumn = 0;
 
