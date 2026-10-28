@@ -228,6 +228,7 @@ Each item has emojis denoting:
 | [crisp/vue-define-component](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-define-component.js) | Enforces mixins and components to use the `defineComponent` wrapper |  | 🟢 |
 | [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) | Ensures emits properties are alphabetically ordered |  | 🟢 |
 | [crisp/vue-event-listener-jsdoc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-event-listener-jsdoc.js) | Requires event listener method JSDoc descriptions to start with `Triggers on` |  | 🟢 |
+| [crisp/vue-event-listener-section](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-event-listener-section.js) | Requires methods named `on` followed by an uppercase letter to be in the event listeners section |  | 🟢 |
 | [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) | Ensures `script`, `template` and `style` tags start with corresponding comment block |  | 🟢 |
 | [crisp/vue-html-indent](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-indent.js) | Enforces consistent indentation in `template` (supports for Pug) |  | 🟢 |
 | [crisp/vue-html-quotes](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-quotes.js) | Enforces HTML attributes to be enclosed with double quotes |  | 🟢 |

@@ -51,6 +51,7 @@ import ruleVueDataComment from "./rules/vue-data-comment.js";
 import ruleVueDefineComponent from "./rules/vue-define-component.js";
 import ruleVueEmitsOrder from "./rules/vue-emits-order.js";
 import ruleVueEventListenerJsdoc from "./rules/vue-event-listener-jsdoc.js";
+import ruleVueEventListenerSection from "./rules/vue-event-listener-section.js";
 import ruleVueHeaderCheck from "./rules/vue-header-check.js";
 import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
 import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
@@ -131,6 +132,7 @@ const plugin = {
     "vue-define-component": ruleVueDefineComponent,
     "vue-emits-order": ruleVueEmitsOrder,
     "vue-event-listener-jsdoc": ruleVueEventListenerJsdoc,
+    "vue-event-listener-section": ruleVueEventListenerSection,
     "vue-header-check": ruleVueHeaderCheck,
     "vue-html-indent": ruleVueHtmlIndent,
     "vue-html-quotes": ruleVueHtmlQuotes,
