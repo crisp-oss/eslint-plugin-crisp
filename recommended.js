@@ -153,6 +153,7 @@ export default function configRecommended(pluginCrisp) {
         "semi-style": ["error", "last"],
         "space-before-blocks": "error",
         "space-in-parens": ["error", "never"],
+        "space-infix-ops": "error",
 
         // Crisp JS rules
         "crisp/align-comments": "error",
@@ -179,7 +180,6 @@ export default function configRecommended(pluginCrisp) {
             "exceptions": ["_", "$"]
           }
         ],
-        "crisp/no-space-in-default-parameters": "error",
         "crisp/one-space-after-operator": [
           "error",
 

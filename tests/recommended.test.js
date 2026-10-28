@@ -20,6 +20,19 @@ test("all recommended configs reject multiple spaces", () => {
   }
 });
 
+test("recommended config uses standard default parameter spacing", () => {
+  const result = new Linter().verifyAndFix(
+    "function greet(name=\"World\") {}",
+    [{
+      rules: {
+        "space-infix-ops": recommendedRules["space-infix-ops"]
+      }
+    }]
+  );
+
+  assert.equal(result.output, "function greet(name = \"World\") {}");
+});
+
 test("recommended config removes legacy assignment alignment", () => {
   const input = `class Example {
   constructor() {

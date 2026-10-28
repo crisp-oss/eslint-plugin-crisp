@@ -116,7 +116,7 @@ Each item has emojis denoting:
 | [semi-spacing](https://eslint.org/docs/latest/rules/semi-spacing) | Disallows space before semicolons, enforces spaces after |  | 🟢 | 🟣 |
 | [space-before-blocks](https://eslint.org/docs/latest/rules/space-before-blocks) | Enforces consistent spacing before blocks | 🟠 | 🟢 | 🟣 |
 | [space-in-parens](https://eslint.org/docs/latest/rules/space-in-parens) | Enforces zero spaces inside of parentheses | 🟠 | 🟢 | 🟣 |
-| [space-infix-ops](https://eslint.org/docs/latest/rules/space-infix-ops) | Enforces spaces around infix operators |  | 🟢 | 🟣 |
+| [space-infix-ops](https://eslint.org/docs/latest/rules/space-infix-ops) | Enforces spaces around infix operators | 🟠 | 🟢 | 🟣 |
 
 #### Crisp JS rules
 
@@ -141,7 +141,6 @@ Each item has emojis denoting:
 | [crisp/no-extra-line-within-function](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-extra-line-within-function.js) | Allows at most one empty line between declarations within functions | 🟠 | 🟢 | 🟣 |
 | [crisp/no-inline-function-in-ternary](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-inline-function-in-ternary.js) | Disallows inline functions in ternary branches | 🟠 | 🟢 | 🟣 |
 | [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
-| [crisp/no-space-in-default-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-space-in-default-parameters.js) | Disallows space before or after `=` in default parameters | 🟠 |
 | [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
 | [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 |

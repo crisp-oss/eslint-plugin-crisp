@@ -29,7 +29,6 @@ import ruleNewlineAfterSwitchCase from "./rules/newline-after-switch-case.js";
 import ruleNoAsync from "./rules/no-async.js";
 import ruleNoExtraLineWithinFunction from "./rules/no-extra-line-within-function.js";
 import ruleNoInlineFunctionInTernary from "./rules/no-inline-function-in-ternary.js";
-import ruleNoSpaceInDefaultParameters from "./rules/no-space-in-default-parameters.js";
 import ruleNoUselessTemplateLiterals from "./rules/no-useless-template-literals.js";
 import ruleNoVarInBlocks from "./rules/no-var-in-blocks.js";
 import ruleNoShortParameters from "./rules/no-short-parameters.js";
@@ -107,7 +106,6 @@ const plugin = {
     "no-async": ruleNoAsync,
     "no-extra-line-within-function": ruleNoExtraLineWithinFunction,
     "no-inline-function-in-ternary": ruleNoInlineFunctionInTernary,
-    "no-space-in-default-parameters": ruleNoSpaceInDefaultParameters,
     "no-var-in-blocks": ruleNoVarInBlocks,
     "no-useless-template-literals": ruleNoUselessTemplateLiterals,
     "no-short-parameters": ruleNoShortParameters,
