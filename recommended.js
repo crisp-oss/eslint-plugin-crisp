@@ -89,6 +89,7 @@ export default function configRecommended(pluginCrisp) {
             ]
           }
         ],
+        "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
         "keyword-spacing": "error",
         "linebreak-style": ["error", "unix"],
         "max-len": ["error", {
@@ -182,7 +183,13 @@ export default function configRecommended(pluginCrisp) {
           }
         ],
         "crisp/no-space-in-optional-arguments": "error",
-        "crisp/one-space-after-operator": "error",
+        "crisp/one-space-after-operator": [
+          "error",
+
+          {
+            "checkColon": false
+          }
+        ],
         "crisp/regex-in-constructor": "error",
         "crisp/ternary-parenthesis": "error",
         "crisp/two-lines-between-class-members": "error",
