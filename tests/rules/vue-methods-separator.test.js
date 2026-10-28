@@ -13,6 +13,7 @@ ruleTester.run("vue-methods-separator", rule, {
         export default {
           methods: {
             // --> ACTIONS <--
+
             save() {}
           }
         };
@@ -23,6 +24,7 @@ ruleTester.run("vue-methods-separator", rule, {
         export default {
           methods: {
             // --> HELPERS <--
+
             format() {}
           }
         };
@@ -33,6 +35,7 @@ ruleTester.run("vue-methods-separator", rule, {
         export default {
           methods: {
             // --> EVENT LISTENERS <--
+
             onSave() {}
           }
         };
@@ -43,8 +46,10 @@ ruleTester.run("vue-methods-separator", rule, {
         export default {
           methods: {
             // --> ACTIONS <--
+
             save() {},
             // --> EVENT LISTENERS <--
+
             onSave() {}
           }
         };
@@ -55,10 +60,13 @@ ruleTester.run("vue-methods-separator", rule, {
         export default defineComponent({
           methods: {
             // --> ACTIONS <--
+
             save() {},
             // --> HELPERS <--
+
             format() {},
             // --> EVENT LISTENERS <--
+
             onSave() {}
           }
         });
@@ -80,6 +88,7 @@ ruleTester.run("vue-methods-separator", rule, {
         export default {
           methods: {
             // --> ACTIONS <--
+
             save() {
               // --> EVENT LISTENERS <--
               const status = "saved";
@@ -87,6 +96,7 @@ ruleTester.run("vue-methods-separator", rule, {
               return status;
             },
             // --> HELPERS <--
+
             format() {}
           }
         };
@@ -100,10 +110,13 @@ ruleTester.run("vue-methods-separator", rule, {
         export default defineComponent({
           methods: {
             // --> ACTIONS <--
+
             save() {},
             // --> HELPERS <--
+
             format() {},
             // --> EVENT LISTENERS <--
+
             onSave() {}
           }
         });
@@ -125,7 +138,38 @@ ruleTester.run("vue-methods-separator", rule, {
       code: `
         export default {
           methods: {
+            // --> ACTIONS <--
+            /**
+             * Saves content
+             */
+            save() {}
+          }
+        };
+      `,
+      output: `
+        export default {
+          methods: {
+            // --> ACTIONS <--
+
+            /**
+             * Saves content
+             */
+            save() {}
+          }
+        };
+      `,
+      errors: [
+        {
+          messageId: "missingSeparatorSpacing"
+        }
+      ]
+    },
+    {
+      code: `
+        export default {
+          methods: {
             // --> HELPERS <--
+
             help() {},
             // --> OTHER <--
             run() {}
@@ -142,9 +186,29 @@ ruleTester.run("vue-methods-separator", rule, {
       code: `
         export default {
           methods: {
+            // --> ACTIONS <--
+
+            save() {},
+            /* --> OTHER <-- */
+            run() {}
+          }
+        };
+      `,
+      errors: [
+        {
+          messageId: "invalidSeparator"
+        }
+      ]
+    },
+    {
+      code: `
+        export default {
+          methods: {
             // --> HELPERS <--
+
             format() {},
             // --> ACTIONS <--
+
             save() {}
           }
         };
@@ -153,8 +217,10 @@ ruleTester.run("vue-methods-separator", rule, {
         export default {
           methods: {
             // --> ACTIONS <--
+
             save() {},
             // --> HELPERS <--
+
             format() {}
           }
         };
@@ -242,8 +308,10 @@ ruleTester.run("vue-methods-separator", rule, {
         export default {
           methods: {
             // --> ACTIONS <--
+
             save() {},
             // --> ACTIONS <--
+
             publish() {}
           }
         };
@@ -260,8 +328,10 @@ ruleTester.run("vue-methods-separator", rule, {
         export default defineComponent({
           methods: {
             // --> EVENT LISTENERS <--
+
             onSave() {},
             // --> HELPERS <--
+
             format() {}
           }
         });
@@ -270,8 +340,10 @@ ruleTester.run("vue-methods-separator", rule, {
         export default defineComponent({
           methods: {
             // --> HELPERS <--
+
             format() {},
             // --> EVENT LISTENERS <--
+
             onSave() {}
           }
         });
@@ -305,8 +377,10 @@ ruleTester.run("vue-methods-separator", rule, {
         export default defineComponent({
           methods: {
             // --> EVENT LISTENERS <--
+
             onSave() {},
             // --> ACTIONS <--
+
             save() {}
           }
         });
@@ -317,8 +391,10 @@ ruleTester.run("vue-methods-separator", rule, {
         export default defineComponent({
           methods: {
             // --> ACTIONS <--
+
             save() {},
             // --> EVENT LISTENERS <--
+
             onSave() {}
           }
         });

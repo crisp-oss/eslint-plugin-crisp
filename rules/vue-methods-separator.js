@@ -30,6 +30,8 @@ export default {
         "Methods block must contain at least one separator comment: " +
         "'// --> ACTIONS <--', '// --> HELPERS <--', " +
         "or '// --> EVENT LISTENERS <--'.",
+      missingSeparatorSpacing:
+        "Methods separator comments must be followed by a blank line.",
       unorderedSeparator:
         "Methods separator comments must be ordered: '// --> ACTIONS <--', " +
         "then '// --> HELPERS <--', then '// --> EVENT LISTENERS <--'."
@@ -147,6 +149,75 @@ export default {
       };
     }
 
+    function checkSeparatorSpacing(comment, comments, properties) {
+      const nextSeparator = comments.find((candidate) => {
+        return (
+          candidate.range[0] > comment.range[1] &&
+          candidate.type === "Line" &&
+          SEPARATOR_LIKE_PATTERN.test(candidate.value.trim())
+        );
+      });
+      const firstProperty = properties.find((property) => {
+        return (
+          property.range[0] > comment.range[1] &&
+          (!nextSeparator || property.range[0] < nextSeparator.range[0])
+        );
+      });
+
+      if (!firstProperty) {
+        return;
+      }
+
+      const firstLeadingComment = sourceCode
+        .getCommentsBefore(firstProperty)
+        .find((candidate) => {
+          return (
+            candidate.range[0] > comment.range[1] &&
+            (!nextSeparator || candidate.range[0] < nextSeparator.range[0])
+          );
+        });
+      const firstNode = firstLeadingComment || firstProperty;
+
+      if (firstNode.loc.start.line > comment.loc.end.line + 1) {
+        return;
+      }
+
+      const spacingFix = (fixer) => {
+        const lineStart = sourceCode.getIndexFromLoc({
+          line: firstNode.loc.start.line,
+          column: 0
+        });
+        const indentation = sourceCode.text.slice(
+          lineStart,
+          firstNode.range[0]
+        );
+        const currentSpacing = sourceCode.text.slice(
+          comment.range[1],
+          firstNode.range[0]
+        );
+
+        if (
+          indentation.trim() !== "" ||
+          currentSpacing.trim() !== ""
+        ) {
+          return null;
+        }
+
+        const linebreak = currentSpacing.includes("\r\n") ? "\r\n" : "\n";
+
+        return fixer.replaceTextRange(
+          [comment.range[1], firstNode.range[0]],
+          `${linebreak}${linebreak}${indentation}`
+        );
+      };
+
+      context.report({
+        node: comment,
+        messageId: "missingSeparatorSpacing",
+        fix: spacingFix
+      });
+    }
+
     function checkMethods(node) {
       const properties = node.value.properties;
 
@@ -171,11 +242,21 @@ export default {
       let hasInvalidSeparator = false;
 
       comments.forEach((comment) => {
+        const separator = comment.value.trim();
+
         if (comment.type !== "Line") {
+          if (SEPARATOR_LIKE_PATTERN.test(separator)) {
+            hasInvalidSeparator = true;
+
+            context.report({
+              node: comment,
+              messageId: "invalidSeparator"
+            });
+          }
+
           return;
         }
 
-        const separator = comment.value.trim();
         const separatorOrder = SEPARATOR_ORDER.get(separator);
 
         if (separatorOrder === undefined) {
@@ -211,6 +292,17 @@ export default {
           order: separatorOrder
         });
       });
+
+      comments
+        .filter((comment) => {
+          return (
+            comment.type === "Line" &&
+            SEPARATOR_ORDER.has(comment.value.trim())
+          );
+        })
+        .forEach((comment) => {
+          checkSeparatorSpacing(comment, comments, properties);
+        });
 
       let lastSeparatorOrder = -1;
       const unorderedEntries = separatorEntries.filter((entry) => {
