@@ -109,6 +109,7 @@ export default function configRecommended(pluginCrisp) {
           }
         ],
         "no-multi-str": "error",
+        "no-multi-spaces": "error",
         "no-mixed-spaces-and-tabs": "error",
         "no-tabs": "error",
         "no-trailing-spaces": "error",

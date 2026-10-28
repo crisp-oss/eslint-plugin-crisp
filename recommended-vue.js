@@ -102,6 +102,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "no-eval": "error",
         "no-implicit-coercion": "error",
         "no-multi-str": "error",
+        "no-multi-spaces": "error",
         "no-multiple-empty-lines": ["error", { max: 1 }],
         "no-mixed-spaces-and-tabs": "error",
         "no-restricted-syntax": [
