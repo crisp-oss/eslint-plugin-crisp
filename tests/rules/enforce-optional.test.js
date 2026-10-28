@@ -7,6 +7,9 @@ ruleTester.run("enforce-optional", rule, {
   valid: [
     "const result = foo?.bar;",
     "const result = foo && foo.bar !== null;",
+    "const result = foo && foo.bar <= maximum;",
+    "const result = foo && foo[bar] === value;",
+    "if (_header_value && _header_value.length <= ORIGINAL_HEADER_MAX_LENGTH) {}",
     "const keys = Object.keys(foo || {});",
     "const filtered = (foo || []).filter(Boolean);"
   ],

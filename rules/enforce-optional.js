@@ -18,9 +18,10 @@ export default {
 
     const patterns = [
       // Search for `foo && foo.` or `foo && foo[`
-      // Notice: do not match `foo && foo.bar !==` or `foo && foo[bar] !==`, \
-      //   as the version with optional chaining would be unsafe
-      /\b(\w\S+)\s&&\s+\1\b[\[\.](?!\w\S+\s\!\=\=)/g,
+      // Notice: do not match when the accessed value is compared, as the \
+      //   version with optional chaining could change the result for falsy \
+      //   non-nullish values
+      /\b(\w\S+)\s&&\s+\1\b[\[\.](?!\S+\s*(?:[=!]==?|[<>]=?))/g,
 
       // Search for patterns like `foo || {}).bar`, `foo || {})[`, \
       //   `foo || []).bar` or `foo || [])[`
