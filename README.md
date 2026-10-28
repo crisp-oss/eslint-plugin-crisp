@@ -117,9 +117,6 @@ Each item has emojis denoting:
 | :- | :- | :- | :- | :- |
 | [crisp/align-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-comments.js) | Enforces alignment of comments compared to the previous line (the `indent` rule doesn't check this case) | 🟠 | 🟢 | 🟣 |
 | [crisp/consecutive-line-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/consecutive-line-comments.js) | Enforces consecutive single-line comments to form a single multi-line continuation block | 🟠 | 🟢 | 🟣 |
-| [crisp/align-consecutive-class-assignements](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-consecutive-class-assignements.js) | Enforces alignment of consecutive assignment statements in a class constructor | 🟠 |
-| [crisp/align-one-var](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-one-var.js) | Enforces alignment of variables in 'one-var' statements | 🟠 |
-| [crisp/align-requires](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-requires.js) | Enforces alignment of require statements | 🟠 |
 | [crisp/arrow-block-newline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/arrow-block-newline.js) | Requires a newline after `{` in arrow function blocks | 🟠 | 🟢 | 🟣 |
 | [crisp/const](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/const.js) | Enforces that `const` variables start with `__` or are all uppercase | 🟠 |
 | [crisp/constructor-variables](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/constructor-variables.js) | Ensures all class properties in the constructor start with `_` | 🟠 |

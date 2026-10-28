@@ -3,9 +3,6 @@ import configRecommendedVue from "./recommended-vue.js";
 import configRecommendedTS from "./recommended-ts.js";
 
 import ruleAlignComments from "./rules/align-comments.js";
-import ruleAlignConsecutiveClassAssignements from "./rules/align-consecutive-class-assignements.js";
-import ruleAlignOneVar from "./rules/align-one-var.js";
-import ruleAlignRequires from "./rules/align-requires.js";
 import ruleArrowBlockNewline from "./rules/arrow-block-newline.js";
 import ruleConsecutiveLineComments from "./rules/consecutive-line-comments.js";
 import ruleConst from "./rules/const.js";
@@ -84,9 +81,6 @@ const plugin = {
 
   rules: {
     "align-comments": ruleAlignComments,
-    "align-consecutive-class-assignements": ruleAlignConsecutiveClassAssignements,
-    "align-one-var": ruleAlignOneVar,
-    "align-requires": ruleAlignRequires,
     "arrow-block-newline": ruleArrowBlockNewline,
     "consecutive-line-comments": ruleConsecutiveLineComments,
     "const": ruleConst,
