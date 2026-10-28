@@ -230,6 +230,7 @@ Each item has emojis denoting:
 | [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) | Ensures `script`, `template` and `style` tags start with corresponding comment block |  | 🟢 |
 | [crisp/vue-html-indent](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-indent.js) | Enforces consistent indentation in `template` (supports for Pug) |  | 🟢 |
 | [crisp/vue-html-quotes](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-quotes.js) | Enforces HTML attributes to be enclosed with double quotes |  | 🟢 |
+| [crisp/vue-methods-separator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-methods-separator.js) | Requires method section comments to be ordered as actions, helpers, then event listeners |  | 🟢 |
 | [crisp/vue-no-component-class-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-component-class-shorthand.js) | Disallows Pug class shorthand on Vue components |  | 🟢 |
 | [crisp/vue-no-mixed-class](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class.js) | Disallows using both `class` and `:class` on the same element |  | 🟢 |
 | [crisp/vue-no-name-option](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-name-option.js) | Disallows explicit component names in Vue single-file components |  | 🟢 |

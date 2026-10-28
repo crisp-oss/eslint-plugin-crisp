@@ -1,7 +1,7 @@
 import rule from "../../rules/vue-methods-separator.js";
-import createRuleTester from "../rule-tester.js";
+import { createVueRuleTester } from "../rule-tester.js";
 
-const ruleTester = createRuleTester();
+const ruleTester = createVueRuleTester();
 
 ruleTester.run("vue-methods-separator", rule, {
   valid: [
@@ -17,6 +17,98 @@ ruleTester.run("vue-methods-separator", rule, {
           }
         };
       `
+    },
+    {
+      code: `
+        export default {
+          methods: {
+            // --> HELPERS <--
+            format() {}
+          }
+        };
+      `
+    },
+    {
+      code: `
+        export default {
+          methods: {
+            // --> EVENT LISTENERS <--
+            onSave() {}
+          }
+        };
+      `
+    },
+    {
+      code: `
+        export default {
+          methods: {
+            // --> ACTIONS <--
+            save() {},
+            // --> EVENT LISTENERS <--
+            onSave() {}
+          }
+        };
+      `
+    },
+    {
+      code: `
+        export default defineComponent({
+          methods: {
+            // --> ACTIONS <--
+            save() {},
+            // --> HELPERS <--
+            format() {},
+            // --> EVENT LISTENERS <--
+            onSave() {}
+          }
+        });
+      `
+    },
+    {
+      code: `
+        export default {
+          options: {
+            methods: {
+              save() {}
+            }
+          }
+        };
+      `
+    },
+    {
+      code: `
+        export default {
+          methods: {
+            // --> ACTIONS <--
+            save() {
+              // --> EVENT LISTENERS <--
+              const status = "saved";
+
+              return status;
+            },
+            // --> HELPERS <--
+            format() {}
+          }
+        };
+      `
+    },
+    {
+      filename: "Component.vue",
+      code: `
+        <template><div /></template>
+        <script>
+        export default defineComponent({
+          methods: {
+            // --> ACTIONS <--
+            save() {},
+            // --> HELPERS <--
+            format() {},
+            // --> EVENT LISTENERS <--
+            onSave() {}
+          }
+        });
+        </script>
+      `
     }
   ],
 
@@ -25,10 +117,7 @@ ruleTester.run("vue-methods-separator", rule, {
       code: "export default { methods: { save() {} } };",
       errors: [
         {
-          message:
-            "Methods block must contain at least one separator comment: " +
-            "'// --> ACTIONS <--', '// --> HELPERS <--', " +
-            "or '// --> EVENT LISTENERS <--'."
+          messageId: "missingSeparator"
         }
       ]
     },
@@ -45,9 +134,95 @@ ruleTester.run("vue-methods-separator", rule, {
       `,
       errors: [
         {
-          message:
-            "Invalid separator comment. Must be '// --> ACTIONS <--', " +
-            "'// --> HELPERS <--', or '// --> EVENT LISTENERS <--'."
+          messageId: "invalidSeparator"
+        }
+      ]
+    },
+    {
+      code: `
+        export default {
+          methods: {
+            // --> HELPERS <--
+            format() {},
+            // --> ACTIONS <--
+            save() {}
+          }
+        };
+      `,
+      errors: [
+        {
+          messageId: "unorderedSeparator"
+        }
+      ]
+    },
+    {
+      code: `
+        export default {
+          methods: {
+            // --> ACTIONS <--
+            save() {},
+            // --> ACTIONS <--
+            publish() {}
+          }
+        };
+      `,
+      errors: [
+        {
+          messageId: "duplicateSeparator",
+          data: { separator: "--> ACTIONS <--" }
+        }
+      ]
+    },
+    {
+      code: `
+        export default defineComponent({
+          methods: {
+            // --> EVENT LISTENERS <--
+            onSave() {},
+            // --> HELPERS <--
+            format() {}
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: "unorderedSeparator"
+        }
+      ]
+    },
+    {
+      code: `
+        export default {
+          methods: {
+            save() {
+              // --> ACTIONS <--
+            }
+          }
+        };
+      `,
+      errors: [
+        {
+          messageId: "missingSeparator"
+        }
+      ]
+    },
+    {
+      filename: "Component.vue",
+      code: `
+        <script>
+        export default defineComponent({
+          methods: {
+            // --> EVENT LISTENERS <--
+            onSave() {},
+            // --> ACTIONS <--
+            save() {}
+          }
+        });
+        </script>
+      `,
+      errors: [
+        {
+          messageId: "unorderedSeparator"
         }
       ]
     }

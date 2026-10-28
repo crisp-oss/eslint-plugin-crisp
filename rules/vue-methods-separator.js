@@ -1,65 +1,121 @@
+const SEPARATORS = [
+  "--> ACTIONS <--",
+  "--> HELPERS <--",
+  "--> EVENT LISTENERS <--"
+];
+
+const SEPARATOR_ORDER = new Map(
+  SEPARATORS.map((separator, index) => [separator, index])
+);
+const SEPARATOR_LIKE_PATTERN = /^--> .+ <--$/;
+
 export default {
   meta: {
     type: "suggestion",
     docs: {
-      description: "enforce at least one separator comment in Vue methods block",
+      description:
+        "enforce separator comments and their order in Vue methods block",
       category: "Stylistic Issues",
       recommended: false
     },
     fixable: null,
-    schema: []
+    schema: [],
+    messages: {
+      duplicateSeparator:
+        "Duplicate methods separator comment '// {{separator}}'.",
+      invalidSeparator:
+        "Invalid separator comment. Must be '// --> ACTIONS <--', " +
+        "'// --> HELPERS <--', or '// --> EVENT LISTENERS <--'.",
+      missingSeparator:
+        "Methods block must contain at least one separator comment: " +
+        "'// --> ACTIONS <--', '// --> HELPERS <--', " +
+        "or '// --> EVENT LISTENERS <--'.",
+      unorderedSeparator:
+        "Methods separator comments must be ordered: '// --> ACTIONS <--', " +
+        "then '// --> HELPERS <--', then '// --> EVENT LISTENERS <--'."
+    }
   },
 
   create(context) {
-    const SEPARATOR_PATTERN = /^--> (ACTIONS|HELPERS|EVENT LISTENERS) <--$/;
-    const SEPARATOR_LIKE_PATTERN = /^--> .+ <--$/;
+    const sourceCode = context.sourceCode;
 
-    return {
-      'ExportDefaultDeclaration Property[key.name="methods"]'(node) {
-        const properties = node.value.properties;
+    function checkMethods(node) {
+      const properties = node.value.properties;
 
-        if (!properties || properties.length === 0) {
+      if (!properties || properties.length === 0) {
+        return;
+      }
+
+      const comments = sourceCode.getCommentsInside(node.value).filter(
+        (comment) => {
+          return !properties.some((property) => {
+            return (
+              comment.range[0] >= property.range[0] &&
+              comment.range[1] <= property.range[1]
+            );
+          });
+        }
+      );
+      const seenSeparators = new Set();
+      let lastSeparatorOrder = -1;
+      let separatorCount = 0;
+
+      comments.forEach((comment) => {
+        if (comment.type !== "Line") {
           return;
         }
 
-        const sourceCode = context.sourceCode;
-        const comments = sourceCode.getCommentsInside(node);
+        const separator = comment.value.trim();
+        const separatorOrder = SEPARATOR_ORDER.get(separator);
 
-        const hasSeparator = comments.some((comment) => {
-          return (
-            comment.type === "Line" &&
-            SEPARATOR_PATTERN.test(comment.value.trim())
-          );
-        });
+        if (separatorOrder === undefined) {
+          if (SEPARATOR_LIKE_PATTERN.test(separator)) {
+            context.report({
+              node: comment,
+              messageId: "invalidSeparator"
+            });
+          }
 
-        if (!hasSeparator) {
-          context.report({
-            node,
-            message:
-              "Methods block must contain at least one separator comment: " +
-              "'// --> ACTIONS <--', '// --> HELPERS <--', " +
-              "or '// --> EVENT LISTENERS <--'."
-          });
+          return;
         }
 
-        comments.forEach((comment) => {
-          if (comment.type === "Line") {
-            const trimmed = comment.value.trim();
+        separatorCount++;
 
-            if (
-              SEPARATOR_LIKE_PATTERN.test(trimmed) &&
-              !SEPARATOR_PATTERN.test(trimmed)
-            ) {
-              context.report({
-                node: comment,
-                message:
-                  "Invalid separator comment. Must be '// --> ACTIONS <--', " +
-                  "'// --> HELPERS <--', or '// --> EVENT LISTENERS <--'."
-              });
-            }
-          }
+        if (seenSeparators.has(separator)) {
+          context.report({
+            node: comment,
+            messageId: "duplicateSeparator",
+            data: { separator }
+          });
+
+          return;
+        }
+
+        seenSeparators.add(separator);
+
+        if (separatorOrder < lastSeparatorOrder) {
+          context.report({
+            node: comment,
+            messageId: "unorderedSeparator"
+          });
+        } else {
+          lastSeparatorOrder = separatorOrder;
+        }
+      });
+
+      if (separatorCount === 0) {
+        context.report({
+          node,
+          messageId: "missingSeparator"
         });
       }
+    }
+
+    return {
+      'ExportDefaultDeclaration > ObjectExpression > Property[key.name="methods"]':
+        checkMethods,
+      'ExportDefaultDeclaration > CallExpression[callee.name="defineComponent"] > ObjectExpression > Property[key.name="methods"]':
+        checkMethods
     };
   }
 };
