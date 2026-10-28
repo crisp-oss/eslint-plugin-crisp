@@ -94,7 +94,7 @@ Each item has emojis denoting:
 | [no-implicit-coercion](https://eslint.org/docs/latest/rules/no-implicit-coercion) | Disallows short notations for type conversion |  | 🟢 | 🟣 |
 | [no-magic-numbers](https://eslint.org/docs/latest/rules/no-magic-numbers) | Disallows magic numbers (except the ones in the context of array indexes and in default value assignments) | 🟠 |
 | [no-multi-str](https://eslint.org/docs/latest/rules/no-multi-str) | Disallows multiline strings | 🟠 | 🟢 | 🟣 |
-| [no-multi-spaces](https://eslint.org/docs/latest/rules/no-multi-spaces) | Disallows multiple consecutive spaces except for indentation | 🟠 |  |  |
+| [no-multi-spaces](https://eslint.org/docs/latest/rules/no-multi-spaces) | Disallows multiple consecutive spaces except for indentation | 🟠 | 🟢 | 🟣 |
 | [no-multiple-empty-lines](https://eslint.org/docs/latest/rules/no-multiple-empty-lines) | Allows a maximum of 1 consecutive empty lines |  | 🟢 | 🟣 |
 | [no-mixed-spaces-and-tabs](https://eslint.org/docs/latest/rules/no-mixed-spaces-and-tabs) | Disallows mixed spaces and tabs for indentation | 🟠 | 🟢 | 🟣 |
 | [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Enforces `switch` `case`'s content to be enclosed in braces |  | 🟢 | 🟣 |
