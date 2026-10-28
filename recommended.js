@@ -73,7 +73,7 @@ export default function configRecommended(pluginCrisp) {
             "CallExpression": {
               "arguments": "off"
             },
-            "VariableDeclarator": "first",
+            "VariableDeclarator": 1,
             "outerIIFEBody": 0,
             "ArrayExpression": "first",
             "ObjectExpression": "first",
@@ -83,7 +83,6 @@ export default function configRecommended(pluginCrisp) {
               "BinaryExpression",
               "ConditionalExpression",
               "IfStatement *",
-              "VariableDeclarator",
               "VariableDeclarator > CallExpression",
               "CallExpression > ArrayExpression"
             ]
