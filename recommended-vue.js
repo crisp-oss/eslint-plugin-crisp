@@ -385,6 +385,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-data-comment": "error",
         "crisp/vue-define-component": "error",
         "crisp/vue-emits-order": "error",
+        "crisp/vue-event-listener-jsdoc": "error",
         "crisp/vue-header-check": "error",
         "crisp/vue-html-indent": "error",
         "crisp/vue-html-quotes": "error",
