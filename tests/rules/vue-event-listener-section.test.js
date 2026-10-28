@@ -72,6 +72,34 @@ ruleTester.run("vue-event-listener-section", rule, {
         export default {
           methods: {
             // --> ACTIONS <--
+
+            /**
+             * Saves content
+             */
+            save() {},
+
+            /**
+             * Triggers on save
+             */
+            onSave() {}
+          }
+        };
+      `,
+      output: `
+        export default {
+          methods: {
+            // --> ACTIONS <--
+
+            /**
+             * Saves content
+             */
+            save() {},
+
+            // --> EVENT LISTENERS <--
+
+            /**
+             * Triggers on save
+             */
             onSave() {}
           }
         };
@@ -88,6 +116,22 @@ ruleTester.run("vue-event-listener-section", rule, {
         export default {
           methods: {
             // --> HELPERS <--
+
+            format() {},
+
+            onLoadMore() {}
+          }
+        };
+      `,
+      output: `
+        export default {
+          methods: {
+            // --> HELPERS <--
+
+            format() {},
+
+            // --> EVENT LISTENERS <--
+
             onLoadMore() {}
           }
         };
@@ -107,6 +151,15 @@ ruleTester.run("vue-event-listener-section", rule, {
           }
         };
       `,
+      output: `
+        export default {
+          methods: {
+            // --> EVENT LISTENERS <--
+
+            "onClose": function() {}
+          }
+        };
+      `,
       errors: [
         {
           messageId: "wrongSection",
@@ -121,11 +174,41 @@ ruleTester.run("vue-event-listener-section", rule, {
         export default defineComponent({
           methods: {
             // --> ACTIONS <--
+
+            save() {},
+
             onSave() {},
             // --> HELPERS <--
+
+            format() {},
+
             onFormatComplete() {},
             // --> EVENT LISTENERS <--
+
             onClose() {}
+          }
+        });
+        </script>
+      `,
+      output: `
+        <script>
+        export default defineComponent({
+          methods: {
+            // --> ACTIONS <--
+
+            save() {},
+
+            // --> HELPERS <--
+
+            format() {},
+
+            // --> EVENT LISTENERS <--
+
+            onClose() {},
+
+            onSave() {},
+
+            onFormatComplete() {}
           }
         });
         </script>
