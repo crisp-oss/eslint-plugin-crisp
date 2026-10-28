@@ -180,7 +180,7 @@ export default function configRecommended(pluginCrisp) {
             "exceptions": ["_", "$"]
           }
         ],
-        "crisp/no-space-in-optional-arguments": "error",
+        "crisp/no-space-in-default-parameters": "error",
         "crisp/one-space-after-operator": [
           "error",
 

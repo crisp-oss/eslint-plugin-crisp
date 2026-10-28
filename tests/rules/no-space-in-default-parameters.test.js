@@ -1,9 +1,9 @@
-import rule from "../../rules/no-space-in-optional-arguments.js";
+import rule from "../../rules/no-space-in-default-parameters.js";
 import createRuleTester from "../rule-tester.js";
 
 const ruleTester = createRuleTester();
 
-ruleTester.run("no-space-in-optional-arguments", rule, {
+ruleTester.run("no-space-in-default-parameters", rule, {
   valid: [
     "function greet(name=\"World\") {}",
     "const greet = (name=\"World\") => name;",
@@ -16,7 +16,7 @@ ruleTester.run("no-space-in-optional-arguments", rule, {
       code: "function greet(name =\"World\") {}",
       errors: [
         {
-          message: "There should be no space before or after = in optional parameters"
+          message: "There should be no space before or after = in default parameters"
         }
       ]
     },
@@ -24,7 +24,7 @@ ruleTester.run("no-space-in-optional-arguments", rule, {
       code: "const greet = (name= \"World\") => name;",
       errors: [
         {
-          message: "There should be no space before or after = in optional parameters"
+          message: "There should be no space before or after = in default parameters"
         }
       ]
     },
@@ -32,7 +32,7 @@ ruleTester.run("no-space-in-optional-arguments", rule, {
       code: "class Greeter { greet(name = \"World\") {} }",
       errors: [
         {
-          message: "There should be no space before or after = in optional parameters"
+          message: "There should be no space before or after = in default parameters"
         }
       ]
     }

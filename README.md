@@ -141,7 +141,7 @@ Each item has emojis denoting:
 | [crisp/no-extra-line-within-function](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-extra-line-within-function.js) | Allows at most one empty line between declarations within functions | 🟠 | 🟢 | 🟣 |
 | [crisp/no-inline-function-in-ternary](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-inline-function-in-ternary.js) | Disallows inline functions in ternary branches | 🟠 | 🟢 | 🟣 |
 | [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
-| [crisp/no-space-in-optional-arguments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-space-in-optional-arguments.js) | Disallows space before or after `=` in optional parameters | 🟠 |
+| [crisp/no-space-in-default-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-space-in-default-parameters.js) | Disallows space before or after `=` in default parameters | 🟠 |
 | [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
 | [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 |

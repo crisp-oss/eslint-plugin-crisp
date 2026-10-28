@@ -13,7 +13,7 @@ export default {
             ) {
               context.report({
                 node,
-                message: "There should be no space before or after = in optional parameters"
+                message: "There should be no space before or after = in default parameters"
               });
             }
           }
