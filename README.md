@@ -97,7 +97,7 @@ Each item has emojis denoting:
 | [no-multi-spaces](https://eslint.org/docs/latest/rules/no-multi-spaces) | Disallows multiple consecutive spaces except for indentation | 🟠 | 🟢 | 🟣 |
 | [no-multiple-empty-lines](https://eslint.org/docs/latest/rules/no-multiple-empty-lines) | Allows a maximum of 1 consecutive empty lines |  | 🟢 | 🟣 |
 | [no-mixed-spaces-and-tabs](https://eslint.org/docs/latest/rules/no-mixed-spaces-and-tabs) | Disallows mixed spaces and tabs for indentation | 🟠 | 🟢 | 🟣 |
-| [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Enforces `switch` `case`'s content to be enclosed in braces |  | 🟢 | 🟣 |
+| [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Disallows specific syntax patterns according to each configuration's coding conventions |  | 🟢 | 🟣 |
 | [no-tabs](https://eslint.org/docs/latest/rules/no-tabs) | Disallows tabs | 🟠 | 🟢 | 🟣 |
 | [no-trailing-spaces](https://eslint.org/docs/latest/rules/no-trailing-spaces) | Disallows trailing whitespace at the end of lines | 🟠 | 🟢 | 🟣 |
 | [no-undef](https://eslint.org/docs/latest/rules/no-undef) | Disallows use of undeclared variables | 🟠 | 🟢 | 🟣 |
@@ -105,7 +105,7 @@ Each item has emojis denoting:
 | [no-unsafe-optional-chaining](https://eslint.org/docs/latest/rules/no-unsafe-optional-chaining) | Disallows use of optional chaining in contexts where the `undefined` value is not allowed | 🟠 | 🟢 | 🟣 |
 | [object-curly-newline](https://eslint.org/docs/latest/rules/object-curly-newline) | Requires line breaks after opening and before closing braces | 🟠 | 🟢 | 🟣 |
 | [object-curly-spacing](https://eslint.org/docs/latest/rules/object-curly-spacing) | Requires spacing inside of braces | 🟠 | 🟢 | 🟣 |
-| [object-shorthand](https://eslint.org/docs/latest/rules/object-shorthand) | Disallows shorthand properties and methods in object literals, requiring explicit keys and values even when their names match | 🟠 | 🟢 | 🟣 |
+| [object-shorthand](https://eslint.org/docs/latest/rules/object-shorthand) | Disallows shorthand properties and methods in object literals, requiring explicit keys and values even when their names match | 🟠 |  | 🟣 |
 | [padded-blocks](https://eslint.org/docs/latest/rules/padded-blocks) | Disallows empty lines at the beginning and ending of blocks | 🟠 | 🟢 | 🟣 |
 | [padding-line-between-statements](https://eslint.org/docs/latest/rules/padding-line-between-statements) | Requires padding lines between various statements | 🟠 | 🟢 | 🟣 |
 | [prefer-arrow-callback](https://eslint.org/docs/latest/rules/prefer-arrow-callback) | Requires using arrow functions for callbacks |  | 🟢 | 🟣 |

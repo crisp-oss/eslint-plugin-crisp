@@ -20,25 +20,18 @@ test("all recommended configs reject multiple spaces", () => {
   }
 });
 
-test("all recommended configs reject and expand object shorthand", () => {
-  for (const configName of [
-    "recommended",
-    "recommended-vue",
-    "recommended-ts"
-  ]) {
+test("JS and TS recommended configs reject and expand property and method shorthand", () => {
+  for (const configName of ["recommended", "recommended-ts"]) {
     const rules = plugin.configs[configName].find(
       config => config.rules?.["object-shorthand"]
-    )?.rules;
+    ).rules;
 
-    assert.deepEqual(rules?.["object-shorthand"], ["error", "never"]);
+    assert.deepEqual(rules["object-shorthand"], ["error", "never"]);
+    assert.ok(!JSON.stringify(rules["no-restricted-syntax"] ?? []).includes("shorthand"));
 
     const linter = new Linter();
-    const config = [{
-      rules: {
-        "object-shorthand": rules["object-shorthand"]
-      }
-    }];
-    const input = "const value = 1; const object = { value, method() {} };";
+    const config = [{ rules: { "object-shorthand": rules["object-shorthand"] } }];
+    const input = "const object = { value, method() {} };";
     const messages = linter.verify(input, config);
 
     assert.equal(messages.length, 2);
@@ -46,11 +39,55 @@ test("all recommended configs reject and expand object shorthand", () => {
 
     const result = linter.verifyAndFix(input, config);
 
-    assert.equal(
-      result.output,
-      "const value = 1; const object = { value: value, method: function() {} };"
-    );
+    assert.equal(result.output, "const object = { value: value, method: function() {} };");
     assert.deepEqual(result.messages, []);
+  }
+});
+
+test("Vue recommended config rejects property shorthand but allows methods and components", () => {
+  for (const configName of ["recommended-vue"]) {
+    const rules = plugin.configs[configName].find(
+      config => config.rules?.["no-restricted-syntax"]
+    ).rules;
+
+    assert.ok(plugin.configs[configName].every(
+      config => !Object.hasOwn(config.rules ?? {}, "object-shorthand")
+    ));
+
+    const linter = new Linter();
+    const config = [{
+      rules: {
+        "no-restricted-syntax": rules["no-restricted-syntax"]
+      }
+    }];
+
+    for (const input of [
+      "const object = { value };",
+      "this.setTreeContent({ section, locale, path, value: contentData });",
+      "const object = { components: { nested: { value } } };",
+      "export default { nested: { value } };",
+      "const object = { value }; export default object;",
+      "defineComponent({ data() { return { value }; } });"
+    ]) {
+      const messages = linter.verify(input, config);
+
+      assert.ok(messages.length > 0, `${configName}: ${input}`);
+      assert.ok(messages.every(message =>
+        message.ruleId === "no-restricted-syntax" &&
+        message.message === "Use explicit keys and values instead of shorthand properties."
+      ));
+    }
+
+    for (const input of [
+      "const object = { value: value, method() {} };",
+      "export default { base, form, initiate, layouts, common, hugo, editor, settings };",
+      "export default { components: { ContentNavigate }, mounted() {} };",
+      "export default defineComponent({ components: { ContentNavigate }, data() { return {}; } });",
+      "defineComponent({ 'components': { ContentNavigate } });",
+      "const { value } = object;"
+    ]) {
+      assert.deepEqual(linter.verify(input, config), [], `${configName}: ${input}`);
+    }
   }
 });
 

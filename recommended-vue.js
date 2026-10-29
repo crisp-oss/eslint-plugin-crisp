@@ -108,9 +108,17 @@ export default function configRecommendedVue(pluginCrisp) {
         "no-restricted-syntax": [
           "error",
 
+          // Require switch case contents to be enclosed in braces
           {
             "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
             "message": "Switch cases without braces are disallowed."
+          },
+
+          // Require explicit object property keys and values, but allow shorthand methods
+          // Exempt direct entries in components objects and direct export default objects
+          {
+            "selector": "ObjectExpression > Property[shorthand=true]:not(Property[key.name='components'] > ObjectExpression > Property):not(Property[key.value='components'] > ObjectExpression > Property):not(ExportDefaultDeclaration > ObjectExpression > Property)",
+            "message": "Use explicit keys and values instead of shorthand properties."
           }
         ],
         "no-tabs": "error",
@@ -126,7 +134,6 @@ export default function configRecommendedVue(pluginCrisp) {
           }
         ],
         "object-curly-spacing": ["error", "always"],
-        "object-shorthand": ["error", "never"],
         "padded-blocks": ["error", "never"],
         "padding-line-between-statements": [
           "error",

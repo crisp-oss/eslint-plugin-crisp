@@ -102,6 +102,7 @@ export default function configRecommendedTS(pluginCrisp) {
         "no-restricted-syntax": [
           "error",
 
+          // Require switch case contents to be enclosed in braces
           {
             "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
             "message": "Switch cases without braces are disallowed."
