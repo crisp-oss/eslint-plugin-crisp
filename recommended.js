@@ -123,6 +123,7 @@ export default function configRecommended(pluginCrisp) {
           }
         ],
         "object-curly-spacing": ["error", "always"],
+        "object-shorthand": ["error", "never"],
         "padded-blocks": ["error", "never"],
         "padding-line-between-statements": [
           "error",

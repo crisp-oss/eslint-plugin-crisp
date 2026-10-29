@@ -105,6 +105,7 @@ Each item has emojis denoting:
 | [no-unsafe-optional-chaining](https://eslint.org/docs/latest/rules/no-unsafe-optional-chaining) | Disallows use of optional chaining in contexts where the `undefined` value is not allowed | 🟠 | 🟢 | 🟣 |
 | [object-curly-newline](https://eslint.org/docs/latest/rules/object-curly-newline) | Requires line breaks after opening and before closing braces | 🟠 | 🟢 | 🟣 |
 | [object-curly-spacing](https://eslint.org/docs/latest/rules/object-curly-spacing) | Requires spacing inside of braces | 🟠 | 🟢 | 🟣 |
+| [object-shorthand](https://eslint.org/docs/latest/rules/object-shorthand) | Disallows shorthand properties and methods in object literals, requiring explicit keys and values even when their names match | 🟠 | 🟢 | 🟣 |
 | [padded-blocks](https://eslint.org/docs/latest/rules/padded-blocks) | Disallows empty lines at the beginning and ending of blocks | 🟠 | 🟢 | 🟣 |
 | [padding-line-between-statements](https://eslint.org/docs/latest/rules/padding-line-between-statements) | Requires padding lines between various statements | 🟠 | 🟢 | 🟣 |
 | [prefer-arrow-callback](https://eslint.org/docs/latest/rules/prefer-arrow-callback) | Requires using arrow functions for callbacks |  | 🟢 | 🟣 |

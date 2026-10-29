@@ -20,6 +20,40 @@ test("all recommended configs reject multiple spaces", () => {
   }
 });
 
+test("all recommended configs reject and expand object shorthand", () => {
+  for (const configName of [
+    "recommended",
+    "recommended-vue",
+    "recommended-ts"
+  ]) {
+    const rules = plugin.configs[configName].find(
+      config => config.rules?.["object-shorthand"]
+    )?.rules;
+
+    assert.deepEqual(rules?.["object-shorthand"], ["error", "never"]);
+
+    const linter = new Linter();
+    const config = [{
+      rules: {
+        "object-shorthand": rules["object-shorthand"]
+      }
+    }];
+    const input = "const value = 1; const object = { value, method() {} };";
+    const messages = linter.verify(input, config);
+
+    assert.equal(messages.length, 2);
+    assert.ok(messages.every(message => message.ruleId === "object-shorthand"));
+
+    const result = linter.verifyAndFix(input, config);
+
+    assert.equal(
+      result.output,
+      "const value = 1; const object = { value: value, method: function() {} };"
+    );
+    assert.deepEqual(result.messages, []);
+  }
+});
+
 test("recommended config uses standard default parameter spacing", () => {
   const result = new Linter().verifyAndFix(
     "function greet(name=\"World\") {}",
