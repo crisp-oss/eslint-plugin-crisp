@@ -175,7 +175,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/methods-ordering": "error",
         "crisp/multiline-comment-end-backslash": "error",
         "crisp/newline-after-switch-case": "error",
-        "crisp/no-async": "error",
+        "crisp/no-async": "off",
         "crisp/no-extra-line-within-function": "error",
         "crisp/no-inline-function-in-ternary": "error",
         "crisp/no-short-parameters": [

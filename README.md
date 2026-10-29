@@ -138,7 +138,7 @@ Each item has emojis denoting:
 | [crisp/methods-ordering](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-ordering.js) | Ensures methods order according to their access: `public` then `protected` then `private` | 🟠 | 🟢 | 🟣 |
 | [crisp/multiline-comment-end-backslash](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/multiline-comment-end-backslash.js) | Enforces multiline comments to end with a backslash | 🟠 | 🟢 | 🟣 |
 | [crisp/newline-after-switch-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/newline-after-switch-case.js) | Requires newline between switch cases | 🟠 | 🟢 | 🟣 |
-| [crisp/no-async](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-async.js) | Disallows the use of `async/syntax`, in favor of `Promise` | 🟠 | 🟢 |
+| [crisp/no-async](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-async.js) | Disallows `async`/`await` in favor of `Promise` | 🟠 |  |  |
 | [crisp/no-extra-line-within-function](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-extra-line-within-function.js) | Allows at most one empty line between declarations within functions | 🟠 | 🟢 | 🟣 |
 | [crisp/no-inline-function-in-ternary](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-inline-function-in-ternary.js) | Disallows inline functions in ternary branches | 🟠 | 🟢 | 🟣 |
 | [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
