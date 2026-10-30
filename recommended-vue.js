@@ -112,13 +112,6 @@ export default function configRecommendedVue(pluginCrisp) {
           {
             "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
             "message": "Switch cases without braces are disallowed."
-          },
-
-          // Require explicit object property keys and values, but allow shorthand methods
-          // Exempt direct entries in components objects and direct export default objects
-          {
-            "selector": "ObjectExpression > Property[shorthand=true]:not(Property[key.name='components'] > ObjectExpression > Property):not(Property[key.value='components'] > ObjectExpression > Property):not(ExportDefaultDeclaration > ObjectExpression > Property)",
-            "message": "Use explicit keys and values instead of shorthand properties."
           }
         ],
         "no-tabs": "error",
@@ -404,6 +397,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-no-component-class-shorthand": "error",
         "crisp/vue-no-mixed-class": "error",
         "crisp/vue-no-mixed-class-shorthand": "error",
+        "crisp/vue-no-multiline-object-shorthand": "error",
         "crisp/vue-no-name-option": "error",
         "crisp/vue-no-regex-data": "error",
         "crisp/vue-pinia-action-single-parameter": "error",
