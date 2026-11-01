@@ -10,7 +10,7 @@ export default {
   create(context) {
     return {
       MethodDefinition(node) {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
         const lines = sourceCode.lines;
 
         const parent = node.parent;

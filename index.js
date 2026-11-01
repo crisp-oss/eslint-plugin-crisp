@@ -3,9 +3,6 @@ import configRecommendedVue from "./recommended-vue.js";
 import configRecommendedTS from "./recommended-ts.js";
 
 import ruleAlignComments from "./rules/align-comments.js";
-import ruleAlignConsecutiveClassAssignements from "./rules/align-consecutive-class-assignements.js";
-import ruleAlignOneVar from "./rules/align-one-var.js";
-import ruleAlignRequires from "./rules/align-requires.js";
 import ruleArrowBlockNewline from "./rules/arrow-block-newline.js";
 import ruleConsecutiveLineComments from "./rules/consecutive-line-comments.js";
 import ruleConst from "./rules/const.js";
@@ -24,6 +21,7 @@ import ruleJsdocEnforceClassdesc from "./rules/jsdoc-enforce-classdesc.js";
 import ruleJsdocNoParamReturn from "./rules/jsdoc-no-param-return.js";
 import ruleJsdocRequireDescriptionUppercase from "./rules/jsdoc-require-description-uppercase.js";
 import ruleJsdocDescriptionLength from "./rules/jsdoc-description-length.js";
+import ruleLoggerArguments from "./rules/logger-arguments.js";
 import ruleMethodsNaming from "./rules/methods-naming.js";
 import ruleMethodsOrdering from "./rules/methods-ordering.js";
 import ruleMultilineCommentEndBackslash from "./rules/multiline-comment-end-backslash.js";
@@ -31,7 +29,6 @@ import ruleNewlineAfterSwitchCase from "./rules/newline-after-switch-case.js";
 import ruleNoAsync from "./rules/no-async.js";
 import ruleNoExtraLineWithinFunction from "./rules/no-extra-line-within-function.js";
 import ruleNoInlineFunctionInTernary from "./rules/no-inline-function-in-ternary.js";
-import ruleNoSpaceInOptionalArguments from "./rules/no-space-in-optional-arguments.js";
 import ruleNoUselessTemplateLiterals from "./rules/no-useless-template-literals.js";
 import ruleNoVarInBlocks from "./rules/no-var-in-blocks.js";
 import ruleNoShortParameters from "./rules/no-short-parameters.js";
@@ -49,6 +46,8 @@ import ruleVueComputedOrder from "./rules/vue-computed-order.js";
 import ruleVueDataComment from "./rules/vue-data-comment.js";
 import ruleVueDefineComponent from "./rules/vue-define-component.js";
 import ruleVueEmitsOrder from "./rules/vue-emits-order.js";
+import ruleVueEventListenerJsdoc from "./rules/vue-event-listener-jsdoc.js";
+import ruleVueEventListenerSection from "./rules/vue-event-listener-section.js";
 import ruleVueHeaderCheck from "./rules/vue-header-check.js";
 import ruleVueHtmlIndent from "./rules/vue-html-indent.js";
 import ruleVueHtmlQuotes from "./rules/vue-html-quotes.js";
@@ -56,8 +55,11 @@ import ruleVueMethodsSeparator from "./rules/vue-methods-separator.js";
 import ruleVueNameProp from "./rules/vue-name-prop.js";
 import ruleVueNoComponentClassShorthand from "./rules/vue-no-component-class-shorthand.js";
 import ruleVueNoMixedClass from "./rules/vue-no-mixed-class.js";
+import ruleVueNoMixedClassShorthand from "./rules/vue-no-mixed-class-shorthand.js";
+import ruleVueNoMultilineObjectShorthand from "./rules/vue-no-multiline-object-shorthand.js";
 import ruleVueNoNameOption from "./rules/vue-no-name-option.js";
 import ruleVueNoRegexData from "./rules/vue-no-regex-data.js";
+import ruleVuePiniaActionSingleParameter from "./rules/vue-pinia-action-single-parameter.js";
 import ruleVuePropsDeclarationLineBreak from "./rules/vue-props-declaration-line-break.js";
 import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-multiline.js";
 import ruleVuePropsDeclarationOrder from "./rules/vue-props-declaration-order.js";
@@ -79,9 +81,6 @@ const plugin = {
 
   rules: {
     "align-comments": ruleAlignComments,
-    "align-consecutive-class-assignements": ruleAlignConsecutiveClassAssignements,
-    "align-one-var": ruleAlignOneVar,
-    "align-requires": ruleAlignRequires,
     "arrow-block-newline": ruleArrowBlockNewline,
     "consecutive-line-comments": ruleConsecutiveLineComments,
     "const": ruleConst,
@@ -100,6 +99,7 @@ const plugin = {
     "jsdoc-no-param-return": ruleJsdocNoParamReturn,
     "jsdoc-require-description-uppercase": ruleJsdocRequireDescriptionUppercase,
     "jsdoc-description-length": ruleJsdocDescriptionLength,
+    "logger-arguments": ruleLoggerArguments,
     "methods-naming": ruleMethodsNaming,
     "methods-ordering": ruleMethodsOrdering,
     "multiline-comment-end-backslash": ruleMultilineCommentEndBackslash,
@@ -107,7 +107,6 @@ const plugin = {
     "no-async": ruleNoAsync,
     "no-extra-line-within-function": ruleNoExtraLineWithinFunction,
     "no-inline-function-in-ternary": ruleNoInlineFunctionInTernary,
-    "no-space-in-optional-arguments": ruleNoSpaceInOptionalArguments,
     "no-var-in-blocks": ruleNoVarInBlocks,
     "no-useless-template-literals": ruleNoUselessTemplateLiterals,
     "no-short-parameters": ruleNoShortParameters,
@@ -125,6 +124,8 @@ const plugin = {
     "vue-data-comment": ruleVueDataComment,
     "vue-define-component": ruleVueDefineComponent,
     "vue-emits-order": ruleVueEmitsOrder,
+    "vue-event-listener-jsdoc": ruleVueEventListenerJsdoc,
+    "vue-event-listener-section": ruleVueEventListenerSection,
     "vue-header-check": ruleVueHeaderCheck,
     "vue-html-indent": ruleVueHtmlIndent,
     "vue-html-quotes": ruleVueHtmlQuotes,
@@ -132,8 +133,11 @@ const plugin = {
     "vue-name-prop": ruleVueNameProp,
     "vue-no-component-class-shorthand": ruleVueNoComponentClassShorthand,
     "vue-no-mixed-class": ruleVueNoMixedClass,
+    "vue-no-mixed-class-shorthand": ruleVueNoMixedClassShorthand,
+    "vue-no-multiline-object-shorthand": ruleVueNoMultilineObjectShorthand,
     "vue-no-name-option": ruleVueNoNameOption,
     "vue-no-regex-data": ruleVueNoRegexData,
+    "vue-pinia-action-single-parameter": ruleVuePiniaActionSingleParameter,
     "vue-props-declaration-line-break": ruleVuePropsDeclarationLineBreak,
     "vue-props-declaration-multiline": ruleVuePropsDeclarationMultiline,
     "vue-props-declaration-order": ruleVuePropsDeclarationOrder,

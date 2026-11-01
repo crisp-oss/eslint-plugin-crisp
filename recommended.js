@@ -31,7 +31,6 @@ export default function configRecommended(pluginCrisp) {
           },
 
           preferredTypes: {
-            Function: "function",
             Array: "array",
             Integer: "number"
           }
@@ -74,7 +73,7 @@ export default function configRecommended(pluginCrisp) {
             "CallExpression": {
               "arguments": "off"
             },
-            "VariableDeclarator": "first",
+            "VariableDeclarator": 1,
             "outerIIFEBody": 0,
             "ArrayExpression": "first",
             "ObjectExpression": "first",
@@ -84,12 +83,12 @@ export default function configRecommended(pluginCrisp) {
               "BinaryExpression",
               "ConditionalExpression",
               "IfStatement *",
-              "VariableDeclarator",
               "VariableDeclarator > CallExpression",
               "CallExpression > ArrayExpression"
             ]
           }
         ],
+        "key-spacing": ["error", { "beforeColon": false, "afterColon": true }],
         "keyword-spacing": "error",
         "linebreak-style": ["error", "unix"],
         "max-len": ["error", {
@@ -109,6 +108,7 @@ export default function configRecommended(pluginCrisp) {
           }
         ],
         "no-multi-str": "error",
+        "no-multi-spaces": "error",
         "no-mixed-spaces-and-tabs": "error",
         "no-tabs": "error",
         "no-trailing-spaces": "error",
@@ -123,6 +123,7 @@ export default function configRecommended(pluginCrisp) {
           }
         ],
         "object-curly-spacing": ["error", "always"],
+        "object-shorthand": ["error", "never"],
         "padded-blocks": ["error", "never"],
         "padding-line-between-statements": [
           "error",
@@ -153,19 +154,18 @@ export default function configRecommended(pluginCrisp) {
         "semi-style": ["error", "last"],
         "space-before-blocks": "error",
         "space-in-parens": ["error", "never"],
+        "space-infix-ops": "error",
 
         // Crisp JS rules
         "crisp/align-comments": "error",
         "crisp/consecutive-line-comments": "error",
-        "crisp/align-consecutive-class-assignements": "error",
-        "crisp/align-one-var": "error",
-        "crisp/align-requires": "error",
         "crisp/arrow-block-newline": "error",
         "crisp/const": "error",
         "crisp/constructor-variables": "error",
         "crisp/enforce-optional": "error",
         "crisp/header-check": "error",
         "crisp/header-comments-check": "error",
+        "crisp/logger-arguments": "error",
         "crisp/methods-naming": "error",
         "crisp/methods-ordering": "error",
         "crisp/multiline-comment-end-backslash": "error",
@@ -181,8 +181,13 @@ export default function configRecommended(pluginCrisp) {
             "exceptions": ["_", "$"]
           }
         ],
-        "crisp/no-space-in-optional-arguments": "error",
-        "crisp/one-space-after-operator": "error",
+        "crisp/one-space-after-operator": [
+          "error",
+
+          {
+            "checkColon": false
+          }
+        ],
         "crisp/regex-in-constructor": "error",
         "crisp/ternary-parenthesis": "error",
         "crisp/two-lines-between-class-members": "error",
@@ -190,6 +195,8 @@ export default function configRecommended(pluginCrisp) {
 
         // General JSDoc rules
         "jsdoc/no-undefined-types": "off",
+        "jsdoc/reject-any-type": "off",
+        "jsdoc/reject-function-type": "off",
         "jsdoc/require-returns": "off",
         "jsdoc/require-jsdoc": [
           "error",

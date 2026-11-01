@@ -6,7 +6,7 @@ const SECTION_COMMENT_PATTERN = /--> (.*) <--/;
 export default {
   create(context) {
     let methodOrder = []; // Keep track of method order
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     return {
       MethodDefinition(node) {

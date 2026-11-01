@@ -43,7 +43,7 @@ const maskLineContinuations = (str) => {
   });
 }
 
-export default iterateJsdoc.default(({
+export default iterateJsdoc(({
   sourceCode,
   jsdocNode,
   report,

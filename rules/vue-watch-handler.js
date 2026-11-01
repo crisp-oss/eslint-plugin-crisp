@@ -30,6 +30,29 @@ function hasValidSignature(handler) {
   });
 }
 
+function isDefineComponentCall(node) {
+  if (!node || node.type !== "CallExpression") {
+    return false;
+  }
+
+  return (
+    (node.callee.type === "Identifier" && node.callee.name === "defineComponent") ||
+    (
+      node.callee.type === "MemberExpression" &&
+      !node.callee.computed &&
+      node.callee.property.type === "Identifier" &&
+      node.callee.property.name === "defineComponent"
+    )
+  );
+}
+
+function isVueOptionsObject(node) {
+  return (
+    node.parent.type === "ExportDefaultDeclaration" ||
+    isDefineComponentCall(node.parent)
+  );
+}
+
 export default {
   meta: {
     type: "suggestion",
@@ -52,7 +75,17 @@ export default {
 
   create(context) {
     return {
-      'Property[key.name="watch"] > ObjectExpression'(node) {
+      "Property > ObjectExpression"(node) {
+        const watchProperty = node.parent;
+        const optionsObject = watchProperty.parent;
+
+        if (
+          getPropertyName(watchProperty) !== "watch" ||
+          !isVueOptionsObject(optionsObject)
+        ) {
+          return;
+        }
+
         node.properties.forEach((watcher) => {
           if (watcher.type !== "Property") {
             return;

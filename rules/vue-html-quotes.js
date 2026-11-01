@@ -26,7 +26,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode()
+    const sourceCode = context.sourceCode
     const double = context.options[0] !== "single"
     const avoidEscape =
       context.options[1] && context.options[1].avoidEscape === true

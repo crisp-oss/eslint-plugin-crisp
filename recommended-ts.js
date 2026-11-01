@@ -4,7 +4,7 @@ import pluginTS from "typescript-eslint";
 
 export default function configRecommendedTS(pluginCrisp) {
   return [
-    pluginTS.configs.recommendedTypeChecked,
+    ...pluginTS.configs.recommendedTypeChecked,
     pluginJSDoc.configs["flat/recommended"],
 
     {
@@ -96,11 +96,13 @@ export default function configRecommendedTS(pluginCrisp) {
         "no-eval": "error",
         "no-implicit-coercion": "error",
         "no-multi-str": "error",
+        "no-multi-spaces": "error",
         "no-multiple-empty-lines": ["error", { max: 1 }],
         "no-mixed-spaces-and-tabs": "error",
         "no-restricted-syntax": [
           "error",
 
+          // Require switch case contents to be enclosed in braces
           {
             "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
             "message": "Switch cases without braces are disallowed."
@@ -118,6 +120,7 @@ export default function configRecommendedTS(pluginCrisp) {
           }
         ],
         "object-curly-spacing": ["error", "always"],
+        "object-shorthand": ["error", "never"],
         "padded-blocks": ["error", "never"],
         "padding-line-between-statements": [
           "error",
@@ -161,6 +164,7 @@ export default function configRecommendedTS(pluginCrisp) {
         "crisp/header-comments-check": "error",
         "crisp/import-group-comment": "error",
         "crisp/import-group-order": "error",
+        "crisp/logger-arguments": "error",
         "crisp/methods-naming": "error",
         "crisp/methods-ordering": "error",
         "crisp/multiline-comment-end-backslash": "error",

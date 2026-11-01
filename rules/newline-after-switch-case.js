@@ -6,7 +6,9 @@ function getTokensWithNewlineBetween(sourceCode, startNode, endNode) {
 
   do {
     previous = next;
-    next = sourceCode.getTokenOrCommentAfter(next);
+    next = sourceCode.getTokenAfter(next, {
+      includeComments: true
+    });
 
     if (next.loc.start.line > previous.loc.end.line + 1) {
       return [previous, next];
@@ -24,7 +26,7 @@ export default {
 
   create: function newlineBetweenSwitchCase(context) {
     let currentCodePath = null;
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     return {
       onCodePathStart(codePath) {

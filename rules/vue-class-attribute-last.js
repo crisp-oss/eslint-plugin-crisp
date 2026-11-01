@@ -43,7 +43,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     // Reports attributes declared after the class attribute they should precede
     function reportAttributesAfter(attributes, classIndex, className, isMisplaced) {

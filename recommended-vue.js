@@ -8,8 +8,8 @@ export default function configRecommendedVue(pluginCrisp) {
   return [
     pluginJS.configs.recommended,
     pluginJSDoc.configs["flat/recommended"],
-    pluginVue.configs["flat/recommended"],
-    pluginVuePug.configs["flat/recommended"],
+    ...pluginVue.configs["flat/recommended"],
+    ...pluginVuePug.configs["flat/recommended"],
 
     {
       files: [
@@ -38,7 +38,6 @@ export default function configRecommendedVue(pluginCrisp) {
           },
 
           preferredTypes: {
-            Function: "function",
             Array: "array",
             Map: "map",
             Integer: "number"
@@ -103,11 +102,13 @@ export default function configRecommendedVue(pluginCrisp) {
         "no-eval": "error",
         "no-implicit-coercion": "error",
         "no-multi-str": "error",
+        "no-multi-spaces": "error",
         "no-multiple-empty-lines": ["error", { max: 1 }],
         "no-mixed-spaces-and-tabs": "error",
         "no-restricted-syntax": [
           "error",
 
+          // Require switch case contents to be enclosed in braces
           {
             "selector": "SwitchCase > *.consequent[type!='BlockStatement']",
             "message": "Switch cases without braces are disallowed."
@@ -174,7 +175,7 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/methods-ordering": "error",
         "crisp/multiline-comment-end-backslash": "error",
         "crisp/newline-after-switch-case": "error",
-        "crisp/no-async": "error",
+        "crisp/no-async": "off",
         "crisp/no-extra-line-within-function": "error",
         "crisp/no-inline-function-in-ternary": "error",
         "crisp/no-short-parameters": [
@@ -199,6 +200,8 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/variable-names": "error",
 
         // General JSDoc rules
+        "jsdoc/reject-any-type": "off",
+        "jsdoc/reject-function-type": "off",
         "jsdoc/require-description": "error",
         "jsdoc/require-param-description": "off",
         "jsdoc/require-returns": "off",
@@ -384,6 +387,8 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-data-comment": "error",
         "crisp/vue-define-component": "error",
         "crisp/vue-emits-order": "error",
+        "crisp/vue-event-listener-jsdoc": "error",
+        "crisp/vue-event-listener-section": "error",
         "crisp/vue-header-check": "error",
         "crisp/vue-html-indent": "error",
         "crisp/vue-html-quotes": "error",
@@ -391,8 +396,11 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-name-prop": "error",
         "crisp/vue-no-component-class-shorthand": "error",
         "crisp/vue-no-mixed-class": "error",
+        "crisp/vue-no-mixed-class-shorthand": "error",
+        "crisp/vue-no-multiline-object-shorthand": "error",
         "crisp/vue-no-name-option": "error",
         "crisp/vue-no-regex-data": "error",
+        "crisp/vue-pinia-action-single-parameter": "error",
         "crisp/vue-props-declaration-line-break": "error",
         "crisp/vue-props-declaration-multiline": "error",
         "crisp/vue-props-declaration-order": "error",

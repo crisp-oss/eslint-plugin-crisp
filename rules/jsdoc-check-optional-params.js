@@ -1,4 +1,5 @@
 import doctrine from "doctrine";
+import getJSDocComment from "./utils/get-jsdoc-comment.js";
 
 export default {
   meta: {
@@ -11,9 +12,11 @@ export default {
   },
 
   create(context) {
+    const sourceCode = context.sourceCode;
+
     function checkOptionalParams(node) {
       // Get JSDoc comments
-      const jsDocComment = context.getSourceCode().getJSDocComment(node);
+      const jsDocComment = getJSDocComment(sourceCode, node);
 
       if (!jsDocComment) {
         return;

@@ -29,9 +29,14 @@ function isIgnoreComment(comment) {
 }
 
 function getDirectoryName(filePath) {
-  const pathParts = filePath.split("/");
+  if (!filePath || filePath.startsWith("<")) {
+    return "MAIN";
+  }
 
-  return pathParts[pathParts.length - 2].toUpperCase();
+  const pathParts = filePath.replace(/\\/g, "/").split("/").filter(Boolean);
+  const directoryName = pathParts.at(-2);
+
+  return directoryName ? directoryName.toUpperCase() : "MAIN";
 }
 
 function generateExpectedComment(group) {
@@ -66,12 +71,16 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
     const customGroups = context.options[0] || {};  // Get custom groups from options
 
     // Pre-compile custom regexes once instead of on every import
-    const compiledCustomGroups = Object.entries(customGroups).map(([regexStr, group]) => {
-      return [new RegExp(regexStr), group];
+    const compiledCustomGroups = Object.entries(customGroups).flatMap(([regexStr, group]) => {
+      try {
+        return [[new RegExp(regexStr), group]];
+      } catch {
+        return [];
+      }
     });
 
     let currentGroupComment = null;
@@ -162,7 +171,7 @@ export default {
 
     function checkImportGroup(node) {
       const importPath = node.source.value;
-      const filePath = context.getFilename();
+      const filePath = context.filename;
 
       // Get group from import path
       const expectedGroup = extractGroupFromPath(importPath, filePath);
@@ -192,7 +201,7 @@ export default {
     const typeComments = allComments.filter(c => isTypeComment(c));
 
     function checkTypeCommentsGroup() {
-      const filename = context.getFilename();
+      const filename = context.filename;
 
       // Only check for // TYPES in .vue files (block header is checked by header-comments-check rule for .js/.ts)
       if (!filename.endsWith(".vue")) {

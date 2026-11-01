@@ -1,3 +1,5 @@
+import getJSDocComment from "./utils/get-jsdoc-comment.js";
+
 export default {
   meta: {
     type: "suggestion",
@@ -9,9 +11,11 @@ export default {
   },
 
   create(context) {
+    const sourceCode = context.sourceCode;
+
     return {
       ClassDeclaration(node) {
-        const jsdoc = context.getSourceCode().getJSDocComment(node);
+        const jsdoc = getJSDocComment(sourceCode, node);
 
         if (jsdoc) {
           const hasClassdesc = /@classdesc/.test(jsdoc.value);

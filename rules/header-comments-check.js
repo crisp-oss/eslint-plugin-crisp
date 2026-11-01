@@ -2,6 +2,12 @@ const COMMENT_HEADER_FORMAT = (section) => {
   return `/**************************************************************************\n * ${section.toUpperCase()}\n ***************************************************************************/`;
 };
 
+const HEADER_COMMENT_REGEX = /^\*+\n \* [A-Z][A-Z0-9 _:-]*\n \*+$/;
+
+function isHeaderComment(comment) {
+  return comment.type === "Block" && HEADER_COMMENT_REGEX.test(comment.value);
+}
+
 function isTypeComment(comment) {
   if (comment.type !== "Block" || !comment.value.startsWith("*")) {
     return false;
@@ -109,11 +115,11 @@ export default {
       category: "Best Practices",
       recommended: false,
     },
-    fixable: null,
+    fixable: "whitespace",
   },
 
   create(context) {
-    const filename = context.getFilename();
+    const filename = context.filename;
 
     if (!filename.endsWith(".js") && !filename.endsWith(".ts")) {
       return {};
@@ -122,7 +128,7 @@ export default {
     let lastNode = null;
     let groupStart = null;
 
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
     const allBlockComments = sourceCode.getAllComments()
       .filter(c => c.type === "Block")
       .sort((a, b) => a.range[0] - b.range[0]);
@@ -221,25 +227,46 @@ export default {
           break;
         }
 
-        case "ExportDefaultDeclaration": {
-          // Only enforce the 'EXPORTS' comment block if it's the last statement in the file
-          if (startNode !== context.getSourceCode().ast.body.slice(-1)[0] && (!comment || `/*${comment.value.trim()}*/` !== COMMENT_HEADER_FORMAT("EXPORTS"))) {
-            context.report({
-              node: startNode,
-              message: "Export group must be preceded by a 'EXPORTS' comment block",
-            });
-          }
+      }
+    }
 
-          break;
+    // Checks that a header comment block is followed by a blank line
+    function checkBlankLineAfterHeaders() {
+      for (const comment of allBlockComments) {
+        if (!isHeaderComment(comment)) {
+          continue;
         }
+
+        const next = sourceCode.getTokenAfter(comment, { includeComments: true });
+
+        if (!next || next.loc.start.line - comment.loc.end.line >= 2) {
+          continue;
+        }
+
+        const isOnNextLine = next.loc.start.line - comment.loc.end.line === 1;
+
+        context.report({
+          loc: comment.loc,
+          message: "Header comment block must be followed by a blank line",
+
+          fix: isOnNextLine ? (fixer) => fixer.insertTextAfter(comment, "\n") : null,
+        });
       }
     }
 
     return {
       ":statement": (node) => {
+        if (node.parent.type !== "Program") {
+          return;
+        }
+
         // If the type of node has changed since last time, or if we have a \
         //   regex declaration and the previous declaration wasn't one
-        if (node.type !== lastNode || isRegex(node) !== isRegex(lastNode)) {
+        if (
+          !lastNode ||
+          node.type !== lastNode.type ||
+          isRegex(node) !== isRegex(lastNode)
+        ) {
           // Check the group starting with the last node
           if (groupStart) {
             checkGroup(lastNode.type, groupStart);
@@ -259,6 +286,9 @@ export default {
 
         // Check type comments group
         checkTypeCommentsGroup();
+
+        // Check blank line after header comments
+        checkBlankLineAfterHeaders();
       }
     };
   }

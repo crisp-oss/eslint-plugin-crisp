@@ -24,7 +24,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     return utils.default.defineTemplateBodyVisitor(context, {
       VElement(node) {

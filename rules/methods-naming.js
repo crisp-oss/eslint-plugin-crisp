@@ -12,7 +12,7 @@ export default {
   create: function(context) {
     return {
       MethodDefinition: function(node) {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
         const commentsBefore = sourceCode.getCommentsBefore(node);
 
         const jsDocComment = commentsBefore.find(comment =>

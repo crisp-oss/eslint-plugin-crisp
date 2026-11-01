@@ -71,7 +71,7 @@ export default {
     }
 
     function updateAndCheckGroup(node) {
-      const comments = context.getSourceCode().getCommentsBefore(node);
+      const comments = context.sourceCode.getCommentsBefore(node);
       for (let i = comments.length - 1; i >= 0; i--) {
         const comment = comments[i];
         if (isGroupComment(comment)) {

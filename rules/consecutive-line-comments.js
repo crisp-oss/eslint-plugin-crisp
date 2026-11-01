@@ -64,7 +64,7 @@ export default {
   },
 
   create(context) {
-    const sourceCode = context.sourceCode || context.getSourceCode();
+    const sourceCode = context.sourceCode;
 
     function isStandalone(comment) {
       const lineText = sourceCode.lines[comment.loc.start.line - 1] || "";
