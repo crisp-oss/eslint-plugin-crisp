@@ -186,6 +186,7 @@ Each item has emojis denoting:
 | [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠 | 🟢 |
 | [crisp/jsdoc-require-description-uppercase](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-require-description-uppercase.js) | Requires descriptions to start with an uppercase character | 🟠 | 🟢 |
 | [crisp/jsdoc-description-length](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-length.js) | Enforces a maximum length for JSDoc descriptions | 🟠 | 🟢 | 🟣 |
+| [crisp/jsdoc-typedef-align](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-typedef-align.js) | Enforces alignment of multiline `@typedef` and `@property` definitions | 🟠 | 🟢 |
 | [crisp/jsdoc-no-param-return](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-no-param-return.js) | Forbids `@param` and `@return` tags in JSDoc, relying on the TypeScript signature instead |  |  | 🟣 |
 
 #### General Vue rules
