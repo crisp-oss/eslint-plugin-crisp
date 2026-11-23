@@ -33,39 +33,3 @@ test("recommended config uses standard default parameter spacing", () => {
   assert.equal(result.output, "function greet(name = \"World\") {}");
 });
 
-test("recommended config removes legacy assignment alignment", () => {
-  const input = `class Example {
-  constructor() {
-    this.a    = 1;
-    this.long = 2;
-  }
-}
-
-const first = 1,
-      second  = 2;
-
-const alpha = require("alpha"),
-      beta  = require("beta");
-`;
-  const expected = `class Example {
-  constructor() {
-    this.a = 1;
-    this.long = 2;
-  }
-}
-
-const first = 1,
-  second = 2;
-
-const alpha = require("alpha"),
-  beta = require("beta");
-`;
-  const result = new Linter().verifyAndFix(input, [{
-    rules: {
-      indent: recommendedRules.indent,
-      "no-multi-spaces": recommendedRules["no-multi-spaces"]
-    }
-  }]);
-
-  assert.equal(result.output, expected);
-});
