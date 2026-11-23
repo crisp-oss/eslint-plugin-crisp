@@ -256,6 +256,7 @@ Each item has emojis denoting:
 | [crisp/vue-props-declaration-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-order.js) | Ensures props declarations are alphabetically ordered |  | 🟢 |
 | [crisp/vue-ref-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-ref-case.js) | Enforces `ref` attributes to snake case |  | 🟢 |
 | [crisp/vue-watch-handler](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-handler.js) | Requires Vue watchers to use the object form with a valid `handler` function |  | 🟢 |  |
+| [crisp/vue-watch-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-order.js) | Orders watcher options as `immediate` (if present), `deep` (if present), then `handler`; supports autofix for simple uncommented options |  | 🟢 |  |
 
 ## License
 

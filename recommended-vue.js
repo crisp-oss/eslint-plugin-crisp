@@ -136,6 +136,7 @@ export default function configRecommendedVue(pluginCrisp) {
           { "blankLine": "always", "prev": "const", "next": "*" },
           { "blankLine": "any", "prev": "const", "next": "const" },
           { "blankLine": "always", "prev": "block-like", "next": "*" },
+          { "blankLine": "always", "prev": "*", "next": "return" },
           { "blankLine": "always", "prev": "*", "next": "break" },
           { "blankLine": "any", "prev": "empty", "next": "break" },
           { "blankLine": "always", "prev": "*", "next": "block-like" },
@@ -406,7 +407,8 @@ export default function configRecommendedVue(pluginCrisp) {
         "crisp/vue-props-declaration-multiline": "error",
         "crisp/vue-props-declaration-order": "error",
         "crisp/vue-ref-case": "error",
-        "crisp/vue-watch-handler": "error"
+        "crisp/vue-watch-handler": "error",
+        "crisp/vue-watch-order": "error"
       }
     }
   ];

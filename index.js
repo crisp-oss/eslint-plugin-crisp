@@ -66,6 +66,7 @@ import ruleVuePropsDeclarationMultiline from "./rules/vue-props-declaration-mult
 import ruleVuePropsDeclarationOrder from "./rules/vue-props-declaration-order.js";
 import ruleVueRefCase from "./rules/vue-ref-case.js";
 import ruleVueWatchHandler from "./rules/vue-watch-handler.js";
+import ruleVueWatchOrder from "./rules/vue-watch-order.js";
 
 import fs from "fs";
 
@@ -144,7 +145,8 @@ const plugin = {
     "vue-props-declaration-multiline": ruleVuePropsDeclarationMultiline,
     "vue-props-declaration-order": ruleVuePropsDeclarationOrder,
     "vue-ref-case": ruleVueRefCase,
-    "vue-watch-handler": ruleVueWatchHandler
+    "vue-watch-handler": ruleVueWatchHandler,
+    "vue-watch-order": ruleVueWatchOrder
   }
 };
 
