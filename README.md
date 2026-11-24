@@ -8,10 +8,13 @@ A set of custom [ESLint](https://eslint.org/) configurations and rules for Crisp
 
 ## Usage
 
-The plugin provides three configurations:
+The plugin provides four configurations:
 * `recommended`: JS rules targetting backend code (Node.js)
 * `recommended-vue`: JS rules targetting frontend code (Vue.js)
 * `recommended-ts`: TS rules targetting frontend and backend code (Node.js, Vue.js)
+* `recommended-vue-ts`: Vue.js and TS rules targetting frontend code written in TypeScript (Vue.js)
+
+**Notice:** `recommended-vue-ts` expects all Vue files to be written in TypeScript (`<script lang="ts">`), and reports Vue files written in JavaScript (`vue/block-lang`). Projects with Vue files written in JavaScript should use `recommended-vue` instead.
 
 Add the plugin in your ESLint config object, then extend the desired configuration:
 ```javascript
@@ -20,6 +23,7 @@ import crisp from "eslint-plugin-crisp";
 export default defineConfig([
   crisp.configs["recommended"],
   // OR crisp.configs["recommended-vue"]
+  // OR crisp.configs["recommended-vue-ts"]
 
   {
     rules: {
@@ -37,229 +41,232 @@ Each item has emojis denoting:
 * 🟠: enabled in `recommended`
 * 🟢: enabled in `recommended-vue`
 * 🟣: enabled in `recommended-ts`
+* 🔵: enabled in `recommended-vue-ts`
 
 ### Configurations
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [@eslint/js:recommended](https://github.com/eslint/eslint/tree/main/packages/js) | Core ESLint rules |  | 🟢 |  |
-| [eslint-plugin-jsdoc:recommended](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules | 🟠 | 🟢 | 🟣 |
-| [typescript-eslint:recommendedTypeChecked](https://github.com/typescript-eslint/typescript-eslint) | TypeScript linting rules |  |  | 🟣 |
-| [eslint-plugin-vue:recommended](https://github.com/vuejs/eslint-plugin-vue) | Vue.js 3 linting rules |  | 🟢 |  |
-| [eslint-plugin-vue-pug:recommended](https://github.com/rashfael/eslint-plugin-vue-pug) | Pug templates support for Vue.js linting rules |  | 🟢 |  |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [@eslint/js:recommended](https://github.com/eslint/eslint/tree/main/packages/js) | Core ESLint rules |  | 🟢 |  | 🔵 |
+| [eslint-plugin-jsdoc:recommended](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules | 🟠 | 🟢 | 🟣 | 🔵 |
+| [typescript-eslint:recommendedTypeChecked](https://github.com/typescript-eslint/typescript-eslint) | TypeScript linting rules |  |  | 🟣 | 🔵 |
+| [typescript-eslint:strict](https://typescript-eslint.io/users/configs#strict) | Strict TypeScript linting rules (type-checked on TS files) |  |  |  | 🔵 |
+| [typescript-eslint:stylistic](https://typescript-eslint.io/users/configs#stylistic) | Stylistic TypeScript linting rules (type-checked on TS files) |  |  |  | 🔵 |
+| [eslint-plugin-vue:recommended](https://github.com/vuejs/eslint-plugin-vue) | Vue.js 3 linting rules |  | 🟢 |  | 🔵 |
+| [eslint-plugin-vue-pug:recommended](https://github.com/rashfael/eslint-plugin-vue-pug) | Pug templates support for Vue.js linting rules |  | 🟢 |  | 🔵 |
 
 ### Plugins
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules for ESLint | 🟠 | 🟢 | 🟣 |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules for ESLint | 🟠 | 🟢 | 🟣 | 🔵 |
 
 ### Rules
 
 #### General TS rules
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [@typescript-eslint/await-thenable](https://typescript-eslint.io/rules/await-thenable) | Disallows awaiting a value that is not thenable |  |  | 🟣 |
-| [@typescript-eslint/no-unused-vars](https://typescript-eslint.io/rules/no-unused-vars) | Disallows unused variables |  |  | 🟣 |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [@typescript-eslint/await-thenable](https://typescript-eslint.io/rules/await-thenable) | Disallows awaiting a value that is not thenable |  |  | 🟣 | 🔵 |
+| [@typescript-eslint/no-unused-vars](https://typescript-eslint.io/rules/no-unused-vars) | Disallows unused variables |  |  | 🟣 | 🔵 |
 
 #### General JS rules
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [array-callback-return](https://eslint.org/docs/latest/rules/array-callback-return) | Enforces `return` statements in callbacks of arrow function | 🟠 | 🟢 | 🟣 |
-| [arrow-body-style](https://eslint.org/docs/latest/rules/arrow-body-style) | Requires braces around arrow function bodies |  | 🟢 | 🟣 |
-| [arrow-parens](https://eslint.org/docs/latest/rules/arrow-parens) | Requires parentheses around arrow function arguments | 🟠 | 🟢 | 🟣 |
-| [brace-style](https://eslint.org/docs/latest/rules/brace-style) | Enforces one true brace style for blocks | 🟠 | 🟢 | 🟣 |
-| [comma-dangle](https://eslint.org/docs/latest/rules/comma-dangle) | Disallows trailing commas | 🟠 | 🟢 | 🟣 |
-| [comma-spacing](https://eslint.org/docs/latest/rules/comma-spacing) | Enforces consistent spacing before and after commas |  | 🟢 | 🟣 |
-| [comma-style](https://eslint.org/docs/latest/rules/comma-style) | Requires a comma after and on the same line | 🟠 | 🟢 | 🟣 |
-| [curly](https://eslint.org/docs/latest/rules/curly) | Ensures block statements are always wrapped in curly braces | 🟠 | 🟢 | 🟣 |
-| [computed-property-spacing](https://eslint.org/docs/latest/rules/computed-property-spacing) | Disallows spaces inside computed property brackets |  | 🟢 |
-| [default-param-last](https://eslint.org/docs/latest/rules/default-param-last) | Enforces default parameters to be last | 🟠 | 🟢 | 🟣 |
-| [default-case-last](https://eslint.org/docs/latest/rules/default-case-last) | Enforces default clauses in switch statements to be last | 🟠 | 🟢 | 🟣 |
-| [dot-notation](https://eslint.org/docs/latest/rules/dot-notation) | Enforces dot notation instead of square-bracket notation | 🟠 | 🟢 | 🟣 |
-| [eqeqeq](https://eslint.org/docs/latest/rules/eqeqeq) | Requires the use of `===` and `!==` | 🟠 | 🟢 | 🟣 |
-| [eol-last](https://eslint.org/docs/latest/rules/eol-last) | Requires newline at the end of files | 🟠 | 🟢 | 🟣 |
-| [for-direction](https://eslint.org/docs/latest/rules/for-direction) | Prevents for-loops to have stop condition that can never be reached | 🟠 | 🟢 | 🟣 |
-| [indent](https://eslint.org/docs/latest/rules/indent) | Enforces 2-space indentation, and specific indentation levels for some nodes | 🟠 | 🟢 | 🟣 |
-| [key-spacing](https://eslint.org/docs/latest/rules/key-spacing) | Enforces consistent spacing in object literal properties (no space between the key and the colon, one space between the colon and the value) | 🟠 | 🟢 | 🟣 |
-| [keyword-spacing](https://eslint.org/docs/latest/rules/keyword-spacing) | Enforces consistent spacing before and after keywords | 🟠 | 🟢 | 🟣 |
-| [linebreak-style](https://eslint.org/docs/latest/rules/linebreak-style) | Enforces Unix-style line endings | 🟠 | 🟢 | 🟣 |
-| [max-len](https://eslint.org/docs/latest/rules/max-len) | Enforces a maximum line length of 100 characters (`@import`, `@typedef` and `@property` lines are ignored) | 🟠 |  | 🟣 |
-| [newline-per-chained-call](https://eslint.org/docs/latest/rules/newline-per-chained-call) | Requires a newline after each call in a method chain |  | 🟢 | 🟣 |
-| [no-console](https://eslint.org/docs/latest/rules/no-console) | Disallows the use of `console` | 🟠 | 🟢 | 🟣 |
-| [no-debugger](https://eslint.org/docs/latest/rules/no-debugger) | Disallows the use of `debugger` | 🟠 | 🟢 | 🟣 |
-| [no-eval](https://eslint.org/docs/latest/rules/no-eval) | Disallows the use of `eval` | 🟠 | 🟢 | 🟣 |
-| [no-implicit-coercion](https://eslint.org/docs/latest/rules/no-implicit-coercion) | Disallows short notations for type conversion |  | 🟢 | 🟣 |
-| [no-magic-numbers](https://eslint.org/docs/latest/rules/no-magic-numbers) | Disallows magic numbers (except the ones in the context of array indexes and in default value assignments) | 🟠 |
-| [no-multi-str](https://eslint.org/docs/latest/rules/no-multi-str) | Disallows multiline strings | 🟠 | 🟢 | 🟣 |
-| [no-multi-spaces](https://eslint.org/docs/latest/rules/no-multi-spaces) | Disallows multiple consecutive spaces except for indentation | 🟠 | 🟢 | 🟣 |
-| [no-multiple-empty-lines](https://eslint.org/docs/latest/rules/no-multiple-empty-lines) | Allows a maximum of 1 consecutive empty lines |  | 🟢 | 🟣 |
-| [no-mixed-spaces-and-tabs](https://eslint.org/docs/latest/rules/no-mixed-spaces-and-tabs) | Disallows mixed spaces and tabs for indentation | 🟠 | 🟢 | 🟣 |
-| [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Disallows specific syntax patterns according to each configuration's coding conventions |  | 🟢 | 🟣 |
-| [no-tabs](https://eslint.org/docs/latest/rules/no-tabs) | Disallows tabs | 🟠 | 🟢 | 🟣 |
-| [no-trailing-spaces](https://eslint.org/docs/latest/rules/no-trailing-spaces) | Disallows trailing whitespace at the end of lines | 🟠 | 🟢 | 🟣 |
-| [no-undef](https://eslint.org/docs/latest/rules/no-undef) | Disallows use of undeclared variables | 🟠 | 🟢 | 🟣 |
-| [no-unused-vars](https://eslint.org/docs/latest/rules/no-unused-vars) | Disallows unused variables | 🟠 | 🟢 |  |
-| [no-unsafe-optional-chaining](https://eslint.org/docs/latest/rules/no-unsafe-optional-chaining) | Disallows use of optional chaining in contexts where the `undefined` value is not allowed | 🟠 | 🟢 | 🟣 |
-| [object-curly-newline](https://eslint.org/docs/latest/rules/object-curly-newline) | Requires line breaks after opening and before closing braces | 🟠 | 🟢 | 🟣 |
-| [object-curly-spacing](https://eslint.org/docs/latest/rules/object-curly-spacing) | Requires spacing inside of braces | 🟠 | 🟢 | 🟣 |
-| [object-shorthand](https://eslint.org/docs/latest/rules/object-shorthand) | Disallows shorthand properties and methods in object literals, requiring explicit keys and values even when their names match | 🟠 |  | 🟣 |
-| [padded-blocks](https://eslint.org/docs/latest/rules/padded-blocks) | Disallows empty lines at the beginning and ending of blocks | 🟠 | 🟢 | 🟣 |
-| [padding-line-between-statements](https://eslint.org/docs/latest/rules/padding-line-between-statements) | Requires padding lines between various statements | 🟠 | 🟢 | 🟣 |
-| [prefer-arrow-callback](https://eslint.org/docs/latest/rules/prefer-arrow-callback) | Requires using arrow functions for callbacks |  | 🟢 | 🟣 |
-| [prefer-object-spread](https://eslint.org/docs/latest/rules/prefer-object-spread) | Requires using object spread syntax instead of `Object.assign` on object literal | 🟠 | 🟢 | 🟣 |
-| [quotes](https://eslint.org/docs/latest/rules/quotes) | Enforces the consistent use of double quotes (while allowing single quotes in order to avoid escape, and backticks for template literals) | 🟠 | 🟢 | 🟣 |
-| [quote-props](https://eslint.org/docs/latest/rules/quote-props) | Disallows quotes around object literal property names that are not strictly required | 🟠 | 🟢 | 🟣 |
-| [semi](https://eslint.org/docs/latest/rules/semi) | Requires semicolons at the end of statements | 🟠 | 🟢 | 🟣 |
-| [semi-style](https://eslint.org/docs/latest/rules/semi-style) | Enforces that semicolons are at the end of statements | 🟠 | 🟢 | 🟣 |
-| [semi-spacing](https://eslint.org/docs/latest/rules/semi-spacing) | Disallows space before semicolons, enforces spaces after |  | 🟢 | 🟣 |
-| [space-before-blocks](https://eslint.org/docs/latest/rules/space-before-blocks) | Enforces consistent spacing before blocks | 🟠 | 🟢 | 🟣 |
-| [space-in-parens](https://eslint.org/docs/latest/rules/space-in-parens) | Enforces zero spaces inside of parentheses | 🟠 | 🟢 | 🟣 |
-| [space-infix-ops](https://eslint.org/docs/latest/rules/space-infix-ops) | Enforces spaces around infix operators | 🟠 | 🟢 | 🟣 |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [array-callback-return](https://eslint.org/docs/latest/rules/array-callback-return) | Enforces `return` statements in callbacks of arrow function | 🟠 | 🟢 | 🟣 | 🔵 |
+| [arrow-body-style](https://eslint.org/docs/latest/rules/arrow-body-style) | Requires braces around arrow function bodies |  | 🟢 | 🟣 | 🔵 |
+| [arrow-parens](https://eslint.org/docs/latest/rules/arrow-parens) | Requires parentheses around arrow function arguments | 🟠 | 🟢 | 🟣 | 🔵 |
+| [brace-style](https://eslint.org/docs/latest/rules/brace-style) | Enforces one true brace style for blocks | 🟠 | 🟢 | 🟣 | 🔵 |
+| [comma-dangle](https://eslint.org/docs/latest/rules/comma-dangle) | Disallows trailing commas | 🟠 | 🟢 | 🟣 | 🔵 |
+| [comma-spacing](https://eslint.org/docs/latest/rules/comma-spacing) | Enforces consistent spacing before and after commas |  | 🟢 | 🟣 | 🔵 |
+| [comma-style](https://eslint.org/docs/latest/rules/comma-style) | Requires a comma after and on the same line | 🟠 | 🟢 | 🟣 | 🔵 |
+| [curly](https://eslint.org/docs/latest/rules/curly) | Ensures block statements are always wrapped in curly braces | 🟠 | 🟢 | 🟣 | 🔵 |
+| [computed-property-spacing](https://eslint.org/docs/latest/rules/computed-property-spacing) | Disallows spaces inside computed property brackets |  | 🟢 |  | 🔵 |
+| [default-param-last](https://eslint.org/docs/latest/rules/default-param-last) | Enforces default parameters to be last | 🟠 | 🟢 | 🟣 | 🔵 |
+| [default-case-last](https://eslint.org/docs/latest/rules/default-case-last) | Enforces default clauses in switch statements to be last | 🟠 | 🟢 | 🟣 | 🔵 |
+| [dot-notation](https://eslint.org/docs/latest/rules/dot-notation) | Enforces dot notation instead of square-bracket notation | 🟠 | 🟢 | 🟣 | 🔵 |
+| [eqeqeq](https://eslint.org/docs/latest/rules/eqeqeq) | Requires the use of `===` and `!==` | 🟠 | 🟢 | 🟣 | 🔵 |
+| [eol-last](https://eslint.org/docs/latest/rules/eol-last) | Requires newline at the end of files | 🟠 | 🟢 | 🟣 | 🔵 |
+| [for-direction](https://eslint.org/docs/latest/rules/for-direction) | Prevents for-loops to have stop condition that can never be reached | 🟠 | 🟢 | 🟣 | 🔵 |
+| [indent](https://eslint.org/docs/latest/rules/indent) | Enforces 2-space indentation, and specific indentation levels for some nodes | 🟠 | 🟢 | 🟣 | 🔵 |
+| [key-spacing](https://eslint.org/docs/latest/rules/key-spacing) | Enforces consistent spacing in object literal properties (no space between the key and the colon, one space between the colon and the value) | 🟠 | 🟢 | 🟣 | 🔵 |
+| [keyword-spacing](https://eslint.org/docs/latest/rules/keyword-spacing) | Enforces consistent spacing before and after keywords | 🟠 | 🟢 | 🟣 | 🔵 |
+| [linebreak-style](https://eslint.org/docs/latest/rules/linebreak-style) | Enforces Unix-style line endings | 🟠 | 🟢 | 🟣 | 🔵 |
+| [max-len](https://eslint.org/docs/latest/rules/max-len) | Enforces a maximum line length of 100 characters (`@import`, `@typedef` and `@property` lines are ignored) | 🟠 |  | 🟣 | 🔵 |
+| [newline-per-chained-call](https://eslint.org/docs/latest/rules/newline-per-chained-call) | Requires a newline after each call in a method chain |  | 🟢 | 🟣 | 🔵 |
+| [no-console](https://eslint.org/docs/latest/rules/no-console) | Disallows the use of `console` | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-debugger](https://eslint.org/docs/latest/rules/no-debugger) | Disallows the use of `debugger` | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-eval](https://eslint.org/docs/latest/rules/no-eval) | Disallows the use of `eval` | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-implicit-coercion](https://eslint.org/docs/latest/rules/no-implicit-coercion) | Disallows short notations for type conversion |  | 🟢 | 🟣 | 🔵 |
+| [no-magic-numbers](https://eslint.org/docs/latest/rules/no-magic-numbers) | Disallows magic numbers (except the ones in the context of array indexes and in default value assignments) | 🟠 |  |  |  |
+| [no-multi-str](https://eslint.org/docs/latest/rules/no-multi-str) | Disallows multiline strings | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-multi-spaces](https://eslint.org/docs/latest/rules/no-multi-spaces) | Disallows multiple consecutive spaces except for indentation | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-multiple-empty-lines](https://eslint.org/docs/latest/rules/no-multiple-empty-lines) | Allows a maximum of 1 consecutive empty lines |  | 🟢 | 🟣 | 🔵 |
+| [no-mixed-spaces-and-tabs](https://eslint.org/docs/latest/rules/no-mixed-spaces-and-tabs) | Disallows mixed spaces and tabs for indentation | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-restricted-syntax](https://eslint.org/docs/latest/rules/no-restricted-syntax) | Disallows specific syntax patterns according to each configuration's coding conventions |  | 🟢 | 🟣 | 🔵 |
+| [no-tabs](https://eslint.org/docs/latest/rules/no-tabs) | Disallows tabs | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-trailing-spaces](https://eslint.org/docs/latest/rules/no-trailing-spaces) | Disallows trailing whitespace at the end of lines | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-undef](https://eslint.org/docs/latest/rules/no-undef) | Disallows use of undeclared variables | 🟠 | 🟢 | 🟣 | 🔵 |
+| [no-unused-vars](https://eslint.org/docs/latest/rules/no-unused-vars) | Disallows unused variables | 🟠 | 🟢 |  |  |
+| [no-unsafe-optional-chaining](https://eslint.org/docs/latest/rules/no-unsafe-optional-chaining) | Disallows use of optional chaining in contexts where the `undefined` value is not allowed | 🟠 | 🟢 | 🟣 | 🔵 |
+| [object-curly-newline](https://eslint.org/docs/latest/rules/object-curly-newline) | Requires line breaks after opening and before closing braces | 🟠 | 🟢 | 🟣 | 🔵 |
+| [object-curly-spacing](https://eslint.org/docs/latest/rules/object-curly-spacing) | Requires spacing inside of braces | 🟠 | 🟢 | 🟣 | 🔵 |
+| [object-shorthand](https://eslint.org/docs/latest/rules/object-shorthand) | Disallows shorthand properties and methods in object literals, requiring explicit keys and values even when their names match | 🟠 |  | 🟣 | 🔵 |
+| [padded-blocks](https://eslint.org/docs/latest/rules/padded-blocks) | Disallows empty lines at the beginning and ending of blocks | 🟠 | 🟢 | 🟣 | 🔵 |
+| [padding-line-between-statements](https://eslint.org/docs/latest/rules/padding-line-between-statements) | Requires padding lines between various statements | 🟠 | 🟢 | 🟣 | 🔵 |
+| [prefer-arrow-callback](https://eslint.org/docs/latest/rules/prefer-arrow-callback) | Requires using arrow functions for callbacks |  | 🟢 | 🟣 | 🔵 |
+| [prefer-object-spread](https://eslint.org/docs/latest/rules/prefer-object-spread) | Requires using object spread syntax instead of `Object.assign` on object literal | 🟠 | 🟢 | 🟣 | 🔵 |
+| [quotes](https://eslint.org/docs/latest/rules/quotes) | Enforces the consistent use of double quotes (while allowing single quotes in order to avoid escape, and backticks for template literals) | 🟠 | 🟢 | 🟣 | 🔵 |
+| [quote-props](https://eslint.org/docs/latest/rules/quote-props) | Disallows quotes around object literal property names that are not strictly required | 🟠 | 🟢 | 🟣 | 🔵 |
+| [semi](https://eslint.org/docs/latest/rules/semi) | Requires semicolons at the end of statements | 🟠 | 🟢 | 🟣 | 🔵 |
+| [semi-style](https://eslint.org/docs/latest/rules/semi-style) | Enforces that semicolons are at the end of statements | 🟠 | 🟢 | 🟣 | 🔵 |
+| [semi-spacing](https://eslint.org/docs/latest/rules/semi-spacing) | Disallows space before semicolons, enforces spaces after |  | 🟢 | 🟣 | 🔵 |
+| [space-before-blocks](https://eslint.org/docs/latest/rules/space-before-blocks) | Enforces consistent spacing before blocks | 🟠 | 🟢 | 🟣 | 🔵 |
+| [space-in-parens](https://eslint.org/docs/latest/rules/space-in-parens) | Enforces zero spaces inside of parentheses | 🟠 | 🟢 | 🟣 | 🔵 |
+| [space-infix-ops](https://eslint.org/docs/latest/rules/space-infix-ops) | Enforces spaces around infix operators | 🟠 | 🟢 | 🟣 | 🔵 |
 
 #### Crisp JS rules
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [crisp/align-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-comments.js) | Enforces alignment of comments compared to the previous line (the `indent` rule doesn't check this case) | 🟠 | 🟢 | 🟣 |
-| [crisp/consecutive-line-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/consecutive-line-comments.js) | Enforces consecutive single-line comments to form a single multi-line continuation block | 🟠 | 🟢 | 🟣 |
-| [crisp/arrow-block-newline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/arrow-block-newline.js) | Requires a newline after `{` in arrow function blocks | 🟠 | 🟢 | 🟣 |
-| [crisp/const](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/const.js) | Enforces that `const` variables start with `__` or are all uppercase (ignored in Vue `<script lang="ts">`) | 🟠 | 🟢 |  |
-| [crisp/constructor-variables](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/constructor-variables.js) | Ensures all class properties in the constructor start with `_` | 🟠 |
-| [crisp/enforce-optional](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/enforce-optional.js) | Enforces use of optional chaining | 🟠 | 🟢 | 🟣 |
-| [crisp/header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-check.js) | Enforces files to start with Crisp header | 🟠 | 🟢 | 🟣 |
-| [crisp/header-comments-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-comments-check.js) | Enforces different comment blocks before different groups (imports, constants and instances) | 🟠 | 🟢 | 🟣 |
-| [crisp/import-group-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-comment.js) | Ensures `import` statements are preceded by a comment stating their type |  | 🟢 | 🟣 |
-| [crisp/import-group-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-order.js) | Ensures `import` statements are correctly ordered |  | 🟢 | 🟣 |
-| [crisp/logger-arguments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/logger-arguments.js) | Requires static logger messages and reference-only interpolation arguments | 🟠 |  | 🟣 |
-| [crisp/methods-naming](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-naming.js) | Ensures methods are named according to their access (`public`, `private`, `protected`) | 🟠 | 🟢 | 🟣 |
-| [crisp/methods-ordering](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-ordering.js) | Ensures methods order according to their access: `public` then `protected` then `private` | 🟠 | 🟢 | 🟣 |
-| [crisp/multiline-comment-end-backslash](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/multiline-comment-end-backslash.js) | Enforces multiline comments to end with a backslash | 🟠 | 🟢 | 🟣 |
-| [crisp/newline-after-switch-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/newline-after-switch-case.js) | Requires newline between switch cases | 🟠 | 🟢 | 🟣 |
-| [crisp/no-async](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-async.js) | Disallows `async`/`await` in favor of `Promise` | 🟠 |  |  |
-| [crisp/no-extra-line-within-function](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-extra-line-within-function.js) | Allows at most one empty line between declarations within functions | 🟠 | 🟢 | 🟣 |
-| [crisp/no-inline-function-in-ternary](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-inline-function-in-ternary.js) | Disallows inline functions in ternary branches | 🟠 | 🟢 | 🟣 |
-| [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
-| [crisp/no-return-only-interface](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-return-only-interface.js) | Disallows interfaces and types only used as a function return type, relying on type inference instead |  |  | 🟣 |
-| [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
-| [crisp/no-underscore-prefix](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-underscore-prefix.js) | Disallows declarations starting with an underscore (eg. `_flagId`) (Vue: only in `<script lang="ts">`) |  | 🟢 | 🟣 |
-| [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
-| [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 |
-| [crisp/one-space-after-operator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/one-space-after-operator.js) | Enforces at least one space before and one space after `=` and `:` operators | 🟠 | 🟢 | 🟣 |
-| [crisp/vue-pinia-action-single-parameter](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-pinia-action-single-parameter.js) | Requires Pinia actions to accept at most one payload argument |  | 🟢 |  |
-| [crisp/regex-in-constructor](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/regex-in-constructor.js) | Ensures regular expressions are defined in the class constructor | 🟠 | 🟢 | 🟣 |
-| [crisp/ternary-parenthesis](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/ternary-parenthesis.js) | Enforces parentheses around conditions with operators in ternary expressions | 🟠 | 🟢 | 🟣 |
-| [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) | Requires exactly two line breaks between class methods | 🟠 |
-| [crisp/variable-names](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/variable-names.js) | Requires variables defined within a method to start with `_` (ignored in Vue `<script lang="ts">`) | 🟠 | 🟢 |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [crisp/align-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-comments.js) | Enforces alignment of comments compared to the previous line (the `indent` rule doesn't check this case) | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/consecutive-line-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/consecutive-line-comments.js) | Enforces consecutive single-line comments to form a single multi-line continuation block | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/arrow-block-newline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/arrow-block-newline.js) | Requires a newline after `{` in arrow function blocks | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/const](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/const.js) | Enforces that `const` variables start with `__` or are all uppercase (ignored in Vue `<script lang="ts">`) | 🟠 | 🟢 |  | 🔵 |
+| [crisp/constructor-variables](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/constructor-variables.js) | Ensures all class properties in the constructor start with `_` | 🟠 |  |  |  |
+| [crisp/enforce-optional](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/enforce-optional.js) | Enforces use of optional chaining | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-check.js) | Enforces files to start with Crisp header | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/header-comments-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-comments-check.js) | Enforces different comment blocks before different groups (imports, constants and instances) | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/import-group-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-comment.js) | Ensures `import` statements are preceded by a comment stating their type |  | 🟢 | 🟣 | 🔵 |
+| [crisp/import-group-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/import-group-order.js) | Ensures `import` statements are correctly ordered |  | 🟢 | 🟣 | 🔵 |
+| [crisp/logger-arguments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/logger-arguments.js) | Requires static logger messages and reference-only interpolation arguments | 🟠 |  | 🟣 | 🔵 |
+| [crisp/methods-naming](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-naming.js) | Ensures methods are named according to their access (`public`, `private`, `protected`) | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/methods-ordering](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/methods-ordering.js) | Ensures methods order according to their access: `public` then `protected` then `private` | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/multiline-comment-end-backslash](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/multiline-comment-end-backslash.js) | Enforces multiline comments to end with a backslash | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/newline-after-switch-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/newline-after-switch-case.js) | Requires newline between switch cases | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/no-async](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-async.js) | Disallows `async`/`await` in favor of `Promise` | 🟠 |  |  |  |
+| [crisp/no-extra-line-within-function](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-extra-line-within-function.js) | Allows at most one empty line between declarations within functions | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/no-inline-function-in-ternary](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-inline-function-in-ternary.js) | Disallows inline functions in ternary branches | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/no-return-only-interface](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-return-only-interface.js) | Disallows interfaces and types only used as a function return type, relying on type inference instead |  |  | 🟣 | 🔵 |
+| [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 | 🔵 |
+| [crisp/no-underscore-prefix](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-underscore-prefix.js) | Disallows declarations starting with an underscore (eg. `_flagId`) (Vue: only in `<script lang="ts">`) |  | 🟢 | 🟣 | 🔵 |
+| [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 | 🔵 |
+| [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/one-space-after-operator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/one-space-after-operator.js) | Enforces at least one space before and one space after `=` and `:` operators | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/vue-pinia-action-single-parameter](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-pinia-action-single-parameter.js) | Requires Pinia actions to accept at most one payload argument |  | 🟢 |  | 🔵 |
+| [crisp/regex-in-constructor](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/regex-in-constructor.js) | Ensures regular expressions are defined in the class constructor | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/ternary-parenthesis](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/ternary-parenthesis.js) | Enforces parentheses around conditions with operators in ternary expressions | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) | Requires exactly two line breaks between class methods | 🟠 |  |  |  |
+| [crisp/variable-names](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/variable-names.js) | Requires variables defined within a method to start with `_` (ignored in Vue `<script lang="ts">`) | 🟠 | 🟢 |  | 🔵 |
 
 #### General JSDoc rules
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [jsdoc/no-undefined-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) | Rule is **disabled** to allow some undefined types | 🟠 |
-| [jsdoc/reject-any-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-any-type.md) | Rule is **disabled** to allow the `any` type | 🟠 | 🟢 |  |
-| [jsdoc/reject-function-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-function-type.md) | Rule is **disabled** to allow the `Function` type | 🟠 | 🟢 |  |
-| [jsdoc/no-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-types.md) | Disallows types in JSDoc tags, relying on the TypeScript signature instead |  |  | 🟣 |
-| [jsdoc/require-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-description.md) | Requires all functions to have a description in their JSDoc |  | 🟢 | 🟣 |
-| [jsdoc/require-param](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
-| [jsdoc/require-param-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-type.md) | Rule is **disabled** as types come from the TypeScript signature |  |  | 🟣 |
-| [jsdoc/require-param-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) | Rule is **disabled** as we don't write any description for `@param` tags | 🟠 | 🟢 | 🟣 |
-| [jsdoc/check-param-names](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-param-names.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
-| [jsdoc/require-property-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-property-description.md) | Rule is **disabled** as we don't write any description for `@property` tags | 🟠 | 🟢 | 🟣 |
-| [jsdoc/require-returns](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns.md) | Rule is **disabled** to allow functions without a `@return` tag | 🟠 | 🟢 | 🟣 |
-| [jsdoc/require-returns-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns-type.md) | Rule is **disabled** as types come from the TypeScript signature |  |  | 🟣 |
-| [jsdoc/require-returns-check](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns-check.md) | Rule is **disabled** as we don't write `@returns` tags |  |  | 🟣 |
-| [jsdoc/require-yields](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 |
-| [jsdoc/require-yields-check](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-check.md) | Rule is **disabled** as we don't write `@yields` tags |  |  | 🟣 |
-| [jsdoc/require-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) | Enforces JSDoc comments on functions and classes | 🟠 | 🟢 | 🟣 |
-| [jsdoc/sort-tags](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md) | Enforces specific order for tags | 🟠 | 🟢 |  |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [jsdoc/no-undefined-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-undefined-types.md) | Rule is **disabled** to allow some undefined types | 🟠 |  |  |  |
+| [jsdoc/reject-any-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-any-type.md) | Rule is **disabled** to allow the `any` type | 🟠 | 🟢 |  | 🔵 |
+| [jsdoc/reject-function-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/reject-function-type.md) | Rule is **disabled** to allow the `Function` type | 🟠 | 🟢 |  | 🔵 |
+| [jsdoc/no-types](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/no-types.md) | Disallows types in JSDoc tags, relying on the TypeScript signature instead |  |  | 🟣 | 🔵 |
+| [jsdoc/require-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-description.md) | Requires all functions to have a description in their JSDoc |  | 🟢 | 🟣 | 🔵 |
+| [jsdoc/require-param](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 | 🔵 |
+| [jsdoc/require-param-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-type.md) | Rule is **disabled** as types come from the TypeScript signature |  |  | 🟣 | 🔵 |
+| [jsdoc/require-param-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-param-description.md) | Rule is **disabled** as we don't write any description for `@param` tags | 🟠 | 🟢 | 🟣 | 🔵 |
+| [jsdoc/check-param-names](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-param-names.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 | 🔵 |
+| [jsdoc/require-property-description](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-property-description.md) | Rule is **disabled** as we don't write any description for `@property` tags | 🟠 | 🟢 | 🟣 | 🔵 |
+| [jsdoc/require-returns](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns.md) | Rule is **disabled** to allow functions without a `@return` tag | 🟠 | 🟢 | 🟣 | 🔵 |
+| [jsdoc/require-returns-type](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns-type.md) | Rule is **disabled** as types come from the TypeScript signature |  |  | 🟣 | 🔵 |
+| [jsdoc/require-returns-check](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-returns-check.md) | Rule is **disabled** as we don't write `@returns` tags |  |  | 🟣 | 🔵 |
+| [jsdoc/require-yields](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields.md) | Rule is **disabled** as TS functions are self documented |  |  | 🟣 | 🔵 |
+| [jsdoc/require-yields-check](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-yields-check.md) | Rule is **disabled** as we don't write `@yields` tags |  |  | 🟣 | 🔵 |
+| [jsdoc/require-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-jsdoc.md) | Enforces JSDoc comments on functions and classes | 🟠 | 🟢 | 🟣 | 🔵 |
+| [jsdoc/sort-tags](https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md) | Enforces specific order for tags | 🟠 | 🟢 |  | 🔵 |
 
 #### Crisp JSDoc rules
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [crisp/jsdoc-align-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-align-params.js) | Enforces various alignments | 🟠 | 🟢 |
-| [crisp/jsdoc-check-indentation](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-indentation.js) | Enforces consistent indentation | 🟠 | 🟢 |
-| [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) | Requires optional parameters to be surrounded by brackets |  | 🟢 |
-| [crisp/jsdoc-description-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-multiline.js) | Enforces multiline formatting for function JSDoc descriptions |  |  | 🟣 |
-| [crisp/jsdoc-description-only](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-only.js) | Forbids any tag (eg. `@public`, `@param`) in function JSDoc, which must only hold a description |  |  | 🟣 |
-| [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions |  | 🟢 |
-| [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠 | 🟢 |
-| [crisp/jsdoc-require-description-uppercase](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-require-description-uppercase.js) | Requires descriptions to start with an uppercase character | 🟠 | 🟢 |
-| [crisp/jsdoc-description-length](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-length.js) | Enforces a maximum length for JSDoc descriptions | 🟠 | 🟢 | 🟣 |
-| [crisp/jsdoc-typedef-align](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-typedef-align.js) | Enforces alignment of multiline `@typedef` and `@property` definitions | 🟠 | 🟢 |
-| [crisp/jsdoc-no-param-return](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-no-param-return.js) | Forbids `@param` and `@return` tags in JSDoc, relying on the TypeScript signature instead |  |  | 🟣 |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [crisp/jsdoc-align-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-align-params.js) | Enforces various alignments | 🟠 | 🟢 |  |  |
+| [crisp/jsdoc-check-indentation](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-indentation.js) | Enforces consistent indentation | 🟠 | 🟢 |  | 🔵 |
+| [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) | Requires optional parameters to be surrounded by brackets |  | 🟢 |  |  |
+| [crisp/jsdoc-description-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-multiline.js) | Enforces multiline formatting for function JSDoc descriptions |  |  | 🟣 | 🔵 |
+| [crisp/jsdoc-description-only](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-only.js) | Forbids any tag (eg. `@public`, `@param`) in function JSDoc, which must only hold a description |  |  | 🟣 | 🔵 |
+| [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions |  | 🟢 |  | 🔵 |
+| [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠 | 🟢 |  | 🔵 |
+| [crisp/jsdoc-require-description-uppercase](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-require-description-uppercase.js) | Requires descriptions to start with an uppercase character | 🟠 | 🟢 |  | 🔵 |
+| [crisp/jsdoc-description-length](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-length.js) | Enforces a maximum length for JSDoc descriptions | 🟠 | 🟢 | 🟣 | 🔵 |
+| [crisp/jsdoc-typedef-align](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-typedef-align.js) | Enforces alignment of multiline `@typedef` and `@property` definitions | 🟠 | 🟢 |  | 🔵 |
+| [crisp/jsdoc-no-param-return](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-no-param-return.js) | Forbids `@param` and `@return` tags in JSDoc, relying on the TypeScript signature instead |  |  | 🟣 | 🔵 |
 
 #### General Vue rules
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [vue/attributes-order](https://eslint.vuejs.org/rules/attributes-order) | Enforces order of attributes |  | 🟢 |
-| [vue/block-lang](https://eslint.vuejs.org/rules/block-lang) | Allows `script` blocks to have no `lang` attribute |  | 🟢 |
-| [vue/block-order](https://eslint.vuejs.org/rules/block-order) | Enforces order of component top-level elements (`template`, then `script`, then `style`) |  | 🟢 |
-| [vue/block-tag-newline](https://eslint.vuejs.org/rules/block-tag-newline) | Requires one line break after opening and before closing block-level tags |  | 🟢 |
-| [vue/comma-dangle](https://eslint.vuejs.org/rules/comma-dangle) | Disallows trailing commas in `<template>` |  | 🟢 |
-| [vue/component-api-style](https://eslint.vuejs.org/rules/component-api-style) | Allows both Options API and Composition API |  | 🟢 |
-| [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing) | Enforces tag names to kebab case |  | 🟢 |
-| [vue/component-options-name-casing](https://eslint.vuejs.org/rules/component-options-name-casing) | Enforces component names in `components` options to pascal case |  | 🟢 |
-| [vue/custom-event-name-casing](https://eslint.vuejs.org/rules/custom-event-name-casing) | Enforces custom event names to camel case |  | 🟢 |
-| [vue/eqeqeq](https://eslint.vuejs.org/rules/eqeqeq) | Requires the use of `===` and `!==` in `<template>` |  | 🟢 |
-| [vue/html-comment-content-spacing](https://eslint.vuejs.org/rules/html-comment-content-spacing) | Requires one space before and after HTML comment tags |  | 🟢 |
-| [vue/html-quotes](https://eslint.vuejs.org/rules/html-quotes) | Rule is **disabled** in order to allow backticks in HTML attributes |  | 🟢 |
-| [vue/key-spacing](https://eslint.vuejs.org/rules/key-spacing) | Enforces consistent spacing in object literal properties in `<template>` (no space between the key and the colon, one space between the colon and the value) |  | 🟢 |
-| [vue/match-component-import-name](https://eslint.vuejs.org/rules/match-component-import-name) | Requires the registered component name to match the imported component name |  | 🟢 |
-| [vue/max-len](https://eslint.vuejs.org/rules/max-len) | Enforces a maximum line length of 80 characters (only for `<script>`) |  | 🟢 |
-| [vue/new-line-between-multi-line-property](https://eslint.vuejs.org/rules/new-line-between-multi-line-property) | Requires new lines between multi-line `props` |  | 🟢 |
-| [vue/no-bare-strings-in-template](https://eslint.vuejs.org/rules/no-bare-strings-in-template) | Disallows the use of bare strings in `<template>` |  | 🟢 |
-| [vue/no-implicit-coercion](https://eslint.vuejs.org/rules/no-implicit-coercion) | Disallows short notations for type conversion |  | 🟢 |
-| [vue/no-irregular-whitespace](https://eslint.vuejs.org/rules/no-irregular-whitespace) | Disallows irregular / invalid whitespaces |  | 🟢 |
-| [vue/no-multiple-objects-in-class](https://eslint.vuejs.org/rules/no-multiple-objects-in-class) | Disallows to pass multiple objects into array to `class` HTML property |  | 🟢 |
-| [vue/no-mutating-props](https://eslint.vuejs.org/rules/no-mutating-props) | Disallows mutation of component props (except shallow mutation) |  | 🟢 |
-| [vue/no-static-inline-styles](https://eslint.vuejs.org/rules/no-static-inline-styles) | Disallows static inline style attributes |  | 🟢 |
-| [vue/no-use-v-else-with-v-for](https://eslint.vuejs.org/rules/no-use-v-else-with-v-for) | Disallows using `v-else-if/v-else` on the same element as `v-for` (works but confusing) |  | 🟢 |
-| [vue/no-useless-v-bind](https://eslint.vuejs.org/rules/no-useless-v-bind) | Disallows unnecessary `v-bind` directives |  | 🟢 |
-| [vue/no-v-html](https://eslint.vuejs.org/rules/no-v-html) | Rule is **disabled** in order to allow the use of `v-html` |  | 🟢 |
-| [vue/padding-line-between-blocks](https://eslint.vuejs.org/rules/padding-line-between-blocks) | Requires padding lines between blocks |  | 🟢 |
-| [vue/padding-lines-in-component-definition](https://eslint.vuejs.org/rules/padding-lines-in-component-definition) | Requires padding lines in component definition |  | 🟢 |
-| [vue/prefer-true-attribute-shorthand](https://eslint.vuejs.org/rules/prefer-true-attribute-shorthand) | Requires shorthand form attribute when `v-bind` value is `true` |  | 🟢 |
-| [vue/require-direct-export](https://eslint.vuejs.org/rules/require-direct-export) | Requires the component to be directly exported |  | 🟢 |
-| [vue/slot-name-casing](https://eslint.vuejs.org/rules/slot-name-casing) | Enforces slot names to kebab case |  | 🟢 |
-| [vue/v-for-delimiter-style](https://eslint.vuejs.org/rules/v-for-delimiter-style) | Enforces the use of `in` delimiter in `v-for` directive |  | 🟢 |
-| [vue/v-slot-style](https://eslint.vuejs.org/rules/v-slot-style) | Disallows `v-slot` shorthand style |  | 🟢 |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [vue/attributes-order](https://eslint.vuejs.org/rules/attributes-order) | Enforces order of attributes |  | 🟢 |  | 🔵 |
+| [vue/block-lang](https://eslint.vuejs.org/rules/block-lang) | Allows `script` blocks to have no `lang` attribute |  | 🟢 |  | 🔵 |
+| [vue/block-order](https://eslint.vuejs.org/rules/block-order) | Enforces order of component top-level elements (`template`, then `script`, then `style`) |  | 🟢 |  | 🔵 |
+| [vue/block-tag-newline](https://eslint.vuejs.org/rules/block-tag-newline) | Requires one line break after opening and before closing block-level tags |  | 🟢 |  | 🔵 |
+| [vue/comma-dangle](https://eslint.vuejs.org/rules/comma-dangle) | Disallows trailing commas in `<template>` |  | 🟢 |  | 🔵 |
+| [vue/component-api-style](https://eslint.vuejs.org/rules/component-api-style) | Allows both Options API and Composition API |  | 🟢 |  | 🔵 |
+| [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing) | Enforces tag names to kebab case |  | 🟢 |  | 🔵 |
+| [vue/component-options-name-casing](https://eslint.vuejs.org/rules/component-options-name-casing) | Enforces component names in `components` options to pascal case |  | 🟢 |  | 🔵 |
+| [vue/custom-event-name-casing](https://eslint.vuejs.org/rules/custom-event-name-casing) | Enforces custom event names to camel case |  | 🟢 |  | 🔵 |
+| [vue/eqeqeq](https://eslint.vuejs.org/rules/eqeqeq) | Requires the use of `===` and `!==` in `<template>` |  | 🟢 |  | 🔵 |
+| [vue/html-comment-content-spacing](https://eslint.vuejs.org/rules/html-comment-content-spacing) | Requires one space before and after HTML comment tags |  | 🟢 |  | 🔵 |
+| [vue/html-quotes](https://eslint.vuejs.org/rules/html-quotes) | Rule is **disabled** in order to allow backticks in HTML attributes |  | 🟢 |  | 🔵 |
+| [vue/key-spacing](https://eslint.vuejs.org/rules/key-spacing) | Enforces consistent spacing in object literal properties in `<template>` (no space between the key and the colon, one space between the colon and the value) |  | 🟢 |  | 🔵 |
+| [vue/match-component-import-name](https://eslint.vuejs.org/rules/match-component-import-name) | Requires the registered component name to match the imported component name |  | 🟢 |  | 🔵 |
+| [vue/max-len](https://eslint.vuejs.org/rules/max-len) | Enforces a maximum line length of 80 characters (only for `<script>`) |  | 🟢 |  | 🔵 |
+| [vue/new-line-between-multi-line-property](https://eslint.vuejs.org/rules/new-line-between-multi-line-property) | Requires new lines between multi-line `props` |  | 🟢 |  | 🔵 |
+| [vue/no-bare-strings-in-template](https://eslint.vuejs.org/rules/no-bare-strings-in-template) | Disallows the use of bare strings in `<template>` |  | 🟢 |  | 🔵 |
+| [vue/no-implicit-coercion](https://eslint.vuejs.org/rules/no-implicit-coercion) | Disallows short notations for type conversion |  | 🟢 |  | 🔵 |
+| [vue/no-irregular-whitespace](https://eslint.vuejs.org/rules/no-irregular-whitespace) | Disallows irregular / invalid whitespaces |  | 🟢 |  | 🔵 |
+| [vue/no-multiple-objects-in-class](https://eslint.vuejs.org/rules/no-multiple-objects-in-class) | Disallows to pass multiple objects into array to `class` HTML property |  | 🟢 |  | 🔵 |
+| [vue/no-mutating-props](https://eslint.vuejs.org/rules/no-mutating-props) | Disallows mutation of component props (except shallow mutation) |  | 🟢 |  | 🔵 |
+| [vue/no-static-inline-styles](https://eslint.vuejs.org/rules/no-static-inline-styles) | Disallows static inline style attributes |  | 🟢 |  | 🔵 |
+| [vue/no-use-v-else-with-v-for](https://eslint.vuejs.org/rules/no-use-v-else-with-v-for) | Disallows using `v-else-if/v-else` on the same element as `v-for` (works but confusing) |  | 🟢 |  | 🔵 |
+| [vue/no-useless-v-bind](https://eslint.vuejs.org/rules/no-useless-v-bind) | Disallows unnecessary `v-bind` directives |  | 🟢 |  | 🔵 |
+| [vue/no-v-html](https://eslint.vuejs.org/rules/no-v-html) | Rule is **disabled** in order to allow the use of `v-html` |  | 🟢 |  | 🔵 |
+| [vue/padding-line-between-blocks](https://eslint.vuejs.org/rules/padding-line-between-blocks) | Requires padding lines between blocks |  | 🟢 |  | 🔵 |
+| [vue/padding-lines-in-component-definition](https://eslint.vuejs.org/rules/padding-lines-in-component-definition) | Requires padding lines in component definition |  | 🟢 |  | 🔵 |
+| [vue/prefer-true-attribute-shorthand](https://eslint.vuejs.org/rules/prefer-true-attribute-shorthand) | Requires shorthand form attribute when `v-bind` value is `true` |  | 🟢 |  | 🔵 |
+| [vue/require-direct-export](https://eslint.vuejs.org/rules/require-direct-export) | Requires the component to be directly exported |  | 🟢 |  |  |
+| [vue/slot-name-casing](https://eslint.vuejs.org/rules/slot-name-casing) | Enforces slot names to kebab case |  | 🟢 |  | 🔵 |
+| [vue/v-for-delimiter-style](https://eslint.vuejs.org/rules/v-for-delimiter-style) | Enforces the use of `in` delimiter in `v-for` directive |  | 🟢 |  | 🔵 |
+| [vue/v-slot-style](https://eslint.vuejs.org/rules/v-slot-style) | Disallows `v-slot` shorthand style |  | 🟢 |  | 🔵 |
 
 #### Crisp Vue rules
 
-| Name | Description | 🟠 | 🟢 | 🟣 |
-| :- | :- | :- | :- | :- |
-| [crisp/vue-attribute-comma](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-comma.js) | Disallows trailing comma after attribute |  | 🟢 |
-| [crisp/vue-attribute-linebreak](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-linebreak.js) | Enforces linebreak before first attribute and after last attribute |  | 🟢 |
-| [crisp/vue-class-attribute-last](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-class-attribute-last.js) | Enforces `class` to be the last attribute holding a value, and `:class` to be the last bound attribute |  | 🟢 |
-| [crisp/vue-class-shorthand-max-len](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-class-shorthand-max-len.js) | Requires a multiline `:class` array when Pug class shorthand exceeds 100 characters |  | 🟢 |
-| [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) | Ensures computed properties are alphabetically ordered |  | 🟢 |
-| [crisp/vue-data-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-data-comment.js) | Requires a comment as the first line of a Vue `data()` return object |  | 🟢 |  |
-| [crisp/vue-define-component](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-define-component.js) | Enforces mixins and components to use the `defineComponent` wrapper |  | 🟢 |
-| [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) | Ensures emits properties are alphabetically ordered |  | 🟢 |
-| [crisp/vue-event-listener-jsdoc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-event-listener-jsdoc.js) | Requires event listener method JSDoc descriptions to start with `Triggers on` |  | 🟢 |
-| [crisp/vue-event-listener-section](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-event-listener-section.js) | Requires methods named `on` followed by an uppercase letter to be in the event listeners section |  | 🟢 |
-| [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) | Ensures `script`, `template` and `style` tags start with corresponding comment block |  | 🟢 |
-| [crisp/vue-html-indent](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-indent.js) | Enforces consistent indentation in `template` (supports for Pug) |  | 🟢 |
-| [crisp/vue-html-quotes](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-quotes.js) | Enforces HTML attributes to be enclosed with double quotes |  | 🟢 |
-| [crisp/vue-methods-separator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-methods-separator.js) | Requires method section comments to be ordered as actions, helpers, then event listeners |  | 🟢 |
-| [crisp/vue-name-prop](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-name-prop.js) | Requires form component `name` props to be lowercase snake case |  | 🟢 |  |
-| [crisp/vue-no-component-class-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-component-class-shorthand.js) | Disallows Pug class shorthand on Vue components |  | 🟢 |
-| [crisp/vue-no-mixed-class](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class.js) | Disallows using both `class` and `:class` on the same element |  | 🟢 |
-| [crisp/vue-no-mixed-class-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class-shorthand.js) | Disallows mixing Pug class shorthand and class attributes |  | 🟢 |  |
-| [crisp/vue-no-multiline-object-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-multiline-object-shorthand.js) | Requires explicit property keys and values in multiline objects; allows single-line objects, methods, direct component registrations and direct default export objects |  | 🟢 |  |
-| [crisp/vue-no-name-option](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-name-option.js) | Disallows explicit component names in Vue single-file components |  | 🟢 |
-| [crisp/vue-no-regex-data](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-regex-data.js) | Disallows regular expressions to be declared in Vue data object |  | 🟢 |
-| [crisp/vue-props-declaration-line-break](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-line-break.js) | Enforces line break between type and default function in prop definition |  | 🟢 |
-| [crisp/vue-props-declaration-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-multiline.js) | Enforces props declarations to be multiline |  | 🟢 |
-| [crisp/vue-props-declaration-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-order.js) | Ensures props declarations are alphabetically ordered |  | 🟢 |
-| [crisp/vue-ref-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-ref-case.js) | Enforces `ref` attributes to snake case |  | 🟢 |
-| [crisp/vue-watch-handler](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-handler.js) | Requires Vue watchers to use the object form with a valid `handler` function |  | 🟢 |  |
-| [crisp/vue-watch-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-order.js) | Orders watcher options as `immediate` (if present), `deep` (if present), then `handler`; supports autofix for simple uncommented options |  | 🟢 |  |
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [crisp/vue-attribute-comma](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-comma.js) | Disallows trailing comma after attribute |  | 🟢 |  | 🔵 |
+| [crisp/vue-attribute-linebreak](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-attribute-linebreak.js) | Enforces linebreak before first attribute and after last attribute |  | 🟢 |  | 🔵 |
+| [crisp/vue-class-attribute-last](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-class-attribute-last.js) | Enforces `class` to be the last attribute holding a value, and `:class` to be the last bound attribute |  | 🟢 |  | 🔵 |
+| [crisp/vue-class-shorthand-max-len](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-class-shorthand-max-len.js) | Requires a multiline `:class` array when Pug class shorthand exceeds 100 characters |  | 🟢 |  | 🔵 |
+| [crisp/vue-computed-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-computed-order.js) | Ensures computed properties are alphabetically ordered |  | 🟢 |  | 🔵 |
+| [crisp/vue-data-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-data-comment.js) | Requires a comment as the first line of a Vue `data()` return object |  | 🟢 |  | 🔵 |
+| [crisp/vue-define-component](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-define-component.js) | Enforces mixins and components to use the `defineComponent` wrapper |  | 🟢 |  | 🔵 |
+| [crisp/vue-emits-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-emits-order.js) | Ensures emits properties are alphabetically ordered |  | 🟢 |  | 🔵 |
+| [crisp/vue-event-listener-jsdoc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-event-listener-jsdoc.js) | Requires event listener method JSDoc descriptions to start with `Triggers on` |  | 🟢 |  | 🔵 |
+| [crisp/vue-event-listener-section](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-event-listener-section.js) | Requires methods named `on` followed by an uppercase letter to be in the event listeners section |  | 🟢 |  | 🔵 |
+| [crisp/vue-header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-header-check.js) | Ensures `script`, `template` and `style` tags start with corresponding comment block |  | 🟢 |  | 🔵 |
+| [crisp/vue-html-indent](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-indent.js) | Enforces consistent indentation in `template` (supports for Pug) |  | 🟢 |  | 🔵 |
+| [crisp/vue-html-quotes](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-html-quotes.js) | Enforces HTML attributes to be enclosed with double quotes |  | 🟢 |  | 🔵 |
+| [crisp/vue-methods-separator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-methods-separator.js) | Requires method section comments to be ordered as actions, helpers, then event listeners |  | 🟢 |  | 🔵 |
+| [crisp/vue-name-prop](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-name-prop.js) | Requires form component `name` props to be lowercase snake case |  | 🟢 |  | 🔵 |
+| [crisp/vue-no-component-class-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-component-class-shorthand.js) | Disallows Pug class shorthand on Vue components |  | 🟢 |  | 🔵 |
+| [crisp/vue-no-mixed-class](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class.js) | Disallows using both `class` and `:class` on the same element |  | 🟢 |  | 🔵 |
+| [crisp/vue-no-mixed-class-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class-shorthand.js) | Disallows mixing Pug class shorthand and class attributes |  | 🟢 |  | 🔵 |
+| [crisp/vue-no-multiline-object-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-multiline-object-shorthand.js) | Requires explicit property keys and values in multiline objects; allows single-line objects, methods, direct component registrations and direct default export objects |  | 🟢 |  | 🔵 |
+| [crisp/vue-no-name-option](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-name-option.js) | Disallows explicit component names in Vue single-file components |  | 🟢 |  | 🔵 |
+| [crisp/vue-no-regex-data](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-regex-data.js) | Disallows regular expressions to be declared in Vue data object |  | 🟢 |  | 🔵 |
+| [crisp/vue-props-declaration-line-break](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-line-break.js) | Enforces line break between type and default function in prop definition |  | 🟢 |  | 🔵 |
+| [crisp/vue-props-declaration-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-multiline.js) | Enforces props declarations to be multiline |  | 🟢 |  | 🔵 |
+| [crisp/vue-props-declaration-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-order.js) | Ensures props declarations are alphabetically ordered |  | 🟢 |  | 🔵 |
+| [crisp/vue-ref-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-ref-case.js) | Enforces `ref` attributes to snake case |  | 🟢 |  | 🔵 |
+| [crisp/vue-watch-handler](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-handler.js) | Requires Vue watchers to use the object form with a valid `handler` function |  | 🟢 |  | 🔵 |
+| [crisp/vue-watch-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-order.js) | Orders watcher options as `immediate` (if present), `deep` (if present), then `handler`; supports autofix for simple uncommented options |  | 🟢 |  | 🔵 |
 
 ## License
 

@@ -1,6 +1,7 @@
 import configRecommended from "./recommended.js";
 import configRecommendedVue from "./recommended-vue.js";
 import configRecommendedTS from "./recommended-ts.js";
+import configRecommendedVueTS from "./recommended-vue-ts.js";
 
 import ruleAlignComments from "./rules/align-comments.js";
 import ruleArrowBlockNewline from "./rules/arrow-block-newline.js";
@@ -160,7 +161,8 @@ const plugin = {
 Object.assign(plugin.configs, {
   recommended: configRecommended(plugin),
   "recommended-vue": configRecommendedVue(plugin),
-  "recommended-ts": configRecommendedTS(plugin)
+  "recommended-ts": configRecommendedTS(plugin),
+  "recommended-vue-ts": configRecommendedVueTS(plugin)
 });
 
 export default plugin;
