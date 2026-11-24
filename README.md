@@ -192,7 +192,7 @@ Each item has emojis denoting:
 | [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) | Requires optional parameters to be surrounded by brackets |  | 🟢 |  |  |
 | [crisp/jsdoc-description-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-multiline.js) | Enforces multiline formatting for function JSDoc descriptions |  |  | 🟣 | 🔵 |
 | [crisp/jsdoc-description-only](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-only.js) | Forbids any tag (eg. `@public`, `@param`) in function JSDoc, which must only hold a description |  |  | 🟣 | 🔵 |
-| [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions |  | 🟢 |  | 🔵 |
+| [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions |  | 🟢 |  |  |
 | [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠 | 🟢 |  | 🔵 |
 | [crisp/jsdoc-require-description-uppercase](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-require-description-uppercase.js) | Requires descriptions to start with an uppercase character | 🟠 | 🟢 |  | 🔵 |
 | [crisp/jsdoc-description-length](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-length.js) | Enforces a maximum length for JSDoc descriptions | 🟠 | 🟢 | 🟣 | 🔵 |
@@ -265,6 +265,7 @@ Each item has emojis denoting:
 | [crisp/vue-props-declaration-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-multiline.js) | Enforces props declarations to be multiline |  | 🟢 |  | 🔵 |
 | [crisp/vue-props-declaration-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-order.js) | Ensures props declarations are alphabetically ordered |  | 🟢 |  | 🔵 |
 | [crisp/vue-ref-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-ref-case.js) | Enforces `ref` attributes to snake case |  | 🟢 |  | 🔵 |
+| [crisp/vue-setup-group-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-setup-group-comment.js) | Requires `// PROPS`, `// MODEL`, `// EMITS` and `// COMPUTED` comments before each group of the corresponding `<script setup>` declarations |  |  |  | 🔵 |
 | [crisp/vue-watch-handler](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-handler.js) | Requires Vue watchers to use the object form with a valid `handler` function |  | 🟢 |  | 🔵 |
 | [crisp/vue-watch-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-order.js) | Orders watcher options as `immediate` (if present), `deep` (if present), then `handler`; supports autofix for simple uncommented options |  | 🟢 |  | 🔵 |
 

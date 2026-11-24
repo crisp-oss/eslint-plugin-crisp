@@ -104,6 +104,10 @@ export default function configRecommendedVueTS(pluginCrisp) {
         // Crisp JSDoc rules
         "crisp/jsdoc-align-params": "off",
         "crisp/jsdoc-check-optional-params": "off",
+        "crisp/jsdoc-description-multiline": "error",
+        "crisp/jsdoc-description-only": "error",
+        "crisp/jsdoc-enforce-access": "off",
+        "crisp/jsdoc-no-param-return": "error",
 
         // General Vue rules
         "vue/block-lang": [
@@ -117,7 +121,10 @@ export default function configRecommendedVueTS(pluginCrisp) {
           "error",
           ["options", "script-setup", "composition"]
         ],
-        "vue/require-direct-export": "off"
+        "vue/require-direct-export": "off",
+
+        // Crisp Vue rules
+        "crisp/vue-setup-group-comment": "error"
       }
     },
 
