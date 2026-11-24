@@ -1,5 +1,8 @@
 const UNDERSCORE_PREFIX_REGEX = /^_+[^_]/;
 
+// Node CommonJS globals, re-declared in ES modules from 'import.meta.url'
+const ALLOWED_NAMES = new Set(["__dirname", "__filename"]);
+
 const CLASS_MEMBER_TYPES = [
   "MethodDefinition",
   "PropertyDefinition",
@@ -49,7 +52,8 @@ export default {
 
         for (const scope of sourceCode.scopeManager.scopes) {
           for (const variable of scope.variables) {
-            if (!UNDERSCORE_PREFIX_REGEX.test(variable.name)) {
+            if (!UNDERSCORE_PREFIX_REGEX.test(variable.name) ||
+                  ALLOWED_NAMES.has(variable.name)) {
               continue;
             }
 

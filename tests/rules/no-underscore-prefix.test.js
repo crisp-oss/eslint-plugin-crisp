@@ -23,7 +23,8 @@ ruleTester.run("no-underscore-prefix", rule, {
     "const object = { _id: 1 };",
     "const { _id: id } = document;",
     "class Example { #value = 1; }",
-    "console.log(__dirname, _global);"
+    "console.log(__dirname, _global);",
+    "const __dirname = dirname(fileURLToPath(import.meta.url));\nconst __filename = fileURLToPath(import.meta.url);"
   ],
 
   invalid: [
