@@ -190,14 +190,14 @@ Each item has emojis denoting:
 | [crisp/jsdoc-align-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-align-params.js) | Enforces various alignments | 🟠 | 🟢 |  |  |
 | [crisp/jsdoc-check-indentation](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-indentation.js) | Enforces consistent indentation | 🟠 | 🟢 |  | 🔵 |
 | [crisp/jsdoc-check-optional-params](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-check-optional-params.js) | Requires optional parameters to be surrounded by brackets |  | 🟢 |  |  |
-| [crisp/jsdoc-description-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-multiline.js) | Enforces multiline formatting for function JSDoc descriptions |  |  | 🟣 | 🔵 |
-| [crisp/jsdoc-description-only](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-only.js) | Forbids any tag (eg. `@public`, `@param`) in function JSDoc, which must only hold a description |  |  | 🟣 | 🔵 |
+| [crisp/jsdoc-description-multiline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-multiline.js) | Enforces multiline formatting for function JSDoc descriptions (applies to both TS and Vue files in `recommended-vue-ts`) |  |  | 🟣 | 🔵 |
+| [crisp/jsdoc-description-only](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-only.js) | Forbids any tag (eg. `@public`, `@param`) in function JSDoc, which must only hold a description (applies to both TS and Vue files in `recommended-vue-ts`) |  |  | 🟣 | 🔵 |
 | [crisp/jsdoc-enforce-access](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-access.js) | Requires one of `@public`, `@private`, or `@protected` for functions |  | 🟢 |  |  |
 | [crisp/jsdoc-enforce-classdesc](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-enforce-classdesc.js) | Ensures JSDoc for class headers to include a non-empty `@classdesc` | 🟠 | 🟢 |  | 🔵 |
 | [crisp/jsdoc-require-description-uppercase](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-require-description-uppercase.js) | Requires descriptions to start with an uppercase character | 🟠 | 🟢 |  | 🔵 |
 | [crisp/jsdoc-description-length](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-description-length.js) | Enforces a maximum length for JSDoc descriptions | 🟠 | 🟢 | 🟣 | 🔵 |
 | [crisp/jsdoc-typedef-align](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-typedef-align.js) | Enforces alignment of multiline `@typedef` and `@property` definitions | 🟠 | 🟢 |  | 🔵 |
-| [crisp/jsdoc-no-param-return](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-no-param-return.js) | Forbids `@param` and `@return` tags in JSDoc, relying on the TypeScript signature instead |  |  | 🟣 | 🔵 |
+| [crisp/jsdoc-no-param-return](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/jsdoc-no-param-return.js) | Forbids `@param` and `@return` tags in JSDoc, relying on the TypeScript signature instead (applies to both TS and Vue files in `recommended-vue-ts`) |  |  | 🟣 | 🔵 |
 
 #### General Vue rules
 
