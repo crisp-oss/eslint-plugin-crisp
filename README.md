@@ -142,6 +142,7 @@ Each item has emojis denoting:
 | [crisp/no-extra-line-within-function](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-extra-line-within-function.js) | Allows at most one empty line between declarations within functions | 🟠 | 🟢 | 🟣 |
 | [crisp/no-inline-function-in-ternary](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-inline-function-in-ternary.js) | Disallows inline functions in ternary branches | 🟠 | 🟢 | 🟣 |
 | [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
+| [crisp/no-return-only-interface](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-return-only-interface.js) | Disallows interfaces and types only used as a function return type, relying on type inference instead |  |  | 🟣 |
 | [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
 | [crisp/no-underscore-prefix](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-underscore-prefix.js) | Disallows declarations starting with an underscore (eg. `_flagId`) |  |  | 🟣 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |

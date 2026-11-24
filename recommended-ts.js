@@ -178,6 +178,7 @@ export default function configRecommendedTS(pluginCrisp) {
             "exceptions": ["_", "$", "x", "y"]
           }
         ],
+        "crisp/no-return-only-interface": "error",
         "crisp/no-snake-case": "error",
         "crisp/no-underscore-prefix": "error",
         "crisp/no-useless-template-literals": "error",
