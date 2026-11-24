@@ -1,3 +1,5 @@
+import isVueTypeScript from "./utils/is-vue-typescript.js";
+
 const UNDERSCORE_PREFIX_REGEX = /^_+[^_]/;
 
 // Node CommonJS globals, re-declared in ES modules from 'import.meta.url'
@@ -16,7 +18,15 @@ export default {
     docs: {
       description: "Forbid declarations whose name starts with an underscore."
     },
-    schema: [],
+    schema: [{
+      type: "object",
+      properties: {
+        onlyVueTypeScript: {
+          type: "boolean"
+        }
+      },
+      additionalProperties: false
+    }],
     messages: {
       noUnderscorePrefix:
         "Declaration '{{ name }}' must not start with an underscore."
@@ -24,6 +34,13 @@ export default {
   },
 
   create(context) {
+    const options = context.options[0] || {};
+
+    // Restrict to Vue files written in TypeScript (eg. in the Vue config)
+    if (options.onlyVueTypeScript && !isVueTypeScript(context)) {
+      return {};
+    }
+
     const sourceCode = context.sourceCode;
 
     function report(node, name) {
