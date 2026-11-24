@@ -1,5 +1,7 @@
+import tseslint from "typescript-eslint";
+
 import rule from "../../rules/const.js";
-import createRuleTester from "../rule-tester.js";
+import createRuleTester, { createVueRuleTester } from "../rule-tester.js";
 
 const ruleTester = createRuleTester();
 
@@ -45,6 +47,35 @@ ruleTester.run("const", rule, {
         {
           message:
             "Consts should be uppercase and defined at the top level or be replaced with let _variable (Crisp convention)."
+        }
+      ]
+    }
+  ]
+});
+
+const vueRuleTester = createVueRuleTester({
+  languageOptions: {
+    parserOptions: {
+      parser: tseslint.parser
+    }
+  }
+});
+
+vueRuleTester.run("const (vue)", rule, {
+  valid: [
+    {
+      code: "<script lang=\"ts\">\nfunction calculate(): void { const result = 1; }\n</script>",
+      filename: "/project/Panel.vue"
+    }
+  ],
+
+  invalid: [
+    {
+      code: "<script>\nfunction calculate() { const result = 1; }\n</script>",
+      filename: "/project/Panel.vue",
+      errors: [
+        {
+          message: "Consts should be uppercase and defined at the top level or be replaced with let _variable (Crisp convention)."
         }
       ]
     }

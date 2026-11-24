@@ -126,7 +126,7 @@ Each item has emojis denoting:
 | [crisp/align-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/align-comments.js) | Enforces alignment of comments compared to the previous line (the `indent` rule doesn't check this case) | 🟠 | 🟢 | 🟣 |
 | [crisp/consecutive-line-comments](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/consecutive-line-comments.js) | Enforces consecutive single-line comments to form a single multi-line continuation block | 🟠 | 🟢 | 🟣 |
 | [crisp/arrow-block-newline](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/arrow-block-newline.js) | Requires a newline after `{` in arrow function blocks | 🟠 | 🟢 | 🟣 |
-| [crisp/const](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/const.js) | Enforces that `const` variables start with `__` or are all uppercase | 🟠 | 🟢 |  |
+| [crisp/const](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/const.js) | Enforces that `const` variables start with `__` or are all uppercase (ignored in Vue `<script lang="ts">`) | 🟠 | 🟢 |  |
 | [crisp/constructor-variables](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/constructor-variables.js) | Ensures all class properties in the constructor start with `_` | 🟠 |
 | [crisp/enforce-optional](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/enforce-optional.js) | Enforces use of optional chaining | 🟠 | 🟢 | 🟣 |
 | [crisp/header-check](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/header-check.js) | Enforces files to start with Crisp header | 🟠 | 🟢 | 🟣 |
@@ -144,7 +144,7 @@ Each item has emojis denoting:
 | [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
 | [crisp/no-return-only-interface](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-return-only-interface.js) | Disallows interfaces and types only used as a function return type, relying on type inference instead |  |  | 🟣 |
 | [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
-| [crisp/no-underscore-prefix](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-underscore-prefix.js) | Disallows declarations starting with an underscore (eg. `_flagId`) |  |  | 🟣 |
+| [crisp/no-underscore-prefix](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-underscore-prefix.js) | Disallows declarations starting with an underscore (eg. `_flagId`) (Vue: only in `<script lang="ts">`) |  | 🟢 | 🟣 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
 | [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 |
 | [crisp/one-space-after-operator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/one-space-after-operator.js) | Enforces at least one space before and one space after `=` and `:` operators | 🟠 | 🟢 | 🟣 |
@@ -152,7 +152,7 @@ Each item has emojis denoting:
 | [crisp/regex-in-constructor](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/regex-in-constructor.js) | Ensures regular expressions are defined in the class constructor | 🟠 | 🟢 | 🟣 |
 | [crisp/ternary-parenthesis](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/ternary-parenthesis.js) | Enforces parentheses around conditions with operators in ternary expressions | 🟠 | 🟢 | 🟣 |
 | [crisp/two-lines-between-class-members](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/two-lines-between-class-members.js) | Requires exactly two line breaks between class methods | 🟠 |
-| [crisp/variable-names](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/variable-names.js) | Requires variables defined within a method to start with `_` | 🟠 | 🟢 |
+| [crisp/variable-names](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/variable-names.js) | Requires variables defined within a method to start with `_` (ignored in Vue `<script lang="ts">`) | 🟠 | 🟢 |
 
 #### General JSDoc rules
 

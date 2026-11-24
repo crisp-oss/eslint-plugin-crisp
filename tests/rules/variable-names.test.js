@@ -1,5 +1,7 @@
+import tseslint from "typescript-eslint";
+
 import rule from "../../rules/variable-names.js";
-import createRuleTester from "../rule-tester.js";
+import createRuleTester, { createVueRuleTester } from "../rule-tester.js";
 
 const ruleTester = createRuleTester();
 
@@ -53,6 +55,35 @@ ruleTester.run("variable-names", rule, {
       errors: [
         {
           message: "Local variables should start with \"_\" ({rejected})"
+        }
+      ]
+    }
+  ]
+});
+
+const vueRuleTester = createVueRuleTester({
+  languageOptions: {
+    parserOptions: {
+      parser: tseslint.parser
+    }
+  }
+});
+
+vueRuleTester.run("variable-names (vue)", rule, {
+  valid: [
+    {
+      code: "<script lang=\"ts\">\nfunction calculate(): void { let result = 1; }\n</script>",
+      filename: "/project/Panel.vue"
+    }
+  ],
+
+  invalid: [
+    {
+      code: "<script>\nfunction calculate() { let result = 1; }\n</script>",
+      filename: "/project/Panel.vue",
+      errors: [
+        {
+          message: "Local variables should start with \"_\" ({result})"
         }
       ]
     }

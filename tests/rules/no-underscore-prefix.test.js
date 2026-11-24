@@ -1,7 +1,7 @@
 import tseslint from "typescript-eslint";
 
 import rule from "../../rules/no-underscore-prefix.js";
-import createRuleTester from "../rule-tester.js";
+import createRuleTester, { createVueRuleTester } from "../rule-tester.js";
 
 const ruleTester = createRuleTester({
   languageOptions: {
@@ -55,6 +55,44 @@ ruleTester.run("no-underscore-prefix", rule, {
     {
       code: "type _Value = string;\ninterface _Options {}\nenum _Kind {}",
       errors: [error("_Value"), error("_Options"), error("_Kind")]
+    }
+  ]
+});
+
+const vueRuleTester = createVueRuleTester({
+  languageOptions: {
+    parserOptions: {
+      parser: tseslint.parser
+    }
+  }
+});
+
+const VUE_OPTIONS = [
+  {
+    onlyVueTypeScript: true
+  }
+];
+
+vueRuleTester.run("no-underscore-prefix (onlyVueTypeScript)", rule, {
+  valid: [
+    {
+      code: "<script>\nfunction example() { let _result = 1; }\n</script>",
+      filename: "/project/Panel.vue",
+      options: VUE_OPTIONS
+    },
+    {
+      code: "function example() { let _result = 1; }",
+      filename: "/project/utility.js",
+      options: VUE_OPTIONS
+    }
+  ],
+
+  invalid: [
+    {
+      code: "<script lang=\"ts\">\nfunction example(): void { let _result = 1; }\n</script>",
+      filename: "/project/Panel.vue",
+      options: VUE_OPTIONS,
+      errors: [error("_result")]
     }
   ]
 });

@@ -1,3 +1,5 @@
+import isVueTypeScript from "./utils/is-vue-typescript.js";
+
 const isTopLevelDeclaration = (node) => {
   let parent = node.parent;
 
@@ -48,6 +50,11 @@ export default {
   },
 
   create(context) {
+    // Vue files written in TypeScript follow the TypeScript naming convention
+    if (isVueTypeScript(context)) {
+      return {};
+    }
+
     const options = context.options[0] || {};
     const exceptions = options.exceptions || [];
     const sourceCode = context.sourceCode;

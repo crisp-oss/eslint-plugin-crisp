@@ -196,6 +196,13 @@ export default function configRecommendedVue(pluginCrisp) {
             "checkColon": false
           }
         ],
+        "crisp/no-underscore-prefix": [
+          "error",
+
+          {
+            "onlyVueTypeScript": true
+          }
+        ],
         "crisp/regex-in-constructor": "error",
         "crisp/ternary-parenthesis": "error",
         "crisp/variable-names": "error",
