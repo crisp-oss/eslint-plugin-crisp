@@ -143,6 +143,7 @@ Each item has emojis denoting:
 | [crisp/no-inline-function-in-ternary](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-inline-function-in-ternary.js) | Disallows inline functions in ternary branches | 🟠 | 🟢 | 🟣 |
 | [crisp/no-short-parameters](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-short-parameters.js) | Disallows one-character parameter names | 🟠 | 🟢 | 🟣 |
 | [crisp/no-snake-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-snake-case.js) | Disallows snake_case |  | 🟢 | 🟣 |
+| [crisp/no-underscore-prefix](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-underscore-prefix.js) | Disallows declarations starting with an underscore (eg. `_flagId`) |  |  | 🟣 |
 | [crisp/no-useless-template-literals](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-useless-template-literals.js) | Disallows unnecessary use of template literals |  | 🟢 | 🟣 |
 | [crisp/no-var-in-blocks](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/no-var-in-blocks.js) | Disallows `var` declarations inside function, method, or class block | 🟠 | 🟢 | 🟣 |
 | [crisp/one-space-after-operator](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/one-space-after-operator.js) | Enforces at least one space before and one space after `=` and `:` operators | 🟠 | 🟢 | 🟣 |

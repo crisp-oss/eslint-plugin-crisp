@@ -179,6 +179,7 @@ export default function configRecommendedTS(pluginCrisp) {
           }
         ],
         "crisp/no-snake-case": "error",
+        "crisp/no-underscore-prefix": "error",
         "crisp/no-useless-template-literals": "error",
         "crisp/no-var-in-blocks": "error",
         "crisp/one-space-after-operator": [
