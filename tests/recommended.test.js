@@ -50,3 +50,15 @@ test("recommended-vue-ts config parses Vue scripts as TypeScript", () => {
     }
   });
 });
+
+test("recommended-vue-ts config restricts Vue JSDoc to descriptions", () => {
+  const vueConfig = plugin.configs["recommended-vue-ts"].findLast(
+    config => config.files?.includes("**/*.vue") &&
+      config.rules?.["vue/block-lang"]
+  );
+
+  assert.equal(vueConfig.rules["crisp/jsdoc-description-only"], "error");
+  assert.equal(vueConfig.rules["crisp/jsdoc-no-param-return"], "error");
+  assert.equal(vueConfig.rules["crisp/jsdoc-enforce-access"], "off");
+  assert.equal(vueConfig.rules["crisp/vue-setup-group-comment"], "error");
+});
