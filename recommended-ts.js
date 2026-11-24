@@ -194,6 +194,7 @@ export default function configRecommendedTS(pluginCrisp) {
         // Crisp JSDoc rules
         "crisp/jsdoc-description-length": "error",
         "crisp/jsdoc-description-multiline": "error",
+        "crisp/jsdoc-description-only": "error",
         "crisp/jsdoc-no-param-return": "error",
 
         // General JSDoc rules
