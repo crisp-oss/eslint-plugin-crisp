@@ -14,6 +14,8 @@ The plugin provides four configurations:
 * `recommended-ts`: TS rules targetting frontend and backend code (Node.js, Vue.js)
 * `recommended-vue-ts`: Vue.js and TS rules targetting frontend code written in TypeScript (Vue.js)
 
+**Notice:** `recommended-vue-ts` expects all Vue files to be written in TypeScript (`<script lang="ts">`), and reports Vue files written in JavaScript (`vue/block-lang`). Projects with Vue files written in JavaScript should use `recommended-vue` instead.
+
 Add the plugin in your ESLint config object, then extend the desired configuration:
 ```javascript
 import crisp from "eslint-plugin-crisp";
