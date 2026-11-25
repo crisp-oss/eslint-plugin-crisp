@@ -3,6 +3,7 @@ const INTERNAL_REGEX = /^\s*\*\s*@internal/;
 const GENERATOR_REGEX = /^\s*\*\s*@generator/;
 const CLASS_REGEX = /^\s*\*\s*@class\b/;
 const CLASSDESC_REGEX = /^\s*\*\s*@classdesc\s*(.*)/;
+const TEMPLATE_REGEX = /^\s*\*\s*@template\b\s*(.*)/;
 const PARAM_REGEX = /^\s*\*\s*@param\s*\{\s*(.+?)\s*\}\s*(\S+)/;
 const RETURN_REGEX = /^\s*\*\s*@return\s*\{\s*(.+?)\s*\}\s*(.*)/;
 const YIELD_REGEX = /^\s*\*\s*@yields\s*\{\s*(.+?)\s*\}\s*(.*)/;
@@ -10,6 +11,7 @@ const YIELD_REGEX = /^\s*\*\s*@yields\s*\{\s*(.+?)\s*\}\s*(.*)/;
 function parseJSDoc(jsdoc) {
   const lines = jsdoc.split("\n");
   const params = [];
+  const templates = [];
   let returnLine = null;
   let yieldLine = null;
   let classAnnotation = false;
@@ -36,6 +38,7 @@ function parseJSDoc(jsdoc) {
     if (
       line.match(SCOPE_REGEX) ||
       line.match(INTERNAL_REGEX) ||
+      line.match(TEMPLATE_REGEX) ||
       line.match(PARAM_REGEX) ||
       line.match(RETURN_REGEX) ||
       line.match(YIELD_REGEX)
@@ -50,6 +53,33 @@ function parseJSDoc(jsdoc) {
   description = description.trim();
 
   for (const line of lines) {
+    const templateMatch = line.match(TEMPLATE_REGEX);
+    if (templateMatch) {
+      const value = templateMatch[1].trim();
+      let typeEnd = 0;
+      let depth = 0;
+
+      if (value.startsWith("{")) {
+        for (let i = 0; i < value.length; i++) {
+          if (value[i] === "{") {
+            depth++;
+          } else if (value[i] === "}") {
+            depth--;
+
+            if (depth === 0) {
+              typeEnd = i + 1;
+              break;
+            }
+          }
+        }
+      }
+
+      templates.push({
+        type: typeEnd ? value.slice(1, typeEnd - 1).trim() : "",
+        name: value.slice(typeEnd).trim()
+      });
+    }
+
     const paramMatch = line.match(PARAM_REGEX);
     if (paramMatch) {
       const [, type, name] = paramMatch;
@@ -102,7 +132,14 @@ function parseJSDoc(jsdoc) {
   }
 
   return {
-    description, scope, internal, params, returnLine, yieldLine, generator
+    description,
+    scope,
+    internal,
+    templates,
+    params,
+    returnLine,
+    yieldLine,
+    generator
   };
 }
 
@@ -110,8 +147,10 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
   let maxTypeLength = 0;
   let indent = " ".repeat(indentation);
 
-  // Calculate the maximum type length from params
-  for (const param of parsedJSDoc.params) {
+  const tagWidth = parsedJSDoc.templates.length ? 8 : 6;
+
+  // Calculate the maximum type length from templates and params
+  for (const param of [...parsedJSDoc.templates, ...parsedJSDoc.params]) {
     if (param.type.length > maxTypeLength) {
       maxTypeLength = param.type.length;
     }
@@ -136,6 +175,12 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
     jsdoc += indent + "* @internal\n";
   }
 
+  for (const template of parsedJSDoc.templates) {
+    const type = template.type ? `{${template.type}}` : "";
+    const paddingType = " ".repeat(Math.max(0, maxTypeLength + 2 - type.length));
+    jsdoc += indent + `* @template${type || maxTypeLength ? " " + type + paddingType : ""} ${template.name}`.trimEnd() + "\n";
+  }
+
   if (parsedJSDoc.generator) {
     jsdoc += indent + "* @generator\n";
   }
@@ -143,13 +188,13 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
   // Format params with padding based on maximum type length
   for (const param of parsedJSDoc.params) {
     const paddingType = " ".repeat(Math.max(0, maxTypeLength - param.type.length));
-    jsdoc += indent + `* @param  {${param.type}}${paddingType} ${param.name}\n`;
+    jsdoc += indent + `* @param${" ".repeat(tagWidth - 5 + 1)}{${param.type}}${paddingType} ${param.name}\n`;
   }
 
   // Format return with padding based on maximum type length
   if (parsedJSDoc.returnLine) {
     const paddingType = " ".repeat(Math.max(0, maxTypeLength - parsedJSDoc.returnLine.type.length));
-    let _return = `* @return {${parsedJSDoc.returnLine.type}}${paddingType} ${parsedJSDoc.returnLine.description}`.trimEnd();
+    let _return = `* @return${" ".repeat(tagWidth - 6 + 1)}{${parsedJSDoc.returnLine.type}}${paddingType} ${parsedJSDoc.returnLine.description}`.trimEnd();
 
     jsdoc += indent + _return + "\n";
   }
@@ -157,7 +202,7 @@ function formatJSDoc(parsedJSDoc, indentation=0) {
   // Format yield with padding based on maximum type length
   if (parsedJSDoc.yieldLine) {
     const paddingType = " ".repeat(Math.max(0, maxTypeLength - parsedJSDoc.yieldLine.type.length));
-    let _yield = `* @yields {${parsedJSDoc.yieldLine.type}}${paddingType} ${parsedJSDoc.yieldLine.description}`.trimEnd();
+    let _yield = `* @yields${" ".repeat(tagWidth - 6 + 1)}{${parsedJSDoc.yieldLine.type}}${paddingType} ${parsedJSDoc.yieldLine.description}`.trimEnd();
 
     jsdoc += indent + _yield + "\n";
   }
