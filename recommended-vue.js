@@ -239,6 +239,7 @@ export default function configRecommendedVue(pluginCrisp) {
                   "class",
 
                   "classdesc",
+                  "template",
 
                   "param",
                   "return"
