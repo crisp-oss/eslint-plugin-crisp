@@ -60,8 +60,15 @@ Each item has emojis denoting:
 | Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
 | :- | :- | :- | :- | :- | :- |
 | [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc) | JSDoc linting rules for ESLint | 🟠 | 🟢 | 🟣 | 🔵 |
+| [eslint-plugin-jsonc](https://ota-meshi.github.io/eslint-plugin-jsonc/) | JSON linting rules for ESLint | 🟠 |  |  |  |
 
 ### Rules
+
+#### General JSON rules
+
+| Name | Description | 🟠 | 🟢 | 🟣 | 🔵 |
+| :- | :- | :- | :- | :- | :- |
+| [jsonc/key-spacing](https://ota-meshi.github.io/eslint-plugin-jsonc/rules/key-spacing.html) | Requires no space before property colons and one space after in all JSON files | 🟠 |  |  |  |
 
 #### General TS rules
 

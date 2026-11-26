@@ -1,5 +1,7 @@
 import globals from "globals";
 import pluginJSDoc from "eslint-plugin-jsdoc";
+import pluginJSONC from "eslint-plugin-jsonc";
+import * as parserJSONC from "jsonc-eslint-parser";
 
 export default function configRecommended(pluginCrisp) {
   return [
@@ -249,6 +251,30 @@ export default function configRecommended(pluginCrisp) {
         "crisp/jsdoc-require-description-uppercase": "error",
         "crisp/jsdoc-description-length": "error",
         "crisp/jsdoc-typedef-align": "error"
+      }
+    },
+
+    {
+      files: ["**/*.json"],
+
+      languageOptions: {
+        parser: parserJSONC,
+
+        parserOptions: {
+          jsonSyntax: "JSON"
+        }
+      },
+
+      plugins: {
+        jsonc: pluginJSONC
+      },
+
+      rules: {
+        "jsonc/key-spacing": ["error", {
+          "beforeColon": false,
+          "afterColon": true,
+          "mode": "strict"
+        }]
       }
     }
   ];
