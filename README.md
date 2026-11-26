@@ -90,7 +90,7 @@ Each item has emojis denoting:
 | [eol-last](https://eslint.org/docs/latest/rules/eol-last) | Requires newline at the end of files | 🟠 | 🟢 | 🟣 | 🔵 |
 | [for-direction](https://eslint.org/docs/latest/rules/for-direction) | Prevents for-loops to have stop condition that can never be reached | 🟠 | 🟢 | 🟣 | 🔵 |
 | [indent](https://eslint.org/docs/latest/rules/indent) | Enforces 2-space indentation, and specific indentation levels for some nodes | 🟠 | 🟢 | 🟣 | 🔵 |
-| [key-spacing](https://eslint.org/docs/latest/rules/key-spacing) | Enforces consistent spacing in object literal properties (no space between the key and the colon, one space between the colon and the value) | 🟠 | 🟢 | 🟣 | 🔵 |
+| [key-spacing](https://eslint.org/docs/latest/rules/key-spacing) | Requires no space before property colons and one space after | 🟠 | 🟢 | 🟣 | 🔵 |
 | [keyword-spacing](https://eslint.org/docs/latest/rules/keyword-spacing) | Enforces consistent spacing before and after keywords | 🟠 | 🟢 | 🟣 | 🔵 |
 | [linebreak-style](https://eslint.org/docs/latest/rules/linebreak-style) | Enforces Unix-style line endings | 🟠 | 🟢 | 🟣 | 🔵 |
 | [max-len](https://eslint.org/docs/latest/rules/max-len) | Enforces a maximum line length of 100 characters (`@import`, `@typedef` and `@property` lines are ignored) | 🟠 |  | 🟣 | 🔵 |
@@ -112,12 +112,12 @@ Each item has emojis denoting:
 | [no-unsafe-optional-chaining](https://eslint.org/docs/latest/rules/no-unsafe-optional-chaining) | Disallows use of optional chaining in contexts where the `undefined` value is not allowed | 🟠 | 🟢 | 🟣 | 🔵 |
 | [object-curly-newline](https://eslint.org/docs/latest/rules/object-curly-newline) | Requires line breaks after opening and before closing braces | 🟠 | 🟢 | 🟣 | 🔵 |
 | [object-curly-spacing](https://eslint.org/docs/latest/rules/object-curly-spacing) | Requires spacing inside of braces | 🟠 | 🟢 | 🟣 | 🔵 |
-| [object-shorthand](https://eslint.org/docs/latest/rules/object-shorthand) | Disallows shorthand properties and methods in object literals, requiring explicit keys and values even when their names match | 🟠 |  | 🟣 | 🔵 |
+| [object-shorthand](https://eslint.org/docs/latest/rules/object-shorthand) | Disallows shorthand properties and methods in object literals | 🟠 |  | 🟣 | 🔵 |
 | [padded-blocks](https://eslint.org/docs/latest/rules/padded-blocks) | Disallows empty lines at the beginning and ending of blocks | 🟠 | 🟢 | 🟣 | 🔵 |
 | [padding-line-between-statements](https://eslint.org/docs/latest/rules/padding-line-between-statements) | Requires padding lines between various statements | 🟠 | 🟢 | 🟣 | 🔵 |
 | [prefer-arrow-callback](https://eslint.org/docs/latest/rules/prefer-arrow-callback) | Requires using arrow functions for callbacks |  | 🟢 | 🟣 | 🔵 |
 | [prefer-object-spread](https://eslint.org/docs/latest/rules/prefer-object-spread) | Requires using object spread syntax instead of `Object.assign` on object literal | 🟠 | 🟢 | 🟣 | 🔵 |
-| [quotes](https://eslint.org/docs/latest/rules/quotes) | Enforces the consistent use of double quotes (while allowing single quotes in order to avoid escape, and backticks for template literals) | 🟠 | 🟢 | 🟣 | 🔵 |
+| [quotes](https://eslint.org/docs/latest/rules/quotes) | Requires double quotes, allowing escape avoidance and template literals | 🟠 | 🟢 | 🟣 | 🔵 |
 | [quote-props](https://eslint.org/docs/latest/rules/quote-props) | Disallows quotes around object literal property names that are not strictly required | 🟠 | 🟢 | 🟣 | 🔵 |
 | [semi](https://eslint.org/docs/latest/rules/semi) | Requires semicolons at the end of statements | 🟠 | 🟢 | 🟣 | 🔵 |
 | [semi-style](https://eslint.org/docs/latest/rules/semi-style) | Enforces that semicolons are at the end of statements | 🟠 | 🟢 | 🟣 | 🔵 |
@@ -215,7 +215,7 @@ Each item has emojis denoting:
 | [vue/eqeqeq](https://eslint.vuejs.org/rules/eqeqeq) | Requires the use of `===` and `!==` in `<template>` |  | 🟢 |  | 🔵 |
 | [vue/html-comment-content-spacing](https://eslint.vuejs.org/rules/html-comment-content-spacing) | Requires one space before and after HTML comment tags |  | 🟢 |  | 🔵 |
 | [vue/html-quotes](https://eslint.vuejs.org/rules/html-quotes) | Rule is **disabled** in order to allow backticks in HTML attributes |  | 🟢 |  | 🔵 |
-| [vue/key-spacing](https://eslint.vuejs.org/rules/key-spacing) | Enforces consistent spacing in object literal properties in `<template>` (no space between the key and the colon, one space between the colon and the value) |  | 🟢 |  | 🔵 |
+| [vue/key-spacing](https://eslint.vuejs.org/rules/key-spacing) | Requires no space before property colons and one space after in `<template>` |  | 🟢 |  | 🔵 |
 | [vue/match-component-import-name](https://eslint.vuejs.org/rules/match-component-import-name) | Requires the registered component name to match the imported component name |  | 🟢 |  | 🔵 |
 | [vue/max-len](https://eslint.vuejs.org/rules/max-len) | Enforces a maximum line length of 80 characters (only for `<script>`) |  | 🟢 |  | 🔵 |
 | [vue/new-line-between-multi-line-property](https://eslint.vuejs.org/rules/new-line-between-multi-line-property) | Requires new lines between multi-line `props` |  | 🟢 |  | 🔵 |
@@ -258,7 +258,7 @@ Each item has emojis denoting:
 | [crisp/vue-no-component-class-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-component-class-shorthand.js) | Disallows Pug class shorthand on Vue components |  | 🟢 |  | 🔵 |
 | [crisp/vue-no-mixed-class](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class.js) | Disallows using both `class` and `:class` on the same element |  | 🟢 |  | 🔵 |
 | [crisp/vue-no-mixed-class-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-mixed-class-shorthand.js) | Disallows mixing Pug class shorthand and class attributes |  | 🟢 |  | 🔵 |
-| [crisp/vue-no-multiline-object-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-multiline-object-shorthand.js) | Requires explicit property keys and values in multiline objects; allows single-line objects, methods, direct component registrations and direct default export objects |  | 🟢 |  | 🔵 |
+| [crisp/vue-no-multiline-object-shorthand](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-multiline-object-shorthand.js) | Disallows shorthand properties in multiline objects, except component registrations and default exports |  | 🟢 |  | 🔵 |
 | [crisp/vue-no-name-option](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-name-option.js) | Disallows explicit component names in Vue single-file components |  | 🟢 |  | 🔵 |
 | [crisp/vue-no-regex-data](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-no-regex-data.js) | Disallows regular expressions to be declared in Vue data object |  | 🟢 |  | 🔵 |
 | [crisp/vue-props-declaration-line-break](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-props-declaration-line-break.js) | Enforces line break between type and default function in prop definition |  | 🟢 |  | 🔵 |
@@ -267,7 +267,7 @@ Each item has emojis denoting:
 | [crisp/vue-ref-case](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-ref-case.js) | Enforces `ref` attributes to snake case |  | 🟢 |  | 🔵 |
 | [crisp/vue-setup-group-comment](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-setup-group-comment.js) | Requires `// PROPS`, `// MODEL`, `// EMITS` and `// COMPUTED` comments before each group of the corresponding `<script setup>` declarations |  |  |  | 🔵 |
 | [crisp/vue-watch-handler](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-handler.js) | Requires Vue watchers to use the object form with a valid `handler` function |  | 🟢 |  | 🔵 |
-| [crisp/vue-watch-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-order.js) | Orders watcher options as `immediate` (if present), `deep` (if present), then `handler`; supports autofix for simple uncommented options |  | 🟢 |  | 🔵 |
+| [crisp/vue-watch-order](https://github.com/crisp-oss/eslint-plugin-crisp/blob/master/rules/vue-watch-order.js) | Orders watcher options as `immediate`, then `deep`, then `handler` |  | 🟢 |  | 🔵 |
 
 ## License
 
